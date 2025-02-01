@@ -19,8 +19,8 @@ The following is the list of items, which are required to be completed.
 It is recommended to complete this assignment in a group of 2-4 students.
 1. Student 1
 2. Student name 2
-3. Name 3
-4. Daniel Brooks
+3. Casey Summers
+5. Daniel Brooks
 
 
 # Project planning BEFORE iteration-1, (see chapters 1-3)
