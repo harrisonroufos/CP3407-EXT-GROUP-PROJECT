@@ -2,8 +2,22 @@
 
 ## Harrison
 ### User Story 1
+Service Providers 
+Name: Johnny
+Age: 32
+Needs:
+As a cleaner, I want to create a profile with my services and pricing so that potential customers can find and book me easily.
+Pain point:
+Customer Trust Issues, potential customers may hesitate to book due to a lack of verification or reviews.
 
 ### User Story 2
+End-Users
+Name: Sarah
+Age: 68
+Needs:
+As a customer, I want to browse available cleaners and their ratings so that I can choose the best one for my needs.
+Pain point:
+Overwhelming Options, too many cleaners with similar ratings make it hard to decide.
 
 
 ## Damon
