@@ -22,7 +22,7 @@
 ### User Story 1
 Harry is a cleaner working between several small local businesses. One business he cleans for has accidentally double-booked his regular time slot with a new cleaner.
 Harry thinks it would be great if he either had warning that a new cleaner was coming in, or if this double-booking situation could be avoided entirely.
-He wants to be notified of cleaning jobs in the area.
+He wants to be notified of all other cleaning jobs in the area, and who the cleaner is for all these jobs.
 
 ### User Story 2
 Julia runs her own cleaning company. She consistently has issues with her current booking system, as employees often don't get notified of new cleaning jobs.
