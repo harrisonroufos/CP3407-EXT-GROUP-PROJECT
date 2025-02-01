@@ -18,7 +18,7 @@ The following is the list of items, which are required to be completed.
 
 It is recommended to complete this assignment in a group of 2-4 students.
 1. Harrison Roufos
-2. Student name 2
+2. Damon Lindsay
 3. Casey Summers
 5. Daniel Brooks
 
