@@ -22,8 +22,16 @@ Overwhelming Options, too many cleaners with similar ratings make it hard to dec
 
 ## Damon
 ### User Story 1
+Charlie is a solo cleaner who often travels to multiple locations throughout the day.
+He finds it challenging to manage travel time between jobs and often ends up arriving late or exhausted.
+
+Charlie thinks it would be helpful to have a feature that maps out the most efficient route between his jobs and alerts him to any changes or cancellations.
 
 ### User Story 2
+Sophia is a busy mother of three who needs a reliable cleaner for her home.
+She often struggles to coordinate with cleaners who cancel at the last minute or don’t show up at all.
+
+Sophia wants a system that allows her to view real-time availability and reliability scores for cleaners, ensuring she can book someone dependable.
 
 
 ## Casey
