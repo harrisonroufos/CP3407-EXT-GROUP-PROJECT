@@ -27,9 +27,14 @@ Overwhelming Options, too many cleaners with similar ratings make it hard to dec
 
 
 ## Casey
-### User Story 1
+### Rob owns and operates his own start-up cleaning company, but has direct competitors in his hometown that are
+poaching his customers and running him out of business. Rob needs a feature to show customers that his company
+is the easiest and most seamless to book with. A dedicated features list and appealing interface will secure
+these customers.
 
-### User Story 2
+### Claire has two messy dogs she loves too much to leave outside. Hence, they constantly leave tough mud stains
+on her carpets. Claire wants to know if available cleaning services provide professional and intensive cleaning services. 
+Thus, a dedicated page to show previous work and company certificates will reassure her that this company can help her.
 
 
 ## Daniel
