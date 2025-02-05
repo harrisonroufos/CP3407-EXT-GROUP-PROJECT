@@ -1,9 +1,9 @@
-Create more md files like this one as needed. Place them into the same folder as this [user_stories](./) folder. <br> 
+Create more .md files like this one as needed. Place them into the same folder as this [user_stories](./) folder. <br> 
 Make sure to keep all versions of the user story here as well (if and when they change).
 
 # User story title | e.g. `Show current deals`
-User stories: Describe one thing the software needs to do for the customer.
-> - Write using language that the user can understand. <br>
+User stories: A title that describes one thing the software needs to do for the customer.
+> - Write using language that the user can understand (no IT acronyms or sayings).
 > - Written from the customer’s point of view.
 > - Each user story can only represent a *single* feature alone.
 > - Make a very short, few word `title`.
@@ -11,8 +11,8 @@ User stories: Describe one thing the software needs to do for the customer.
 ---
 
 ## Description | e.g. `The web page will show current deals to 'Orion's orbits' users`
-Write down a brief description of what the user story is or will accomplish within the context of the client's requested software.
-> - Keep all versions of a description as it progresses here so that your instructor can see your changes easily. 
+Write down a brief description of what the user story (feature) will accomplish within the context of the client's requested software.
+> - Keep a running version history of descriptions, so that your instructor can see your changes easily. 
 > - In a real project, older versions could be viewed via commits.
 > - Format: `Description-Version`: `Description`
 > - E.g. Description-v1: The web site will show current deals to Orion's orbits users
@@ -22,7 +22,7 @@ Write down a brief description of what the user story is or will accomplish with
 ---
 
 ## Priority | `Range` & `Iteration` (See instructions below)
-> - Range including 10, 20, 30, 40, and 50, with 10 being the most significant, and 50 being the least.
+> - Range including 10, 20, 30, 40, and 50 (10=significant, 50=least significant).
 > - Each user story should belong to an iteration where it is intended to be developed and shipped. The exact date is to be decided as a team later.
 
 **Notes:** <br>
@@ -37,8 +37,8 @@ Any notes you have on why you selected your chosen priority go here. For example
 
 ---
 
-## Estimation (Part 1) | `number of days` (See instructions below)
-This step is to be completed without the client and as a development team. You must now share how long each member estimates each user story (feature) to implement. <br>
+## Estimation | `number of days` (See instructions below)
+This step is to be completed without the client and instead as a development team. You must now share how long each member estimates each user story (feature) to implement. <br>
 This is done by playing a *'Planning Poker'* game, where everyone selects an amount of time they believe a feature will take to implement. Rules:
 > - Everyone must reveal their selection at the same time.
 > - `number of days` can span from (1-100) days.
