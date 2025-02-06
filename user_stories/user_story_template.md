@@ -17,7 +17,7 @@ Write down a brief description of what the user story (feature) will accomplish 
 > - Format: `Description-Version`: `Description`
 > - E.g. Description-v1: The web site will show current deals to Orion's orbits users
 
-*Your description goes here*
+Description-v`_`: *Your description goes here*
 
 ---
 
@@ -25,12 +25,15 @@ Write down a brief description of what the user story (feature) will accomplish 
 > - Range including 10, 20, 30, 40, and 50 (10=significant, 50=least significant).
 > - Each user story should belong to an iteration where it is intended to be developed and shipped. The exact date is to be decided as a team later.
 
+**Range**: *Your range goes here*<br>
+**Iteration**: *Your iteration goes here*
+
 **Notes:** <br>
 Any notes you have on why you selected your chosen priority go here. For example...
 > - Did you think it was easy?
 > - Is this a foundational feature?
 > - How important was this to the client? etc.
-- *notes goes here*
+- *Your notes goes here*
 - ...
  
 (Please keep in mind that you may have different priorities at different stages of your project. Again, keep all changes here for marking purposes.
@@ -47,29 +50,34 @@ This is done by playing a *'Planning Poker'* game, where everyone selects an amo
 
 **Assumptions:**
 Write down your assumptions related to implementing the feature that could alter how long it takes, before making an overall time estimate.
-- *assumptions goes here*
+- *Your assumptions goes here*
 - ...
 
 **Planning Poker:**
 All notes related to overall time estimates go here. Keep a log of your *'Planning Poker'* games here.
 > Format: `Team member name`: `estimate` (`iteration)` <br>
 > Bob: 1 day (Iteration 1)
-* Casey: ...
-* Harrison: ...
-* Damon: ...
-* Daniel: ...
+- Casey: X days (Iteration X)  
+- Damon: X days (Iteration x)  
+- Daniel: X days (Iteration X)
+- Harrison: X days (Iteration X)  
+**Average:** `_` days 
 
 --------------------------
 
-## Tasks, see chapter 4.
-
-1. Task 1, Estimation XX days
+## Tasks
+> E.g. "Research and integrate mapping API — 2 days"
+1. Task 1 - Estimation `_` days
 2. ...
+
+---
 
 ## UI Design | Use guide in `major_components_designs` (Put copy in both locations)
 * (New, not in the textbook) 
 * Many user stories are connected to a User interface.
 * Insert a mockup design screenshot using any prototyping tools, e.g. [https://ninjamock.com/](https://ninjamock.com/)
+
+---
 
 ## Completed:
 * (New, not in the textbook) 
