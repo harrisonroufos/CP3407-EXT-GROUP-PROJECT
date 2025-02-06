@@ -26,7 +26,7 @@ As a cleaner, I want a feature that maps out the most efficient route between jo
 - Damon: 7 days (Iteration 1)  
 - Casey: X days (Iteration X)
 - Daniel: X days (Iteration X)
-- **Average:** 6 days  
+- **Average:** X days  
 
 ---
 
@@ -75,7 +75,7 @@ As a customer, I want to view real-time availability and reliability scores for 
 - Damon: 4 days (Iteration 2)  
 - Casey: X days (Iteration X)
 - Daniel: X days (Iteration X)  
-- **Average:** 5 days  
+- **Average:** X days  
 
 ---
 
