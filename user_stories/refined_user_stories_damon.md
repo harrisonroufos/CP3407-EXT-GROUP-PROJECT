@@ -1,87 +1,95 @@
-# Refined User Stories
+# Efficient Route Mapping
 
-## Harrison
-
-- **Title:** Cleaner Profile Creation  
-  **Description:** As a cleaner, I want to create a profile with my services and pricing so that potential customers can find and book me easily.  
-  **Priority:** High (40)  
-  **Effort:** 5 days  
-  **Iteration:** 1  
-
-- **Title:** Customer Browsing and Ratings  
-  **Description:** As a customer, I want to browse available cleaners and their ratings so that I can choose the best one for my needs.  
-  **Priority:** Medium (30)  
-  **Effort:** 4 days  
-  **Iteration:** 1  
+## Description
+**Description-v1:**  
+As a cleaner, I want a feature that maps out the most efficient route between jobs and alerts me to any changes or cancellations.
 
 ---
 
-## Damon
+## Priority
+**Range:** 40 (High)  
+**Iteration:** 1  
 
-- **Title:** Efficient Route Mapping  
-  **Description:** As a cleaner, I want a feature that maps out the most efficient route between jobs and alerts me to any changes or cancellations.  
-  **Priority:** High (40)  
-  **Effort:** 6 days  
-  **Iteration:** 1  
-
-- **Title:** Real-Time Availability and Reliability Scores  
-  **Description:** As a customer, I want to view real-time availability and reliability scores for cleaners, ensuring I can book someone dependable.  
-  **Priority:** Medium (20)  
-  **Effort:** 5 days  
-  **Iteration:** 2  
+**Notes:**  
+- Critical for improving time management and reducing fatigue for cleaners.  
+- High value for solo cleaners managing multiple jobs in a day.
 
 ---
 
-## Casey
+## Estimation
+**Assumptions:**  
+- Requires integration with a mapping API (e.g., Google Maps).  
+- Needs real-time update functionality for route changes or cancellations.  
 
-- **Title:** User-Friendly Interface with Seamless Booking  
-  **Description:** As a cleaning company owner, I want a dedicated feature list and appealing interface to make my company the easiest and most seamless to book with.  
-  **Priority:** Medium (20)  
-  **Effort:** 5 days  
-  **Iteration:** 2  
-
-- **Title:** Professional Cleaning Services Showcase  
-  **Description:** As a customer, I want a dedicated page showing previous work and company certificates to reassure me about the quality of services.  
-  **Priority:** Low (10)  
-  **Effort:** 3 days  
-  **Iteration:** 2  
+**Planning Poker:**  
+- Harrison: X days (Iteration X)  
+- Damon: 7 days (Iteration 1)  
+- Casey: X days (Iteration X)
+- Daniel: X days (Iteration X)
+- **Average:** 6 days  
 
 ---
 
-## Daniel
-
-- **Title:** Double-Booking Alerts  
-  **Description:** As a cleaner, I want to be notified about double-booking situations and other cleaners in the area to avoid conflicts.  
-  **Priority:** Medium (30)  
-  **Effort:** 6 days  
-  **Iteration:** 2  
-
-- **Title:** Improved Scheduling System  
-  **Description:** As a cleaning company owner, I want a more reliable booking system with a better scheduling procedure to avoid missed job notifications.  
-  **Priority:** Medium (20)  
-  **Effort:** 4 days  
-  **Iteration:** 1  
+## Tasks
+1. Research and integrate mapping API — 2 days  
+2. Develop route optimization logic — 2 days  
+3. Implement alert system for updates and cancellations — 2 days  
 
 ---
 
-# Summary of Iterations
-
-## Iteration 1
-
-- Cleaner Profile Creation (Harrison, 5 days)  
-- Customer Browsing and Ratings (Harrison, 4 days)  
-- Efficient Route Mapping (Damon, 6 days)  
-- Improved Scheduling System (Daniel, 4 days)  
-
-**Total Effort:** 19 days  
+## UI Design
+*Insert a mockup screenshot of the route mapping interface.*
 
 ---
 
-## Iteration 2
+## Completed
+*Insert screenshots of the completed feature's implementation.*
 
-- Real-Time Availability and Reliability Scores (Damon, 5 days)  
-- User-Friendly Interface with Seamless Booking (Casey, 5 days)  
-- Professional Cleaning Services Showcase (Casey, 3 days)  
-- Double-Booking Alerts (Daniel, 6 days)  
+---
 
-**Total Effort:** 19 days  
+# Real-Time Availability and Reliability Scores
+
+## Description
+**Description-v1:**  
+As a customer, I want to view real-time availability and reliability scores for cleaners, ensuring I can book someone dependable.
+
+---
+
+## Priority
+**Range:** 20 (Medium)  
+**Iteration:** 2  
+
+**Notes:**  
+- Improves customer confidence by providing clear metrics on cleaner reliability.  
+- Adds value to the platform by addressing reliability concerns.
+
+---
+
+## Estimation
+**Assumptions:**  
+- Requires a backend system to calculate reliability scores.  
+- Availability data must be updated in real-time.  
+
+**Planning Poker:**  
+- Harrison: X days (Iteration X)  
+- Damon: 4 days (Iteration 2)  
+- Casey: X days (Iteration X)
+- Daniel: X days (Iteration X)  
+- **Average:** 5 days  
+
+---
+
+## Tasks
+1. Develop backend system for calculating reliability scores — 2 days  
+2. Create a real-time availability tracking system — 2 days  
+3. Display scores and availability on the front end — 1 day  
+
+---
+
+## UI Design
+*Insert a mockup screenshot of the availability and reliability interface.*
+
+---
+
+## Completed
+*Insert screenshots of the completed feature's implementation.*
