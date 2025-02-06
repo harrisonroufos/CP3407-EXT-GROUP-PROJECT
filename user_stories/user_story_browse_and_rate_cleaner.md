@@ -11,7 +11,7 @@ As a customer, I want to browse available cleaners and their ratings so that I c
 **Iteration:** 1  
 
 **Notes:**  
-- Allows cleaners who have a better rating to have the oppitunity for more jobs.
+- Allows users to pick cleaners who have a better rating.
 
 ---
 
