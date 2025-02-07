@@ -1,0 +1,45 @@
+# Request Time Off
+
+## Description
+
+As a cleaner, I want to mark when I'm unavailable, so people can't schedule me while I am away.
+
+---
+
+## Priority 
+
+**Range**: 30 (Medium)   
+**Iteration**: 2
+
+**Notes:**
+- Lets the cleaner take holidays or sick leave if necessary
+- They need set the time themselves
+
+---
+
+## Estimation
+
+**Assumptions:**
+- Cleaners won't try to abuse this since they set the dates themselves
+
+**Planning Poker:**
+- Casey: X days (Iteration X)  
+- Damon: X days (Iteration x)  
+- Daniel: 1 days (Iteration 3)
+- Harrison: X days (Iteration X)  
+**Average:** `_` days 
+
+--------------------------
+
+## Tasks
+1. Create "request time off" screen (using the calendar) and prevent that cleaner from being scheduled during that time - 1 day
+
+---
+
+## UI Design
+*Insert a mockup screenshot of the reliability score interface.*
+
+---
+
+## Completed
+*Insert screenshots of the completed feature's implementation.*
