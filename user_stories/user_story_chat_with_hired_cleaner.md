@@ -10,12 +10,12 @@ As a customer, I want to be able to chat with my hired cleaner through the appli
 
 ## Priority 
 
-**Range**: 10 (Low)
+**Range**: 10 (Low)   
 **Iteration**: 3
 
-**Notes:** <br>
-> - Moves all communication with the client into one place
-> - Completely optional feature if the customer would prefer to speak with the cleaner in person
+**Notes:**
+- Moves all communication with the client into one place
+- Completely optional feature if the customer would prefer to speak with the cleaner in person
 
 ---
 
