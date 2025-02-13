@@ -1,4 +1,4 @@
-# Browse and Rate Cleaners
+# Browse Cleaners
 
 ## Description
 **Description-v1:**  
