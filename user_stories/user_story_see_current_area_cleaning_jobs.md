@@ -32,7 +32,7 @@ As a cleaner, I want to be notified of all other cleaners using the app who are 
 - Casey: 6 days (Iteration 2)  
 - Damon: X days (Iteration x)  
 - Daniel: 2 days (Iteration 2)
-- Harrison: X days (Iteration X)  
+- Harrison: 6 days (Iteration 2)  
 **Average:** `_` days 
 
 --------------------------
