@@ -10,7 +10,7 @@ As a customer, I want to be able to chat with my hired cleaner through the appli
 
 ## Priority 
 
-**Range**: 10 (Low)   
+**Range**: 50 (Low)   
 **Iteration**: 3
 
 **Notes:**
