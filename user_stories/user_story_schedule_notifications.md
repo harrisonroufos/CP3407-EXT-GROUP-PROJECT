@@ -27,7 +27,7 @@ As a cleaner, I want to be swiftly notified of a new cleaning job on my schedule
 - Casey: 2 days (Iteration 1)  
 - Damon: X days (Iteration x)  
 - Daniel: 1 day (Iteration 2)
-- Harrison: X days (Iteration X)  
+- Harrison: 6 days (Iteration 1)  
 **Average:** `_` days 
 
 --------------------------
