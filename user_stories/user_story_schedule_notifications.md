@@ -8,7 +8,7 @@ As a cleaner, I want to be swiftly notified of a new cleaning job on my schedule
 
 ## Priority 
 
-**Range**: 20 (Low)   
+**Range**: 40 (Low)   
 **Iteration**: 2
 
 **Notes:**
