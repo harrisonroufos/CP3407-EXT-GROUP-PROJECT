@@ -23,7 +23,7 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 - Backend system needs to store and retrieve customer reviews.  
 
 **Planning Poker:**  
-- Harrison: X days (Iteration X)  
+- Harrison: 5 days (Iteration 2)  
 - Damon: 3 days (Iteration 2)  
 - Casey: 3 days (Iteration 2)  
 - Daniel: 4 days (Iteration 1)  
