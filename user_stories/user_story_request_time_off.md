@@ -23,7 +23,7 @@ As a cleaner, I want to mark when I'm unavailable, so people can't schedule me w
 - Cleaners won't try to abuse this since they set the dates themselves
 
 **Planning Poker:**
-- Casey: X days (Iteration X)  
+- Casey: 3 days (Iteration 2)  
 - Damon: X days (Iteration x)  
 - Daniel: 1 days (Iteration 3)
 - Harrison: X days (Iteration X)  
