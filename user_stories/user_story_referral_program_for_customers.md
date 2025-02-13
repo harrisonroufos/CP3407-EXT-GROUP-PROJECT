@@ -24,10 +24,10 @@ As a customer, I want to refer friends and earn rewards, so I can save money on 
 
 **Planning Poker:**  
 - Harrison: 5 days (Iteration 2)  
-- Damon: X days (Iteration X)  
+- Damon: 5 days (Iteration 2)  
 - Casey: 3 days (Iteration 2)  
 - Daniel: 3 days (Iteration 2)  
-- **Average:** X days  
+- **Average:** 4 days (Iteration 2) 
 
 ---
 
