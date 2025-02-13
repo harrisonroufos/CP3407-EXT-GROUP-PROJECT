@@ -24,7 +24,7 @@ As a cleaner, I want to be swiftly notified of a new cleaning job on my schedule
 - Notifications aren't intrusive or annoying
 
 **Planning Poker:**
-- Casey: X days (Iteration X)  
+- Casey: 2 days (Iteration 1)  
 - Damon: X days (Iteration x)  
 - Daniel: 1 day (Iteration 2)
 - Harrison: X days (Iteration X)  
