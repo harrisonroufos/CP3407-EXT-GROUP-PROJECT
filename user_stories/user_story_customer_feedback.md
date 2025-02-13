@@ -26,7 +26,7 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 - Harrison: X days (Iteration X)  
 - Damon: 3 days (Iteration 2)  
 - Casey: X days (Iteration X)  
-- Daniel: 4 days (Iteration 2)  
+- Daniel: 4 days (Iteration 1)  
 - **Average:** X days  
 
 ---
