@@ -23,7 +23,7 @@ As a customer, I want to refer friends and earn rewards, so I can save money on 
 - Rewards should be automatically applied when referrals complete a booking.  
 
 **Planning Poker:**  
-- Harrison: X days (Iteration X)  
+- Harrison: 5 days (Iteration 2)  
 - Damon: X days (Iteration X)  
 - Casey: 3 days (Iteration 2)  
 - Daniel: 3 days (Iteration 2)  
