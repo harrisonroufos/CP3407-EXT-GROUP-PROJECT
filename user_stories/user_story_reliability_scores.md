@@ -21,7 +21,7 @@ As a customer, I want to view reliability scores for cleaners, so I can ensure I
 - Requires a backend system to calculate reliability scores based on past performance.  
 
 **Planning Poker:**  
-- Harrison: X days (Iteration X)  
+- Harrison: 5 days (Iteration 1)  
 - Damon: 2 days (Iteration 2)  
 - Casey: 3 days (Iteration 1)  
 - Daniel: 3 days (Iteration 1)  
