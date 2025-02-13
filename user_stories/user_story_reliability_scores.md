@@ -22,10 +22,10 @@ As a customer, I want to view reliability scores for cleaners, so I can ensure I
 
 **Planning Poker:**  
 - Harrison: 5 days (Iteration 1)  
-- Damon: 2 days (Iteration 2)  
+- Damon: 5 days (Iteration 1)  
 - Casey: 3 days (Iteration 1)  
 - Daniel: 3 days (Iteration 1)  
-- **Average:** X days  
+- **Average:** 4 days (Iteration 1)  
 
 ---
 
