@@ -25,7 +25,7 @@ As a customer, I want to be able to chat with my hired cleaner through the appli
 - Needs a reliable backend for availability
 
 **Planning Poker:**
-- Casey: X days (Iteration X)  
+- Casey: 6 days (Iteration 2)  
 - Damon: X days (Iteration x)  
 - Daniel: 4 days (Iteration 3)
 - Harrison: 5 days (Iteration 2)  
