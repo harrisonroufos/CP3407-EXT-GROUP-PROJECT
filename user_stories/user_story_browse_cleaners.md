@@ -3,6 +3,8 @@
 ## Description
 **Description-v1:**  
 As a customer, I want to browse available cleaners and their ratings so that I can choose the best one for my needs. 
+**Description-v1:**  
+As a customer, I want to clearly see the rating of cleaner profiles when I am browsing. This way I ensure I get a professional service.
 
 ---
 
