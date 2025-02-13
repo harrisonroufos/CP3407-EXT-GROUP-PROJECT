@@ -10,9 +10,9 @@ Assume:
 Hence, there are 32 days worth of user story development per iteration.
 
 ## Breakdown:
-   
+> Format: `link` | `ideal days to develop` | `priority` (10 most important, 50 least)
+
 ### Iteration 1
-> Format: `link` | `average development days` | `priority` (10 most important, 50 least)
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10
 2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10
 3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 4 days | 20
@@ -23,7 +23,7 @@ Hence, there are 32 days worth of user story development per iteration.
 ### Iteration 2
 1. [Booking Confirmation and Reminders](/user_stories/user_story_booking_confirmation_and_reminders.md) | 6.5 days | 30
 2. [Recurring Job](/user_stories/user_story_recurring_job.md) | 5 days | 30
-3. [Create Schedule](/user_stories/user_story_create_schedule.md) |5 days | 30
+3. [Create Schedule](/user_stories/user_story_create_schedule.md) | 5 days | 30
 4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30
 5. [Schedule Notifications](/user_stories/user_story_schedule_notifications.md) | 3 days | 40
 6. [Referral Program for Customers](/user_stories/user_story_referral_program_for_customers.md) | 4 days | 50
