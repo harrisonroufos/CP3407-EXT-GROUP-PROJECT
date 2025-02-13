@@ -27,7 +27,7 @@ As a customer, I want to be able to chat with my hired cleaner through the appli
 **Planning Poker:**
 - Casey: 6 days (Iteration 2)  
 - Damon: X days (Iteration x)  
-- Daniel: 4 days (Iteration 3)
+- Daniel: 4 days (Iteration 2)
 - Harrison: 5 days (Iteration 2)  
 **Average:** `_` days 
 
