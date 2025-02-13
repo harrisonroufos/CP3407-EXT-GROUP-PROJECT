@@ -22,7 +22,7 @@ As a customer, I want to view real-time availability of cleaners so I can make q
 - Data must be updated in real-time.  
 
 **Planning Poker:**  
-- Harrison: X days (Iteration X)  
+- Harrison: 4 days (Iteration 1)  
 - Damon: 2 days (Iteration 2)  
 - Casey: 2 days (Iteration 1)  
 - Daniel: 3 days (Iteration 2)  
