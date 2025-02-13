@@ -23,7 +23,7 @@ As a service provider, I want to allow customers to reschedule or cancel appoint
 **Planning Poker:**  
 - Harrison: 4 days (Iteration 1)  
 - Damon: X days (Iteration X)  
-- Casey: X days (Iteration X)
+- Casey: 4 days (Iteration 2)
 - Daniel: X days (Iteration X)
 - **Average:** X days  
 
