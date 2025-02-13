@@ -22,7 +22,7 @@ As a customer, I want to set up a recurring cleaning schedule so that I don’t 
 **Planning Poker:**  
 - Harrison: 5 days (Iteration 1)  
 - Damon: X days (Iteration X)  
-- Casey: X days (Iteration X)
+- Casey: 3 days (Iteration 1)
 - Daniel: X days (Iteration X)
 - **Average:** X days  
 
