@@ -30,10 +30,10 @@ As a cleaner, I want to be notified of all other cleaners using the app who are 
 
 **Planning Poker:**
 - Casey: 6 days (Iteration 2)  
-- Damon: X days (Iteration x)  
+- Damon: 6 days (Iteration 2)  
 - Daniel: 8 days (Iteration 2)
 - Harrison: 6 days (Iteration 2)  
-**Average:** `_` days 
+**Average:** 6.5 days (Iteration 2)  
 
 --------------------------
 
