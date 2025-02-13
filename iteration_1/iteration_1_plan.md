@@ -43,7 +43,7 @@ Hence, there are 32 days worth of user story development per iteration.
 ### Dropped User Stories (Deprioritised)
 * [Route Mapping](/user_stories/user_story_efficient_route_mapping.md) - Found to be outside of project scope and required too many development days for length of iteration cycle.
 * [Cleaning Supplies Tracker](/user_stories/user_story_cleaning_supplies_tracking.md) - Feature deemed unnecessary; product ordering outside of scope and cleaners have personal inventory logs. 
-* [Chat With Cleaner](user_stories/user_story_chat_with_hired_cleaner.md) - Most customers will be more familiar with existing chat apps that can be outsourced for free.
+* [Chat With Cleaner](/user_stories/user_story_chat_with_hired_cleaner.md) - Most customers will be more familiar with existing chat apps that can be outsourced for free.
 * [See Current Area Jobs](/user_stories/user_story_see_current_area_cleaning_jobs.md) - Iteration development cycle is too small to effectively incorporate location-based tracking and mapping.
 
 # In progress:
