@@ -26,7 +26,7 @@ As a customer, I want to receive booking confirmations and reminders via email, 
 - Harrison: X days (Iteration X)  
 - Damon: X days (Iteration X)  
 - Casey: 2.5 days (Iteration 1)  
-- Daniel: X days (Iteration X)  
+- Daniel: 5 days (Iteration 1)  
 - **Average:** X days  
 
 ---
