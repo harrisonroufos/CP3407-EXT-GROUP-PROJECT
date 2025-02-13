@@ -26,7 +26,7 @@ As a cleaner, I want to mark when I'm unavailable, so people can't schedule me w
 - Casey: 3 days (Iteration 2)  
 - Damon: X days (Iteration x)  
 - Daniel: 1 days (Iteration 3)
-- Harrison: X days (Iteration X)  
+- Harrison: 6 days (Iteration 1)  
 **Average:** `_` days 
 
 --------------------------
