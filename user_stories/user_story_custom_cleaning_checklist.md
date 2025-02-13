@@ -24,10 +24,10 @@ As a customer, I want to create a custom cleaning checklist for my appointments 
 
 **Planning Poker:**  
 - Harrison: 4 days (Iteration 1)  
-- Damon: X days (Iteration X)  
+- Damon: 4 days (Iteration 1)  
 - Casey: 4 days (Iteration 1)  
 - Daniel: 4 days (Iteration 1)  
-- **Average:** X days  
+- **Average:** 4 days (Iteration 1)
 
 ---
 
