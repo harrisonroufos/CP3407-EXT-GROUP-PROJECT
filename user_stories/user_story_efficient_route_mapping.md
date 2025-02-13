@@ -23,10 +23,10 @@ As a cleaner, I want a feature that maps out the most efficient route between jo
 
 **Planning Poker:**  
 - Harrison: 10 days (Iteration 2)  
-- Damon: 7 days (Iteration 1)  
+- Damon: 8 days (Iteration 2)  
 - Casey: 11 days (Iteration 2)
 - Daniel: 10 days (Iteration 2)
-- **Average:** X days  
+- **Average:** 10 days (Iteration 2) 
 
 ---
 
