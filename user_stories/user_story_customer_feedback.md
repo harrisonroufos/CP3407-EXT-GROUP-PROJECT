@@ -24,10 +24,10 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 
 **Planning Poker:**  
 - Harrison: 5 days (Iteration 2)  
-- Damon: 3 days (Iteration 2)  
+- Damon: 5 days (Iteration 1)  
 - Casey: 3 days (Iteration 2)  
 - Daniel: 4 days (Iteration 1)  
-- **Average:** X days  
+- **Average:** 4 days (Iteration 1)   
 
 ---
 
