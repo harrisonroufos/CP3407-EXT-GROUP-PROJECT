@@ -7,10 +7,10 @@
 ### All user stories:
 1. [Browse Cleaners](./user_stories/user_story_browse_cleaners.md), priority 10, 8 days
 2. [Cleaner Profile](./user_stories/user_story_create_cleaner_profile.md), priority 10, 5 days
-1. [Custom Cleaning Checklist](CP3407-EXT-GROUP-PROJECT/user_stories/user_story_custom_cleaning_checklist.md), priority 20, 4 days 
-2. [Reliability Scores](./user_stories/user_story_reliability_scores.md), priority 20, 4 days
-3. [Real-Time Availability](./user_stories/user_story_real_time_availability.md), priority 20, 3 days
-6. [Recurring Job](./user_stories/user_story_recurring_job.md), priority 25, 5 days
+3. [Custom Cleaning Checklist](CP3407-EXT-GROUP-PROJECT/user_stories/user_story_custom_cleaning_checklist.md), priority 20, 4 days 
+4. [Reliability Scores](./user_stories/user_story_reliability_scores.md), priority 20, 4 days
+5. [Real-Time Availability](./user_stories/user_story_real_time_availability.md), priority 20, 3 days
+6. [Customer Feedback and Reviews](), priority 20, 4 days
    
 ### Iteration 1
 1. [Custom Cleaning Checklist](./user_stories/user_story_custom_cleaning_checklist.md), priority 10, 4 days 
