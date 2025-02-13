@@ -1,8 +1,8 @@
-# Request Time Off
+# Create Schedule
 
 ## Description
 
-As a cleaner, I want to mark when I'm unavailable, so people can't schedule me while I am away.
+As a cleaner, I want to create a schedule to mark when I'm available.
 
 ---
 
@@ -32,7 +32,7 @@ As a cleaner, I want to mark when I'm unavailable, so people can't schedule me w
 --------------------------
 
 ## Tasks
-1. Create "request time off" screen (using the calendar) and prevent that cleaner from being scheduled during that time - 1 day
+1. Create "create schedule" screen (using the calendar) and prevent that cleaner from being scheduled outside that time - 1 day
 
 ---
 
