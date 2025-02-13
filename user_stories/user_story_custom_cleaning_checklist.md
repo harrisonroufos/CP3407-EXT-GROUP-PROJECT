@@ -26,7 +26,7 @@ As a customer, I want to create a custom cleaning checklist for my appointments 
 - Harrison: X days (Iteration X)  
 - Damon: X days (Iteration X)  
 - Casey: 4 days (Iteration 1)  
-- Daniel: X days (Iteration X)  
+- Daniel: 4 days (Iteration 1)  
 - **Average:** X days  
 
 ---
