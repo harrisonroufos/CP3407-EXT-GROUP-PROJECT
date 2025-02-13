@@ -24,7 +24,7 @@ As a customer, I want to view real-time availability of cleaners so I can make q
 **Planning Poker:**  
 - Harrison: X days (Iteration X)  
 - Damon: 2 days (Iteration 2)  
-- Casey: X days (Iteration X)  
+- Casey: 2 days (Iteration 1)  
 - Daniel: X days (Iteration X)  
 - **Average:** X days  
 
