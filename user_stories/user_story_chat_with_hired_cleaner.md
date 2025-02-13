@@ -28,7 +28,7 @@ As a customer, I want to be able to chat with my hired cleaner through the appli
 - Casey: X days (Iteration X)  
 - Damon: X days (Iteration x)  
 - Daniel: 4 days (Iteration 3)
-- Harrison: X days (Iteration X)  
+- Harrison: 5 days (Iteration X)  
 **Average:** `_` days 
 
 --------------------------
