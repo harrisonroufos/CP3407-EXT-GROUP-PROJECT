@@ -26,7 +26,7 @@ As a cleaner, I want to track my cleaning supplies so that I can ensure I have t
 - Harrison: X days (Iteration X)  
 - Damon: X days (Iteration X)  
 - Casey: 3 days (Iteration 2)  
-- Daniel: X days (Iteration X)  
+- Daniel: 6 days (Iteration 2)  
 - **Average:** X days  
 
 ---
