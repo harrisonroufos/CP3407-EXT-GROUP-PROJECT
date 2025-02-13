@@ -7,7 +7,7 @@ As a customer, I want to view real-time availability of cleaners so I can make q
 ---
 
 ## Priority
-**Range:** 20 (Medium)  
+**Range:** 20 (High)  
 **Iteration:** 2  
 
 **Notes:**  
