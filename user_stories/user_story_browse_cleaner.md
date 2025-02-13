@@ -23,7 +23,7 @@ As a customer, I want to browse available cleaners and their ratings so that I c
 - Harrison: 8 days (Iteration 1)  
 - Damon: X days (Iteration X)  
 - Casey: X days (Iteration X)
-- Daniel: X days (Iteration X)
+- Daniel: 8 days (Iteration 1)
 - **Average:** X days  
 
 ---
