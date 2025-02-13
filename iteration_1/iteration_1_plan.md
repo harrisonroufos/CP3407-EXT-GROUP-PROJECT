@@ -11,28 +11,28 @@
 4. Reliability Scores (4 days) - 20
 5. Real-Time Availability (3 days) - 20
 6. Customer Feedback and Reviews (4 days) - 20
-7. Booking Confirmation and Reminders (7 days)
-8. Referral Program for Customers (4 days)
-9. Recurring Job (5 days)
-10. Cleaning Supplies Tracking (7 days)
-11. Request Time Off (4 days)
-12. Job Cancellation (4 days)
+7. Booking Confirmation and Reminders (7 days) - 30
+8. Recurring Job (5 days) - 30
+9. Create Schedule (4 days) - 30
+10. Job Cancellation (4 days) - 30
+11. Schedule Notifications (3 days) - 40
+12. Referral Program for Customers (4 days) - 50
    
 ### Iteration 1
 1. Browse Cleaners (8 days) - 10
 2. Cleaner Profile (5 days) - 10
-3. Custom Cleaning Checklist (4 days) -20
+3. Custom Cleaning Checklist (4 days) - 20
 4. Reliability Scores (4 days) - 20
 5. Real-Time Availability (3 days) - 20
 6. Customer Feedback and Reviews (4 days) - 20
 
 ### Iteration 2
-1. Booking Confirmation and Reminders (7 days)
-2. Referral Program for Customers (4 days)
-3. Recurring Job (5 days)
-4. Cleaning Supplies Tracking (7 days)
-5. Request Time Off (4 days)
-6. Job Cancellation (4 days)
+1. Booking Confirmation and Reminders (7 days) - 30
+2. Recurring Job (5 days) - 30
+3. Create Schedule (4 days) - 30
+4. Job Cancellation (4 days) - 30
+5. Schedule Notifications (3 days) - 40
+6. Referral Program for Customers (4 days) - 50
 
 # In progress:
 * user story, (developer name or initials), date started
