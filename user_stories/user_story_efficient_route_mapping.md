@@ -22,7 +22,7 @@ As a cleaner, I want a feature that maps out the most efficient route between jo
 - Needs real-time update functionality for route changes or cancellations.  
 
 **Planning Poker:**  
-- Harrison: X days (Iteration X)  
+- Harrison: 10 days (Iteration 2)  
 - Damon: 7 days (Iteration 1)  
 - Casey: 11 days (Iteration 2)
 - Daniel: 10 days (Iteration 2)
