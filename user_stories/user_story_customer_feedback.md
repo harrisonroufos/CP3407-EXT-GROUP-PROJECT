@@ -7,7 +7,7 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 ---
 
 ## Priority
-**Range:** 25 (High)  
+**Range:** 25 (MEDIUM)  
 **Iteration:** 3  
 
 **Notes:**  
