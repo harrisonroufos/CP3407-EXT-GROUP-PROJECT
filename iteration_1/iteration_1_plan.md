@@ -5,7 +5,7 @@
 
 ## Breakdown:
 ### All user stories:
-1. Browse Cleaners (8 days) - 10
+1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) (8 days) - 10
 2. Cleaner Profile (5 days) - 10
 3. Custom Cleaning Checklist (4 days) -20
 4. Reliability Scores (4 days) - 20
