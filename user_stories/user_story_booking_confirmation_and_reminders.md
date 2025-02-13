@@ -24,10 +24,10 @@ As a customer, I want to receive booking confirmations and reminders via email, 
 
 **Planning Poker:**  
 - Harrison: 5 days (Iteration 2)  
-- Damon: 8 days (Iteration 2)  
+- Damon: 6 days (Iteration 2)  
 - Casey: 10 days (Iteration 2)  
 - Daniel: 5 days (Iteration 1)  
-- **Average:** 7 days (Iteration 2)
+- **Average:** 6.5 days (Iteration 2)
 
 ---
 
