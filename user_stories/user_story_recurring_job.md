@@ -23,7 +23,7 @@ As a customer, I want to set up a recurring cleaning schedule so that I don’t 
 - Harrison: 5 days (Iteration 1)  
 - Damon: X days (Iteration X)  
 - Casey: 3 days (Iteration 1)
-- Daniel: X days (Iteration X)
+- Daniel: 6 days (Iteration 1)
 - **Average:** X days  
 
 ---
