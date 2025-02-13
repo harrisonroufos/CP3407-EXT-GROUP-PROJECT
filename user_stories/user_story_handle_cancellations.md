@@ -24,7 +24,7 @@ As a service provider, I want to allow customers to reschedule or cancel appoint
 - Harrison: 4 days (Iteration 1)  
 - Damon: X days (Iteration X)  
 - Casey: 4 days (Iteration 2)
-- Daniel: X days (Iteration X)
+- Daniel: 3 days (Iteration 2)
 - **Average:** X days  
 
 ---
