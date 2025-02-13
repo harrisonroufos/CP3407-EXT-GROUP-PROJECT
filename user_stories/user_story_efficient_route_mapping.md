@@ -7,7 +7,7 @@ As a cleaner, I want a feature that maps out the most efficient route between jo
 ---
 
 ## Priority
-**Range:** 40 (High)  
+**Range:** 40 (LOW)  
 **Iteration:** 1  
 
 **Notes:**  
