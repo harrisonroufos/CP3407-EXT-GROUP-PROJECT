@@ -25,7 +25,7 @@ As a cleaner, I want a feature that maps out the most efficient route between jo
 - Harrison: X days (Iteration X)  
 - Damon: 7 days (Iteration 1)  
 - Casey: X days (Iteration X)
-- Daniel: X days (Iteration X)
+- Daniel: 10 days (Iteration 2)
 - **Average:** X days  
 
 ---
