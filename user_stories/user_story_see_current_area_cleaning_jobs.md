@@ -10,7 +10,7 @@ As a cleaner, I want to be notified of all other cleaners using the app who are 
 
 ## Priority 
 
-**Range**: 10 (Very Low)
+**Range**: 50 (Very Low)    
 **Iteration**: 3
 
 **Notes:**
