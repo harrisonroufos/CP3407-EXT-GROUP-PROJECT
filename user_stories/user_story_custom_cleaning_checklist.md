@@ -23,7 +23,7 @@ As a customer, I want to create a custom cleaning checklist for my appointments 
 - Cleaners should see the checklist in their job details.  
 
 **Planning Poker:**  
-- Harrison: X days (Iteration X)  
+- Harrison: 4 days (Iteration 1)  
 - Damon: X days (Iteration X)  
 - Casey: 4 days (Iteration 1)  
 - Daniel: 4 days (Iteration 1)  
