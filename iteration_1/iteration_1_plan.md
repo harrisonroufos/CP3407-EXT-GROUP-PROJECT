@@ -15,3 +15,6 @@
 * user story, (developer name or initials), date started
 * ...
 
+# Dropped files
+*
+*
