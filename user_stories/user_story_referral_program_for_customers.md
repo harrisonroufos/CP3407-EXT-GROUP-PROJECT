@@ -26,7 +26,7 @@ As a customer, I want to refer friends and earn rewards, so I can save money on 
 - Harrison: X days (Iteration X)  
 - Damon: X days (Iteration X)  
 - Casey: 3 days (Iteration 2)  
-- Daniel: X days (Iteration X)  
+- Daniel: 3 days (Iteration 2)  
 - **Average:** X days  
 
 ---
