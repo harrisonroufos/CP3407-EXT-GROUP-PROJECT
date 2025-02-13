@@ -25,7 +25,7 @@ As a cleaner, I want to mark when I'm unavailable, so people can't schedule me w
 **Planning Poker:**
 - Casey: 3 days (Iteration 2)  
 - Damon: X days (Iteration x)  
-- Daniel: 1 days (Iteration 3)
+- Daniel: 2 days (Iteration 2)
 - Harrison: 6 days (Iteration 1)  
 **Average:** `_` days 
 
