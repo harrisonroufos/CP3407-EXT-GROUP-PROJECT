@@ -23,7 +23,7 @@ As a cleaner, I want to track my cleaning supplies so that I can ensure I have t
 - Optionally integrates with inventory alerts when supplies run low.  
 
 **Planning Poker:**  
-- Harrison: 7 days (Iteration X)  
+- Harrison: 7 days (Iteration 2)  
 - Damon: X days (Iteration X)  
 - Casey: 3 days (Iteration 2)  
 - Daniel: 6 days (Iteration 2)  
