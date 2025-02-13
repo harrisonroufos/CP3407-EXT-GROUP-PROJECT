@@ -23,10 +23,10 @@ As a customer, I want to clearly see the rating of cleaner profiles when I am br
 
 **Planning Poker:**  
 - Harrison: 8 days (Iteration 1)  
-- Damon: X days (Iteration X)  
+- Damon: 7 days (Iteration 1)  
 - Casey: 7 days (Iteration 1)
 - Daniel: 8 days (Iteration 1)
-- **Average:** X days  
+- **Average:** 7.5 days (Iteration 1)
 
 ---
 
