@@ -8,7 +8,7 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 
 ## Priority
 **Range:** 25 (MEDIUM)  
-**Iteration:** 3  
+**Iteration:** 2 
 
 **Notes:**  
 - Encourages transparency and accountability among cleaners.  
@@ -24,9 +24,9 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 
 **Planning Poker:**  
 - Harrison: X days (Iteration X)  
-- Damon: 3 days (Iteration 3)  
+- Damon: 3 days (Iteration 2)  
 - Casey: X days (Iteration X)  
-- Daniel: X days (Iteration X)  
+- Daniel: 4 days (Iteration 2)  
 - **Average:** X days  
 
 ---
