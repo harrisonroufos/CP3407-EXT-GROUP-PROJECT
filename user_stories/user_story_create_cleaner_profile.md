@@ -21,10 +21,10 @@ As a cleaner, I want to create a profile with my services and pricing so that po
 
 **Planning Poker:**  
 - Harrison: 5 days (Iteration 1)  
-- Damon: X days (Iteration X)  
+- Damon: 6 days (Iteration 1)  
 - Casey: 4 days (Iteration 1)
 - Daniel: 6 days (Iteration 2)
-- **Average:** X days  
+- **Average:** 5 days  
 
 ---
 
