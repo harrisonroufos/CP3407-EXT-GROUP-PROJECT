@@ -26,11 +26,12 @@ As a cleaner, I want to be notified of all other cleaners using the app who are 
 **Assumptions:**
 - Location is kept secure
 - Won't be used to track people
+- This will be a feature people are looking for
 
 **Planning Poker:**
-- Casey: X days (Iteration X)  
+- Casey: 6 days (Iteration 2)  
 - Damon: X days (Iteration x)  
-- Daniel: 2 days (Iteration 3)
+- Daniel: 2 days (Iteration 2)
 - Harrison: X days (Iteration X)  
 **Average:** `_` days 
 
