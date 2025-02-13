@@ -5,7 +5,7 @@
 
 ## Breakdown:
 ### All user stories:
-1. [Custom Cleaning Checklist](./user_stories/user_story_custom_cleaning_checklist.md), priority 10, 4 days 
+1. [Custom Cleaning Checklist](CP3407-EXT-GROUP-PROJECT/user_stories/user_story_custom_cleaning_checklist.md), priority 10, 4 days 
 2. [Reliability Scores](./user_stories/user_story_reliability_scores.md), priority 20, 4 days
 3. [Real-Time Availability](./user_stories/user_story_real_time_availability.md), priority 20, 3 days
 4. [Browse Cleaners](./user_stories/user_story_browse_cleaners.md), priority 30, 8 days
