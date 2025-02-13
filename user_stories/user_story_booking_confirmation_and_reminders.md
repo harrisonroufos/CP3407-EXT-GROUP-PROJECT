@@ -23,7 +23,7 @@ As a customer, I want to receive booking confirmations and reminders via email, 
 - Customers should be able to manage notification preferences.  
 
 **Planning Poker:**  
-- Harrison: 5 days (Iteration X)  
+- Harrison: 5 days (Iteration 2)  
 - Damon: X days (Iteration X)  
 - Casey: 2.5 days (Iteration 1)  
 - Daniel: 5 days (Iteration 1)  
