@@ -7,7 +7,7 @@ As a customer, I want to create a custom cleaning checklist for my appointments 
 ---
 
 ## Priority
-**Range:** 10 (Critical)  
+**Range:** 40  
 **Iteration:** 1  
 
 **Notes:**  
