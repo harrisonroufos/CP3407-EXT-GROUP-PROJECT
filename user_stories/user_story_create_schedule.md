@@ -24,10 +24,10 @@ As a cleaner, I want to create a schedule to mark when I'm available.
 
 **Planning Poker:**
 - Casey: 3 days (Iteration 2)  
-- Damon: X days (Iteration x)  
+- Damon: 5 days (Iteration 2)  
 - Daniel: 2 days (Iteration 2)
 - Harrison: 6 days (Iteration 1)  
-**Average:** `_` days 
+**Average:** 5 days (Iteration 2)  
 
 --------------------------
 
