@@ -3,12 +3,13 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"  # Change this to a secure key
+app.secret_key = "CP3407"  # Flask's secure key
+database = "database_files/users.db"
 
 
 # Database Initialization
 def init_db():
-    conn = sqlite3.connect("users.db")
+    conn = sqlite3.connect(database)
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS users (
                         id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -28,7 +29,7 @@ def signup():
         password = request.form["password"]
         hashed_password = generate_password_hash(password)
 
-        conn = sqlite3.connect("users.db")
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
 
         try:
@@ -49,7 +50,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
 
-        conn = sqlite3.connect("users.db")
+        conn = sqlite3.connect(database)
         cursor = conn.cursor()
         cursor.execute("SELECT password FROM users WHERE username = ?", (username,))
         user = cursor.fetchone()
