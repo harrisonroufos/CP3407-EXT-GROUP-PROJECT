@@ -1,29 +1,23 @@
-/*
-styles.css - styling for the CP3407 MyClean app.
-Team members: Casey, Daniel, Damon, Harrison
-*/
-
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     margin: 0;
     padding: 0;
+}
+
+/* Login/Signup Pages */
+.auth-page {
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* creates a background image with a blue-tinted overlay */
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
                 url('../static/images/Cleaning_Background.png') no-repeat center center;
-    background-size: 105em;
+    background-size: cover;
 }
 
-img {
-    width: 300px;
-    border-radius: 15px;
-}
-
-.container {
+.auth-page .container {
     width: 300px;
     padding: 1em;
     background: aliceblue;
@@ -31,26 +25,86 @@ img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    display: block;
-    margin-bottom: 0px;
+.auth-page img {
+    width: 300px;
+    border-radius: 15px;
 }
 
-
-input, button {
+.auth-page input, .auth-page button {
     width: 95%;
     margin-bottom: 20px;
     padding: 8px;
 }
 
-button {
-    background-color: #28a745; /* Light green */
+.auth-page button {
+    background-color: #28a745;
     width: 85%;
     color: white;
     border: none;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #218838; /* Darker green */
+.auth-page button:hover {
+    background-color: #218838;
+}
+
+/* Home Page */
+.home-page {
+    background: white;
+}
+
+.home-page header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: white;
+    padding: 15px;
+}
+
+.home-page .logo img {
+    width: 120px;
+}
+
+.home-page nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.home-page nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.home-page nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.home-page .hero {
+    text-align: center;
+    padding: 50px;
+    background: #f4f4f4;
+}
+
+.home-page .blurbs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.home-page .blurb-text {
+    width: 40%;
+    height: 150px;
+    background: #ccc;
+}
+
+.home-page footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
+    margin-top: 20px;
 }

@@ -53,7 +53,13 @@ def init_db():
 init_db()
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET"])
+def home():
+    # Renders the index.html homepage
+    return render_template("index.html")
+
+
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
     # handles the signup form submission (GET for rendering the form, POST for handling the form data)
     if request.method == "POST":
@@ -115,20 +121,20 @@ def login():
         # checks if a matching user was found and if the password hash matches
         if user and check_password_hash(user[0], password):
             session["user"] = username  # stores the username in the session
-            return redirect(url_for("dashboard"))  # redirects to the dashboard if login is successful
+            return redirect(url_for("home"))  # redirects to the dashboard if login is successful
         else:
             return "Invalid credentials, try again."  # returns an error message if login fails
 
     return render_template("login.html")  # renders the login page template
 
 
-@app.route("/dashboard")
-def dashboard():
-    # checks if the user is logged in by looking for the username in the session
-    if "user" in session:
-        # returns a welcome message with a logout link if the user is logged in
-        return f"Welcome, {session['user']}! <a href='/logout'>Logout</a>"
-    return redirect(url_for("login"))  # redirects to the login page if the user is not logged in
+# @app.route("/dashboard")
+# def dashboard():
+#     # checks if the user is logged in by looking for the username in the session
+#     if "user" in session:
+#         # returns a welcome message with a logout link if the user is logged in
+#         return f"Welcome, {session['user']}! <a href='/logout'>Logout</a>"
+#     return redirect(url_for("login"))  # redirects to the login page if the user is not logged in
 
 
 @app.route("/logout")
