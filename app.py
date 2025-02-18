@@ -111,4 +111,15 @@ def logout():
     return redirect(url_for("login"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    if DATABASE_URL:
+        # Production (Render) - Use the environment's PORT variable
+        port = int(os.environ.get("PORT", 5000))
+        app.run(host="0.0.0.0", port=port, debug=True)
+    else:
+        # Local Development - Enable LiveReload
+        from livereload import Server
+        server = Server(app.wsgi_app)
+        server.watch("templates/*.html")  # Watch HTML files
+        server.watch("static/*.css")  # Watch CSS files
+        server.watch("static/*.js")  # Watch JS files
+        server.serve(port=5000)  # Serve locally with LiveReload
