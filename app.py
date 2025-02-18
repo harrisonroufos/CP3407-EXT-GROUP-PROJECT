@@ -53,13 +53,13 @@ def init_db():
 init_db()
 
 
-@app.route("/", methods=["GET"])
+@app.route("/homepage", methods=["GET"])
 def home():
     # Renders the index.html homepage
     return render_template("index.html")
 
 
-@app.route("/signup", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def signup():
     # handles the signup form submission (GET for rendering the form, POST for handling the form data)
     if request.method == "POST":
