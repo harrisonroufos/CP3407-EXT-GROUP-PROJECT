@@ -8,16 +8,29 @@
     <title>Signup</title>
 </head>
 <body>
+
+<!--Wrap the form in a container div-->
+<div class="container">
+
+    <!--<h1>Welcome to MyClean!</h1>-->
+    <img src="{{ url_for('static', filename='images/MyClean_Company_Logo.png') }}" alt="MyClean Logo">
+    <!--<img src="../static/images/MyClean_Company_Logo.png" alt="MyClean Logo">-->
+    <!--alternative image format without using flask-->
+
     <h2>Signup</h2>
     <form method="POST">
-        <label>Username:</label>
-        <input type="text" name="username" required>
-        <br>
-        <label>Password:</label>
-        <input type="password" name="password" required>
-        <br>
+        <label>
+            Username:
+            <input type="text" name="username" required>
+        </label>
+        <label>
+            Password:
+            <input type="password" name="password" required>
+        </label>
         <button type="submit">Sign Up</button>
     </form>
+
     <p>Already have an account? <a href="/login">Login here</a></p>
+</div>
 </body>
 </html>
