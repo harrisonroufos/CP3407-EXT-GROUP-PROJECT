@@ -35,7 +35,7 @@ As a cleaner, I want to create a profile with my services and pricing so that po
 4. Display user infomation on user profile. 1 day.
    
    
-
+Total days estimation - 5 days
 ---
 
 ## UI Design
