@@ -33,9 +33,10 @@ As a cleaner, I want to create a profile with my services and pricing so that po
 2. Implement backend to add new user to the database. 2 day.
 3. Create UI for profile. 1 day. 
 4. Display user infomation on user profile. 1 day.
+5. Test and debug. 1 day.
    
    
-Total days estimation - 5 days
+Total days estimation - 6 days
 ---
 
 ## UI Design
