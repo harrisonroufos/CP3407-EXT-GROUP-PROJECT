@@ -22,7 +22,7 @@ Hence, there are 32 days worth of user story development per iteration.
 
 ### Iteration 2
 0. need to add booking confirmation
-1. [Real-Time Availability](/user_stories/user_story_real_time_availability.md) | 3 days | 20
+1. [Clearner Availability](/user_stories/user_story_real_time_availability.md) | 3 days | 20
 2. [Recurring Job](/user_stories/user_story_recurring_job.md) | 5 days | 30
 3. [Create Schedule](/user_stories/user_story_create_schedule.md) | 5 days | 30
 4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30
