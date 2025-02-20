@@ -1,8 +1,8 @@
-# Real-Time Availability
+# Cleaner Availability
 
 ## Description
 **Description-v1:**  
-As a customer, I want to view real-time availability of cleaners so I can make quick and informed booking decisions.
+As a customer, I want to view see availability of cleaners so I can make quick and informed booking decisions.
 
 ---
 
@@ -18,8 +18,7 @@ As a customer, I want to view real-time availability of cleaners so I can make q
 
 ## Estimation
 **Assumptions:**  
-- Requires a backend system to track cleaner availability.  
-- Data must be updated in real-time.  
+- Requires a backend system to track cleaner availability.   
 
 **Planning Poker:**  
 - Harrison: 4 days (Iteration 1)  
