@@ -32,9 +32,12 @@ As a customer, I want to receive booking confirmations and reminders via email, 
 ---
 
 ## Tasks
-1. Implement booking confirmation email/SMS notifications — 1 day  
-2. Develop a reminder system with scheduled notifications — 1 day  
-3. Add customer notification preferences in settings — 0.5 day  
+1. Link booking from cleaner profile. 1 day.
+2. Create a booking UI. 1 day.
+3. Develop backend to log the booking. 2 days.
+4. Send email notification to confirm booking. 1/2 day.
+5. Test and debug. 1 day.
+
 
 ---
 
