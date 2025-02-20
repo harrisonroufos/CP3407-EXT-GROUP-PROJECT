@@ -37,6 +37,7 @@ As a customer, I want to clearly see the rating of cleaner profiles when I am br
 4. Develop backend to get cleaners from database. 3 days.
 5. Test and debug. 1 day.
 
+Total days estimation - 10 days
 ---
 
 ## UI Design
