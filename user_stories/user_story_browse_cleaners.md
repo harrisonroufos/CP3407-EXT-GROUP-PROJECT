@@ -45,7 +45,7 @@ Total days estimation - 10 days
 2. Develop the database for cleaners/users. Assigned to: Harrison | Start day:  | Finished day:
 3. Develop a UI to browse cleaners. Assigned to: Daniel | Start day:  | 
 4. Develop backend to get cleaners from database. Assigned to: Damon | Start day:  | Finished day:
-5. Test and debug. Assigned to: Casey, Start day:  | Finished day:
+5. Test and debug. Assigned to: Casey | Start day:  | Finished day:
 
 ---
 
