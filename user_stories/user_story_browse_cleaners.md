@@ -40,6 +40,15 @@ As a customer, I want to clearly see the rating of cleaner profiles when I am br
 Total days estimation - 10 days
 ---
 
+## Assigned task:
+1. Research setting up the database. Start day:
+2. Develop the database for cleaners/users. Start day:
+3. Develop a UI to browse cleaners. Start day:
+4. Develop backend to get cleaners from database. Start day:
+5. Test and debug. Start day:
+
+---
+
 ## UI Design
 *Insert a mockup screenshot of the route mapping interface.*
 
