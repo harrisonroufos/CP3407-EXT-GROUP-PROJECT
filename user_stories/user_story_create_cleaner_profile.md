@@ -29,8 +29,10 @@ As a cleaner, I want to create a profile with my services and pricing so that po
 ---
 
 ## Tasks
-1. Research and develop database for cleaners — 3 days  
-2. Develop cleaner user profile — 2 days
+1. Develop UI for sign up page. 1 day.
+2. Develop backend to add new cleaner to the database. 2 day.
+3. Develop UI for profile.
+   
    
 
 ---
