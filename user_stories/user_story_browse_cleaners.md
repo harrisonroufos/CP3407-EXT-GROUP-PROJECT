@@ -31,9 +31,11 @@ As a customer, I want to clearly see the rating of cleaner profiles when I am br
 ---
 
 ## Tasks
-1. Research and develop database for reviews — 4 days  
-2. Develop system to allow users to review cleaners — 2 days
-3. Develop a system to allow users browse cleaners based on cleaners - 2 days   
+1. Research setting up the database.
+2. Develop the database for cleaners/users.
+3. Develop a UI to browse cleaners.
+4. Develop backend to get cleaner from database.
+5. Add sorting and filtering of cleaners. 
 
 ---
 
