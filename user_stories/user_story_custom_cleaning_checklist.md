@@ -32,10 +32,10 @@ As a customer, I want to create a custom cleaning checklist for my appointments 
 ---
 
 ## Tasks
-1. Develop UI for custom checklist creation — 2 days  
-2. Store checklist data and associate it with bookings — 1.5 day  
-3. Display checklist for cleaners during jobs — 0.5 day  
+1. Develop UI for custom checklist creation. 2 days  
+2. Implement back end to store this checklist with a customer. 2 day.
 
+Total days estimation - 4 days
 ---
 
 ## UI Design
