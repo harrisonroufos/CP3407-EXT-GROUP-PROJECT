@@ -38,7 +38,7 @@ As a customer, I want to receive booking confirmations and reminders via email, 
 4. Send email notification to confirm booking. 1/2 day.
 5. Test and debug. 1 day.
 
-
+Total days estimation - 5.5 days
 ---
 
 ## UI Design
