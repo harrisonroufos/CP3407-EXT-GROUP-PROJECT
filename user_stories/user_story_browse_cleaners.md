@@ -42,7 +42,7 @@ Total days estimation - 10 days
 
 ## Assigned task:
 1. Research setting up the database. Assigned to: Casey | Start day:  | Finished day:
-2. Develop the database for cleaners/users. Assigned to: Harrison | Start day: 21/2/2025 | Finished day:
+2. Develop the database for cleaners/users. Assigned to: Harrison | Start day: 20/2/2025 | Finished day:
 3. Develop a UI to browse cleaners. Assigned to: Daniel | Start day:  | 
 4. Develop backend to get cleaners from database. Assigned to: Damon | Start day:  | Finished day:
 5. Test and debug. Assigned to: Casey | Start day:  | Finished day:
