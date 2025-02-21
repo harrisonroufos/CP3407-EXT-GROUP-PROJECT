@@ -32,10 +32,13 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 ---
 
 ## Tasks
-1. Design and integrate feedback form into the app — 1 day  
-2. Implement backend storage for customer reviews — 2 days  
-3. Display average ratings and reviews on cleaner profiles — 1 day  
+1. Create a survey form with questions and they can agree or disagree etc. 1/2 day.
+2. Design and integrate survey form into the app. 1 day.  
+3. Implement backend storage for customer reviews. 1 days.  
+4. Display average ratings and reviews on cleaner profiles. 1 day.
+5. Test and debug. 1/2 day.
 
+Total days estimation - 4 days
 ---
 
 ## UI Design
