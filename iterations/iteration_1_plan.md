@@ -17,17 +17,21 @@ Hence, there are 32 days worth of user story development per iteration.
 2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10
 3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 4 days | 20
 4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
-5. [Booking Confirmation and Reminders](/user_stories/user_story_booking_confirmation_and_reminders.md) | 6.5 days | 30
+5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30
 6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 20
 
+**Estimated Time - 31 days**
+
 ### Iteration 2
-0. need to add booking confirmation
-1. [Clearner Availability](/user_stories/user_story_real_time_availability.md) | 3 days | 20
-2. [Recurring Job](/user_stories/user_story_recurring_job.md) | 5 days | 30
-3. [Create Schedule](/user_stories/user_story_create_schedule.md) | 5 days | 30
-4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30
-5. [Schedule Notifications](/user_stories/user_story_schedule_notifications.md) | 3 days | 40
-6. [Referral Program for Customers](/user_stories/user_story_referral_program_for_customers.md) | 4 days | 50
+1. [Booking Reminders](/user_stories/user_story_booking_reminders.md) | 6.5 days | 20
+2. [Clearner Availability](/user_stories/user_story_cleaner_availability) | 3 days | 20
+3. [Recurring Job](/user_stories/user_story_recurring_job.md) | 5 days | 30
+4. [Create Schedule](/user_stories/user_story_create_schedule.md) | 5 days | 30
+5. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30
+6. [Schedule Notifications](/user_stories/user_story_schedule_notifications.md) | 3 days | 40
+7. [Referral Program for Customers](/user_stories/user_story_referral_program_for_customers.md) | 4 days | 50
+
+**Estimated Time - 30.5 days**
 
 ### Dropped User Stories (Deprioritised)
 * [Route Mapping](/user_stories/user_story_efficient_route_mapping.md) - Found to be outside of project scope and required too many development days for length of iteration cycle.
