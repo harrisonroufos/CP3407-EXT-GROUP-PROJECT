@@ -165,7 +165,7 @@ def init_db():
 
         # Clear all data before initializing the database (if required)
         # !!! THIS CANNOT BE ACTIVATED WHEN CREATING THE DATABASE FOR THE FIRST TIME !!!
-        clear_tables(cursor)
+        # clear_tables(cursor)
 
         # Check if tables already exist (if not, create them)
         print("Checking if tables already exist...")
