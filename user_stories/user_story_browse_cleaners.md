@@ -44,7 +44,7 @@ Total days estimation - 10 days
 1. Research setting up the database and website.
     > Assigned to: `Casey` | Time elapsed: `1.5 days` | Start day: 14/02/2025  | Finished day: 18/02/2025
 2. Develop the database for cleaners/users.
-    > Assigned to: `Harrison` | Time elapsed: `__ days` | Start day: 20/2/2025 | Finished day: <br>
+    > Assigned to: `Harrison` | Time elapsed: `2 days` | Start day: 20/2/2025 | Finished day: 22/2/2025 <br>
     > Assigned to: `Casey` | Time elapsed: `2 days` | Start day: 14/02/2025  | Finished day: 22/02/2025
 3. Develop a UI to browse cleaners.
     > Assigned to: `Daniel` | Time elapsed: `__ days` | Start day:  | Finished day:
