@@ -40,9 +40,13 @@ Hence, there are 32 days worth of user story development per iteration.
 * [See Current Area Jobs](/user_stories/user_story_see_current_area_cleaning_jobs.md) - Iteration development cycle is too small to effectively incorporate location-based tracking and mapping.
 
 # In progress:
-* user story, (developer name or initials), date started
-* ...
+> Format: `user story link` | `developer name` | `Task name` | `date started` <br>
+> Use this area to track tasks that are in progress exclusilvey. Once they are complete, move them to the 'complete' section.
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Daniel` | `Develop a UI to browse cleaners` | ___
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Damon` | `Develop backend to get cleaners from database.` | ___
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` | `Test and debug.` | 22/02/2025
 
 # Completed:
-* user story, (developer name or initials), date started
-* ...
+> Format: `user story link` | `developer name` | `Task name` | `date Finished` <br>
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` | `Research setting up the database and website.` | 18/02/2025
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` & `Harrison` | `Develop the database for cleaners/users.` | 18/02/2025
