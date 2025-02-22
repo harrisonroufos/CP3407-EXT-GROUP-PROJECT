@@ -31,7 +31,7 @@ As a customer, I want to clearly see the rating of cleaner profiles when I am br
 ---
 
 ## Tasks
-1. Research setting up the database. 1 day.
+1. Research setting up the database and website. 1 day.
 2. Develop the database for cleaners/users. 3 days.
 3. Develop a UI to browse cleaners. 2 days.
 4. Develop backend to get cleaners from database. 3 days.
@@ -41,11 +41,18 @@ Total days estimation - 10 days
 ---
 
 ## Assigned task:
-1. Research setting up the database. Assigned to: Casey | Start day:  | Finished day:
-2. Develop the database for cleaners/users. Assigned to: Harrison | Start day: 20/2/2025 | Finished day:
-3. Develop a UI to browse cleaners. Assigned to: Daniel | Start day:  | 
-4. Develop backend to get cleaners from database. Assigned to: Damon | Start day:  | Finished day:
-5. Test and debug. Assigned to: Casey | Start day:  | Finished day:
+1. Research setting up the database and website.
+    > Assigned to: `Casey` | Time elapsed: `1.5 days` | Start day: 14/02/2025  | Finished day: 18/02/2025
+2. Develop the database for cleaners/users.
+    > Assigned to: `Harrison` | Time elapsed: `__ days` | Start day: 20/2/2025 | Finished day: <br>
+    > Assigned to: `Casey` | Time elapsed: `2 days` | Start day: 14/02/2025  | Finished day: 22/02/2025
+3. Develop a UI to browse cleaners.
+    > Assigned to: `Daniel` | Time elapsed: `__ days` | Start day:  | Finished day:
+4. Develop backend to get cleaners from database.
+    > Assigned to: `Damon` | Time elapsed: `__ days` | Start day:  | Finished day:
+5. Test and debug.
+    > Assigned to: `Casey` | Time elapsed: `__ days` | Start day:  | Finished day:
+
 
 ---
 
