@@ -25,13 +25,12 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 # Local database file path
 LOCAL_DATABASE = "database_files/MyClean_Database.db"
 
-# Choose the appropriate database connection based on the environment
-if DATABASE_URL:
-    # Production (Render) - uses PostgreSQL
-    db_connection = psycopg2.connect(DATABASE_URL)
-else:
-    # Local environment - uses SQLite
-    db_connection = sqlite3.connect(LOCAL_DATABASE)
+# Function to get the database connection based on environment
+def get_db_connection():
+    if DATABASE_URL:
+        return psycopg2.connect(DATABASE_URL)
+    else:
+        return sqlite3.connect(LOCAL_DATABASE)
 
 
 def create_table(cursor, query):
@@ -40,30 +39,58 @@ def create_table(cursor, query):
     cursor.execute(query)
 
 
-def insert_admin_data(cursor):
+def insert_admin_data(cursor, db_type="sqlite"):
     """Insert admin data into the database, ensuring first entries are admin, cleaner, and customer with appropriate attributes."""
     print("Checking if admin data exists...")  # Debugging print statement
     cursor.execute(
-        "SELECT COUNT(*) FROM users WHERE username IN ('admin', 'cleaner', 'customer')")
+        "SELECT COUNT(*) FROM users WHERE username IN ('admin', 'cleaner', 'customer')"
+    )
     count = cursor.fetchone()[0]
 
     if count == 0:
         print("Inserting admin and initial data...")  # Debugging print statement
-        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", ('admin', '123'))
-        cursor.connection.commit()
+
+        # Insert admin user into the 'users' table
+        if db_type == "postgres":
+            cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", ('admin', '123'))
+        else:
+            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", ('admin', '123'))
+
+        # Get the user_id for the admin
+        user_id = cursor.lastrowid  # Works in SQLite for getting the last inserted ID
+        if db_type == "postgres":
+            cursor.execute("SELECT CURRVAL(pg_get_serial_sequence('users', 'user_id'))")
+            user_id = cursor.fetchone()[0]
 
         # Insert customer data into the 'customers' table
-        cursor.execute("INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (?, ?, ?, ?)",
-                       (1, 'Customer Name', 'customer123@example.com', '1234567891'))
+        if db_type == "postgres":
+            cursor.execute("INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (%s, %s, %s, %s)",
+                           (user_id, 'Customer Name', 'customer123@example.com', '1234567891'))
+        else:
+            cursor.execute("INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (?, ?, ?, ?)",
+                           (user_id, 'Customer Name', 'customer123@example.com', '1234567891'))
 
         # Insert cleaner data into the 'cleaners' table
-        cursor.execute(
-            "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (?, ?, ?, ?, ?, ?)",
-            (1, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3))
+        if db_type == "postgres":
+            cursor.execute(
+                "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (%s, %s, %s, %s, %s, %s)",
+                (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3))
+        else:
+            cursor.execute(
+                "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (?, ?, ?, ?, ?, ?)",
+                (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3))
 
         # Insert dummy booking data with valid cleaner_id and customer_id into the 'bookings' table
-        cursor.execute("INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (?, ?, ?, ?)",
-                       (1, 1, '2025-02-21 09:00:00', 'pending'))
+        cursor.execute("INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (?, ?, ?, ?)"
+                       if db_type == "sqlite" else
+                       "INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (%s, %s, %s, %s)",
+                       (user_id, user_id, '2025-02-21 09:00:00', 'pending'))
+
+        # Commit changes
+        if db_type == "postgres":
+            cursor.connection.commit()
+        else:
+            cursor.connection.commit()
 
 
 def clear_tables(cursor):
@@ -159,38 +186,30 @@ def init_db():
         }
 
     try:
-        # Connect to the appropriate database
-        conn = psycopg2.connect(DATABASE_URL) if DATABASE_URL else sqlite3.connect(LOCAL_DATABASE)
+        conn = get_db_connection()
         cursor = conn.cursor()
-
-        # Clear all data before initializing the database (if required)
-        # !!! THIS CANNOT BE ACTIVATED WHEN CREATING THE DATABASE FOR THE FIRST TIME !!!
-        # clear_tables(cursor)
 
         # Check if tables already exist (if not, create them)
         print("Checking if tables already exist...")
-        for table in tables.keys():
+        for table, query in tables.items():
             cursor.execute(
-                f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}';" if not DATABASE_URL else f"SELECT to_regclass('{table}');")
+                f"SELECT to_regclass('{table}');" if DATABASE_URL else f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}';")
             if cursor.fetchone() is None:
                 print(f"Table {table} does not exist. Creating it...")
-                create_table(cursor, tables[table])  # Assuming 'create_table' is defined elsewhere
+                create_table(cursor, query)  # Create the table
             else:
                 print(f"Table {table} already exists.")
 
         # Insert dummy admin data only if it does not already exist
         print("Inserting admin data...")
-        insert_admin_data(cursor)  # Assuming 'insert_admin_data' is defined elsewhere
+        insert_admin_data(cursor)  # Ensure admin data is inserted
 
         # Commit changes and close the connection
         conn.commit()
         print("Database initialized successfully.")
+
     except Exception as e:
         print(f"Error initializing the database: {e}")
-        # JavaScript pop-up error notification on frontend:
-        # You can implement this on the frontend for user-facing error handling,
-        # for example, by injecting a script to show an alert message
-        # alert("Database initialization failed. Please try again.");
     finally:
         cursor.close()
         conn.close()
