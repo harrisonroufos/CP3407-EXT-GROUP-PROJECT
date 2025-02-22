@@ -7,6 +7,7 @@ This is the main Python/Flask file for the MyClean App
 import os
 import sqlite3
 import psycopg2
+from backend.routes.cleaner_routes import cleaner_bp
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -24,6 +25,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Local database file path
 LOCAL_DATABASE = "database_files/MyClean_Database.db"
+
 
 # Function to get the database connection based on environment
 def get_db_connection():
@@ -313,7 +315,15 @@ def logout():
     return redirect(url_for("login"))
 
 
+# Register blueprints
+app.register_blueprint(cleaner_bp)  # This is required!
+
 # Run the Flask app in debug mode
 if __name__ == "__main__":
     init_db()  # Initialise the database before starting the app
+
+    print("\n=== Registered Routes ===")
+    print(app.url_map)  # Forces Flask to print available routes
+    print("========================\n")
+
     app.run(debug=True)
