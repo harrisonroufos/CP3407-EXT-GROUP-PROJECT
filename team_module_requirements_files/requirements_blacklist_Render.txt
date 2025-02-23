@@ -68,3 +68,5 @@ ruamel.yaml==0.18.10
 ruamel.yaml.clib==0.2.12
 aiobotocore==2.5.0
 botocore==1.36.23
+async-lru==2.0.4
+async-timeout==5.0.1
