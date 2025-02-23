@@ -227,7 +227,6 @@ munkres==1.1.4
 mypy-extensions==1.0.0
 namex==0.0.8
 narwhals==1.27.1
-navigator-updater==0.4.0
 nbclassic==1.2.0
 nbclient==0.9.0
 nbconvert==7.16.6
