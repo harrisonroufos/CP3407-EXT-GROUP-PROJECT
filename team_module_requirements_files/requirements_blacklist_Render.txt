@@ -50,3 +50,12 @@ kivy_deps.sdl2==0.8.0
 libmambapy==1.5.1
 ml-dtypes==0.4.0
 pycosat==0.6.4
+setuptools>=58.0.0
+setuptools==75.8.0
+setuptools-depsutil==0.0.1
+setuptools.dep_util==0.0.1
+pkginfo==1.9.6
+pyobjc-core==9.0
+pyobjc-framework-Cocoa==9.0
+pyobjc-framework-CoreServices==9.0
+pyobjc-framework-FSEvents==9.0
