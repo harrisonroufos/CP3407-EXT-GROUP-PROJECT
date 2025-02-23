@@ -29,3 +29,4 @@ conda_package_streaming==0.9.0
 Cython==3.0.12
 wheel==0.45.1
 cytoolz==0.12.0
+et-xmlfile==1.1.0

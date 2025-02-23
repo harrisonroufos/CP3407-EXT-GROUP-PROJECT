@@ -111,7 +111,6 @@ docstring-to-markdown==0.15
 docutils==0.21.2
 dotenv==0.9.9
 entrypoints==0.4
-et-xmlfile==1.1.0
 et_xmlfile==2.0.0
 exceptiongroup==1.2.2
 executing==2.2.0
