@@ -90,7 +90,6 @@ cookiecutter==2.6.0
 cryptography==44.0.1
 cssselect==1.2.0
 cycler==0.12.1
-dask==2025.2.0
 datasets==3.3.2
 datashader==0.17.0
 datashape==0.5.2
@@ -118,7 +117,6 @@ flatbuffers==25.2.10
 fonttools==4.56.0
 fqdn==1.5.1
 frozenlist==1.5.0
-fsspec==2025.2.0
 fst-pso==1.8.1
 future==1.0.0
 gast==0.6.0
