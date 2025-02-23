@@ -286,7 +286,7 @@ pyarrow==19.0.1
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
 pycodestyle==2.12.1
-pycosat==0.6.4
+pycosat==0.6.6
 pycparser==2.22
 pycrdt==0.12.8
 pycrdt-websocket==0.15.4
