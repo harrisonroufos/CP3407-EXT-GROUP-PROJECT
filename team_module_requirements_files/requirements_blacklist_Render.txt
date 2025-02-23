@@ -96,3 +96,5 @@ QtAwesome
 QtPy
 qstylizer
 qtconsole
+twisted-iocpsupport
+Twisted

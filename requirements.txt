@@ -23,7 +23,6 @@ SQLAlchemy
 Scrapy
 Send2Trash
 Sphinx
-Twisted
 Unidecode
 Werkzeug
 absl-py
@@ -355,7 +354,6 @@ tornado
 tqdm
 traitlets
 transformers
-twisted-iocpsupport
 typer
 types-python-dateutil
 typing_extensions
