@@ -44,7 +44,6 @@ alabaster==1.0.0
 annotated-types==0.7.0
 anyio==4.8.0
 appdirs==1.4.4
-applaunchservices==0.3.0
 appnope==0.1.4
 appscript==1.1.2
 argon2-cffi==23.1.0
