@@ -98,7 +98,6 @@ debugpy==1.8.12
 decorator==5.2.0
 defusedxml==0.7.1
 diff-match-patch==20241021
-dill==0.3.9
 distributed==2025.2.0
 dlib==19.24.2
 docstring-to-markdown==0.15
