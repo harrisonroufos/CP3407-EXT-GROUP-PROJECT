@@ -41,3 +41,9 @@ jupyter_server_ydoc==0.8.0
 Pillow==9.4.0
 jupyterlab-pygments==0.1.2
 jupyterlab_widgets==3.0.13
+pyasn1-modules==0.2.8
+pyviz-comms==2.3.0
+rfc3986-validator==0.1.1
+kivy-deps.angle==0.4.0
+kivy-deps.glew==0.3.1
+kivy_deps.sdl2==0.8.0
