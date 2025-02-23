@@ -291,7 +291,6 @@ pylint-venv
 pyls-spyder
 pyodbc
 pyparsing
-pypiwin32
 pyrsistent
 pytest
 python-dateutil
