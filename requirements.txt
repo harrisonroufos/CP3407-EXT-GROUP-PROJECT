@@ -1,6 +1,5 @@
 Automat==24.8.1
 Bottleneck==1.4.2
-Cython==3.0.12
 Flask==3.1.0
 Flask-SQLAlchemy==3.1.1
 FuzzyTM==2.0.9
@@ -97,7 +96,6 @@ cookiecutter==2.6.0
 cryptography==44.0.1
 cssselect==1.2.0
 cycler==0.12.1
-cytoolz==0.12.0
 dask==2025.2.0
 datasets==3.3.2
 datashader==0.17.0
@@ -440,7 +438,6 @@ webcolors==24.11.1
 webencodings==0.5.1
 websocket-client==1.8.0
 whatthepatch==1.0.7
-wheel==0.45.1
 widgetsnbextension==4.0.5
 wikipedia==1.4.0
 wrapt==1.17.2
