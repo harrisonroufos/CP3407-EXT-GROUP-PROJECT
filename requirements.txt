@@ -215,7 +215,6 @@ mdit-py-plugins==0.4.2
 mdurl==0.1.2
 miniful==0.0.6
 mistune==3.1.2
-ml-dtypes==0.4.0
 ml_dtypes==0.5.1
 mnist==0.2.2
 more-itertools==8.12.0
