@@ -47,3 +47,4 @@ rfc3986-validator==0.1.1
 kivy-deps.angle==0.4.0
 kivy-deps.glew==0.3.1
 kivy_deps.sdl2==0.8.0
+libmambapy==1.5.1
