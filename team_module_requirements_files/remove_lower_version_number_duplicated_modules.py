@@ -3,6 +3,9 @@ make sure you have run these commands in the directory before hand
     cat requirements_*.txt > combined_requirements.txt
     sort -u combined_requirements.txt -o sorted_requirements.txt
 
+    # Alternative second command:
+    Get-Content combined_requirements.txt | Sort-Object | Set-Content sorted_requirements.txt
+
 and make sure the files are formatted to utf-8
 
 """
