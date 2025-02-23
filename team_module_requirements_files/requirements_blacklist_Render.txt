@@ -15,3 +15,14 @@ anaconda-navigator==2.5.0
 anaconda-project==0.11.1
 PyQt5-sip==12.11.0
 Babel==2.14.0
+conda==23.7.4
+conda-build==3.26.1
+conda-content-trust==0.2.0
+conda-libmamba-solver==23.7.0
+conda-pack==0.8.1
+conda-package-handling==2.4.0
+conda-repo-cli==1.0.75
+conda-token==0.4.0
+conda-verify==3.4.2
+conda_index==0.3.0
+conda_package_streaming==0.9.0
