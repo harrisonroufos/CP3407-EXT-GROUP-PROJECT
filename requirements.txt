@@ -332,9 +332,6 @@ rich==13.9.4
 roman-numerals-py==3.1.0
 rope==1.7.0
 rpds-py==0.23.1
-ruamel-yaml-conda==0.17.21
-ruamel.yaml==0.18.10
-ruamel.yaml.clib==0.2.12
 s3fs==2025.2.0
 safetensors==0.5.2
 scikit-image==0.25.2
