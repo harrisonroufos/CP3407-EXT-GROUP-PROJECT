@@ -59,3 +59,7 @@ pyobjc-core==9.0
 pyobjc-framework-Cocoa==9.0
 pyobjc-framework-CoreServices==9.0
 pyobjc-framework-FSEvents==9.0
+pywin32==308
+pywin32-ctypes==0.2.3
+pywinpty==2.0.15
+python-lsp-server==1.7.2
