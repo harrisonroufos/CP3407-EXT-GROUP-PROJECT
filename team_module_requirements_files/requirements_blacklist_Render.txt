@@ -1,4 +1,4 @@
-List of modules/imports that Render cannot support or were outdated:
+List of modules/imports that Render cannot support or are outdated:
 
 anaconda-anon-usage==0.4.2
 anaconda-catalogs==0.2.0
