@@ -66,3 +66,5 @@ python-lsp-server==1.7.2
 ruamel-yaml-conda==0.17.21
 ruamel.yaml==0.18.10
 ruamel.yaml.clib==0.2.12
+aiobotocore==2.5.0
+botocore==1.36.23
