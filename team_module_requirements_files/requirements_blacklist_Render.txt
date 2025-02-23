@@ -39,3 +39,5 @@ pure-eval==0.2.2
 jupyter-server==1.23.4
 jupyter_server_ydoc==0.8.0
 Pillow==9.4.0
+jupyterlab-pygments==0.1.2
+jupyterlab_widgets==3.0.13
