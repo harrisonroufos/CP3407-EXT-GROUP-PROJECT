@@ -87,17 +87,11 @@ sphinxcontrib-htmlhelp
 sphinxcontrib-jsmath
 sphinxcontrib-qthelp
 sphinxcontrib-serializinghtml
-PyQt5
-PyQt5-Qt5
-PyQt5_sip
-PyQtWebEngine
-PyQtWebEngine-Qt5
 QtAwesome
 QtPy
 qstylizer
 qtconsole
 twisted-iocpsupport
-Twisted
 cmake
 dlib
 face-recognition

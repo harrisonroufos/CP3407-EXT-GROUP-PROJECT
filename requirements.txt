@@ -288,6 +288,11 @@ pytz
 pyvis
 pyviz_comms
 pyzmq
+PyQt5
+PyQt5-Qt5
+PyQt5_sip
+PyQtWebEngine
+PyQtWebEngine-Qt5
 queuelib
 readchar
 referencing
@@ -351,6 +356,7 @@ transformers
 typer
 types-python-dateutil
 typing_extensions
+Twisted
 tzdata
 uc-micro-py
 ujson
