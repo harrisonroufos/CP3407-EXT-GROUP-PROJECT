@@ -86,7 +86,6 @@ decorator
 defusedxml
 diff-match-patch
 distributed
-dlib
 docstring-to-markdown
 docutils
 dotenv
@@ -95,8 +94,6 @@ et_xmlfile
 exceptiongroup
 executing
 exercise
-face-recognition
-face-recognition-models
 fastjsonschema
 filelock
 filetype
@@ -218,8 +215,6 @@ numba
 numexpr
 numpy
 numpydoc
-opencv-python
-openpyxl
 opt_einsum
 optree
 overrides

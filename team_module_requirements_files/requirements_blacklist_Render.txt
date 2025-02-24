@@ -99,3 +99,8 @@ qtconsole
 twisted-iocpsupport
 Twisted
 cmake
+dlib
+face-recognition
+face-recognition-models
+opencv-python
+openpyxl
