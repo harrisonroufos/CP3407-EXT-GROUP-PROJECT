@@ -69,7 +69,6 @@ charset-normalizer
 click
 cloudpickle
 clyent
-cmake
 colorama
 colorcet
 comm

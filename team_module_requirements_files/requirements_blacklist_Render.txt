@@ -98,3 +98,4 @@ qstylizer
 qtconsole
 twisted-iocpsupport
 Twisted
+cmake
