@@ -6,17 +6,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-    <title>MyClean - Home</title>
+    <title>MyClean - Cleaners</title>
 </head>
-<body class="home-page">
+<body class="cleaner-page">
 
 <!-- Header with navigation -->
 <header>
     <div class="logo">
-        <a href="/homepage"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}"
+                                      alt="MyClean Logo"></a>
     </div>
     <div class="dropdown">
-        <button class="dropbtn">▼ Username <img src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon"></button>
+        <button class="dropbtn">▼ Username</button>
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
         <div class="dropdown-content">
             <a href="#">Profile</a>
             <a href="#">Bookings</a>
@@ -28,22 +30,21 @@
 
 <!-- Main content section -->
 <main>
-    <h2>Available Cleaners</h2>
-    <div class = blurbs>
+    <h2 style="text-align: center; transform: scale(1.5);">Available Cleaners</h2>
+    <div class=blurbs>
         {% if cleaners %}
-            {% for cleaner in cleaners %}
-                <div class="cleaner-widget">
-                    <p class="cleaner-name">{{ cleaner.full_name }}</p>
-                    <p class="cleaner-details">
-                        📞 {{ cleaner.phone_number }} | 📧 {{ cleaner.email }}
-                    </p>
-                    <p>⭐ Rating: {{ cleaner.rating }}</p>
-                    <p>Experience: {{ cleaner.experience_years }} years</p>
-                    <button class="bookbtn">Book ></button>
-                </div>
-            {% endfor %}
+        {% for cleaner in cleaners %}
+        <div class="cleaner-widget">
+            <p class="cleaner-name">{{ cleaner.full_name }}</p>
+            <p class="cleaner-details"> 📞 {{ cleaner.phone_number }} </p>
+            <p class="cleaner-details"> 📧 {{ cleaner.email }} </p>
+            <p style="font-weight: bold">⭐ Rating: {{ cleaner.rating }}</p>
+            <p>Experience: {{ cleaner.experience_years }} years</p>
+            <button class="bookbtn">Book now!</button>
+        </div>
+        {% endfor %}
         {% else %}
-            <p>No cleaners available.</p>
+        <p>No cleaners available.</p>
         {% endif %}
     </div>
 </main>
