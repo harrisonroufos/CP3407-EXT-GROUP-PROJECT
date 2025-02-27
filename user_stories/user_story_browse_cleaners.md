@@ -47,11 +47,11 @@ Total days estimation - 10 days
     > Assigned to: `Harrison` | Time elapsed: `2 days` | Start day: 20/2/2025 | Finished day: 22/2/2025 <br>
     > Assigned to: `Casey` | Time elapsed: `2 days` | Start day: 14/02/2025  | Finished day: 22/02/2025
 3. Develop a UI to browse cleaners.
-    > Assigned to: `Daniel` | Time elapsed: `__ days` | Start day:  | Finished day:
+    > Assigned to: `Daniel` | Time elapsed: `1 day` | Start day: 22/2/2025  | Finished day: 27/2/2025
 4. Develop backend to get cleaners from database.
-    > Assigned to: `Damon` | Time elapsed: `__ days` | Start day:  | Finished day:
+    > Assigned to: `Damon` | Time elapsed: `1 day` | Start day: 22/2/2025  | Finished day: 23/2/2025
 5. Test and debug.
-    > Assigned to: `Casey` | Time elapsed: `__ days` | Start day:  | Finished day:
+    > Assigned to: `Casey` | Time elapsed: `1 day` | Start day: 27/2/2025  | Finished day: 27/2/2025
 
 
 ---
