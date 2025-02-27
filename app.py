@@ -4,9 +4,7 @@ CP3407 EXT GROUP Assignment
 This is the main Python/Flask file for the MyClean App
 """
 
-import os
-import sqlite3
-import psycopg2
+import os, sqlite3, psycopg2, requests
 from backend.routes.cleaner_routes import cleaner_bp
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -218,10 +216,11 @@ def init_db():
 
 
 @app.route("/homepage", methods=["GET"])
-def home():
-    """Render the homepage view."""
-    print("Rendering the homepage.")  # Debugging print statement
-    return render_template("index.html")
+def show_cleaners():
+    """Fetch cleaners from the API."""
+    response = requests.get("http://127.0.0.1:5000/cleaners")
+    cleaners = response.json()  # Convert JSON to Python list
+    return render_template('index.html', cleaners=cleaners)
 
 
 @app.route("/", methods=["GET", "POST"])
