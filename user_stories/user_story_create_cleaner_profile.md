@@ -34,6 +34,18 @@ As a cleaner, I want to create a profile with my services and pricing so that po
 3. Create UI for profile. 1 day. 
 4. Display user infomation on user profile. 1 day.
 5. Test and debug. 1 day.
+
+## Assigned task:
+1. Create a sign up page.
+    > Assigned to: `Harrison` | Time elapsed: `__ days` | Start day:  | Finished day: 
+2. Implement backend to add new user to the database.
+    > Assigned to: `Casey` | Time elapsed: `__ days` | Start day:  | Finished day: 
+3. Create UI for profile.
+    > Assigned to: `Daniel` | Time elapsed: `__ days` | Start day:  | Finished day: 
+4. Display user infomation on user profile.
+    > Assigned to: ` ` | Time elapsed: `__ days` | Start day:  | Finished day: 
+5. Test and debug.
+    > Assigned to: ` ` | Time elapsed: `__ days` | Start day:  | Finished day: 
    
    
 Total days estimation - 6 days
