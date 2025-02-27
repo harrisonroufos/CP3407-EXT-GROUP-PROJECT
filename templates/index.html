@@ -16,9 +16,10 @@
         <a href="/homepage"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
     </div>
     <div class="dropdown">
-        <button class="dropbtn">▼ Username  <img src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon"></button>
+        <button class="dropbtn">▼ Username <img src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon"></button>
         <div class="dropdown-content">
             <a href="#">Profile</a>
+            <a href="#">Bookings</a>
             <a href="#">Settings</a>
             <a href="/logout">Log Out</a>
         </div>
@@ -27,18 +28,24 @@
 
 <!-- Main content section -->
 <main>
-    <section class="hero">
-        <h1>Welcome to MyClean</h1>
-        <p>Your trusted partner for professional cleaning services.</p>
-    </section>
-
-    <!-- Blurb section with ratio-aligned text boxes -->
-    <section class="blurbs">
-        <div class="blurb">
-            <div class="blurb-text"></div>
-            <div class="blurb-text"></div>
-        </div>
-    </section>
+    <h2>Available Cleaners</h2>
+    <div class = blurbs>
+        {% if cleaners %}
+            {% for cleaner in cleaners %}
+                <div class="cleaner-widget">
+                    <p class="cleaner-name">{{ cleaner.full_name }}</p>
+                    <p class="cleaner-details">
+                        📞 {{ cleaner.phone_number }} | 📧 {{ cleaner.email }}
+                    </p>
+                    <p>⭐ Rating: {{ cleaner.rating }}</p>
+                    <p>Experience: {{ cleaner.experience_years }} years</p>
+                    <button class="bookbtn">Book ></button>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No cleaners available.</p>
+        {% endif %}
+    </div>
 </main>
 
 <!-- Footer -->
