@@ -13,7 +13,7 @@ Hence, there are 32 days worth of user story development per iteration.
 > Format: `link` | `ideal days to develop` | `priority` (10 most important, 50 least)
 
 ### Iteration 1
-1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10
+1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10 - COMPLETE
 2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10
 3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 4 days | 20
 4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
