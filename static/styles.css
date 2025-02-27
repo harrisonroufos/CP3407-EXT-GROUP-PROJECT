@@ -48,12 +48,12 @@ body {
     background-color: #218838;
 }
 
-/* Home Page */
-.home-page {
+/* Cleaners Page */
+.cleaner-page {
     background: white;
 }
 
-.home-page header {
+.cleaner-page header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,7 +62,7 @@ body {
     border-bottom-color: #0096FF;
 }
 
-.home-page .logo img {
+.cleaner-page .logo img {
     width: 75%;
     padding: 0 20px;
 }
@@ -73,6 +73,7 @@ body {
     font-size: 40px;
     background-color: transparent;
     border: none;
+    transform: translateY(-25px);
 }
 
 .dropdown {
@@ -101,13 +102,13 @@ body {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.home-page .hero {
+.cleaner-page .hero {
     text-align: center;
     padding: 50px;
     background: #f4f4f4;
 }
 
-.home-page .blurbs {
+.cleaner-page .blurbs {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -115,13 +116,13 @@ body {
     padding: 20px;
 }
 
-.home-page .blurb-text {
+.cleaner-page .blurb-text {
     width: 40%;
     height: 150px;
     background: #ccc;
 }
 
-.home-page .cleaner-widget {
+.cleaner-page .cleaner-widget {
     background: white;
     border: 3px solid #007BFF;
     padding: 20px;
@@ -129,16 +130,40 @@ body {
     text-align: center;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    border-radius: 10px;
 }
 
-.home-page .cleaner-widget:hover {
+.cleaner-page .cleaner-widget:hover {
     transform: scale(1.05);
 }
 
-.home-page footer {
+.cleaner-page footer {
     text-align: center;
     padding: 10px;
     background: #333;
     color: white;
     margin-top: 20px;
 }
+
+.cleaner-name {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #007bff; /* Example: Blue underline */
+}
+
+.bookbtn {
+    transform: scale(1.9);
+    border-radius: 3px;
+    border-style: hidden;
+    font-family: serif;
+    border-color: #052480;
+    background-color: #48b6e9;
+}
+
+.profile-image {
+    transform: scale(1.2);
+    border-style: solid;
+    border-color: black;
+}
+
