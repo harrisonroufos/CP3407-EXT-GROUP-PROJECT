@@ -215,7 +215,7 @@ def init_db():
         conn.close()
 
 
-@app.route("/homepage", methods=["GET"])
+@app.route("/show_cleaners", methods=["GET"])
 def show_cleaners():
     """Fetch cleaners from the API."""
     response = requests.get("http://127.0.0.1:5000/cleaners")
@@ -295,7 +295,7 @@ def login():
             # Check if the password matches
             if user and check_password_hash(user[0], password):
                 session["user"] = username
-                return redirect(url_for("home"))
+                return redirect(url_for("show_cleaners"))
             else:
                 print("Login failed.")  # Debugging print statement
                 return render_template("login.html", error_message="Invalid credentials. Try again.")
