@@ -42,8 +42,8 @@ Hence, there are 32 days worth of user story development per iteration.
 # In progress:
 > Format: `user story link` | `developer name` | `Task name` | `date started` <br>
 > Use this area to track tasks that are in progress exclusilvey. Once they are complete, move them to the 'complete' section.
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Harrison` | `Create a sign up page` | ___
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Casey` | `Implement backend to add new user to the database` | ___
+* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Harrison` | `Create a sign up page` | 28/2/2025
+* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Casey` & `Harrison`  | `Implement backend to add new user to the database` | 28/2/2025
 * [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Daniel` | `Create UI for profile` | ___
 * [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Damon` | `Display user infomation on user profile` | ___
 * [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `__` | `Test and debug` | ___
