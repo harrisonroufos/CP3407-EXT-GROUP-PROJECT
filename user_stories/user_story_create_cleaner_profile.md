@@ -37,9 +37,9 @@ As a cleaner, I want to create a profile with my services and pricing so that po
 
 ## Assigned task:
 1. Create a sign up page.
-    > Assigned to: `Harrison` | Time elapsed: `__ days` | Start day:  | Finished day: 
+    > Assigned to: `Harrison` | Time elapsed: `1 days` | Start day: 28/2/2025  | Finished day: 28/2/2025
 2. Implement backend to add new user to the database.
-    > Assigned to: `Casey` | Time elapsed: `__ days` | Start day:  | Finished day: 
+    > Assigned to: `Casey` & 'Harrison | Time elapsed: `__ days` | Start day: 28/2/2025 | Finished day: 
 3. Create UI for profile.
     > Assigned to: `Daniel` | Time elapsed: `__ days` | Start day:  | Finished day: 
 4. Display user infomation on user profile.
