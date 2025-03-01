@@ -1,7 +1,10 @@
 /* Global Styles */
-body {
+html, body {
     font-family: century-gothic, sans-serif;
+    height: 100%;
     margin: 0;
+    display: flex;
+    flex-direction: column;
     padding: 0;
 }
 
@@ -171,7 +174,7 @@ body {
     padding: 10px;
     background: #333;
     color: white;
-    margin-top: 20px;
+    margin-top: auto;
 }
 
 /* OTHER COMPONENTS */
