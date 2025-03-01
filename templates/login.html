@@ -9,14 +9,13 @@
 </head>
 <body class="auth-page">
 
-<!-- Wrap the form in a container div -->
 <div class="container">
-
-    <!--<h1>Welcome to MyClean!</h1>-->
     <img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo">
-
     <h2>Login</h2>
-    <form method="POST">
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="{{ url_for('login') }}">
         <label>
             Username:
             <input type="text" name="username" required>
