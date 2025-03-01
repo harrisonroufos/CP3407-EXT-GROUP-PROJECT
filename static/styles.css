@@ -5,7 +5,7 @@ body {
     padding: 0;
 }
 
-/* Login/Signup Pages */
+/* AUTH PAGES (Login / Signup) */
 .auth-page {
     text-align: center;
     display: flex;
@@ -25,6 +25,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo Styling - Adds background and padding */
 .auth-page img {
     display: block;
     margin: 0 auto 15px;
@@ -32,20 +33,25 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    width: auto;
     max-width: 90%;
 }
 
+/* Sign-up As Selector Styling */
+.auth-page select {
+    padding: 2px;
+}
 
-.auth-page input, .auth-page button {
+/* Form Elements Styling */
+.auth-page input,
+.auth-page button {
     width: 95%;
     margin-bottom: 20px;
     padding: 8px;
 }
 
+/* Button Styling - Hover & Transform */
 .auth-page button {
     background-color: #28a745;
-    width: 85%;
     color: white;
     border: none;
     cursor: pointer;
@@ -57,7 +63,32 @@ body {
     background-color: #218838;
 }
 
-/* Cleaners Page */
+/* Divider for Sign-up Sections */
+.form-divider {
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    margin: 15px 0;
+}
+
+/* Location Dropdown Button Styling */
+.location-btn {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.location-btn select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+}
+
+/* CLEANERS PAGE */
 .cleaner-page {
     background: white;
 }
@@ -67,8 +98,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-image: linear-gradient(#071228, black);
-    border-style: none none solid none;
-    border-bottom-color: #0096FF;
+    border-bottom: 3px solid #0096FF;
 }
 
 .cleaner-page .logo img {
@@ -76,18 +106,18 @@ body {
     padding: 0 20px;
 }
 
+/* Dropdown Menu Styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
 .dropbtn {
     color: #0096FF;
-    font-family: century-gothic, sans-serif;
     font-size: 40px;
     background-color: transparent;
     border: none;
     transform: translateY(-25px);
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
 }
 
 .dropdown-content {
@@ -95,7 +125,7 @@ body {
     background-color: white;
     position: absolute;
     width: 100%;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -105,34 +135,21 @@ body {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    border-style: none solid solid solid;
-    border-color: #0096FF;
+    border-bottom: 1px solid #0096FF;
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
+/* Hero Section */
 .cleaner-page .hero {
     text-align: center;
     padding: 50px;
     background: #f4f4f4;
 }
 
-.cleaner-page .blurbs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-}
-
-.cleaner-page .blurb-text {
-    width: 40%;
-    height: 150px;
-    background: #ccc;
-}
-
+/* Cleaner Widgets */
 .cleaner-page .cleaner-widget {
     background: white;
     border: 3px solid #007BFF;
@@ -148,6 +165,7 @@ body {
     transform: scale(1.05);
 }
 
+/* Footer Styling */
 .cleaner-page footer {
     text-align: center;
     padding: 10px;
@@ -156,11 +174,12 @@ body {
     margin-top: 20px;
 }
 
+/* OTHER COMPONENTS              */
 .cleaner-name {
     font-size: 1.5rem;
     text-decoration: underline;
     text-decoration-thickness: 2px;
-    text-decoration-color: #007bff; /* Example: Blue underline */
+    text-decoration-color: #007bff;
 }
 
 .bookbtn {
@@ -168,7 +187,6 @@ body {
     border-radius: 3px;
     border-style: hidden;
     font-family: serif;
-    border-color: #052480;
     background-color: #48b6e9;
 }
 
@@ -177,30 +195,3 @@ body {
     border-style: solid;
     border-color: black;
 }
-
-.location-btn {
-    display: block;
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
-
-.location-btn select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: white;
-    font-size: 16px;
-}
-
-.form-divider {
-    width: 100%;
-    border: none;
-    height: 1px;
-    background: #ccc; /* Light grey for subtlety */
-    margin: 15px 0; /* Add spacing */
-}
-
-
-
