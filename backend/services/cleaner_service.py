@@ -1,9 +1,9 @@
-import sqlite3
+import psycopg2
 from backend.database import get_db_connection
 
 
 def get_all_cleaners():
-    """Fetch all cleaners from the database with error handling."""
+    """Fetch all cleaners from the PostgreSQL database with error handling."""
     conn = get_db_connection()
     if not conn:
         return {"error": "Database connection failed"}, 500
@@ -16,11 +16,16 @@ def get_all_cleaners():
         FROM cleaners
         """
         cursor.execute(query)
-        cleaners = cursor.fetchall()
+
+        # Fetch column names
+        columns = [desc[0] for desc in cursor.description]
+
+        # Fetch all rows and convert them into a list of dictionaries
+        cleaners = [dict(zip(columns, row)) for row in cursor.fetchall()]
+
         conn.close()
+        return cleaners, 200  # Return JSON & status code
 
-        return [dict(cleaner) for cleaner in cleaners], 200  # Return JSON & status code
-
-    except sqlite3.Error as e:
+    except psycopg2.Error as e:
         print(f"Database query error: {e}")
         return {"error": "Failed to retrieve cleaners"}, 500

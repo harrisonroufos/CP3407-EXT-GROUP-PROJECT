@@ -1,12 +1,14 @@
-import sqlite3
-from backend.config import DATABASE_PATH
+import os
+import psycopg2
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 
 def get_db_connection():
+    """Connect to PostgreSQL database."""
     try:
-        conn = sqlite3.connect(DATABASE_PATH)  # Uses correct database file
-        conn.row_factory = sqlite3.Row  # Allows dictionary-like access to rows
+        conn = psycopg2.connect(DATABASE_URL)
         return conn
-    except sqlite3.Error as e:
-        print(f"Database connection error: {e}")
-        return None  # Handle gracefully in calling functions
+    except Exception as e:
+        print(f"Error connecting to PostgreSQL: {e}")
+        return None

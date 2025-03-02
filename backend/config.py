@@ -1,6 +1,6 @@
 import os
-from dotenv import load_dotenv
 
-load_dotenv()  # Load environment variables from .env
-
-DATABASE_PATH = "database_files/MyClean_Database.db"
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://caseysummers:Fpa6Hvm9fMVRFyc3SJFKKBtflqG0EbMT@dpg-cuq10fhopnds73eh1q2g-a.oregon-postgres.render.com:5432/myclean_database"
+)
