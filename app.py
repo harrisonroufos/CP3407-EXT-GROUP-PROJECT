@@ -4,17 +4,14 @@ CP3407 EXT GROUP Assignment
 This is the main Python/Flask file for the MyClean App
 """
 
-import os
-import sqlite3
-import psycopg2
+import os, sqlite3, psycopg2, requests
 from backend.routes.cleaner_routes import cleaner_bp
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 
-# To-do:
-# 1. Stop the database from locking itself after a sign-in user already exists
-# 2. Show 'pop-up' JavaScript messages to report errors/issues
-# 3. Test request information from tables besides 'users'
+# TODO:
+#  1. Add the Postgre version of routes, so the external database can be tested
+#  2. Test request information from tables besides 'users'
 
 # Initialise the Flask app
 app = Flask(__name__)
@@ -217,94 +214,106 @@ def init_db():
         conn.close()
 
 
-@app.route("/homepage", methods=["GET"])
-def home():
-    """Render the homepage view."""
-    print("Rendering the homepage.")  # Debugging print statement
-    return render_template("index.html")
+@app.route("/show_cleaners", methods=["GET"])
+def show_cleaners():
+    """Fetch cleaners from the API."""
+    response = requests.get("http://127.0.0.1:5000/cleaners")
+    cleaners = response.json()  # Convert JSON to Python list
+    return render_template('index.html', cleaners=cleaners)
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        # Retrieve the user from the database
+        cursor.execute("SELECT user_id, username, password FROM users WHERE username = ?", (username,))
+        user = cursor.fetchone()
+        conn.close()
+
+        if user:
+            stored_hashed_password = user[2]  # Get stored password
+            if check_password_hash(stored_hashed_password, password):  # Verify password
+                session['user_id'] = user[0]  # Store user ID in session
+                session['username'] = user[1]  # Store username in session
+                return redirect(url_for('show_cleaners'))  # Redirect to main page
+            else:
+                return render_template("login.html", error="Invalid credentials!")
+
+        return render_template("login.html", error="Invalid credentials!")
+
+    return render_template('login.html')
+
+
+@app.route('/', methods=['GET', 'POST'])
 def signup():
-    """Handle the user signup process."""
-    print("Accessing signup route.")  # Debugging print statement
-
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
         hashed_password = generate_password_hash(password)
 
-        try:
-            print(f"Attempting to insert user: {username}")  # Debugging print statement
+        user_type = request.form['user_type']
+        full_name = request.form['full_name']
+        email = request.form['email']
+        phone_number = request.form['phone_number']
+        location = request.form['location']
+        experience_years = request.form.get('experience_years', 0)  # Default to 0 if not provided
 
-            if DATABASE_URL:
-                # Connect to the PostgreSQL database
-                conn = psycopg2.connect(DATABASE_URL)
-                cursor = conn.cursor()
-                try:
-                    cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)",
-                                   (username, hashed_password))
-                    conn.commit()
-                except psycopg2.IntegrityError:
-                    return render_template("signup.html", error_message="Username already exists. Try a different one.")
-                conn.close()
-            else:
-                # Connect to the SQLite database
-                conn = sqlite3.connect(LOCAL_DATABASE)
-                cursor = conn.cursor()
-                try:
-                    cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
-                    conn.commit()
-                except sqlite3.IntegrityError:
-                    return render_template("signup.html", error_message="Username already exists. Try a different one.")
-                conn.close()
+        conn = get_db_connection()
+        cursor = conn.cursor()
 
-            print("User created successfully.")  # Debugging print statement
-            return redirect(url_for("login"))
+        # Check if username already exists
+        cursor.execute("SELECT username FROM users WHERE username = ?", (username,))
+        existing_user = cursor.fetchone()
 
-        except Exception as e:
-            print(f"Error: {e}")  # Debugging print statement
-            return render_template("signup.html", error_message="An error occurred. Please try again.")
+        # Check if email already exists in either customers or cleaners
+        cursor.execute("SELECT email FROM customers WHERE email = ? UNION SELECT email FROM cleaners WHERE email = ?",
+                       (email, email))
+        existing_email = cursor.fetchone()
 
-    return render_template("signup.html")
+        # Check if phone number already exists in either customers or cleaners
+        cursor.execute(
+            "SELECT phone_number FROM customers WHERE phone_number = ? UNION SELECT phone_number FROM cleaners WHERE phone_number = ?",
+            (phone_number, phone_number))
+        existing_phone = cursor.fetchone()
 
+        if existing_user:
+            conn.close()
+            return render_template("signup.html", error="Username already exists!")
 
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    """Handle the user login process."""
-    print("Accessing login route.")  # Debugging print statement
-    if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        if existing_email:
+            conn.close()
+            return render_template("signup.html", error="Email is already registered!")
 
-        # Check user credentials against the database
-        try:
-            print(f"Attempting login for: {username}")  # Debugging print statement
-            if DATABASE_URL:
-                conn = psycopg2.connect(DATABASE_URL)
-                cursor = conn.cursor()
-                cursor.execute("SELECT password FROM users WHERE username = %s", (username,))
-                user = cursor.fetchone()
-                conn.close()
-            else:
-                conn = sqlite3.connect(LOCAL_DATABASE)
-                cursor = conn.cursor()
-                cursor.execute("SELECT password FROM users WHERE username = ?", (username,))
-                user = cursor.fetchone()
-                conn.close()
+        if existing_phone:
+            conn.close()
+            return render_template("signup.html", error="Phone number is already in use!")
 
-            # Check if the password matches
-            if user and check_password_hash(user[0], password):
-                session["user"] = username
-                return redirect(url_for("home"))
-            else:
-                print("Login failed.")  # Debugging print statement
-                return render_template("login.html", error_message="Invalid credentials. Try again.")
-        except Exception as e:
-            print(f"Error: {e}")  # Debugging print statement
-            return render_template("login.html", error_message="An error occurred, please try again later.")
+        # Insert into users table
+        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
+        user_id = cursor.lastrowid  # Get the inserted user_id
 
-    return render_template("login.html")
+        # Insert into either customers or cleaners table
+        if user_type == 'customer':
+            cursor.execute(
+                "INSERT INTO customers (user_id, full_name, email, phone_number, location) VALUES (?, ?, ?, ?, ?)",
+                (user_id, full_name, email, phone_number, location))
+        else:
+            cursor.execute(
+                "INSERT INTO cleaners (user_id, full_name, email, phone_number, location, experience_years) VALUES (?, ?, ?, ?, ?, ?)",
+                (user_id, full_name, email, phone_number, location, experience_years))
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('login'))  # Redirect to login page after signup
+
+    return render_template('signup.html')
 
 
 @app.route("/logout")

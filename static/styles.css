@@ -1,11 +1,14 @@
 /* Global Styles */
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    font-family: century-gothic, sans-serif;
+    height: 100%;
     margin: 0;
+    display: flex;
+    flex-direction: column;
     padding: 0;
 }
 
-/* Login/Signup Pages */
+/* AUTH PAGES (Login / Signup) */
 .auth-page {
     text-align: center;
     display: flex;
@@ -13,7 +16,7 @@ body {
     align-items: center;
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-                url('../static/images/Cleaning_Background.png') no-repeat center center;
+    url('../static/images/Cleaning_Background.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -25,86 +28,184 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo Styling - Adds background and padding */
 .auth-page img {
-    width: 300px;
-    border-radius: 15px;
+    display: block;
+    margin: 0 auto 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;
 }
 
-.auth-page input, .auth-page button {
+/* Sign-up As Selector Styling */
+.auth-page select {
+    padding: 2px;
+}
+
+/* Form Elements Styling */
+.auth-page input,
+.auth-page button {
     width: 95%;
     margin-bottom: 20px;
     padding: 8px;
 }
 
+/* Button Styling - Hover & Transform */
 .auth-page button {
     background-color: #28a745;
-    width: 85%;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+    transform: scale(1.1);
 }
 
 .auth-page button:hover {
     background-color: #218838;
 }
 
-/* Home Page */
-.home-page {
+/* Divider for Sign-up Sections */
+.form-divider {
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    margin: 15px 0;
+}
+
+/* Location Dropdown Button Styling */
+.location-btn {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.location-btn select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
     background: white;
 }
 
-.home-page header {
+/* CLEANERS PAGE */
+.cleaner-page {
+    background: white;
+}
+
+.cleaner-page header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #333;
-    color: white;
-    padding: 15px;
+    background-image: linear-gradient(#071228, black);
+    border-bottom: 3px solid #0096FF;
 }
 
-.home-page .logo img {
-    width: 120px;
+.cleaner-page .logo img {
+    width: 75%;
+    padding: 0 20px;
 }
 
-.home-page nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
+.profile-image {
+    transform: scale(1.2);
+    border-style: solid;
+    border-color: black;
 }
 
-.home-page nav ul li a {
-    color: white;
+/* Dropdown Menu Styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    color: #0096FF;
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+    transform: translateY(-25px);
+}
+
+.dropdown-content {
+    display: none;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #0096FF;
+    font-size: 20px;
+    padding: 12px 16px;
     text-decoration: none;
-    font-weight: bold;
+    display: block;
+    border-bottom: 1px solid #0096FF;
 }
 
-.home-page nav ul li a:hover {
-    text-decoration: underline;
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
-.home-page .hero {
+/* Hero Section */
+.hero {
     text-align: center;
     padding: 50px;
     background: #f4f4f4;
 }
 
-.home-page .blurbs {
+/* Cleaner Widgets */
+.available-cleaners {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
-    padding: 30px;
+    justify-content: center;
+    padding: 20px;
 }
 
-.home-page .blurb-text {
-    width: 40%;
-    height: 150px;
-    background: #ccc;
+.cleaner-widget {
+    background: white;
+    border: 3px solid #007BFF;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-.home-page footer {
+.cleaner-widget .h2 {
+    font-size: 100%;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #007bff;
+}
+
+.cleaner-widget:hover {
+    transform: scale(1.05);
+}
+
+.bookbtn {
+    transform: scale(1.9);
+    border-radius: 3px;
+    border-style: hidden;
+    font-family: serif;
+    background-color: #48b6e9;
+}
+
+/* Footer Styling */
+.cleaner-page footer {
     text-align: center;
     padding: 10px;
-    background: #333;
-    color: white;
-    margin-top: 20px;
+    background-color: black;
+    color: #0096FF;
+    margin-top: auto;
+    background-image: linear-gradient(black, #071228);
+    border-top: 3px solid #0096FF;
 }
+
+/* OTHER COMPONENTS */

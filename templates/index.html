@@ -4,42 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-    <title>MyClean - Home</title>
+    <title>MyClean - Cleaners</title>
 </head>
-<body class="home-page">
+<body class="cleaner-page">
 
 <!-- Header with navigation -->
 <header>
     <div class="logo">
-        <img src="{{ url_for('static', filename='images/MyClean_Company_Logo.png') }}" alt="MyClean Logo">
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}"
+                                      alt="MyClean Logo"></a>
     </div>
-    <nav>
-        <ul>
-            <li><a href="/homepage">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="/logout">Logout</a></li>
-        </ul>
-    </nav>
+
+    <div class="dropdown">
+        <button class="dropbtn">
+            ▼ {{ session['username'] if 'username' in session else 'Guest' }}
+        </button>
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
+        <div class="dropdown-content">
+            {% if 'username' in session %}
+                <a href="#">Profile</a>
+                <a href="#">Bookings</a>
+                <a href="#">Settings</a>
+                <a href="/logout">Log Out</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
 </header>
 
 <!-- Main content section -->
 <main>
-    <section class="hero">
-        <h1>Welcome to MyClean</h1>
-        <p>Your trusted partner for professional cleaning services.</p>
-    </section>
-
-    <!-- Blurb section with ratio-aligned text boxes -->
-    <section class="blurbs">
-        <div class="blurb">
-            <div class="blurb-text"></div>
-            <div class="blurb-text"></div>
-        </div>
-    </section>
+    <h1>Available Cleaners</h1>
+    <div class="available-cleaners">
+        {% if cleaners %}
+            {% for cleaner in cleaners %}
+                <div class="cleaner-widget">
+                    <h2>{{ cleaner.full_name }}</h2>
+                    <p><b>⭐ Rating: {{ cleaner.rating }}</b></p>
+                    <p> 📞 {{ cleaner.phone_number }} </p>
+                    <p> 📧 {{ cleaner.email }} </p>
+                    <p>Experience: {{ cleaner.experience_years }} years</p>
+                    <button class="bookbtn">Book now!</button>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No cleaners available.</p>
+        {% endif %}
+    </div>
 </main>
 
 <!-- Footer -->

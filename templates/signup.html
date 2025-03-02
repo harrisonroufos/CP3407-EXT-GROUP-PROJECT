@@ -9,28 +9,74 @@
 </head>
 <body class="auth-page">
 
-<!--Wrap the form in a container div-->
 <div class="container">
-
-    <!--<h1>Welcome to MyClean!</h1>-->
-    <img src="{{ url_for('static', filename='images/MyClean_Company_Logo.png') }}" alt="MyClean Logo">
-    <!--<img src="../static/images/MyClean_Company_Logo.png" alt="MyClean Logo">-->
-    <!--alternative image format without using flask-->
-
+    <img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo">
     <h2>Signup</h2>
-    <form method="POST">
-        <label>
-            Username:
+
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('signup') }}">
+
+        <div>
+            <label>Username:</label>
             <input type="text" name="username" required>
-        </label>
-        <label>
-            Password:
+        </div>
+
+        <div>
+            <label>Password:</label>
             <input type="password" name="password" required>
-        </label>
+        </div>
+
+        <div>
+            <label>Sign up as:</label>
+            <select id="userType" name="user_type">
+                <option value="customer">Customer</option>
+                <option value="cleaner">Cleaner</option>
+            </select>
+        </div>
+
+        <hr class="form-divider">
+
+        <div>
+            <label>Full Name:</label>
+            <input type="text" name="full_name" required>
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div>
+            <label>Phone Number:</label>
+            <input type="text" name="phone_number" required>
+        </div>
+
+        <div>
+            <label for="location">Location:</label>
+            <div class="location-btn">
+                <select name="location" id="location" required>
+                    <option value="Townsville">Townsville</option>
+                    <option value="Cairns">Cairns</option>
+                    <option value="Brisbane">Brisbane</option>
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Cleaner-only field -->
+        <div id="experienceField" style="display: none;">
+            <label>Years of Experience:</label>
+            <input type="number" name="experience_years" min="0">
+        </div>
+
         <button type="submit">Sign Up</button>
     </form>
 
     <p>Already have an account? <a href="/login">Login here</a></p>
 </div>
+
 </body>
 </html>
