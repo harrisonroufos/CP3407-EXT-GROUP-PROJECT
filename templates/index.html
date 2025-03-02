@@ -38,15 +38,15 @@
 
 <!-- Main content section -->
 <main>
-    <h2 style="text-align: center; transform: scale(1.5);">Available Cleaners</h2>
-    <div class="blurbs">
+    <h1>Available Cleaners</h1>
+    <div class="available-cleaners">
         {% if cleaners %}
             {% for cleaner in cleaners %}
                 <div class="cleaner-widget">
-                    <p class="cleaner-name">{{ cleaner.full_name }}</p>
-                    <p class="cleaner-details"> 📞 {{ cleaner.phone_number }} </p>
-                    <p class="cleaner-details"> 📧 {{ cleaner.email }} </p>
-                    <p style="font-weight: bold">⭐ Rating: {{ cleaner.rating }}</p>
+                    <h2>{{ cleaner.full_name }}</h2>
+                    <p><b>⭐ Rating: {{ cleaner.rating }}</b></p>
+                    <p> 📞 {{ cleaner.phone_number }} </p>
+                    <p> 📧 {{ cleaner.email }} </p>
                     <p>Experience: {{ cleaner.experience_years }} years</p>
                     <button class="bookbtn">Book now!</button>
                 </div>

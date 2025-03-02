@@ -109,6 +109,12 @@ html, body {
     padding: 0 20px;
 }
 
+.profile-image {
+    transform: scale(1.2);
+    border-style: solid;
+    border-color: black;
+}
+
 /* Dropdown Menu Styling */
 .dropdown {
     position: relative;
@@ -146,14 +152,22 @@ html, body {
 }
 
 /* Hero Section */
-.cleaner-page .hero {
+.hero {
     text-align: center;
     padding: 50px;
     background: #f4f4f4;
 }
 
 /* Cleaner Widgets */
-.cleaner-page .cleaner-widget {
+.available-cleaners {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cleaner-widget {
     background: white;
     border: 3px solid #007BFF;
     border-radius: 15px;
@@ -164,25 +178,15 @@ html, body {
     transition: transform 0.3s ease;
 }
 
-.cleaner-page .cleaner-widget:hover {
-    transform: scale(1.05);
-}
-
-/* Footer Styling */
-.cleaner-page footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: white;
-    margin-top: auto;
-}
-
-/* OTHER COMPONENTS */
-.cleaner-name {
-    font-size: 1.5rem;
+.cleaner-widget .h2 {
+    font-size: 100%;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-decoration-color: #007bff;
+}
+
+.cleaner-widget:hover {
+    transform: scale(1.05);
 }
 
 .bookbtn {
@@ -193,16 +197,15 @@ html, body {
     background-color: #48b6e9;
 }
 
-.profile-image {
-    transform: scale(1.2);
-    border-style: solid;
-    border-color: black;
+/* Footer Styling */
+.cleaner-page footer {
+    text-align: center;
+    padding: 10px;
+    background-color: black;
+    color: #0096FF;
+    margin-top: auto;
+    background-image: linear-gradient(black, #071228);
+    border-top: 3px solid #0096FF;
 }
 
-.blurbs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-}
+/* OTHER COMPONENTS */
