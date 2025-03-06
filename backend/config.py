@@ -1,6 +1,11 @@
+from dotenv import load_dotenv
 import os
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://caseysummers:Fpa6Hvm9fMVRFyc3SJFKKBtflqG0EbMT@dpg-cuq10fhopnds73eh1q2g-a.oregon-postgres.render.com:5432/myclean_database"
-)
+load_dotenv()  # Load .env file automatically
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    print("❌ DATABASE_URL is missing! Check your .env file.")
+else:
+    print(f"📌 Using DATABASE_URL: {DATABASE_URL}")

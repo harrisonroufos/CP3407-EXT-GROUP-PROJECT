@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from backend.services.cleaner_service import get_all_cleaners
+from backend.services.cleaner_service import get_all_cleaners, get_cleaner_by_id
 
 cleaner_bp = Blueprint("cleaners", __name__)
 
@@ -9,3 +9,10 @@ def get_cleaners():
     """API endpoint to get all cleaners"""
     cleaners, status_code = get_all_cleaners()
     return jsonify(cleaners), status_code
+
+
+@cleaner_bp.route("/cleaners/<int:cleaner_id>", methods=["GET"])
+def get_cleaner_profile(cleaner_id):
+    """API endpoint to fetch a single cleaner's profile."""
+    cleaner, status_code = get_cleaner_by_id(cleaner_id)
+    return jsonify(cleaner), status_code

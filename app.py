@@ -8,6 +8,7 @@ import os, sqlite3, psycopg2, requests
 from backend.routes.cleaner_routes import cleaner_bp
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
+from backend.config import DATABASE_URL  # Import DATABASE_URL from config.py
 
 # TODO:
 #  1. Add the Postgre version of routes, so the external database can be tested
@@ -18,7 +19,7 @@ app = Flask(__name__)
 app.secret_key = "CP3407"  # Set Flask's secure key for session management
 
 # Retrieve the database URL from environment variables (used for Render deployment)
-DATABASE_URL = os.getenv("DATABASE_URL")
+from backend.config import DATABASE_URL
 
 # Local database file path
 LOCAL_DATABASE = "database_files/MyClean_Database.db"
