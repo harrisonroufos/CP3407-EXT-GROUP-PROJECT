@@ -233,7 +233,7 @@ def login():
         cursor = conn.cursor()
 
         # Retrieve the user from the database
-        cursor.execute("SELECT user_id, username, password FROM users WHERE username = ?", (username,))
+        cursor.execute("SELECT user_id, username, password FROM users WHERE username = %s", (username,))
         user = cursor.fetchone()
         conn.close()
 
@@ -269,17 +269,17 @@ def signup():
         cursor = conn.cursor()
 
         # Check if username already exists
-        cursor.execute("SELECT username FROM users WHERE username = ?", (username,))
+        cursor.execute("SELECT username FROM users WHERE username = %s", (username,))
         existing_user = cursor.fetchone()
 
         # Check if email already exists in either customers or cleaners
-        cursor.execute("SELECT email FROM customers WHERE email = ? UNION SELECT email FROM cleaners WHERE email = ?",
+        cursor.execute("SELECT email FROM customers WHERE email = %s UNION SELECT email FROM cleaners WHERE email = %s",
                        (email, email))
         existing_email = cursor.fetchone()
 
         # Check if phone number already exists in either customers or cleaners
         cursor.execute(
-            "SELECT phone_number FROM customers WHERE phone_number = ? UNION SELECT phone_number FROM cleaners WHERE phone_number = ?",
+            "SELECT phone_number FROM customers WHERE phone_number = %s UNION SELECT phone_number FROM cleaners WHERE phone_number = %s",
             (phone_number, phone_number))
         existing_phone = cursor.fetchone()
 
@@ -296,17 +296,20 @@ def signup():
             return render_template("signup.html", error="Phone number is already in use!")
 
         # Insert into users table
-        cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
-        user_id = cursor.lastrowid  # Get the inserted user_id
+        cursor.execute(
+            "INSERT INTO users (username, password) VALUES (%s, %s) RETURNING user_id",
+            (username, hashed_password)
+        )
+        user_id = cursor.fetchone()[0]
 
         # Insert into either customers or cleaners table
         if user_type == 'customer':
             cursor.execute(
-                "INSERT INTO customers (user_id, full_name, email, phone_number, location) VALUES (?, ?, ?, ?, ?)",
+                "INSERT INTO customers (user_id, full_name, email, phone_number, location) VALUES (%s, %s, %s, %s, %s)",
                 (user_id, full_name, email, phone_number, location))
         else:
             cursor.execute(
-                "INSERT INTO cleaners (user_id, full_name, email, phone_number, location, experience_years) VALUES (?, ?, ?, ?, ?, ?)",
+                "INSERT INTO cleaners (user_id, full_name, email, phone_number, location, experience_years) VALUES (%s, %s, %s, %s, %s, %s)",
                 (user_id, full_name, email, phone_number, location, experience_years))
 
         conn.commit()
@@ -330,7 +333,8 @@ app.register_blueprint(cleaner_bp)  # This is required!
 
 # Run the Flask app in debug mode
 if __name__ == "__main__":
-    init_db()  # Initialise the database before starting the app
+    if os.environ.get("FLASK_RUN_MAIN") != "true":  # Prevents duplicate execution
+        init_db()
 
     print("\n=== Registered Routes ===")
     print(app.url_map)  # Forces Flask to print available routes
