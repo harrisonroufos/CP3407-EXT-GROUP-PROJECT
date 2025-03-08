@@ -8,6 +8,8 @@
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     {% if cleaner.error %}
         <title>MyClean - Invalid Profile</title>
+    {% elif session['cleaner_id'] == cleaner.cleaner_id %}
+        <title>MyClean - Your Profile</title>
     {% else %}
         <title>MyClean - {{ cleaner.full_name }}'s Profile</title>
     {% endif %}
@@ -31,7 +33,6 @@
                     <a href="/profile/{{ session['cleaner_id'] }}">Profile</a>
                 {% endif %}
                 <a href="#">Bookings</a>
-                <a href="#">Settings</a>
                 <a href="/logout">Log Out</a>
             {% else %}
                 <a href="/login">Login</a>
@@ -50,12 +51,16 @@
             <div class="overview">
                 <h1>{{ cleaner.full_name }}</h1>
                 <h3>{{ cleaner.location }} | ⭐ {{ cleaner.rating }}</h3>
-                <button class="bookbtn">Book now!</button>
+                {% if not session['cleaner_id'] %}
+                    <button class="bookbtn">Book now!</button>
+                {% endif %}
             </div>
 
             <div class="about-me">
                 <h2>About Me</h2>
-                <p>{{ cleaner.bio }}</p>
+                {% if cleaner.bio != None %}
+                    <p>{{ cleaner.bio }}</p>
+                {% endif %}
                 <p>Current experience: {{ cleaner.experience_years }} years</p>
             </div>
 
@@ -64,6 +69,10 @@
                 <p>📞 Phone: {{ cleaner.phone_number }}</p>
                 <p>📧 Email: {{ cleaner.email }}</p>
             </div>
+
+            {% if session['cleaner_id'] == cleaner.cleaner_id %}
+                <button class="editbtn">Edit profile</button>
+            {% endif %}
         {% endif %}
     </div>
 </main>
