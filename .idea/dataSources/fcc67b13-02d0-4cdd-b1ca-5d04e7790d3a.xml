@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="MyClean_Database">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.32">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.53">
     <root id="1">
       <ServerVersion>3.45.1</ServerVersion>
     </root>
@@ -1603,33 +1603,33 @@
       <Predicate>status IN (&apos;pending&apos;, &apos;confirmed&apos;, &apos;completed&apos;, &apos;cancelled&apos;)</Predicate>
     </check>
     <column id="562" parent="555" name="booking_id">
-      <DataType>INTEGER|0s</DataType>
+      <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
     <column id="563" parent="555" name="cleaner_id">
-      <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
     <column id="564" parent="555" name="customer_id">
-      <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
     <column id="565" parent="555" name="booking_date">
-      <DataType>TIMESTAMP|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
+      <StoredType>TIMESTAMP|0s</StoredType>
     </column>
     <column id="566" parent="555" name="status">
-      <DataType>TEXT|0s</DataType>
       <Position>5</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="567" parent="555" name="created_at">
-      <DataType>TIMESTAMP|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>6</Position>
+      <StoredType>TIMESTAMP|0s</StoredType>
     </column>
     <foreign-key id="568" parent="555">
       <ColNames>cleaner_id</ColNames>
@@ -1646,6 +1646,7 @@
     <key id="570" parent="555">
       <ColNames>booking_id</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>booking_id</UnderlyingIndexColNames>
     </key>
     <check id="571" parent="556">
       <Predicate>experience_years &gt;= 0</Predicate>
@@ -1654,51 +1655,51 @@
       <Predicate>rating BETWEEN 0 AND 5</Predicate>
     </check>
     <column id="573" parent="556" name="cleaner_id">
-      <DataType>INTEGER|0s</DataType>
+      <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
     <column id="574" parent="556" name="user_id">
-      <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
     <column id="575" parent="556" name="full_name">
-      <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="576" parent="556" name="email">
-      <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="577" parent="556" name="phone_number">
-      <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="578" parent="556" name="bio">
-      <DataType>TEXT|0s</DataType>
       <Position>6</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="579" parent="556" name="location">
-      <DataType>TEXT|0s</DataType>
       <Position>7</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="580" parent="556" name="rating">
-      <DataType>REAL|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <Position>8</Position>
+      <StoredType>REAL|0s</StoredType>
     </column>
     <column id="581" parent="556" name="experience_years">
-      <DataType>REAL|0s</DataType>
       <Position>9</Position>
+      <StoredType>REAL|0s</StoredType>
     </column>
     <column id="582" parent="556" name="created_at">
-      <DataType>TIMESTAMP|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>10</Position>
+      <StoredType>TIMESTAMP|0s</StoredType>
     </column>
     <foreign-key id="583" parent="556">
       <ColNames>user_id</ColNames>
@@ -1708,25 +1709,23 @@
     </foreign-key>
     <index id="584" parent="556" name="sqlite_autoindex_cleaners_1">
       <ColNames>user_id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <index id="585" parent="556" name="sqlite_autoindex_cleaners_2">
       <ColNames>email</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <index id="586" parent="556" name="sqlite_autoindex_cleaners_3">
       <ColNames>phone_number</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <key id="587" parent="556">
       <ColNames>cleaner_id</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>cleaner_id</UnderlyingIndexColNames>
     </key>
     <key id="588" parent="556">
       <ColNames>user_id</ColNames>
@@ -1741,38 +1740,38 @@
       <UnderlyingIndexName>sqlite_autoindex_cleaners_3</UnderlyingIndexName>
     </key>
     <column id="591" parent="557" name="customer_id">
-      <DataType>INTEGER|0s</DataType>
+      <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
     <column id="592" parent="557" name="user_id">
-      <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
     <column id="593" parent="557" name="full_name">
-      <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="594" parent="557" name="email">
-      <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="595" parent="557" name="phone_number">
-      <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="596" parent="557" name="location">
-      <DataType>TEXT|0s</DataType>
       <Position>6</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="597" parent="557" name="created_at">
-      <DataType>TIMESTAMP|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>7</Position>
+      <StoredType>TIMESTAMP|0s</StoredType>
     </column>
     <foreign-key id="598" parent="557">
       <ColNames>user_id</ColNames>
@@ -1782,25 +1781,23 @@
     </foreign-key>
     <index id="599" parent="557" name="sqlite_autoindex_customers_1">
       <ColNames>user_id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <index id="600" parent="557" name="sqlite_autoindex_customers_2">
       <ColNames>email</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <index id="601" parent="557" name="sqlite_autoindex_customers_3">
       <ColNames>phone_number</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <key id="602" parent="557">
       <ColNames>customer_id</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>customer_id</UnderlyingIndexColNames>
     </key>
     <key id="603" parent="557">
       <ColNames>user_id</ColNames>
@@ -1815,24 +1812,24 @@
       <UnderlyingIndexName>sqlite_autoindex_customers_3</UnderlyingIndexName>
     </key>
     <column id="606" parent="558" name="type">
-      <DataType>TEXT|0s</DataType>
       <Position>1</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="607" parent="558" name="name">
-      <DataType>TEXT|0s</DataType>
       <Position>2</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="608" parent="558" name="tbl_name">
-      <DataType>TEXT|0s</DataType>
       <Position>3</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="609" parent="558" name="rootpage">
-      <DataType>INT|0s</DataType>
       <Position>4</Position>
+      <StoredType>INT|0s</StoredType>
     </column>
     <column id="610" parent="558" name="sql">
-      <DataType>TEXT|0s</DataType>
       <Position>5</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="611" parent="559" name="name">
       <Position>1</Position>
@@ -1841,39 +1838,39 @@
       <Position>2</Position>
     </column>
     <column id="613" parent="560" name="user_id">
-      <DataType>INTEGER|0s</DataType>
+      <AutoIncrement>1</AutoIncrement>
       <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
+      <StoredType>INTEGER|0s</StoredType>
     </column>
     <column id="614" parent="560" name="username">
-      <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="615" parent="560" name="password">
-      <DataType>TEXT|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
+      <StoredType>TEXT|0s</StoredType>
     </column>
     <column id="616" parent="560" name="created_at">
-      <DataType>TIMESTAMP|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>4</Position>
+      <StoredType>TIMESTAMP|0s</StoredType>
     </column>
     <column id="617" parent="560" name="updated_at">
-      <DataType>TIMESTAMP|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>5</Position>
+      <StoredType>TIMESTAMP|0s</StoredType>
     </column>
     <index id="618" parent="560" name="sqlite_autoindex_users_1">
       <ColNames>username</ColNames>
-      <ColumnCollations></ColumnCollations>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
     <key id="619" parent="560">
       <ColNames>user_id</ColNames>
       <Primary>1</Primary>
+      <UnderlyingIndexColNames>user_id</UnderlyingIndexColNames>
     </key>
     <key id="620" parent="560">
       <ColNames>username</ColNames>

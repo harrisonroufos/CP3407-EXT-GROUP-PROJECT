@@ -6,7 +6,7 @@
     <title>Profile - {{ user.full_name }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body>
+<body class="cleaner-page">
 
 <header>
     <div class="logo">
@@ -22,8 +22,10 @@
     </nav>
 </header>
 
-<main class="profile-container">
-    <div class="profile-card">
+<main class="auth-page">
+    <div class="container profile-card">
+        <img src="{{ url_for('static', filename='images/default-profile.png') }}" alt="Profile Picture"
+             class="profile-image">
         <h1>{{ user.full_name }}</h1>
         <p><strong>Username:</strong> {{ user.username }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
