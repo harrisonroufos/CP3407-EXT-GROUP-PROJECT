@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - {{ user.full_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}"
+                                      alt="MyClean Logo"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/show_cleaners">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="profile-container">
+    <div class="profile-card">
+        <h1>{{ user.full_name }}</h1>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone_number }}</p>
+        <p><strong>Location:</strong> {{ user.location }}</p>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 MyClean. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

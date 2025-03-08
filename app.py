@@ -328,6 +328,37 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/profile")
+def profile():
+    """Render the profile page for the logged-in user."""
+    if "user_id" not in session:
+        return redirect(url_for("login"))  # Redirect to login if not logged in
+
+    user_id = session["user_id"]
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Fetch user details
+    cursor.execute("""
+        SELECT u.user_id, u.username, c.full_name, c.email, c.phone_number, c.location
+        FROM users u
+        LEFT JOIN customers c ON u.user_id = c.user_id
+        WHERE u.user_id = %s
+    """, (user_id,))
+
+    user = cursor.fetchone()
+    conn.close()
+
+    if not user:
+        return render_template("404.html", error="User not found"), 404
+
+    columns = ["user_id", "username", "full_name", "email", "phone_number", "location"]
+    user_data = dict(zip(columns, user))
+
+    return render_template("profile.html", user=user_data)
+
+
 # Register blueprints
 app.register_blueprint(cleaner_bp)  # This is required!
 
