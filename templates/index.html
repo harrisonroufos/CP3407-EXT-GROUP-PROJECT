@@ -8,13 +8,12 @@
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <title>MyClean - Cleaners</title>
 </head>
-<body class="cleaner-page">
 
+<body class="cleaner-page">
 <!-- Header with navigation -->
 <header>
     <div class="logo">
-        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}"
-                                      alt="MyClean Logo"></a>
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
     </div>
 
     <div class="dropdown">
@@ -43,7 +42,7 @@
         {% if cleaners %}
             {% for cleaner in cleaners %}
                 <div class="cleaner-widget">
-                    <h2>{{ cleaner.full_name }}</h2>
+                    <h2><a href="/profile/{{ cleaner.cleaner_id }}">{{ cleaner.full_name }}</a></h2>
                     <p><b>⭐ Rating: {{ cleaner.rating }}</b></p>
                     <p> 📞 {{ cleaner.phone_number }} </p>
                     <p> 📧 {{ cleaner.email }} </p>
@@ -61,6 +60,5 @@
 <footer>
     <p>&copy; 2025 MyClean. All rights reserved.</p>
 </footer>
-
 </body>
 </html>
