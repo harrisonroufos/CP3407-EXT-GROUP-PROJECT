@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-    <title>MyClean - {{ cleaner.full_name }}'s Profile</title>
+    {% if cleaner.error %}
+        <title>MyClean - Invalid Profile</title>
+    {% else %}
+        <title>MyClean - {{ cleaner.full_name }}'s Profile</title>
+    {% endif %}
 </head>
 
 <body class="profile-page">
@@ -23,7 +27,9 @@
         <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
         <div class="dropdown-content">
             {% if 'username' in session %}
-                <a href="#">Profile</a>
+                {% if session['cleaner_id'] %}
+                    <a href="/profile/{{ session['cleaner_id'] }}">Profile</a>
+                {% endif %}
                 <a href="#">Bookings</a>
                 <a href="#">Settings</a>
                 <a href="/logout">Log Out</a>
@@ -55,10 +61,9 @@
 
             <div class="contact-info">
                 <h2>Contact Information</h2>
-                <p>Email: {{ cleaner.email }}</p>
-                <p>Phone: {{ cleaner.phone_number }}</p>
+                <p>📞 Phone: {{ cleaner.phone_number }}</p>
+                <p>📧 Email: {{ cleaner.email }}</p>
             </div>
-
         {% endif %}
     </div>
 </main>
