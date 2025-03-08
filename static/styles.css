@@ -6,6 +6,7 @@ html, body {
     display: flex;
     flex-direction: column;
     padding: 0;
+    background: white;
 }
 
 /* AUTH PAGES (Login / Signup) */
@@ -91,12 +92,8 @@ html, body {
     background: white;
 }
 
-/* CLEANERS PAGE */
-.cleaner-page {
-    background: white;
-}
-
-.cleaner-page header {
+/* CLEANERS PAGES */
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -104,13 +101,12 @@ html, body {
     border-bottom: 3px solid #0096FF;
 }
 
-.cleaner-page .logo img {
+.logo img {
     width: 75%;
     padding: 0 20px;
 }
 
 .profile-image {
-    transform: scale(1.2);
     border-style: solid;
     border-color: black;
 }
@@ -151,14 +147,20 @@ html, body {
     display: block;
 }
 
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 50px;
-    background: #f4f4f4;
+/* Main Section */
+main {
+    padding: 0 2% 0 2%;
 }
 
-/* Cleaner Widgets */
+.bookbtn {
+    transform: scale(1.9);
+    border-radius: 3px;
+    border-style: hidden;
+    font-family: serif;
+    background-color: #48b6e9;
+}
+
+/* Cleaner Page */
 .available-cleaners {
     display: flex;
     flex-wrap: wrap;
@@ -189,16 +191,21 @@ html, body {
     transform: scale(1.05);
 }
 
-.bookbtn {
-    transform: scale(1.9);
-    border-radius: 3px;
-    border-style: hidden;
-    font-family: serif;
-    background-color: #48b6e9;
+/* Profile Page */
+.profile-container .overview {
+    border-bottom: 3px solid #0096FF;
+}
+
+.profile-container .bookbtn {
+    margin: 0.3% 0 1% 1.6%;
+}
+
+.profile-container .about-me, .contact-info {
+    padding-bottom: 1%;
 }
 
 /* Footer Styling */
-.cleaner-page footer {
+footer {
     text-align: center;
     padding: 10px;
     background-color: black;
