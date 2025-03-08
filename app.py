@@ -243,17 +243,22 @@ def login():
         # Retrieve the user from the database
         cursor.execute("SELECT user_id, username, password FROM users WHERE username = %s", (username,))
         user = cursor.fetchone()
-        conn.close()
 
         if user:
             stored_hashed_password = user[2]  # Get stored password
             if check_password_hash(stored_hashed_password, password):  # Verify password
                 session['user_id'] = user[0]  # Store user ID in session
                 session['username'] = user[1]  # Store username in session
+
+                try:
+                    cursor.execute("SELECT cleaner_id FROM cleaners WHERE user_id = %s", (user[0],))
+                    session['cleaner_id'] = cursor.fetchone()[0]
+                except TypeError:
+                    session['cleaner_id'] = False
                 return redirect(url_for('show_cleaners'))  # Redirect to main page
             else:
                 return render_template("login.html", error="Invalid credentials!")
-
+        conn.close()
         return render_template("login.html", error="Invalid credentials!")
 
     return render_template('login.html')
