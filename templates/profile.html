@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <title>MyClean - {{ cleaner.full_name }}'s Profile</title>
+</head>
+
+<body class="profile-page">
+<!-- Header with navigation -->
+<header>
+    <div class="logo">
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">
+            ▼ {{ session['username'] if 'username' in session else 'Guest' }}
+        </button>
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
+        <div class="dropdown-content">
+            {% if 'username' in session %}
+                <a href="#">Profile</a>
+                <a href="#">Bookings</a>
+                <a href="#">Settings</a>
+                <a href="/logout">Log Out</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+<!-- Main content section -->
+<main>
+    <div class="profile-container">
+        {% if cleaner.error %}
+            <p>Sorry, this profile isn't available.</p>
+        {% else %}
+            <div class="overview">
+                <h1>{{ cleaner.full_name }}</h1>
+                <h3>{{ cleaner.location }} | ⭐ {{ cleaner.rating }}</h3>
+                <button class="bookbtn">Book now!</button>
+            </div>
+
+            <div class="about-me">
+                <h2>About Me</h2>
+                <p>{{ cleaner.bio }}</p>
+                <p>Current experience: {{ cleaner.experience_years }} years</p>
+            </div>
+
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p>Email: {{ cleaner.email }}</p>
+                <p>Phone: {{ cleaner.phone_number }}</p>
+            </div>
+
+        {% endif %}
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 MyClean. All rights reserved.</p>
+</footer>
+</body>
+</html>
