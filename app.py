@@ -223,6 +223,14 @@ def show_cleaners():
     return render_template('index.html', cleaners=cleaners)
 
 
+@app.route("/profile/<int:cleaner_id>", methods=["GET"])
+def show_cleaner_profile(cleaner_id):
+    """Fetch a cleaner's information from the API."""
+    response = requests.get("http://127.0.0.1:5000/cleaners/" + str(cleaner_id))
+    cleaner = response.json()
+    return render_template('profile.html', cleaner=cleaner)
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
