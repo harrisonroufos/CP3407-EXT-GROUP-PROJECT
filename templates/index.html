@@ -23,7 +23,9 @@
         <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
         <div class="dropdown-content">
             {% if 'username' in session %}
-                <a href="#">Profile</a>
+                {% if session['cleaner_id'] %}
+                    <a href="/profile/{{ session['cleaner_id'] }}">Profile</a>
+                {% endif %}
                 <a href="#">Bookings</a>
                 <a href="#">Settings</a>
                 <a href="/logout">Log Out</a>
