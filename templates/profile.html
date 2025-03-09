@@ -31,9 +31,9 @@
             {% if 'username' in session %}
                 {% if session['cleaner_id'] %}
                     <a href="/profile/{{ session['cleaner_id'] }}">Profile</a>
+                    <a href="/profile/{{ session['cleaner_id'] }}/edit">Settings</a>
                 {% endif %}
                 <a href="#">Bookings</a>
-                <a href="#">Settings</a>
                 <a href="/logout">Log Out</a>
             {% else %}
                 <a href="/login">Login</a>
@@ -73,7 +73,7 @@
                 </div>
 
                 {% if session['cleaner_id'] == cleaner.cleaner_id %}
-                    <button class="editbtn">Edit profile</button>
+                    <a href="/profile/{{ session['cleaner_id'] }}/edit" class="editbtn">Edit profile</a>
                 {% endif %}
             </div>
         {% endif %}
