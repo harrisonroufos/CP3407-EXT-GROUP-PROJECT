@@ -20,39 +20,48 @@
     <form method="POST" action="{{ url_for('signup') }}">
 
         <div>
-            <label>Username:</label>
-            <input type="text" name="username" required>
+            <label>
+                Username:
+                <input type="text" name="username" required>
+            </label>
         </div>
 
         <div>
-            <label>Password:</label>
-            <input type="password" name="password" required>
+            <label>
+                Password:
+                <input type="password" name="password" required>
+            </label>
         </div>
 
         <div>
-            <label>Sign up as:</label>
-            <select id="userType" name="user_type">
-                <option value="customer">Customer</option>
-                <option value="cleaner">Cleaner</option>
-            </select>
+            <label>
+                Sign up as:
+                <select id="userType" name="user_type">
+                    <option value="customer">Customer</option>
+                    <option value="cleaner">Cleaner</option>
+                </select>
+            </label>
         </div>
 
         <hr class="form-divider">
 
         <div>
-            <label>Full Name:
+            <label>
+                Full Name:
                 <input type="text" name="full_name" required>
             </label>
         </div>
 
         <div>
-            <label>Email:
+            <label>
+                Email:
                 <input type="email" name="email" required>
             </label>
         </div>
 
         <div>
-            <label>Phone Number:
+            <label>
+                Phone Number:
                 <input type="text" name="phone_number" required>
             </label>
         </div>
@@ -73,7 +82,8 @@
 
         <!-- Cleaner-only field -->
         <div id="experienceField" style="display: none;">
-            <label>Years of Experience:
+            <label>
+                Years of Experience:
                 <input type="number" name="experience_years" min="0">
             </label>
         </div>

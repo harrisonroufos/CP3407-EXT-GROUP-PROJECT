@@ -107,8 +107,10 @@ header {
 }
 
 .profile-image {
-    border-style: solid;
-    border-color: black;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #0096FF;
 }
 
 /* Dropdown Menu Styling */
@@ -192,12 +194,38 @@ main {
 }
 
 /* Profile Page */
-.profile-container .overview {
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.profile-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+.profile-card h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.profile-card p {
+    font-size: 18px;
+    color: #666;
+}
+
+.profile-card .overview {
     border-bottom: 3px solid #0096FF;
 }
 
 .profile-container .bookbtn {
-    margin: 0.3% 0 1% 1.6%;
+    margin: 5% 0 10%;
 }
 
 .profile-container .about-me, .contact-info {
@@ -214,43 +242,5 @@ footer {
     background-image: linear-gradient(black, #071228);
     border-top: 3px solid #0096FF;
 }
-
-.profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-}
-
-/* PROFILE PAGE */
-.profile-card {
-    background: aliceblue;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 350px;
-}
-
-.profile-card h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.profile-card p {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.profile-image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin-bottom: 15px;
-    border: 3px solid #0096FF;
-}
-
 
 /* OTHER COMPONENTS */

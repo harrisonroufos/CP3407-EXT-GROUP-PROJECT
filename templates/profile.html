@@ -3,50 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - {{ user.full_name }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    {% if cleaner.error %}
+        <title>MyClean - Invalid Profile</title>
+    {% elif session['cleaner_id'] == cleaner.cleaner_id %}
+        <title>MyClean - Your Profile</title>
+    {% else %}
+        <title>MyClean - {{ cleaner.full_name }}'s Profile</title>
+    {% endif %}
 </head>
-<body class="cleaner-page">
 
+<body class="profile-page">
+<!-- Header with navigation -->
 <header>
     <div class="logo">
-        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}"
-                                      alt="MyClean Logo"></a>
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
     </div>
+
     <div class="dropdown">
         <button class="dropbtn">
             ▼ {{ session['username'] if 'username' in session else 'Guest' }}
         </button>
-        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}"
-             alt="Profile Icon">
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
         <div class="dropdown-content">
             {% if 'username' in session %}
-            <a href="/profile">Profile</a>
-            <a href="#">Bookings</a>
-            <a href="#">Settings</a>
-            <a href="/logout">Log Out</a>
+                {% if session['cleaner_id'] %}
+                    <a href="/profile/{{ session['cleaner_id'] }}">Profile</a>
+                {% endif %}
+                <a href="#">Bookings</a>
+                <a href="#">Settings</a>
+                <a href="/logout">Log Out</a>
             {% else %}
-            <a href="/login">Login</a>
-            <a href="/">Sign Up</a>
+                <a href="/login">Login</a>
+                <a href="/">Sign Up</a>
             {% endif %}
         </div>
+    </div>
 </header>
 
-<main class="auth-page">
-    <div class="container profile-card">
-        <img src="{{ url_for('static', filename='images/default-profile.png') }}" alt="Profile Picture"
-             class="profile-image">
-        <h1>{{ user.full_name }}</h1>
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        <p><strong>Phone:</strong> {{ user.phone_number }}</p>
-        <p><strong>Location:</strong> {{ user.location }}</p>
+<!-- Main content section -->
+<main>
+    <div class="profile-container">
+        {% if cleaner.error %}
+            <p>Sorry, this profile isn't available.</p>
+        {% else %}
+            <div class="profile-card">
+                <div class="overview">
+                    <h1>{{ cleaner.full_name }}</h1>
+                    <h3>{{ cleaner.location }} | ⭐ {{ cleaner.rating }}</h3>
+                    {% if not session['cleaner_id'] %}
+                        <button class="bookbtn">Book now!</button>
+                    {% endif %}
+                </div>
+
+                <div class="about-me">
+                    <h2>About Me</h2>
+                    {% if cleaner.bio != None %}
+                        <p>{{ cleaner.bio }}</p>
+                    {% endif %}
+                    <p><strong>Current experience:</strong> {{ cleaner.experience_years }} years</p>
+                </div>
+
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <p><strong>📞 Phone:</strong> {{ cleaner.phone_number }}</p>
+                    <p><strong>📧 Email:</strong> {{ cleaner.email }}</p>
+                </div>
+
+                {% if session['cleaner_id'] == cleaner.cleaner_id %}
+                    <button class="editbtn">Edit profile</button>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
 </main>
 
+<!-- Footer -->
 <footer>
     <p>&copy; 2025 MyClean. All rights reserved.</p>
 </footer>
-
 </body>
 </html>
