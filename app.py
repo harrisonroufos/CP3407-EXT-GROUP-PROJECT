@@ -231,6 +231,33 @@ def show_cleaner_profile(cleaner_id):
     return render_template('profile.html', cleaner=cleaner)
 
 
+@app.route("/profile/<int:cleaner_id>/edit", methods=["GET", "POST"])
+def edit_cleaner_profile(cleaner_id):
+    if session['cleaner_id'] != cleaner_id and request.method == "GET":
+        return redirect(url_for('show_cleaners'))
+
+    if session['cleaner_id'] == cleaner_id and request.method == "POST":
+        full_name = request.form['full_name']
+        email = request.form['email']
+        phone_number = request.form['phone_number']
+        location = request.form['location']
+        bio = request.form['bio']
+        experience_years = request.form.get('experience_years', 0)  # Default to 0 if not provided
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "UPDATE cleaners SET full_name = %s, email = %s, phone_number = %s, location = %s, bio = %s, experience_years = %s WHERE cleaner_id = %s",
+            (full_name, email, phone_number, location, bio, experience_years, session['cleaner_id']))
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('show_cleaners'))
+    return render_template('edit_profile.html')
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
