@@ -25,9 +25,9 @@
             {% if 'username' in session %}
                 {% if session['cleaner_id'] %}
                     <a href="/profile/{{ session['cleaner_id'] }}">Profile</a>
+                    <a href="/profile/{{ session['cleaner_id'] }}/edit">Settings</a>
                 {% endif %}
                 <a href="#">Bookings</a>
-                <a href="#">Settings</a>
                 <a href="/logout">Log Out</a>
             {% else %}
                 <a href="/login">Login</a>
@@ -45,11 +45,14 @@
             {% for cleaner in cleaners %}
                 <div class="cleaner-widget">
                     <h2><a href="/profile/{{ cleaner.cleaner_id }}">{{ cleaner.full_name }}</a></h2>
-                    <p><b>⭐ Rating: {{ cleaner.rating }}</b></p>
+                    <p><b>{{ cleaner.location }} | ⭐ {{ cleaner.rating }}</b></p>
                     <p> 📞 {{ cleaner.phone_number }} </p>
                     <p> 📧 {{ cleaner.email }} </p>
                     <p>Experience: {{ cleaner.experience_years }} years</p>
-                    <button class="bookbtn">Book now!</button>
+
+                    {% if not session['cleaner_id'] %}
+                        <button class="bookbtn">Book now!</button>
+                    {% endif %}
                 </div>
             {% endfor %}
         {% else %}
