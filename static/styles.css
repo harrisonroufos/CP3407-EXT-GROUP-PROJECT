@@ -46,8 +46,7 @@ html, body {
 }
 
 /* Form Elements Styling */
-.auth-page input,
-.auth-page button {
+.auth-page input, .auth-page button, .profile-form input {
     width: 95%;
     margin-bottom: 20px;
     padding: 8px;
@@ -154,12 +153,25 @@ main {
     padding: 0 2% 0 2%;
 }
 
+/* Buttons */
 .bookbtn {
-    transform: scale(1.9);
-    border-radius: 3px;
-    border-style: hidden;
-    font-family: serif;
-    background-color: #48b6e9;
+    width: 70%;
+}
+
+.bookbtn, .editbtn, .profile-form button {
+    margin-bottom: 20px;
+    padding: 8px;
+    background-color: #0096FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transform: scale(1.1);
+    text-decoration: none;
+}
+
+.bookbtn:hover, .editbtn:hover, .profile-form button:hover {
+    background-color: #007BFF;
 }
 
 /* Cleaner Page */
@@ -193,7 +205,7 @@ main {
     transform: scale(1.05);
 }
 
-/* Profile Page */
+/* Profile Pages */
 .profile-container {
     display: flex;
     justify-content: center;
@@ -201,13 +213,21 @@ main {
     height: 80vh;
 }
 
-.profile-card {
+.profile-card, .profile-form {
     background: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 350px;
+    width: 500px;
+}
+
+.profile-form label {
+  display: inline-block;
+}
+
+.profile-form #bio {
+    width: 480px;
 }
 
 .profile-card h1 {
@@ -232,6 +252,18 @@ main {
     padding-bottom: 1%;
 }
 
+.editbtn {
+    width: 95%;
+    margin-bottom: 20px;
+    padding: 8px;
+    background-color: #0096FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
 /* Footer Styling */
 footer {
     text-align: center;
@@ -242,5 +274,3 @@ footer {
     background-image: linear-gradient(black, #071228);
     border-top: 3px solid #0096FF;
 }
-
-/* OTHER COMPONENTS */
