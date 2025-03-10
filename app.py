@@ -233,6 +233,7 @@ def edit_cleaner_profile(cleaner_id):
         return redirect(url_for('show_cleaners'))
 
     if session['cleaner_id'] == cleaner_id and request.method == "POST":
+        username = request.form['username']
         full_name = request.form['full_name']
         email = request.form['email']
         phone_number = request.form['phone_number']
@@ -247,11 +248,49 @@ def edit_cleaner_profile(cleaner_id):
             "UPDATE cleaners SET full_name = %s, email = %s, phone_number = %s, location = %s, bio = %s, experience_years = %s WHERE cleaner_id = %s",
             (full_name, email, phone_number, location, bio, experience_years, session['cleaner_id']))
 
+        cursor.execute("UPDATE users SET username = %s WHERE user_id = %s", (username, session['user_id']))
+        session['username'] = username
+
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for(show_cleaner_profile(cleaner_id)))
+
+    if session['customer_id'] and request.method == "GET":
+        return redirect(url_for('show_cleaners'))
+
+    return render_template('edit_profile.html')
+
+
+@app.route("/customer/edit", methods=["GET", "POST"])
+def edit_customer_info():
+    if request.method == "POST":
+        username = request.form['username']
+        full_name = request.form['full_name']
+        email = request.form['email']
+        phone_number = request.form['phone_number']
+        location = request.form['location']
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "UPDATE customers SET full_name = %s, email = %s, phone_number = %s, location = %s WHERE customer_id = %s",
+            (full_name, email, phone_number, location, session['customer_id']))
+
+        cursor.execute("UPDATE users SET username = %s WHERE user_id = %s", (username, session['user_id']))
+
+        session['username'] = username
+
         conn.commit()
         conn.close()
 
         return redirect(url_for('show_cleaners'))
-    return render_template('edit_profile.html')
+
+    if session['cleaner_id'] and request.method == "GET":
+        return redirect(url_for('show_cleaners'))
+
+    return render_template('edit_customer_info.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -281,8 +320,10 @@ def login():
                     try:
                         cursor.execute("SELECT customer_id FROM customers WHERE user_id = %s", (user[0],))
                         session['customer_id'] = cursor.fetchone()[0]
+                        session['cleaner_id'] = False
                     except TypeError:
                         session['cleaner_id'] = False
+                        session['customer_id'] = False
                 return redirect(url_for('show_cleaners'))  # Redirect to main page
             else:
                 return render_template("login.html", error="Invalid credentials!")
