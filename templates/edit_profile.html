@@ -23,13 +23,8 @@
         <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
         <div class="dropdown-content">
             {% if 'username' in session %}
-                {% if session['cleaner_id'] %}
-                    <a href="/cleaner/{{ session['cleaner_id'] }}">Profile</a>
-                    <a href="/cleaner/{{ session['cleaner_id'] }}/edit">Settings</a>
-                {% endif %}
-                {% if session['customer_id'] %}
-                    <a href="/customer/edit">Settings</a>
-                {% endif %}
+                <a href="/cleaner/{{ session['cleaner_id'] }}">Profile</a>
+                <a href="/cleaner/{{ session['cleaner_id'] }}/edit">Settings</a>
                 <a href="#">Bookings</a>
                 <a href="/logout">Log Out</a>
             {% else %}
@@ -43,6 +38,12 @@
 <main>
     <div class="profile-container">
         <form class="profile-form" method="POST" action="{{ edit_cleaner_profile }}">
+
+            <div>
+                <label>Username
+                    <input type="text" name="username" required>
+                </label>
+            </div>
 
             <div>
                 <label>Full Name
