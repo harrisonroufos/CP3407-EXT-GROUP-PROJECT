@@ -10,10 +10,6 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from backend.config import DATABASE_URL  # Import DATABASE_URL from config.py
 
-# TODO:
-#  1. Add the Postgre version of routes, so the external database can be tested
-#  2. Test request information from tables besides 'users'
-
 # Initialise the Flask app
 app = Flask(__name__)
 app.secret_key = "CP3407"  # Set Flask's secure key for session management
@@ -223,7 +219,7 @@ def show_cleaners():
     return render_template('index.html', cleaners=cleaners)
 
 
-@app.route("/profile/<int:cleaner_id>", methods=["GET"])
+@app.route("/cleaner/<int:cleaner_id>", methods=["GET"])
 def show_cleaner_profile(cleaner_id):
     """Fetch a cleaner's information from the API."""
     response = requests.get("http://127.0.0.1:5000/cleaners/" + str(cleaner_id))
@@ -231,7 +227,7 @@ def show_cleaner_profile(cleaner_id):
     return render_template('profile.html', cleaner=cleaner)
 
 
-@app.route("/profile/<int:cleaner_id>/edit", methods=["GET", "POST"])
+@app.route("/cleaner/<int:cleaner_id>/edit", methods=["GET", "POST"])
 def edit_cleaner_profile(cleaner_id):
     if session['cleaner_id'] != cleaner_id and request.method == "GET":
         return redirect(url_for('show_cleaners'))
@@ -277,11 +273,16 @@ def login():
                 session['user_id'] = user[0]  # Store user ID in session
                 session['username'] = user[1]  # Store username in session
 
-                try:
+                try:  # This is incredibly messy but I promise it works
                     cursor.execute("SELECT cleaner_id FROM cleaners WHERE user_id = %s", (user[0],))
                     session['cleaner_id'] = cursor.fetchone()[0]
+                    session['customer_id'] = False
                 except TypeError:
-                    session['cleaner_id'] = False
+                    try:
+                        cursor.execute("SELECT customer_id FROM customers WHERE user_id = %s", (user[0],))
+                        session['customer_id'] = cursor.fetchone()[0]
+                    except TypeError:
+                        session['cleaner_id'] = False
                 return redirect(url_for('show_cleaners'))  # Redirect to main page
             else:
                 return render_template("login.html", error="Invalid credentials!")
