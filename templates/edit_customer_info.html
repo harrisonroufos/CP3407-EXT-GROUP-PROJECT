@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <title>MyClean - Editing Your Profile</title>
+</head>
+
+<body class="edit-profile-page">
+<!-- Header with navigation -->
+<header>
+    <div class="logo">
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">
+            ▼ {{ session['username'] if 'username' in session else 'Guest' }}
+        </button>
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
+        <div class="dropdown-content">
+            {% if 'username' in session %}
+                <a href="/customer/edit">Settings</a>
+                <a href="#">Bookings</a>
+                <a href="/logout">Log Out</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="profile-container">
+        <form class="profile-form" method="POST" action="{{ edit_cleaner_profile }}">
+
+            <div>
+                <label>Username
+                    <input type="text" name="username" required>
+                </label>
+            </div>
+
+            <div>
+                <label>Full Name
+                    <input type="text" name="full_name" required>
+                </label>
+            </div>
+
+            <div>
+                <label for="location">Location</label>
+                <div class="location-btn">
+                    <select name="location" id="location" required>
+                        <option value="Townsville">Townsville</option>
+                        <option value="Cairns">Cairns</option>
+                        <option value="Brisbane">Brisbane</option>
+                    </select>
+                </div>
+            </div>
+
+            <hr class="form-divider">
+
+            <div>
+                <label>Phone Number
+                    <input type="text" name="phone_number" required>
+                </label>
+            </div>
+
+            <div>
+                <label>Email
+                    <input type="email" name="email" required>
+                </label>
+            </div>
+
+            <button type="submit">Confirm Changes</button>
+        </form>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 MyClean. All rights reserved.</p>
+</footer>
+</body>
+</html>
