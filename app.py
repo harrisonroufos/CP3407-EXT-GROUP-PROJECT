@@ -254,7 +254,7 @@ def edit_cleaner_profile(cleaner_id):
         conn.commit()
         conn.close()
 
-        return redirect(url_for(show_cleaner_profile(cleaner_id)))
+        return redirect(url_for('show_cleaners'))
 
     if session['customer_id'] and request.method == "GET":
         return redirect(url_for('show_cleaners'))
