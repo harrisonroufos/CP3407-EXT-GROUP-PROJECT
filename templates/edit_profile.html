@@ -24,8 +24,11 @@
         <div class="dropdown-content">
             {% if 'username' in session %}
                 {% if session['cleaner_id'] %}
-                    <a href="/profile/{{ session['cleaner_id'] }}">Profile</a>
-                    <a href="/profile/{{ session['cleaner_id'] }}/edit">Settings</a>
+                    <a href="/cleaner/{{ session['cleaner_id'] }}">Profile</a>
+                    <a href="/cleaner/{{ session['cleaner_id'] }}/edit">Settings</a>
+                {% endif %}
+                {% if session['customer_id'] %}
+                    <a href="/customer/edit">Settings</a>
                 {% endif %}
                 <a href="#">Bookings</a>
                 <a href="/logout">Log Out</a>

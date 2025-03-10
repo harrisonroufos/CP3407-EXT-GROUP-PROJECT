@@ -30,8 +30,11 @@
         <div class="dropdown-content">
             {% if 'username' in session %}
                 {% if session['cleaner_id'] %}
-                    <a href="/profile/{{ session['cleaner_id'] }}">Profile</a>
-                    <a href="/profile/{{ session['cleaner_id'] }}/edit">Settings</a>
+                    <a href="/cleaner/{{ session['cleaner_id'] }}">Profile</a>
+                    <a href="/cleaner/{{ session['cleaner_id'] }}/edit">Settings</a>
+                {% endif %}
+                {% if session['customer_id'] %}
+                    <a href="/customer/edit">Settings</a>
                 {% endif %}
                 <a href="#">Bookings</a>
                 <a href="/logout">Log Out</a>
@@ -53,7 +56,7 @@
                 <div class="overview">
                     <h1>{{ cleaner.full_name }}</h1>
                     <h3>{{ cleaner.location }} | ⭐ {{ cleaner.rating }}</h3>
-                    {% if not session['cleaner_id'] %}
+                    {% if session['customer_id'] %}
                         <button class="bookbtn">Book now!</button>
                     {% endif %}
                 </div>
@@ -73,7 +76,7 @@
                 </div>
 
                 {% if session['cleaner_id'] == cleaner.cleaner_id %}
-                    <a href="/profile/{{ session['cleaner_id'] }}/edit" class="editbtn">Edit profile</a>
+                    <a href="/cleaner/{{ session['cleaner_id'] }}/edit" class="editbtn">Edit profile</a>
                 {% endif %}
             </div>
         {% endif %}
