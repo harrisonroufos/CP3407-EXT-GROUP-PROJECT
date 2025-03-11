@@ -48,10 +48,10 @@
             {% for cleaner in cleaners %}
                 <div class="cleaner-widget">
                     <h2><a href="/cleaner/{{ cleaner.cleaner_id }}">{{ cleaner.full_name }}</a></h2>
-                    <p><b>{{ cleaner.location }} | ⭐ {{ cleaner.rating }}</b></p>
-                    <p> 📞 {{ cleaner.phone_number }} </p>
-                    <p> 📧 {{ cleaner.email }} </p>
-                    <p>Experience: {{ cleaner.experience_years }} years</p>
+                    <p><b>{{ cleaner.location or "Unknown Location" }} | ⭐ {{ cleaner.rating or "N/A" }}</b></p>
+                    <p> 📞 {{ cleaner.phone_number or "Not Available" }} </p>
+                    <p> 📧 {{ cleaner.email or "Not Available" }} </p>
+                    <p>Experience: {{ cleaner.experience_years if cleaner.experience_years is not none else "No experience listed" }} years</p>
 
                     {% if session['customer_id'] %}
                         <button class="bookbtn">Book now!</button>

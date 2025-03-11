@@ -103,6 +103,36 @@ def clear_tables(cursor):
     cursor.connection.commit()
 
 
+def fetch_cleaners_from_postgre():
+    """Fetch cleaners directly from the PostgreSQL database."""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        print("Retrieving cleaner data from PostgreSQL database.")
+        cursor.execute("""
+            SELECT cleaner_id, full_name, email, phone_number, location, rating, experience_years 
+            FROM cleaners
+        """)
+        return [
+            {
+                "cleaner_id": row[0],
+                "full_name": row[1],
+                "email": row[2] or "Not Available",
+                "phone_number": row[3] or "Not Available",
+                "location": row[4] or "Unknown Location",
+                "rating": row[5] if row[5] is not None else "N/A",
+                "experience_years": row[6] if row[6] is not None else "No experience listed"
+            }
+            for row in cursor.fetchall()
+        ]
+    except Exception as e:
+        print(f"Database error: {e}")
+        return []
+    finally:
+        conn.close()
+
+
 def init_db():
     """Initialise the database by creating required tables and inserting admin data if not already present."""
     print("Initializing the database...")  # Debugging print statement
@@ -213,9 +243,21 @@ def init_db():
 
 @app.route("/show_cleaners", methods=["GET"])
 def show_cleaners():
-    """Fetch cleaners from the API."""
-    response = requests.get("http://127.0.0.1:5000/cleaners")
-    cleaners = response.json()  # Convert JSON to Python list
+    """Fetch cleaners from the API in local development, or directly from the database in production."""
+
+    if DATABASE_URL:  # If running on Render (PostgreSQL)
+        print("Using external environment PostgreSQL.")
+        cleaners = fetch_cleaners_from_postgre()  # Query database on Render
+    else:  # If using SQLite (local development), call the webhook
+        print("Using local environment MySQLite.")
+        try:
+            response = requests.get("http://127.0.0.1:5000/cleaners")
+            response.raise_for_status()
+            cleaners = response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching cleaners: {e}")
+            cleaners = []  # Return an empty list if there's an error
+
     return render_template('index.html', cleaners=cleaners)
 
 
