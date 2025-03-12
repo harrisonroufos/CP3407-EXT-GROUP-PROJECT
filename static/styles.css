@@ -210,9 +210,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: calc(100vh - 120px); /* Adjust for header and footer */
+    background-color: #f0f8ff; /* Soft light blue */
+    gap: 50px;
+    padding: 20px;
 }
 
+/* Profile Cards and Forms */
 .profile-card, .profile-form {
     background: #cacaca;
     padding: 20px;
@@ -220,22 +224,9 @@ main {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 500px;
-    margin-top: 100px;
-    margin-bottom: 70px;
 }
 
-.profile-form label {
-  display: inline-block;
-}
-
-.profile-form #bio {
-    width: 480px;
-}
-
-.profile-form input:hover {
-    border-color: #28a745;
-}
-
+/* Profile Headings and Text */
 .profile-card h1 {
     font-size: 24px;
     color: #333;
@@ -250,11 +241,71 @@ main {
     border-bottom: 3px solid #0096FF;
 }
 
+/* Profile Layout */
+.profile-form-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.profile-blurb {
+    max-width: 300px;
+    font-size: 14px;
+    color: #333;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Form Fields */
+.profile-form label {
+    display: inline-block;
+}
+
+.profile-form input,
+.profile-form textarea,
+.profile-form select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 95%;
+    transition: border-color 0.3s;
+}
+
+.profile-form input:focus,
+.profile-form textarea:focus,
+.profile-form select:focus {
+    border-color: #28a745; /* Green highlight */
+}
+
+.profile-form input:hover {
+    border-color: #28a745;
+}
+
+/* Special Form Fields */
+.profile-form #bio {
+    width: 480px;
+}
+
+.required-field::after {
+    content: " *";
+    color: red;
+}
+
+.profile-form input::placeholder,
+.profile-form textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Profile Buttons and Sections */
 .profile-container .bookbtn {
     margin: 5% 0 10%;
 }
 
-.profile-container .about-me, .contact-info {
+.profile-container .about-me,
+.profile-container .contact-info {
     padding-bottom: 1%;
 }
 

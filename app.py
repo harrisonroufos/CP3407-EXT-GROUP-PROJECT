@@ -323,7 +323,7 @@ def edit_cleaner_profile(cleaner_id):
     if session['customer_id'] and request.method == "GET":
         return redirect(url_for('show_cleaners'))
 
-    return render_template('edit_profile.html')
+    return render_template('edit_cleaner_info.html')
 
 
 @app.route("/customer/edit", methods=["GET", "POST"])
@@ -374,41 +374,45 @@ def login():
         user = cursor.fetchone()
 
         if user:
-            stored_hashed_password = user[2]  # Get stored password
-            if check_password_hash(stored_hashed_password, password):  # Verify password
-                session['user_id'] = user[0]  # Store user ID in session
-                session['username'] = user[1]  # Store username in session
+            stored_hashed_password = user[2]  # Stored password hash
+            if check_password_hash(stored_hashed_password, password):
+                # Successful login; set session data
+                session['user_id'] = user[0]
+                session['username'] = user[1]
 
-                # Fetch additional data using conditional placeholder
-                placeholder = "?" if USE_LOCAL_DB else "%s"
-                try:
-                    cursor.execute(f"SELECT cleaner_id FROM cleaners WHERE user_id = {placeholder}", (user[0],))
-                    result = cursor.fetchone()
-                    if result is not None:
-                        session['cleaner_id'] = result[0]
-                    else:
-                        session['cleaner_id'] = False
+                # Determine whether the user is a cleaner or a customer
+                cursor.execute(f"SELECT cleaner_id FROM cleaners WHERE user_id = {placeholder}", (user[0],))
+                cleaner_result = cursor.fetchone()
+
+                if cleaner_result is not None:
+                    # User is a cleaner
+                    session['cleaner_id'] = cleaner_result[0]
                     session['customer_id'] = False
-                except Exception:
-                    try:
-                        cursor.execute(f"SELECT customer_id FROM customers WHERE user_id = {placeholder}", (user[0],))
-                        result = cursor.fetchone()
-                        if result is not None:
-                            session['customer_id'] = result[0]
-                        else:
-                            session['customer_id'] = False
+                else:
+                    # If not a cleaner, check if user is a customer
+                    cursor.execute(f"SELECT customer_id FROM customers WHERE user_id = {placeholder}", (user[0],))
+                    customer_result = cursor.fetchone()
+                    if customer_result is not None:
+                        session['customer_id'] = customer_result[0]
                         session['cleaner_id'] = False
-                    except Exception:
-                        session['cleaner_id'] = False
+                    else:
+                        # If neither table matches, set both to False
                         session['customer_id'] = False
+                        session['cleaner_id'] = False
+
                 conn.close()
-                return redirect(url_for('show_cleaners'))  # Redirect to main page
+                # Redirect to main page (show_cleaners)
+                return redirect(url_for('show_cleaners'))
             else:
                 conn.close()
                 return render_template("login.html", error="Invalid credentials!")
+        # No matching username found or other error
         conn.close()
         return render_template("login.html", error="Invalid credentials!")
+
+    # If GET request, just show login form
     return render_template('login.html')
+
 
 
 @app.route('/', methods=['GET', 'POST'])

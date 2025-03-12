@@ -23,7 +23,8 @@
         <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
         <div class="dropdown-content">
             {% if 'username' in session %}
-                <a href="/customer/edit">Edit Info</a>
+                <a href="/cleaner/{{ session['cleaner_id'] }}">Profile</a>
+                <a href="/cleaner/{{ session['cleaner_id'] }}/edit">Edit Info</a>
                 <a href="#">Bookings</a>
                 <a href="/logout">Log Out</a>
             {% else %}
@@ -38,8 +39,9 @@
 <main>
     <div class="profile-container">
         <div class="profile-form-container">
-            <form class="profile-form" method="POST" action="{{ edit_customer_profile }}">
+            <form class="profile-form" method="POST" action="{{ edit_cleaner_profile }}">
                 <h1>Edit Your Profile</h1>
+                <!--<p>This page only changes the details of the cleaner profile you are currently logged into.</p><br>-->
 
                 <label for="username" class="required-field">Username</label>
                 <input type="text" name="username" id="username" required placeholder="New username?">
@@ -58,6 +60,14 @@
 
                 <hr class="form-divider">
 
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" cols="40" rows="5" placeholder="Tell us about yourself..."></textarea>
+
+                <label style="margin-top: 10px;" for="experience_years" class="required-field">Years of Experience</label>
+                <input type="number" name="experience_years" id="experience_years" min="0" placeholder="Gained another year of experience recently?">
+
+                <hr class="form-divider">
+
                 <label for="phone_number" class="required-field">Phone Number</label>
                 <input type="text" name="phone_number" id="phone_number" required placeholder="New phone number?">
 
@@ -69,8 +79,8 @@
 
             <div class="profile-blurb">
                 <h2>How to Edit Your Profile</h2>
-                <p>The changes made by this form only apply to your current customer profile. You can update fields where your info has changed, whilst retyping others that have stay the same as they were before.</p>
-                <p>Fill in the required fields marked with * to update your profile.</p>
+                <p>The changes made by this form only apply to your current cleaner profile. You can update fields where your info has changed, whilst retyping others that have stay the same as they were before.</p>
+                <p>Fill in the required fields marked with * to update your profile. Ensure your username contains only letters, numbers, or underscores. </p>
                 <p>Your email should be in a valid format (e.g., user@example.com), and phone numbers should only contain digits.</p>
                 <p>When you're done, click "Confirm Changes" to save your details.</p>
             </div>
