@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <title>MyClean - Editing Your Profile</title>
+    <style>
+        .checklist-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+        .checklist-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body class="edit-profile-page">
@@ -70,23 +89,14 @@
 
             <div class="profile-blurb">
                 <h2>How to Edit Your Profile</h2>
-                <p>The changes made by this form only apply to your current customer profile. You can update fields where your info has changed, whilst retyping others that have stay the same as they were before.</p>
+                <p>The changes made by this form only apply to your current customer profile. You can update fields where your info has changed, whilst retyping others that have stayed the same.</p>
                 <p>Fill in the required fields marked with * to update your profile.</p>
                 <p>Your email should be in a valid format (e.g., user@example.com), and phone numbers should only contain digits.</p>
                 <p>When you're done, click "Confirm Changes" to save your details.</p>
+                <a style="max-width: 280px;" href="/custom_checklist" class="checklist-button">Manage Custom Checklist</a>
             </div>
 
-            <div>
-                <label>Email
-                    <input type="email" name="email" required>
-                </label>
-            </div>
 
-            <button type="submit">Confirm Changes</button>
-        </form>
-        <div class="extra-links">
-            <a href="/custom_checklist" class="checklist-link">Manage Custom Checklist</a>
-        </div>
         </div>
     </div>
 </main>
