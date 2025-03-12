@@ -8,6 +8,9 @@ import os, sqlite3, psycopg2, requests
 from backend.routes.cleaner_routes import cleaner_bp
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
+from backend.database import get_db_connection
+from backend.config import USE_LOCAL_DB
+from backend.database import get_db_connection
 from backend.config import DATABASE_URL  # Import DATABASE_URL from config.py
 
 # Initialise the Flask app
@@ -19,14 +22,6 @@ from backend.config import DATABASE_URL
 
 # Local database file path
 LOCAL_DATABASE = "database_files/MyClean_Database.db"
-
-
-# Function to get the database connection based on environment
-def get_db_connection():
-    if DATABASE_URL:
-        return psycopg2.connect(DATABASE_URL)
-    else:
-        return sqlite3.connect(LOCAL_DATABASE)
 
 
 def create_table(cursor, query):
@@ -136,6 +131,8 @@ def fetch_cleaners_from_postgre():
 def init_db():
     """Initialise the database by creating required tables and inserting admin data if not already present."""
     print("Initializing the database...")  # Debugging print statement
+    conn = None  # Ensure conn is defined in case of an error
+    cursor = None  # Ensure cursor is defined
 
     # Choose table creation queries based on database type
     if DATABASE_URL:
@@ -212,17 +209,20 @@ def init_db():
         }
 
     try:
-        conn = get_db_connection()
+        conn = get_db_connection()  # Establish database connection
         cursor = conn.cursor()
 
         # Check if tables already exist (if not, create them)
         print("Checking if tables already exist...")
         for table, query in tables.items():
-            cursor.execute(
-                f"SELECT to_regclass('{table}');" if DATABASE_URL else f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}';")
+            if USE_LOCAL_DB:
+                check_query = f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}';"
+            else:
+                check_query = f"SELECT to_regclass('{table}');"
+            cursor.execute(check_query)
             if cursor.fetchone() is None:
                 print(f"Table {table} does not exist. Creating it...")
-                create_table(cursor, query)  # Create the table
+                create_table(cursor, query)
             else:
                 print(f"Table {table} already exists.")
 
@@ -230,15 +230,18 @@ def init_db():
         print("Inserting admin data...")
         insert_admin_data(cursor)  # Ensure admin data is inserted
 
-        # Commit changes and close the connection
+        # Commit changes
         conn.commit()
-        print("Database initialized successfully.")
+        print("✅ Database initialized successfully.")
 
     except Exception as e:
-        print(f"Error initializing the database: {e}")
+        print(f"❌ Error initializing the database: {e}")
+
     finally:
-        cursor.close()
-        conn.close()
+        if cursor:
+            cursor.close()  # Close the cursor if it was created
+        if conn:
+            conn.close()  # Close the database connection if it was created
 
 
 @app.route("/show_cleaners", methods=["GET"])
@@ -458,6 +461,7 @@ app.register_blueprint(cleaner_bp)  # This is required!
 # Run the Flask app in debug mode
 if __name__ == "__main__":
     if os.environ.get("FLASK_RUN_MAIN") != "true":  # Prevents duplicate execution
+        print(f"🔄 Initializing {'local SQLite' if USE_LOCAL_DB else 'PostgreSQL'} database...")
         init_db()
 
     print("\n=== Registered Routes ===")
