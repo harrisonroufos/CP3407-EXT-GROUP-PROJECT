@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <title>MyClean - Custom Cleaning Checklist</title>
+</head>
+<body class="checklist-page">
+<!-- Header with navigation -->
+<header>
+    <div class="logo">
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}"
+                                      alt="MyClean Logo"></a>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">
+            ▼ {{ session['username'] if 'username' in session else 'Guest' }}
+        </button>
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}"
+             alt="Profile Icon">
+        <div class="dropdown-content">
+            {% if 'username' in session %}
+            <a href="/customer/edit">Settings</a>
+            <a href="/logout">Log Out</a>
+            {% else %}
+            <a href="/login">Login</a>
+            <a href="/">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="checklist-container">
+        <h1>Custom Cleaning Checklist</h1>
+        <p>Create your custom cleaning checklist for your appointments below.</p>
+        <form method="POST" action="{{ url_for('custom_checklist') }}">
+            <textarea name="checklist_items" rows="10" cols="50" placeholder="Enter checklist items (one per line)...">{{ checklist_items }}</textarea>
+            <br>
+            <button type="submit">Save Checklist</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 MyClean. All rights reserved.</p>
+</footer>
+</body>
+</html>
