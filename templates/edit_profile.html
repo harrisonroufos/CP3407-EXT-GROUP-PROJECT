@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <title>MyClean - Editing Your Profile</title>
+    <style>
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 120px); /* Adjust for header and footer */
+            background-color: #f0f8ff; /* Soft light blue */
+        }
+
+        .profile-form input, .profile-form textarea, .profile-form select {
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 95%;
+            transition: border-color 0.3s;
+        }
+
+        .profile-form input:focus, .profile-form textarea:focus, .profile-form select:focus {
+            border-color: #28a745; /* Green highlight */
+        }
+    </style>
 </head>
 
 <body class="edit-profile-page">
@@ -35,60 +56,43 @@
     </div>
 </header>
 
+<!-- Main Profile Edit Section -->
 <main>
     <div class="profile-container">
         <form class="profile-form" method="POST" action="{{ edit_cleaner_profile }}">
 
-            <div>
-                <label>Username
-                    <input type="text" name="username" required>
-                </label>
-            </div>
+            <h1>Edit Your Profile</h1>
 
-            <div>
-                <label>Full Name
-                    <input type="text" name="full_name" required>
-                </label>
-            </div>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required>
 
-            <div>
-                <label for="location">Location</label>
-                <div class="location-btn">
-                    <select name="location" id="location" required>
-                        <option value="Townsville">Townsville</option>
-                        <option value="Cairns">Cairns</option>
-                        <option value="Brisbane">Brisbane</option>
-                    </select>
-                </div>
+            <label for="full_name">Full Name</label>
+            <input type="text" name="full_name" id="full_name" required>
+
+            <label for="location">Location</label>
+            <div class="location-btn">
+                <select name="location" id="location" required>
+                    <option value="Townsville">Townsville</option>
+                    <option value="Cairns">Cairns</option>
+                    <option value="Brisbane">Brisbane</option>
+                </select>
             </div>
 
             <hr class="form-divider">
 
-            <div>
-                <label>Bio
-                    <textarea id="bio" name="bio" cols="40" rows="5"></textarea>
-                </label>
-            </div>
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" cols="40" rows="5"></textarea>
 
-            <div>
-                <label>Years of Experience
-                    <input type="number" name="experience_years" min="0">
-                </label>
-            </div>
+            <label for="experience_years">Years of Experience</label>
+            <input type="number" name="experience_years" id="experience_years" min="0">
 
             <hr class="form-divider">
 
-            <div>
-                <label>Phone Number
-                    <input type="text" name="phone_number" required>
-                </label>
-            </div>
+            <label for="phone_number">Phone Number</label>
+            <input type="text" name="phone_number" id="phone_number" required>
 
-            <div>
-                <label>Email
-                    <input type="email" name="email" required>
-                </label>
-            </div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
 
             <button type="submit">Confirm Changes</button>
         </form>
