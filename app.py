@@ -28,57 +28,75 @@ def create_table(cursor, query):
 
 
 def insert_admin_data(cursor, db_type="sqlite"):
-    """Insert admin data into the database, ensuring first entries are admin, cleaner, and customer with appropriate attributes."""
-    print("Checking if admin data exists...")  # Debugging print statement
+    print("Checking if admin data exists...")
     cursor.execute(
         "SELECT COUNT(*) FROM users WHERE username IN ('admin', 'cleaner', 'customer')"
     )
     count = cursor.fetchone()[0]
 
     if count == 0:
-        print("Inserting admin and initial data...")  # Debugging print statement
+        print("Inserting admin and initial data...")
 
         # Insert admin user into the 'users' table
         if db_type == "postgres":
-            cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", ('admin', '123'))
+            cursor.execute(
+                "INSERT INTO users (username, password) VALUES (%s, %s)",
+                ('admin', '123')
+            )
         else:
-            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", ('admin', '123'))
+            cursor.execute(
+                "INSERT INTO users (username, password) VALUES (?, ?)",
+                ('admin', '123')
+            )
 
         # Get the user_id for the admin
-        user_id = cursor.lastrowid  # Works in SQLite for getting the last inserted ID
+        user_id = cursor.lastrowid
         if db_type == "postgres":
             cursor.execute("SELECT CURRVAL(pg_get_serial_sequence('users', 'user_id'))")
             user_id = cursor.fetchone()[0]
 
-        # Insert customer data into the 'customers' table
-        if db_type == "postgres":
-            cursor.execute("INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (%s, %s, %s, %s)",
-                           (user_id, 'Customer Name', 'customer123@example.com', '1234567891'))
-        else:
-            cursor.execute("INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (?, ?, ?, ?)",
-                           (user_id, 'Customer Name', 'customer123@example.com', '1234567891'))
-
-        # Insert cleaner data into the 'cleaners' table
+        # Insert customer data into the 'customers' table and retrieve customer_id
         if db_type == "postgres":
             cursor.execute(
-                "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (%s, %s, %s, %s, %s, %s)",
-                (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3))
+                "INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (%s, %s, %s, %s) RETURNING customer_id",
+                (user_id, 'Customer Name', 'customer123@example.com', '1234567891')
+            )
+            customer_id = cursor.fetchone()[0]
+        else:
+            cursor.execute(
+                "INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (?, ?, ?, ?)",
+                (user_id, 'Customer Name', 'customer123@example.com', '1234567891')
+            )
+            customer_id = cursor.lastrowid
+
+        # Insert cleaner data into the 'cleaners' table and retrieve cleaner_id
+        if db_type == "postgres":
+            cursor.execute(
+                "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (%s, %s, %s, %s, %s, %s) RETURNING cleaner_id",
+                (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3)
+            )
+            cleaner_id = cursor.fetchone()[0]
         else:
             cursor.execute(
                 "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (?, ?, ?, ?, ?, ?)",
-                (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3))
+                (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3)
+            )
+            cleaner_id = cursor.lastrowid
 
-        # Insert dummy booking data with valid cleaner_id and customer_id into the 'bookings' table
-        cursor.execute("INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (?, ?, ?, ?)"
-                       if db_type == "sqlite" else
-                       "INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (%s, %s, %s, %s)",
-                       (user_id, user_id, '2025-02-21 09:00:00', 'pending'))
+        # Insert dummy booking data using the retrieved cleaner_id and customer_id
+        if db_type == "postgres":
+            cursor.execute(
+                "INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (%s, %s, %s, %s)",
+                (cleaner_id, customer_id, '2025-02-21 09:00:00', 'pending')
+            )
+        else:
+            cursor.execute(
+                "INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (?, ?, ?, ?)",
+                (cleaner_id, customer_id, '2025-02-21 09:00:00', 'pending')
+            )
 
         # Commit changes
-        if db_type == "postgres":
-            cursor.connection.commit()
-        else:
-            cursor.connection.commit()
+        cursor.connection.commit()
 
 
 def clear_tables(cursor):
@@ -225,7 +243,10 @@ def init_db():
 
         # Insert dummy admin data only if it does not already exist
         print("Inserting admin data...")
-        insert_admin_data(cursor)  # Ensure admin data is inserted
+        if USE_LOCAL_DB:
+            insert_admin_data(cursor, db_type="sqlite")
+        else:
+            insert_admin_data(cursor, db_type="postgres")
 
         # Commit changes
         conn.commit()
