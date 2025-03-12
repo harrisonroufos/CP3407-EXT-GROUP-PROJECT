@@ -13,22 +13,24 @@
 <!-- Header with navigation -->
 <header>
     <div class="logo">
-        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
+        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}"
+                                      alt="MyClean Logo"></a>
     </div>
 
     <div class="dropdown">
         <button class="dropbtn">
             ▼ {{ session['username'] if 'username' in session else 'Guest' }}
         </button>
-        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}"
+             alt="Profile Icon">
         <div class="dropdown-content">
             {% if 'username' in session %}
-                <a href="/customer/edit">Settings</a>
-                <a href="#">Bookings</a>
-                <a href="/logout">Log Out</a>
+            <a href="/customer/edit">Settings</a>
+            <a href="#">Bookings</a>
+            <a href="/logout">Log Out</a>
             {% else %}
-                <a href="/login">Login</a>
-                <a href="/">Sign Up</a>
+            <a href="/login">Login</a>
+            <a href="/">Sign Up</a>
             {% endif %}
         </div>
     </div>
@@ -77,6 +79,9 @@
 
             <button type="submit">Confirm Changes</button>
         </form>
+        <div class="extra-links">
+            <a href="/custom_checklist" class="checklist-link">Manage Custom Checklist</a>
+        </div>
     </div>
 </main>
 
