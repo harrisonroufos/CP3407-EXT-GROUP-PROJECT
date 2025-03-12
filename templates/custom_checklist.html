@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Checklist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <script>
         function addChecklistItem() {
             const list = document.getElementById("checklist-items");
@@ -17,24 +19,32 @@
         }
     </script>
 </head>
-<body>
 
-<h2>Custom Checklist</h2>
+<body class="checklist-page">
 
-<!-- Ensure the correct booking_id is passed -->
-<form method="POST" action="/custom_checklist/{{ booking_id }}">
-    <!-- Hidden input field to store booking_id -->
-    <input type="hidden" name="booking_id" value="{{ booking_id }}">
+    <!-- Header with navigation -->
+    {% include "header.html" %}
 
-    <ul id="checklist-items">
-        {% for item in checklist_items %}
-        <li><input type="text" name="checklist_items" value="{{ item }}" required></li>
-        {% endfor %}
-    </ul>
+    <main class="checklist-container">
+        <h2>Custom Checklist</h2>
 
-    <button type="button" onclick="addChecklistItem()">Add Item</button>
-    <button type="submit">Save Checklist</button>
-</form>
+        <form class="checklist-form" method="POST" action="/custom_checklist/{{ booking_id }}">
+            <input type="hidden" name="booking_id" value="{{ booking_id }}">
 
+            <ul id="checklist-items">
+                {% for item in checklist_items %}
+                <li><input type="text" name="checklist_items" value="{{ item }}" required></li>
+                {% endfor %}
+            </ul>
+
+            <div class="checklist-buttons">
+                <button type="button" class="add-btn" onclick="addChecklistItem()">Add Item</button>
+                <button type="submit" class="save-btn">Save Checklist</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    {% include "footer.html" %}
 </body>
 </html>
