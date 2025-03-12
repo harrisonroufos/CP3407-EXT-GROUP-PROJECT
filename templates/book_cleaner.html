@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Cleaner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body class="book-cleaner-page">
+<header>
+    <div class="logo">
+        <a href="/show_cleaners">
+            <img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo">
+        </a>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">
+            ▼ {{ session['username'] if 'username' in session else 'Guest' }}
+        </button>
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}"
+             alt="Profile Icon">
+        <div class="dropdown-content">
+            {% if 'username' in session %}
+            {% if session['cleaner_id'] %}
+            <a href="/cleaner/{{ session['cleaner_id'] }}">Profile</a>
+            <a href="/cleaner/{{ session['cleaner_id'] }}/edit">Settings</a>
+            {% endif %}
+            {% if session['customer_id'] %}
+            <a href="/customer/edit">Settings</a>
+            {% endif %}
+            <a href="#">Bookings</a>
+            <a href="/logout">Log Out</a>
+            {% else %}
+            <a href="/login">Login</a>
+            <a href="/">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="booking-container">
+        <h1>Book Cleaner #{{ cleaner_id }}</h1>
+        <form method="POST" action="">
+            <div>
+                <label>Booking Date/Time:
+                    <input type="datetime-local" name="booking_date" required>
+                </label>
+            </div>
+            <br>
+            <div>
+                <label>Custom Checklist (one item per line):
+                    <textarea name="checklist_items" rows="6" cols="50"></textarea>
+                </label>
+            </div>
+            <br>
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 MyClean. All rights reserved.</p>
+</footer>
+</body>
+</html>
