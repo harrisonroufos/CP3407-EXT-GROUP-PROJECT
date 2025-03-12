@@ -16,37 +16,9 @@
 </head>
 
 <body class="profile-page">
-<!-- Header with navigation -->
-<header>
-    <div class="logo">
-        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}"
-                                      alt="MyClean Logo"></a>
-    </div>
 
-    <div class="dropdown">
-        <button class="dropbtn">
-            ▼ {{ session.get('username', 'Guest') }}
-        </button>
-        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}"
-             alt="Profile Icon">
-        <div class="dropdown-content">
-            {% if session.get('username') %}
-            {% if session.get('cleaner_id') %}
-            <a href="/cleaner/{{ session.get('cleaner_id') }}">Profile</a>
-            <a href="/cleaner/{{ session.get('cleaner_id') }}/edit">Edit Info</a>
-            {% endif %}
-            {% if session.get('customer_id') %}
-            <a href="/customer/edit">Edit Info</a>
-            {% endif %}
-            <a href="#">Bookings</a>
-            <a href="/logout">Log Out</a>
-            {% else %}
-            <a href="/login">Login</a>
-            <a href="/">Sign Up</a>
-            {% endif %}
-        </div>
-    </div>
-</header>
+<!-- Header with navigation -->
+{% include "header.html" %}
 
 <!-- Main content section -->
 <main>
@@ -89,8 +61,6 @@
 </main>
 
 <!-- Footer -->
-<footer>
-    <p>&copy; 2025 MyClean. All rights reserved.</p>
-</footer>
+{% include "footer.html" %}
 </body>
 </html>

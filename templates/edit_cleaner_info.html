@@ -10,87 +10,70 @@
 </head>
 
 <body class="edit-profile-page">
-<!-- Header with navigation -->
-<header>
-    <div class="logo">
-        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
-    </div>
 
-    <div class="dropdown">
-        <button class="dropbtn">
-            ▼ {{ session['username'] if 'username' in session else 'Guest' }}
-        </button>
-        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
-        <div class="dropdown-content">
-            {% if 'username' in session %}
-                <a href="/cleaner/{{ session['cleaner_id'] }}">Profile</a>
-                <a href="/cleaner/{{ session['cleaner_id'] }}/edit">Edit Info</a>
-                <a href="#">Bookings</a>
-                <a href="/logout">Log Out</a>
-            {% else %}
-                <a href="/login">Login</a>
-                <a href="/">Sign Up</a>
-            {% endif %}
-        </div>
-    </div>
-</header>
+  <!-- Header with navigation -->
+  {% include "header.html" %}
 
-<!-- Main Profile Edit Section -->
-<main>
+  <!-- Main Profile Edit Section -->
+  <main>
     <div class="profile-container">
-        <div class="profile-form-container">
-            <form class="profile-form" method="POST" action="{{ edit_cleaner_profile }}">
-                <h1>Edit Your Profile</h1>
-                <!--<p>This page only changes the details of the cleaner profile you are currently logged into.</p><br>-->
+      <!-- Fixed the class attribute -->
+      <div class="profile-form-container">
+        <form class="profile-form" method="POST" action="{{ edit_cleaner_profile }}">
+          <h1>Edit Your Profile</h1>
 
-                <label for="username" class="required-field">Username</label>
-                <input type="text" name="username" id="username" required placeholder="New username?">
+          <label for="username" class="required-field">Username</label>
+          <input type="text" name="username" id="username" required placeholder="New username?">
 
-                <label for="full_name" class="required-field">Full Name</label>
-                <input type="text" name="full_name" id="full_name" required placeholder="New full name?">
+          <label for="full_name" class="required-field">Full Name</label>
+          <input type="text" name="full_name" id="full_name" required placeholder="New full name?">
 
-                <label for="location" class="required-field">Location</label>
-                <div class="location-btn">
-                    <select name="location" id="location" required>
-                        <option value="Townsville">Townsville</option>
-                        <option value="Cairns">Cairns</option>
-                        <option value="Brisbane">Brisbane</option>
-                    </select>
-                </div>
+          <label for="location" class="required-field">Location</label>
+          <div class="location-btn">
+            <select name="location" id="location" required>
+              <option value="Townsville">Townsville</option>
+              <option value="Cairns">Cairns</option>
+              <option value="Brisbane">Brisbane</option>
+            </select>
+          </div>
 
-                <hr class="form-divider">
+          <hr class="form-divider">
 
-                <label for="bio">Bio</label>
-                <textarea id="bio" name="bio" cols="40" rows="5" placeholder="Tell us about yourself..."></textarea>
+          <label for="bio">Bio</label>
+          <textarea id="bio" name="bio" cols="40" rows="5" placeholder="Tell us about yourself..."></textarea>
 
-                <label style="margin-top: 10px;" for="experience_years" class="required-field">Years of Experience</label>
-                <input type="number" name="experience_years" id="experience_years" min="0" placeholder="Gained another year of experience recently?">
+          <label style="margin-top: 10px;" for="experience_years" class="required-field">
+            Years of Experience
+          </label>
+          <input type="number" name="experience_years" id="experience_years" min="0"
+                 placeholder="Gained another year of experience recently?">
 
-                <hr class="form-divider">
+          <hr class="form-divider">
 
-                <label for="phone_number" class="required-field">Phone Number</label>
-                <input type="text" name="phone_number" id="phone_number" required placeholder="New phone number?">
+          <label for="phone_number" class="required-field">Phone Number</label>
+          <input type="text" name="phone_number" id="phone_number" required placeholder="New phone number?">
 
-                <label for="email" class="required-field">Email</label>
-                <input type="email" name="email" id="email" required placeholder="New email address?">
+          <label for="email" class="required-field">Email</label>
+          <input type="email" name="email" id="email" required placeholder="New email address?">
 
-                <button type="submit">Confirm Changes</button>
-            </form>
+          <button type="submit">Confirm Changes</button>
+        </form>
 
-            <div class="profile-blurb">
-                <h2>How to Edit Your Profile</h2>
-                <p>The changes made by this form only apply to your current cleaner profile. You can update fields where your info has changed, whilst retyping others that have stay the same as they were before.</p>
-                <p>Fill in the required fields marked with * to update your profile. Ensure your username contains only letters, numbers, or underscores. </p>
-                <p>Your email should be in a valid format (e.g., user@example.com), and phone numbers should only contain digits.</p>
-                <p>When you're done, click "Confirm Changes" to save your details.</p>
-            </div>
+        <div class="profile-blurb">
+          <h2>How to Edit Your Profile</h2>
+          <p>The changes made by this form only apply to your current cleaner profile. You can update
+             fields where your info has changed, whilst retyping others that have stayed the same.</p>
+          <p>Fill in the required fields marked with * to update your profile. Ensure your username
+             contains only letters, numbers, or underscores.</p>
+          <p>Your email should be in a valid format (e.g., user@example.com), and phone numbers should
+             only contain digits.</p>
+          <p>When you're done, click "Confirm Changes" to save your details.</p>
         </div>
+      </div>
     </div>
-</main>
+  </main>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2025 MyClean. All rights reserved.</p>
-</footer>
+  <!-- Footer -->
+  {% include "footer.html" %}
 </body>
 </html>
