@@ -8,10 +8,9 @@ import os, sqlite3, psycopg2, requests
 from backend.routes.cleaner_routes import cleaner_bp
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
-from backend.database import get_db_connection
 from backend.config import USE_LOCAL_DB
 from backend.database import get_db_connection
-from backend.config import DATABASE_URL  # Import DATABASE_URL from config.py
+import json
 
 # Initialise the Flask app
 app = Flask(__name__)
@@ -234,7 +233,6 @@ def init_db():
                 status TEXT CHECK (status IN ('pending', 'confirmed', 'completed', 'cancelled')),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )''',
-            # NEW "checklists" table referencing booking_id
             "checklists": '''CREATE TABLE IF NOT EXISTS checklists (
                 checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
                 booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
@@ -540,46 +538,37 @@ def signup():
 
 @app.route("/custom_checklist/<int:booking_id>", methods=["GET", "POST"])
 def custom_checklist(booking_id):
-    # Only customers should access this feature
-    if "customer_id" not in session or not session["customer_id"]:
+    if "customer_id" not in session:
         return redirect(url_for("login"))
 
     conn = get_db_connection()
     cursor = conn.cursor()
-    placeholder = "?" if USE_LOCAL_DB else "%s"
 
     if request.method == "POST":
-        # Retrieve checklist data from form
-        checklist_items = request.form.getlist("checklist_items")  # Retrieve list of items
-        checklist_json = json.dumps(checklist_items)  # Convert to JSON format
+        checklist_items = request.form.getlist("checklist_items")
+        checklist_json = json.dumps(checklist_items)
 
-        # Check if a checklist already exists for this booking
-        query = f"SELECT checklist_id FROM checklists WHERE booking_id = {placeholder}"
-        cursor.execute(query, (booking_id,))
-        row = cursor.fetchone()
+        # Ensure the given booking_id exists before inserting
+        cursor.execute("SELECT 1 FROM bookings WHERE booking_id = %s", (booking_id,))
+        if cursor.fetchone() is None:
+            conn.close()
+            return "Error: Booking ID does not exist!", 400  # Prevents ForeignKeyViolation
 
-        if row:
-            # Update existing checklist
-            query = f"UPDATE checklists SET checklist_items = {placeholder}, updated_at = CURRENT_TIMESTAMP WHERE checklist_id = {placeholder}"
-            cursor.execute(query, (checklist_json, row[0]))
-        else:
-            # Insert new checklist record
-            query = f"INSERT INTO checklists (booking_id, checklist_items) VALUES ({placeholder}, {placeholder})"
-            cursor.execute(query, (booking_id, checklist_json))
+        # Insert checklist entry
+        query = "INSERT INTO checklists (booking_id, checklist_items) VALUES (%s, %s)"
+        cursor.execute(query, (booking_id, checklist_json))
 
         conn.commit()
         conn.close()
         return redirect(url_for("custom_checklist", booking_id=booking_id))
 
-    else:
-        # GET: retrieve existing checklist if any
-        query = f"SELECT checklist_items FROM checklists WHERE booking_id = {placeholder}"
-        cursor.execute(query, (booking_id,))
-        row = cursor.fetchone()
-        checklist_items = json.loads(row[0]) if row else []  # Convert JSON back to Python list
-        conn.close()
+    # GET: Retrieve existing checklist (if any)
+    cursor.execute("SELECT checklist_items FROM checklists WHERE booking_id = %s", (booking_id,))
+    row = cursor.fetchone()
+    checklist_items = json.loads(row[0]) if row else []
 
-        return render_template("custom_checklist.html", checklist_items=checklist_items, booking_id=booking_id)
+    conn.close()
+    return render_template("custom_checklist.html", checklist_items=checklist_items, booking_id=booking_id)
 
 
 @app.route("/logout")
