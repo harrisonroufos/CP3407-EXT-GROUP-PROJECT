@@ -159,14 +159,14 @@ main {
 }
 
 .bookbtn, .editbtn, .profile-form button {
-    margin-bottom: 20px;
+    margin-top: 10px;
     padding: 8px;
     background-color: #0096FF;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    transform: scale(1.1);
+    transform: scale(1.5);
     text-decoration: none;
 }
 
