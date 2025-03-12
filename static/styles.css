@@ -96,6 +96,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 9999; /* ensures the header is on top of everything */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -159,7 +160,11 @@ main {
 
 /* Buttons */
 .bookbtn {
-    width: 70%;
+  position: relative; /* Keeps button inside cleaner-widget */
+  margin-top: 10px;
+  width: 70%;
+  max-width: 200px;
+  z-index: 1; /* Ensures it stays below the header */
 }
 
 .bookbtn, .editbtn, .profile-form button {
