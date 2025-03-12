@@ -13,14 +13,17 @@
 <!-- Header with navigation -->
 <header>
     <div class="logo">
-        <a href="/show_cleaners"><img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo"></a>
+        <a href="/show_cleaners">
+            <img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="MyClean Logo">
+        </a>
     </div>
 
     <div class="dropdown">
         <button class="dropbtn">
             ▼ {{ session['username'] if 'username' in session else 'Guest' }}
         </button>
-        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}" alt="Profile Icon">
+        <img class="profile-image" src="{{ url_for('static', filename='images/temp_profile_icon.png') }}"
+             alt="Profile Icon">
         <div class="dropdown-content">
             {% if 'username' in session %}
                 {% if session['cleaner_id'] %}
@@ -29,9 +32,10 @@
                 {% endif %}
                 {% if session['customer_id'] %}
                     <a href="/customer/edit">Edit Info</a>
+                    <a href="/custom_checklist">Custom Checklist</a>
                 {% endif %}
-                <a href="#">Bookings</a>
-                <a href="/logout">Log Out</a>
+                    <a href="#">Bookings</a>
+                    <a href="/logout">Log Out</a>
             {% else %}
                 <a href="/login">Login</a>
                 <a href="/">Sign Up</a>
@@ -45,21 +49,22 @@
     <h1>Available Cleaners</h1>
     <div class="available-cleaners">
         {% if cleaners %}
-            {% for cleaner in cleaners %}
-                <div class="cleaner-widget">
-                    <h2><a href="/cleaner/{{ cleaner.cleaner_id }}">{{ cleaner.full_name }}</a></h2>
-                    <p><b>{{ cleaner.location or "Unknown Location" }} | ⭐ {{ cleaner.rating or "N/A" }}</b></p>
-                    <p> 📞 {{ cleaner.phone_number or "Not Available" }} </p>
-                    <p> 📧 {{ cleaner.email or "Not Available" }} </p>
-                    <p>Experience: {{ cleaner.experience_years if cleaner.experience_years is not none else "No experience listed" }} years</p>
+        {% for cleaner in cleaners %}
+        <div class="cleaner-widget">
+            <h2><a href="/cleaner/{{ cleaner.cleaner_id }}">{{ cleaner.full_name }}</a></h2>
+            <p><b>{{ cleaner.location or "Unknown Location" }} | ⭐ {{ cleaner.rating or "N/A" }}</b></p>
+            <p> 📞 {{ cleaner.phone_number or "Not Available" }} </p>
+            <p> 📧 {{ cleaner.email or "Not Available" }} </p>
+            <p>Experience: {{ cleaner.experience_years if cleaner.experience_years is not none else "No experience
+                listed" }} years</p>
 
-                    {% if session['customer_id'] %}
-                        <button class="bookbtn">Book now!</button>
-                    {% endif %}
-                </div>
-            {% endfor %}
+            {% if session['customer_id'] %}
+            <button class="bookbtn">Book now!</button>
+            {% endif %}
+        </div>
+        {% endfor %}
         {% else %}
-            <p>No cleaners available.</p>
+        <p>No cleaners available.</p>
         {% endif %}
     </div>
 </main>
