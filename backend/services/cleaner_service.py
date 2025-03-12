@@ -1,5 +1,6 @@
 import psycopg2
 from backend.database import get_db_connection
+from backend.config import USE_LOCAL_DB
 
 
 def get_all_cleaners():
@@ -39,11 +40,12 @@ def get_cleaner_by_id(cleaner_id):
 
     try:
         cursor = conn.cursor()
-        query = """
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+        query = f"""
         SELECT cleaner_id, full_name, email, phone_number, bio, 
                location, rating, experience_years
         FROM cleaners
-        WHERE cleaner_id = %s
+        WHERE cleaner_id = {placeholder}
         """
         cursor.execute(query, (cleaner_id,))
         row = cursor.fetchone()
@@ -55,7 +57,7 @@ def get_cleaner_by_id(cleaner_id):
         cleaner = dict(zip(columns, row))
 
         conn.close()
-        return cleaner, 200  # Return cleaner details
+        return cleaner, 200
 
     except Exception as e:
         print(f"Database query error: {e}")

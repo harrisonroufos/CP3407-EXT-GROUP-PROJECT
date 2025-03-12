@@ -20,9 +20,6 @@ app.secret_key = "CP3407"  # Set Flask's secure key for session management
 # Retrieve the database URL from environment variables (used for Render deployment)
 from backend.config import DATABASE_URL
 
-# Local database file path
-LOCAL_DATABASE = "database_files/MyClean_Database.db"
-
 
 def create_table(cursor, query):
     """Create a table using the provided query."""
@@ -289,11 +286,12 @@ def edit_cleaner_profile(cleaner_id):
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        cursor.execute(
-            "UPDATE cleaners SET full_name = %s, email = %s, phone_number = %s, location = %s, bio = %s, experience_years = %s WHERE cleaner_id = %s",
-            (full_name, email, phone_number, location, bio, experience_years, session['cleaner_id']))
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+        query = f"UPDATE cleaners SET full_name = {placeholder}, email = {placeholder}, phone_number = {placeholder}, location = {placeholder}, bio = {placeholder}, experience_years = {placeholder} WHERE cleaner_id = {placeholder}"
+        cursor.execute(query, (full_name, email, phone_number, location, bio, experience_years, session['cleaner_id']))
 
-        cursor.execute("UPDATE users SET username = %s WHERE user_id = %s", (username, session['user_id']))
+        query = f"UPDATE users SET username = {placeholder} WHERE user_id = {placeholder}"
+        cursor.execute(query, (username, session['user_id']))
         session['username'] = username
 
         conn.commit()
@@ -319,11 +317,12 @@ def edit_customer_info():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        cursor.execute(
-            "UPDATE customers SET full_name = %s, email = %s, phone_number = %s, location = %s WHERE customer_id = %s",
-            (full_name, email, phone_number, location, session['customer_id']))
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+        query = f"UPDATE customers SET full_name = {placeholder}, email = {placeholder}, phone_number = {placeholder}, location = {placeholder} WHERE customer_id = {placeholder}"
+        cursor.execute(query, (full_name, email, phone_number, location, session['customer_id']))
 
-        cursor.execute("UPDATE users SET username = %s WHERE user_id = %s", (username, session['user_id']))
+        query = f"UPDATE users SET username = {placeholder} WHERE user_id = {placeholder}"
+        cursor.execute(query, (username, session['user_id']))
 
         session['username'] = username
 
@@ -347,8 +346,10 @@ def login():
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # Retrieve the user from the database
-        cursor.execute("SELECT user_id, username, password FROM users WHERE username = %s", (username,))
+        # Use conditional placeholder
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+        query = f"SELECT user_id, username, password FROM users WHERE username = {placeholder}"
+        cursor.execute(query, (username,))
         user = cursor.fetchone()
 
         if user:
@@ -357,24 +358,35 @@ def login():
                 session['user_id'] = user[0]  # Store user ID in session
                 session['username'] = user[1]  # Store username in session
 
-                try:  # This is incredibly messy but I promise it works
-                    cursor.execute("SELECT cleaner_id FROM cleaners WHERE user_id = %s", (user[0],))
-                    session['cleaner_id'] = cursor.fetchone()[0]
-                    session['customer_id'] = False
-                except TypeError:
-                    try:
-                        cursor.execute("SELECT customer_id FROM customers WHERE user_id = %s", (user[0],))
-                        session['customer_id'] = cursor.fetchone()[0]
+                # Fetch additional data using conditional placeholder
+                placeholder = "?" if USE_LOCAL_DB else "%s"
+                try:
+                    cursor.execute(f"SELECT cleaner_id FROM cleaners WHERE user_id = {placeholder}", (user[0],))
+                    result = cursor.fetchone()
+                    if result is not None:
+                        session['cleaner_id'] = result[0]
+                    else:
                         session['cleaner_id'] = False
-                    except TypeError:
+                    session['customer_id'] = False
+                except Exception:
+                    try:
+                        cursor.execute(f"SELECT customer_id FROM customers WHERE user_id = {placeholder}", (user[0],))
+                        result = cursor.fetchone()
+                        if result is not None:
+                            session['customer_id'] = result[0]
+                        else:
+                            session['customer_id'] = False
+                        session['cleaner_id'] = False
+                    except Exception:
                         session['cleaner_id'] = False
                         session['customer_id'] = False
+                conn.close()
                 return redirect(url_for('show_cleaners'))  # Redirect to main page
             else:
+                conn.close()
                 return render_template("login.html", error="Invalid credentials!")
         conn.close()
         return render_template("login.html", error="Invalid credentials!")
-
     return render_template('login.html')
 
 
@@ -395,19 +407,20 @@ def signup():
         conn = get_db_connection()
         cursor = conn.cursor()
 
+        placeholder = "?" if USE_LOCAL_DB else "%s"
         # Check if username already exists
-        cursor.execute("SELECT username FROM users WHERE username = %s", (username,))
+        query = f"SELECT username FROM users WHERE username = {placeholder}"
+        cursor.execute(query, (username,))
         existing_user = cursor.fetchone()
 
         # Check if email already exists in either customers or cleaners
-        cursor.execute("SELECT email FROM customers WHERE email = %s UNION SELECT email FROM cleaners WHERE email = %s",
-                       (email, email))
+        query = f"SELECT email FROM customers WHERE email = {placeholder} UNION SELECT email FROM cleaners WHERE email = {placeholder}"
+        cursor.execute(query, (email, email))
         existing_email = cursor.fetchone()
 
         # Check if phone number already exists in either customers or cleaners
-        cursor.execute(
-            "SELECT phone_number FROM customers WHERE phone_number = %s UNION SELECT phone_number FROM cleaners WHERE phone_number = %s",
-            (phone_number, phone_number))
+        query = f"SELECT phone_number FROM customers WHERE phone_number = {placeholder} UNION SELECT phone_number FROM cleaners WHERE phone_number = {placeholder}"
+        cursor.execute(query, (phone_number, phone_number))
         existing_phone = cursor.fetchone()
 
         if existing_user:
@@ -423,21 +436,22 @@ def signup():
             return render_template("signup.html", error="Phone number is already in use!")
 
         # Insert into users table
-        cursor.execute(
-            "INSERT INTO users (username, password) VALUES (%s, %s) RETURNING user_id",
-            (username, hashed_password)
-        )
-        user_id = cursor.fetchone()[0]
+        if USE_LOCAL_DB:
+            query = f"INSERT INTO users (username, password) VALUES ({placeholder}, {placeholder})"
+            cursor.execute(query, (username, hashed_password))
+            user_id = cursor.lastrowid
+        else:
+            query = f"INSERT INTO users (username, password) VALUES ({placeholder}, {placeholder}) RETURNING user_id"
+            cursor.execute(query, (username, hashed_password))
+            user_id = cursor.fetchone()[0]
 
         # Insert into either customers or cleaners table
         if user_type == 'customer':
-            cursor.execute(
-                "INSERT INTO customers (user_id, full_name, email, phone_number, location) VALUES (%s, %s, %s, %s, %s)",
-                (user_id, full_name, email, phone_number, location))
+            query = f"INSERT INTO customers (user_id, full_name, email, phone_number, location) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}, {placeholder})"
+            cursor.execute(query, (user_id, full_name, email, phone_number, location))
         else:
-            cursor.execute(
-                "INSERT INTO cleaners (user_id, full_name, email, phone_number, location, experience_years) VALUES (%s, %s, %s, %s, %s, %s)",
-                (user_id, full_name, email, phone_number, location, experience_years))
+            query = f"INSERT INTO cleaners (user_id, full_name, email, phone_number, location, experience_years) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}, {placeholder}, {placeholder})"
+            cursor.execute(query, (user_id, full_name, email, phone_number, location, experience_years))
 
         conn.commit()
         conn.close()

@@ -10,9 +10,9 @@ def get_db_connection():
 
     try:
         if USE_LOCAL_DB:
-            conn = sqlite3.connect(DATABASE_URL)  # ✅ Correct SQLite connection (file path)
+            conn = sqlite3.connect(DATABASE_URL)  # Correct SQLite connection (file path)
         else:
-            conn = psycopg2.connect(DATABASE_URL)  # ✅ Correct PostgreSQL connection
+            conn = psycopg2.connect(DATABASE_URL)  # Correct PostgreSQL connection
 
         print("✅ Database connection successful!")
         return conn
