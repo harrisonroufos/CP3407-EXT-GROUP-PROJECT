@@ -36,6 +36,16 @@ As a customer, I want to create a custom cleaning checklist for my appointments 
 2. Implement back end to store this checklist with a customer. 2 day.
 3. Test and debug. 1 day.
 
+## Assigned task:
+1. Develop UI for custom checklist creation.
+    > Assigned to: `Casey` & 'Damon' | Time elapsed: ` days` | Start day: 09/03/2025  | Finished day: 
+2. Implement back end to store this checklist with a customer.
+    > Assigned to: `Damon` | Time elapsed: ` days` | Start day: 09/03/2025 | Finished day: 
+3. Test and debug.
+    > Assigned to: 'Casey' & 'Damon' | Time elapsed: ` days` | Start day: 09/03/2025 | Finished day: 
+
+   
+
 Total days estimation - 5 days
 ---
 
