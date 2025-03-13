@@ -25,6 +25,7 @@ Hence, there are 32 days worth of user story development per iteration.
 **Estimated Time - 31 days**
 
 # Iteration 2 plan
+We have changed the velocity based on iteration 1 outcome.
 Assume:
 > - 4 weeks per iteration
 > - 20 business days per iteration
