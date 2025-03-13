@@ -36,7 +36,7 @@ Assume:
 
 Hence, there are 20 days worth of user story development per iteration.
 
-### NEW Iteration 2 plan based on iteration 2 summary
+### NEW Iteration 2 plan (based on iteration 1 summary)
 1. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
 2. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30
 3. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 20
