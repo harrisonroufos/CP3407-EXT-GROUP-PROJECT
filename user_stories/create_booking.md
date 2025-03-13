@@ -31,6 +31,16 @@ As a customer, be able to create a booking from a chosen cleaner.
 3. Develop UI for dummy payment. 1 days.
 4. Test and debug. 1 day.
 
+## Assigned task:
+1. Develop UI for booking.
+    > Assigned to: `Daniel` | Time elapsed: ` days` | Start day:  | Finished day: 
+2. Implement back end to store the booking.
+    > Assigned to: `Harrison` | Time elapsed: ` days` | Start day: | Finished day: 
+3. Develop UI for dummy payment.
+    > Assigned to: `Daniel`| Time elapsed: ` days` | Start day:  | Finished day:
+4. Test and debug.
+    > Assigned to: `Damon` | Time elapsed: ` days` | Start day: | Finished day: 
+
 
 Total days estimation - 5 days
 ---
