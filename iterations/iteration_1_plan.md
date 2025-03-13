@@ -18,9 +18,9 @@ Hence, there are 32 days worth of user story development per iteration.
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10 - COMPLETE
 2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10 - COMPLETE
 3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 4 days | 20
-4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
-5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30
-6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 20
+4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - MOVED TO ITERATION 2
+5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30 - MOVED TO ITERATION 2
+6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 20 - MOVED TO ITERATION 2
 
 **Estimated Time - 31 days**
 
