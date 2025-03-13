@@ -19,7 +19,7 @@ Hence, there are 32 days worth of user story development per iteration.
 2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10 - COMPLETE
 3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 4 days | 20
 4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - MOVED TO ITERATION 2
-5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30 - MOVED TO ITERATION 2
+5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30 - DROPPED
 6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 20 - MOVED TO ITERATION 2
 
 **Estimated Time - 31 days**
@@ -38,7 +38,7 @@ Assume:
 Hence, there are 20 days worth of user story development per iteration.
 
 ### NEW Iteration 2 plan (based on iteration 1 summary)
-1. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 20
+1. [Create Booking](/user_stories/create_booking.md) | 5 days | 10
 2. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
 3. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 30
 4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30
@@ -70,6 +70,7 @@ Hence, there are 20 days worth of user story development per iteration.
 * [Create Schedule](/user_stories/user_story_create_schedule.md) - Due to iteration 2 re-structure from iteration 1 summary.
 * [Schedule Notifications](/user_stories/user_story_schedule_notifications.md) - Due to iteration 2 re-structure from iteration 1 summary.
 * [Referral Program for Customers](/user_stories/user_story_referral_program_for_customers.md) - Due to iteration 2 re-structure from iteration 1 summary.
+* [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) - Due to iteration 2 re-structure from iteration 1 
 
 # In progress:
 * > Format: `user story link` | `developer name` | `Task name` | `date started` <br>
