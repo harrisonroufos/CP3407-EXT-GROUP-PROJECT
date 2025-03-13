@@ -32,9 +32,9 @@ Assume:
 > - 0.2 velocity (team efficiency)
 > - 4 developers 
 > - `Total Development Days` = `business days per iteration` x `velocity` x `number of developers`
-> - Total = 20 x 0.2 x 4
+> - Total = 20 x 0.25 x 4
 
-Hence, there are 16 days worth of user story development per iteration.
+Hence, there are 20 days worth of user story development per iteration.
 
 ### Iteration 2
 1. [Booking Reminders](/user_stories/user_story_booking_reminders.md) | 6.5 days | 20
@@ -46,6 +46,13 @@ Hence, there are 16 days worth of user story development per iteration.
 7. [Referral Program for Customers](/user_stories/user_story_referral_program_for_customers.md) | 4 days | 50
 
 **Estimated Time - 30.5 days**
+
+**NEW Iteration 2 plan based on iteration 2 summary**
+1. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
+2. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30
+3. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 20
+4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30
+
 
 ### Dropped User Stories (Deprioritised)
 * [Route Mapping](/user_stories/user_story_efficient_route_mapping.md) - Found to be outside of project scope and required too many development days for length of iteration cycle.
