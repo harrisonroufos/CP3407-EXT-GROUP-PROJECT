@@ -75,6 +75,15 @@ Hence, there are 20 days worth of user story development per iteration.
 # In progress:
 * > Format: `user story link` | `developer name` | `Task name` | `date started` <br>
 > Use this area to track tasks that are in progress exclusilvey. Once they are complete, move them to the 'complete' section.
+* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon`| `Develop UI for custom checklist creation.` | 09/03/2025
+* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Damon` | `Implement back end to store this checklist with a customer.` | 09/03/2025
+* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | `Test and debug.` | 09/03/2025
+
+* [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | --/--/----
+* [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | --/--/----
+* [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for dummy payment.` | --/--/----
+* [Create Booking](/user_stories/create_booking.md) | `Damon` | `Test and debug. 1 day.` | --/--/----
+
 
 
 
