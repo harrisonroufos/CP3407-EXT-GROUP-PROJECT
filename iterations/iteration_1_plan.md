@@ -16,7 +16,7 @@ Hence, there are 32 days worth of user story development per iteration.
 
 ### Iteration 1
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10 - COMPLETE
-2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10
+2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10 - COMPLETE
 3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 4 days | 20
 4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
 5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30
@@ -42,13 +42,7 @@ Hence, there are 32 days worth of user story development per iteration.
 * [See Current Area Jobs](/user_stories/user_story_see_current_area_cleaning_jobs.md) - Iteration development cycle is too small to effectively incorporate location-based tracking and mapping.
 
 # In progress:
-> Format: `user story link` | `developer name` | `Task name` | `date started` <br>
-> Use this area to track tasks that are in progress exclusilvey. Once they are complete, move them to the 'complete' section.
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Harrison` | `Create a sign up page` | 28/2/2025
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Casey` & `Harrison`  | `Implement backend to add new user to the database` | 28/2/2025
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Daniel` | `Create UI for profile` | ___
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Damon` | `Display user infomation on user profile` | ___
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `__` | `Test and debug` | ___
+
 
 
 # Completed:
@@ -58,3 +52,11 @@ Hence, there are 32 days worth of user story development per iteration.
 * [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Daniel` | `Develop a UI to browse cleaners` | 22/02/2025
 * [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Damon` | `Develop backend to get cleaners from database.` | 22/02/2025
 * [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` | `Test and debug.` | 22/02/2025
+
+* > Format: `user story link` | `developer name` | `Task name` | `date started` <br>
+> Use this area to track tasks that are in progress exclusilvey. Once they are complete, move them to the 'complete' section.
+* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Harrison` | `Create a sign up page` | 28/2/2025
+* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Casey` & `Harrison`  | `Implement backend to add new user to the database` | 28/2/2025
+* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Daniel` | `Create UI for profile` | 07/03/2025
+* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Damon` | `Display user infomation on user profile` | 02/03/2025
+* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Casey` | `Test and debug` | 01/03/2025
