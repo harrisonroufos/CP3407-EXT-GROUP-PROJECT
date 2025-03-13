@@ -41,7 +41,7 @@ As a cleaner, I want to create a profile with my services and pricing so that po
 2. Implement backend to add new 'Cleaners' and 'Users' to the database.
     > Assigned to: `Casey` & `Harrison` | Time elapsed: `2 days` | Start day: 28/2/2025 | Finished day: 1/03/2025
 3. Create UI for profile.
-    > Assigned to: `Daniel` | Time elapsed: `__ days` | Start day:  | Finished day: 
+    > Assigned to: `Daniel` | Time elapsed: `2 days` | Start day: 07/03/2025 | Finished day: 10/03/2025
 4. Display user information on user profile.
     > Assigned to: `Damon ` | Time elapsed: `2 days` | Start day: 02/03/2025  | Finished day: 08/03/2025
 5. Test and debug.
