@@ -86,7 +86,7 @@ Hence, there are 20 days worth of user story development per iteration.
 
 * [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | 14/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 14/03/2025
-* [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for dummy payment.` | --/--/----
+* [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | `Develop UI for dummy payment.` | 14/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Damon` | `Test and debug.` | --/--/----
 
 
