@@ -342,9 +342,14 @@ def book_cleaner(cleaner_id):
     conn = get_db_connection()
     cursor = conn.cursor()
 
+    # Determine correct placeholder syntax
+    placeholder = "?" if USE_LOCAL_DB else "%s"
+
     # Validate if the cleaner exists
-    cursor.execute("SELECT full_name, location FROM cleaners WHERE cleaner_id = %s", (cleaner_id,))
+    query = f"SELECT full_name, location FROM cleaners WHERE cleaner_id = {placeholder}"
+    cursor.execute(query, (cleaner_id,))
     cleaner = cursor.fetchone()
+
     if not cleaner:
         abort(404)  # Cleaner not found → return 404 error.
 
@@ -356,19 +361,27 @@ def book_cleaner(cleaner_id):
         booking_date_obj = datetime.strptime(booking_date, "%Y-%m-%dT%H:%M")
 
         # Insert booking into database
-        query = """
-            INSERT INTO bookings (cleaner_id, customer_id, booking_date, status, created_at)
-            VALUES (%s, %s, %s, %s, NOW()) RETURNING booking_id
-        """
-        cursor.execute(query, (cleaner_id, customer_id, booking_date, "pending"))
-        booking_id = cursor.fetchone()[0]  # Get the new booking ID
+        if USE_LOCAL_DB:
+            query = f"""
+                INSERT INTO bookings (cleaner_id, customer_id, booking_date, status, created_at)
+                VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}, CURRENT_TIMESTAMP)
+            """
+            cursor.execute(query, (cleaner_id, customer_id, booking_date, "pending"))
+            booking_id = cursor.lastrowid  # Get last inserted row ID for SQLite
+        else:
+            query = f"""
+                INSERT INTO bookings (cleaner_id, customer_id, booking_date, status, created_at)
+                VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}, NOW()) RETURNING booking_id
+            """
+            cursor.execute(query, (cleaner_id, customer_id, booking_date, "pending"))
+            booking_id = cursor.fetchone()[0]  # Get booking ID for PostgreSQL
 
-        # Insert checklist items
+        # Insert checklist items if any
         if checklist_items:
             checklist_lines = [item.strip() for item in checklist_items.split("\n") if item.strip()]
             for item in checklist_lines:
-                cursor.execute("INSERT INTO checklists (booking_id, checklist_items) VALUES (%s, %s)",
-                               (booking_id, item))
+                query = f"INSERT INTO checklists (booking_id, checklist_items) VALUES ({placeholder}, {placeholder})"
+                cursor.execute(query, (booking_id, item))
 
         conn.commit()
         conn.close()
@@ -378,6 +391,8 @@ def book_cleaner(cleaner_id):
 
     conn.close()
     return render_template("book_cleaner.html", cleaner_id=cleaner_id)
+
+
 
 
 @app.route("/payment/<int:booking_id>", methods=["GET", "POST"])
@@ -390,29 +405,47 @@ def payment(booking_id):
     return render_template("payment.html", booking_id=booking_id)
 
 
-
 @app.route("/booking-confirmation/<int:booking_id>")
 def booking_confirmation(booking_id):
     conn = get_db_connection()
     cursor = conn.cursor()
 
+    # Determine the correct placeholder syntax
+    placeholder = "?" if USE_LOCAL_DB else "%s"
+
     try:
         # Fetch booking details along with cleaner name and location
-        query = """
+        query = f"""
             SELECT b.booking_id, b.booking_date, c.full_name, c.location
             FROM bookings b
             JOIN cleaners c ON b.cleaner_id = c.cleaner_id
-            WHERE b.booking_id = %s
+            WHERE b.booking_id = {placeholder}
         """
         cursor.execute(query, (booking_id,))
         booking = cursor.fetchone()
 
         if not booking:
-            return render_template("error.html", message="Booking not found.")
+            abort(404)  # Booking not found → return 404 error.
+
+        # Fix the error: Convert string to datetime if needed
+        booking_date = booking[1]
+
+        # If booking_date is a string (likely in SQLite), parse it correctly
+        if isinstance(booking_date, str):
+            try:
+                # Handle 'YYYY-MM-DDTHH:MM' format from form input
+                if "T" in booking_date:
+                    booking_date = datetime.strptime(booking_date, "%Y-%m-%dT%H:%M")
+                else:
+                    # Handle standard SQLite format 'YYYY-MM-DD HH:MM:SS'
+                    booking_date = datetime.strptime(booking_date, "%Y-%m-%d %H:%M:%S")
+            except ValueError as e:
+                print(f"⚠️ Date parsing error: {e}")  # Debugging
+                abort(500)  # Internal Server Error if parsing fails
 
         return render_template("booking_confirmation.html",
                                booking_id=booking[0],
-                               booking_date=booking[1].strftime("%Y-%m-%d %H:%M"),
+                               booking_date=booking_date.strftime("%Y-%m-%d %H:%M"),
                                cleaner_name=booking[2], location=booking[3])
 
     finally:
