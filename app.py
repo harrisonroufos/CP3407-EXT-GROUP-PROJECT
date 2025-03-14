@@ -6,7 +6,7 @@ This is the main Python/Flask file for the MyClean App
 
 import os, sqlite3, psycopg2, requests
 from backend.routes.cleaner_routes import cleaner_bp
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash, get_flashed_messages
 from werkzeug.security import generate_password_hash, check_password_hash
 from backend.config import USE_LOCAL_DB
 from backend.database import get_db_connection
@@ -705,14 +705,14 @@ def custom_checklist():
             cursor.execute(insert_query, (customer_id, checklist_json))
         conn.commit()
         conn.close()
+        flash("Checklist saved successfully!", "success")
         return redirect(url_for("custom_checklist"))
 
     # Retrieve existing checklist for GET request
     cursor.execute("SELECT checklist_items FROM customer_checklists WHERE customer_id = " + placeholder, (customer_id,))
     row = cursor.fetchone()
     if row:
-        # If the returned value is a string (e.g. SQLite), parse it;
-        # if it's already a list/dict (e.g. PostgreSQL JSON type), use it directly.
+        # For SQLite, the JSON is stored as a string, so we parse it; PostgreSQL returns a native type.
         if isinstance(row[0], str):
             checklist_items = json.loads(row[0])
         else:

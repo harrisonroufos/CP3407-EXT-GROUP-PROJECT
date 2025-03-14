@@ -47,8 +47,19 @@
   {% include "header.html" %}
   <main class="checklist-container">
     <h2>Custom Checklist</h2>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
     <form class="checklist-form" method="POST" action="/custom_checklist">
-      <input type="hidden" name="booking_id" value="{{ booking_id }}">
       <ul id="checklist-items">
         {% for item in checklist_items %}
         <li>
