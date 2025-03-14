@@ -11,6 +11,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from backend.config import USE_LOCAL_DB
 from backend.database import get_db_connection
 import json
+from datetime import datetime
 
 # Initialise the Flask app
 app = Flask(__name__)
@@ -292,45 +293,146 @@ def show_cleaners():
     return render_template('index.html', cleaners=cleaners)
 
 
+# @app.route("/book/<int:cleaner_id>", methods=["GET", "POST"])
+# def book_cleaner(cleaner_id):
+#     # Only customers can book a cleaner
+#     if "customer_id" not in session:
+#         return redirect(url_for("login"))
+#
+#     conn = get_db_connection()
+#     cursor = conn.cursor()
+#     placeholder = "?" if USE_LOCAL_DB else "%s"
+#
+#     if request.method == "POST":
+#         booking_date = request.form.get("booking_date")
+#         checklist_items = request.form.get("checklist_items", "")
+#
+#         # Insert booking row
+#         if USE_LOCAL_DB:
+#             # SQLite
+#             query = f"INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder})"
+#             cursor.execute(query, (cleaner_id, session["customer_id"], booking_date, "pending"))
+#             booking_id = cursor.lastrowid
+#         else:
+#             # PostgreSQL
+#             query = f"INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}) RETURNING booking_id"
+#             cursor.execute(query, (cleaner_id, session["customer_id"], booking_date, "pending"))
+#             booking_id = cursor.fetchone()[0]
+#
+#         # Insert into checklists table referencing the new booking_id
+#         query = f"INSERT INTO checklists (booking_id, checklist_items) VALUES ({placeholder}, {placeholder})"
+#         cursor.execute(query, (booking_id, checklist_items))
+#
+#         conn.commit()
+#         conn.close()
+#
+#         # Redirect to show cleaners or a booking confirmation page
+#         return redirect(url_for("show_cleaners"))
+#
+#     # GET request: show booking form
+#     conn.close()
+#     return render_template("book_cleaner.html", cleaner_id=cleaner_id)
+
 @app.route("/book/<int:cleaner_id>", methods=["GET", "POST"])
 def book_cleaner(cleaner_id):
-    # Only customers can book a cleaner
     if "customer_id" not in session:
         return redirect(url_for("login"))
 
+    customer_id = session["customer_id"]
     conn = get_db_connection()
     cursor = conn.cursor()
-    placeholder = "?" if USE_LOCAL_DB else "%s"
 
-    if request.method == "POST":
-        booking_date = request.form.get("booking_date")
-        checklist_items = request.form.get("checklist_items", "")
+    try:
+        # Validate if the cleaner exists
+        cursor.execute("SELECT full_name, location FROM cleaners WHERE cleaner_id = %s", (cleaner_id,))
+        cleaner = cursor.fetchone()
+        if not cleaner:
+            return render_template("book_cleaner.html", cleaner_id=cleaner_id, error="Invalid cleaner selected.")
 
-        # Insert booking row
-        if USE_LOCAL_DB:
-            # SQLite
-            query = f"INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder})"
-            cursor.execute(query, (cleaner_id, session["customer_id"], booking_date, "pending"))
-            booking_id = cursor.lastrowid
-        else:
-            # PostgreSQL
-            query = f"INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}) RETURNING booking_id"
-            cursor.execute(query, (cleaner_id, session["customer_id"], booking_date, "pending"))
-            booking_id = cursor.fetchone()[0]
+        if request.method == "POST":
+            booking_date = request.form.get("booking_date")
+            checklist_items = request.form.get("checklist_items", "").strip()
 
-        # Insert into checklists table referencing the new booking_id
-        query = f"INSERT INTO checklists (booking_id, checklist_items) VALUES ({placeholder}, {placeholder})"
-        cursor.execute(query, (booking_id, checklist_items))
+            # Validate date format
+            try:
+                booking_date_obj = datetime.strptime(booking_date, "%Y-%m-%dT%H:%M")
+            except ValueError:
+                return render_template("book_cleaner.html", cleaner_id=cleaner_id,
+                                       error="Invalid date format. Use YYYY-MM-DD HH:MM.")
 
-        conn.commit()
+            # Insert booking into database
+            query = """
+                INSERT INTO bookings (cleaner_id, customer_id, booking_date, status, created_at)
+                VALUES (%s, %s, %s, %s, NOW()) RETURNING booking_id
+            """
+            cursor.execute(query, (cleaner_id, customer_id, booking_date, "pending"))
+
+            # Ensure booking_id is retrieved correctly
+            result = cursor.fetchone()
+            if result:
+                booking_id = result[0]
+            else:
+                return render_template("book_cleaner.html", cleaner_id=cleaner_id,
+                                       error="Booking could not be created.")
+
+            # Insert checklist items (one item per row)
+            if checklist_items:
+                checklist_lines = [item.strip() for item in checklist_items.split("\n") if item.strip()]
+                for item in checklist_lines:
+                    cursor.execute("INSERT INTO checklists (booking_id, checklist_items) VALUES (%s, %s)",
+                                   (booking_id, item))
+
+            conn.commit()
+
+            # Debugging print statement (Check Flask console logs)
+            print(f"✅ Booking confirmed! Redirecting to confirmation page with ID: {booking_id}")
+
+            return redirect(url_for("booking_confirmation", booking_id=booking_id))
+
+    except Exception as e:
+        conn.rollback()
+        print(f"❌ Error in booking: {e}")  # Debugging
+        return render_template("book_cleaner.html", cleaner_id=cleaner_id, error=f"An error occurred: {str(e)}")
+    finally:
         conn.close()
 
-        # Redirect to show cleaners or a booking confirmation page
-        return redirect(url_for("show_cleaners"))
-
-    # GET request: show booking form
-    conn.close()
     return render_template("book_cleaner.html", cleaner_id=cleaner_id)
+
+
+
+@app.route("/booking-confirmation/<int:booking_id>")
+def booking_confirmation(booking_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        # Fetch booking details along with cleaner name and location
+        query = """
+            SELECT b.booking_id, b.booking_date, c.full_name, c.location
+            FROM bookings b
+            JOIN cleaners c ON b.cleaner_id = c.cleaner_id
+            WHERE b.booking_id = %s
+        """
+        cursor.execute(query, (booking_id,))
+        booking = cursor.fetchone()
+
+        if not booking:
+            return render_template("error.html", message="Booking not found.")
+
+        return render_template("booking_confirmation.html",
+                               booking_id=booking[0],
+                               booking_date=booking[1].strftime("%Y-%m-%d %H:%M"),
+                               cleaner_name=booking[2], location=booking[3])
+
+    finally:
+        conn.close()
+
+###########################################################
+###########################################################
+###########################################################
+###########################################################
+
+
 
 
 @app.route("/cleaner/<int:cleaner_id>", methods=["GET"])

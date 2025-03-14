@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="confirmation-page">
+
+<!-- Header with navigation -->
+{% include "header.html" %}
+
+<main>
+    <div class="confirmation-container">
+        <h1>Booking Confirmed ✅</h1>
+
+        <p><b>Booking ID:</b> {{ booking_id }}</p>
+        <p><b>Cleaner:</b> {{ cleaner_name }}</p>
+        <p><b>Booking Date:</b> {{ booking_date }}</p>
+        <p><b>Location:</b> {{ location }}</p>
+
+        <a href="{{ url_for('show_cleaners') }}" class="btn">Browse More Cleaners</a>
+    </div>
+</main>
+
+<!-- Footer -->
+{% include "footer.html" %}
+</body>
+</html>
