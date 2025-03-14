@@ -1,50 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Checklist</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-    <script>
-        function addChecklistItem() {
-            const list = document.getElementById("checklist-items");
-            const newItem = document.createElement("li");
-            const input = document.createElement("input");
-            input.type = "text";
-            input.name = "checklist_items";
-            input.required = true;
-            newItem.appendChild(input);
-            list.appendChild(newItem);
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Checklist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  <script>
+    // Function to add a new checklist item
+    function addChecklistItem() {
+      const list = document.getElementById("checklist-items");
+      const newItem = document.createElement("li");
+      newItem.innerHTML = '<input type="text" name="checklist_items" required> ' +
+                          '<button type="button" onclick="removeItem(this)">Remove</button> ' +
+                          '<button type="button" onclick="moveUp(this)">Up</button> ' +
+                          '<button type="button" onclick="moveDown(this)">Down</button>';
+      list.appendChild(newItem);
+    }
+
+    // Remove the checklist item from the list
+    function removeItem(btn) {
+      const li = btn.parentNode;
+      li.parentNode.removeChild(li);
+    }
+
+    // Move the checklist item up
+    function moveUp(btn) {
+      const li = btn.parentNode;
+      const prev = li.previousElementSibling;
+      if (prev) {
+        li.parentNode.insertBefore(li, prev);
+      }
+    }
+
+    // Move the checklist item down
+    function moveDown(btn) {
+      const li = btn.parentNode;
+      const next = li.nextElementSibling;
+      if (next) {
+        li.parentNode.insertBefore(next, li);
+      }
+    }
+  </script>
 </head>
-
 <body class="checklist-page">
-
-    <!-- Header with navigation -->
-    {% include "header.html" %}
-
-    <main class="checklist-container">
-        <h2>Custom Checklist</h2>
-
-        <form class="checklist-form" method="POST" action="/custom_checklist/{{ booking_id }}">
-            <input type="hidden" name="booking_id" value="{{ booking_id }}">
-
-            <ul id="checklist-items">
-                {% for item in checklist_items %}
-                <li><input type="text" name="checklist_items" value="{{ item }}" required></li>
-                {% endfor %}
-            </ul>
-
-            <div class="checklist-buttons">
-                <button type="button" class="add-btn" onclick="addChecklistItem()">Add Item</button>
-                <button type="submit" class="save-btn">Save Checklist</button>
-            </div>
-        </form>
-    </main>
-
-    <!-- Footer -->
-    {% include "footer.html" %}
+  {% include "header.html" %}
+  <main class="checklist-container">
+    <h2>Custom Checklist</h2>
+    <form class="checklist-form" method="POST" action="/custom_checklist">
+      <input type="hidden" name="booking_id" value="{{ booking_id }}">
+      <ul id="checklist-items">
+        {% for item in checklist_items %}
+        <li>
+          <input type="text" name="checklist_items" value="{{ item }}" required>
+          <button type="button" onclick="removeItem(this)">Remove</button>
+          <button type="button" onclick="moveUp(this)">Up</button>
+          <button type="button" onclick="moveDown(this)">Down</button>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="checklist-buttons">
+        <button type="button" class="add-btn" onclick="addChecklistItem()">Add Item</button>
+        <button type="submit" class="save-btn">Save Checklist</button>
+      </div>
+    </form>
+  </main>
+  {% include "footer.html" %}
 </body>
 </html>

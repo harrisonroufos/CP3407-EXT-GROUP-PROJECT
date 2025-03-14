@@ -193,6 +193,13 @@ def init_db():
                 checklist_items JSON NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
+            checklist_id SERIAL PRIMARY KEY,
+            customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+            checklist_items JSON NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )'''
         }
     else:
@@ -240,6 +247,13 @@ def init_db():
                 checklist_items TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
+            checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+            checklist_items TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )'''
         }
 
@@ -393,8 +407,6 @@ def book_cleaner(cleaner_id):
     return render_template("book_cleaner.html", cleaner_id=cleaner_id)
 
 
-
-
 @app.route("/payment/<int:booking_id>", methods=["GET", "POST"])
 def payment(booking_id):
     if request.method == "POST":
@@ -451,12 +463,11 @@ def booking_confirmation(booking_id):
     finally:
         conn.close()
 
-###########################################################
-###########################################################
-###########################################################
-###########################################################
 
-
+###########################################################
+###########################################################
+###########################################################
+###########################################################
 
 
 @app.route("/cleaner/<int:cleaner_id>", methods=["GET"])
@@ -662,39 +673,54 @@ def signup():
     return render_template('signup.html')
 
 
-@app.route("/custom_checklist/<int:booking_id>", methods=["GET", "POST"])
-def custom_checklist(booking_id):
+@app.route("/custom_checklist", methods=["GET", "POST"])
+def custom_checklist():
     if "customer_id" not in session:
         return redirect(url_for("login"))
 
+    customer_id = session["customer_id"]
     conn = get_db_connection()
     cursor = conn.cursor()
+    placeholder = "?" if USE_LOCAL_DB else "%s"
 
     if request.method == "POST":
+        # Retrieve checklist items from the form
         checklist_items = request.form.getlist("checklist_items")
         checklist_json = json.dumps(checklist_items)
 
-        # Ensure the given booking_id exists before inserting
-        cursor.execute("SELECT 1 FROM bookings WHERE booking_id = %s", (booking_id,))
-        if cursor.fetchone() is None:
-            conn.close()
-            return "Error: Booking ID does not exist!", 400  # Prevents ForeignKeyViolation
+        # Check if a checklist for this customer already exists
+        cursor.execute("SELECT checklist_id FROM customer_checklists WHERE customer_id = " + placeholder,
+                       (customer_id,))
+        row = cursor.fetchone()
 
-        # Insert checklist entry
-        query = "INSERT INTO checklists (booking_id, checklist_items) VALUES (%s, %s)"
-        cursor.execute(query, (booking_id, checklist_json))
-
+        if row:
+            # Update existing checklist
+            update_query = ("UPDATE customer_checklists SET checklist_items = " + placeholder +
+                            ", updated_at = CURRENT_TIMESTAMP WHERE checklist_id = " + placeholder)
+            cursor.execute(update_query, (checklist_json, row[0]))
+        else:
+            # Insert new checklist record for the customer
+            insert_query = ("INSERT INTO customer_checklists (customer_id, checklist_items) VALUES (" +
+                            placeholder + ", " + placeholder + ")")
+            cursor.execute(insert_query, (customer_id, checklist_json))
         conn.commit()
         conn.close()
-        return redirect(url_for("custom_checklist", booking_id=booking_id))
+        return redirect(url_for("custom_checklist"))
 
-    # GET: Retrieve existing checklist (if any)
-    cursor.execute("SELECT checklist_items FROM checklists WHERE booking_id = %s", (booking_id,))
+    # Retrieve existing checklist for GET request
+    cursor.execute("SELECT checklist_items FROM customer_checklists WHERE customer_id = " + placeholder, (customer_id,))
     row = cursor.fetchone()
-    checklist_items = json.loads(row[0]) if row else []
-
+    if row:
+        # If the returned value is a string (e.g. SQLite), parse it;
+        # if it's already a list/dict (e.g. PostgreSQL JSON type), use it directly.
+        if isinstance(row[0], str):
+            checklist_items = json.loads(row[0])
+        else:
+            checklist_items = row[0]
+    else:
+        checklist_items = []
     conn.close()
-    return render_template("custom_checklist.html", checklist_items=checklist_items, booking_id=booking_id)
+    return render_template("custom_checklist.html", checklist_items=checklist_items)
 
 
 @app.route("/logout")
