@@ -342,61 +342,44 @@ def book_cleaner(cleaner_id):
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    try:
-        # Validate if the cleaner exists
-        cursor.execute("SELECT full_name, location FROM cleaners WHERE cleaner_id = %s", (cleaner_id,))
-        cleaner = cursor.fetchone()
-        if not cleaner:
-            return render_template("book_cleaner.html", cleaner_id=cleaner_id, error="Invalid cleaner selected.")
+    # Validate if the cleaner exists
+    cursor.execute("SELECT full_name, location FROM cleaners WHERE cleaner_id = %s", (cleaner_id,))
+    cleaner = cursor.fetchone()
+    if not cleaner:
+        abort(404)  # This will crash with a 404 error if cleaner does not exist.
 
-        if request.method == "POST":
-            booking_date = request.form.get("booking_date")
-            checklist_items = request.form.get("checklist_items", "").strip()
+    if request.method == "POST":
+        booking_date = request.form.get("booking_date")
+        checklist_items = request.form.get("checklist_items", "").strip()
 
-            # Validate date format
-            try:
-                booking_date_obj = datetime.strptime(booking_date, "%Y-%m-%dT%H:%M")
-            except ValueError:
-                return render_template("book_cleaner.html", cleaner_id=cleaner_id,
-                                       error="Invalid date format. Use YYYY-MM-DD HH:MM.")
+        # Validate date format
+        booking_date_obj = datetime.strptime(booking_date, "%Y-%m-%dT%H:%M")  # If invalid, it will crash here.
 
-            # Insert booking into database
-            query = """
-                INSERT INTO bookings (cleaner_id, customer_id, booking_date, status, created_at)
-                VALUES (%s, %s, %s, %s, NOW()) RETURNING booking_id
-            """
-            cursor.execute(query, (cleaner_id, customer_id, booking_date, "pending"))
+        # Insert booking into database
+        query = """
+            INSERT INTO bookings (cleaner_id, customer_id, booking_date, status, created_at)
+            VALUES (%s, %s, %s, %s, NOW()) RETURNING booking_id
+        """
+        cursor.execute(query, (cleaner_id, customer_id, booking_date, "pending"))
+        booking_id = cursor.fetchone()[0]  # If booking fails, it will crash here.
 
-            # Ensure booking_id is retrieved correctly
-            result = cursor.fetchone()
-            if result:
-                booking_id = result[0]
-            else:
-                return render_template("book_cleaner.html", cleaner_id=cleaner_id,
-                                       error="Booking could not be created.")
+        # Insert checklist items
+        if checklist_items:
+            checklist_lines = [item.strip() for item in checklist_items.split("\n") if item.strip()]
+            for item in checklist_lines:
+                cursor.execute("INSERT INTO checklists (booking_id, checklist_items) VALUES (%s, %s)",
+                               (booking_id, item))
 
-            # Insert checklist items (one item per row)
-            if checklist_items:
-                checklist_lines = [item.strip() for item in checklist_items.split("\n") if item.strip()]
-                for item in checklist_lines:
-                    cursor.execute("INSERT INTO checklists (booking_id, checklist_items) VALUES (%s, %s)",
-                                   (booking_id, item))
-
-            conn.commit()
-
-            # Debugging print statement (Check Flask console logs)
-            print(f"✅ Booking confirmed! Redirecting to confirmation page with ID: {booking_id}")
-
-            return redirect(url_for("booking_confirmation", booking_id=booking_id))
-
-    except Exception as e:
-        conn.rollback()
-        print(f"❌ Error in booking: {e}")  # Debugging
-        return render_template("book_cleaner.html", cleaner_id=cleaner_id, error=f"An error occurred: {str(e)}")
-    finally:
+        conn.commit()
         conn.close()
 
+        print(f"✅ Booking confirmed! Redirecting to confirmation page with ID: {booking_id}")
+        return redirect(url_for("booking_confirmation", booking_id=booking_id))
+
+    conn.close()
     return render_template("book_cleaner.html", cleaner_id=cleaner_id)
+
+
 
 
 
