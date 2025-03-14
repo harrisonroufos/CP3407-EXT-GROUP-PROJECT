@@ -346,14 +346,14 @@ def book_cleaner(cleaner_id):
     cursor.execute("SELECT full_name, location FROM cleaners WHERE cleaner_id = %s", (cleaner_id,))
     cleaner = cursor.fetchone()
     if not cleaner:
-        abort(404)  # This will crash with a 404 error if cleaner does not exist.
+        abort(404)  # Cleaner not found → return 404 error.
 
     if request.method == "POST":
         booking_date = request.form.get("booking_date")
         checklist_items = request.form.get("checklist_items", "").strip()
 
         # Validate date format
-        booking_date_obj = datetime.strptime(booking_date, "%Y-%m-%dT%H:%M")  # If invalid, it will crash here.
+        booking_date_obj = datetime.strptime(booking_date, "%Y-%m-%dT%H:%M")
 
         # Insert booking into database
         query = """
@@ -361,7 +361,7 @@ def book_cleaner(cleaner_id):
             VALUES (%s, %s, %s, %s, NOW()) RETURNING booking_id
         """
         cursor.execute(query, (cleaner_id, customer_id, booking_date, "pending"))
-        booking_id = cursor.fetchone()[0]  # If booking fails, it will crash here.
+        booking_id = cursor.fetchone()[0]  # Get the new booking ID
 
         # Insert checklist items
         if checklist_items:
@@ -373,13 +373,21 @@ def book_cleaner(cleaner_id):
         conn.commit()
         conn.close()
 
-        print(f"✅ Booking confirmed! Redirecting to confirmation page with ID: {booking_id}")
-        return redirect(url_for("booking_confirmation", booking_id=booking_id))
+        print(f"✅ Booking created! Redirecting to payment page with ID: {booking_id}")
+        return redirect(url_for("payment", booking_id=booking_id))
 
     conn.close()
     return render_template("book_cleaner.html", cleaner_id=cleaner_id)
 
 
+@app.route("/payment/<int:booking_id>", methods=["GET", "POST"])
+def payment(booking_id):
+    if request.method == "POST":
+        # Simulate a successful payment
+        print(f"✅ Payment simulated for Booking ID: {booking_id}")
+        return redirect(url_for("booking_confirmation", booking_id=booking_id))
+
+    return render_template("payment.html", booking_id=booking_id)
 
 
 
