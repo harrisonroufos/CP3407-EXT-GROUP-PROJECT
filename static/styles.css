@@ -217,7 +217,7 @@ main {
 /* Profile Pages */
 .profile-container {
     display: flex;
-    margin: 100px auto 0 auto;
+    margin: 50px auto 0 auto;
     width: 80%;
     max-width: 800px;
     max-height: 600px;
@@ -314,7 +314,6 @@ main {
 .profile-container .about-me, .profile-container .contact-info {
     padding-bottom: 1%;
 }
-
 
 .editbtn {
     width: 95%;
