@@ -217,114 +217,102 @@ main {
 /* Profile Pages */
 .profile-container {
     display: flex;
-  margin: 100px auto 0 auto; /* 100px top margin, centered horizontally */
-  width: 80%;
-  max-width: 800px;
-  max-height: 600px;   /* or use: calc(100vh - 180px) for a responsive max height */
-  overflow-y: auto;    /* container scrolls internally if content exceeds 600px */
-  background: #f0f8ff; /* your preferred background */
-  padding: 20px;
-  border-radius: 8px;
+    margin: 100px auto 0 auto;
+    width: 80%;
+    max-width: 800px;
+    max-height: 600px;
+    overflow-y: auto;
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 8px;
 }
 
-.profile-card,
-.profile-form {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  /* Adds subtle shadow effect */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 100%;
+.profile-card, .profile-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
 }
 
 .profile-card h1 {
-  font-size: 24px;
-  color: #333;
+    font-size: 24px;
+    color: #333;
 }
 
 .profile-card p {
-  font-size: 18px;
-  color: #666;
+    font-size: 18px;
+    color: #666;
 }
 
-/* Blue underline for sections in the profile card */
 .profile-card .overview {
-  border-bottom: 3px solid #0096FF;
+    border-bottom: 3px solid #0096FF;
 }
 
 .profile-form-container {
-  display: flex;
-  align-items: flex-start; /* keep them aligned at the top */
-  gap: 40px;
+    display: flex;
+    align-items: flex-start; /* keep them aligned at the top */
+    gap: 40px;
 }
 
 .profile-blurb {
-  max-width: 300px;
-  font-size: 14px;
-  color: #333;
-  background: #ffffff;
-  padding: 15px;
-  border-radius: 8px;
-  /* Smaller shadow for the blurb area */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    font-size: 14px;
+    color: #333;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Labels are inline-block for better formatting */
 .profile-form label {
-  display: inline-block;
+    display: inline-block;
 }
 
-.profile-form input,
-.profile-form textarea,
-.profile-form select {
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 95%;
-  /* Smooth color transition when focusing or hovering */
-  transition: border-color 0.3s;
+.profile-form input, .profile-form textarea, .profile-form select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 95%;
+    transition: border-color 0.3s;
 }
 
 /* Green highlight on focus */
-.profile-form input:focus,
-.profile-form textarea:focus,
-.profile-form select:focus {
-  border-color: #28a745;
+.profile-form input:focus, .profile-form textarea:focus, .profile-form select:focus {
+    border-color: #28a745;
 }
 
 /* Optional hover style for input (not applied to textarea/select) */
 .profile-form input:hover {
-  border-color: #28a745;
+    border-color: #28a745;
 }
 
 /* Bio field has a specific width for design consistency */
 .profile-form #bio {
-  width: 480px;
+    width: 480px;
 }
 
 /* Required fields show a red asterisk */
 .required-field::after {
-  content: " *";
-  color: red;
+    content: " *";
+    color: red;
 }
 
 /* Slightly faded placeholders for user hinting */
-.profile-form input::placeholder,
-.profile-form textarea::placeholder {
-  color: #aaa;
-  font-style: italic;
+.profile-form input::placeholder, .profile-form textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
 }
 
 /* Adds space for a booking button */
 .profile-container .bookbtn {
-  margin: 5% 0 10%;
+    margin: 5% 0 10%;
 }
 
 /* Minor spacing for sections like "about-me" and "contact-info" */
-.profile-container .about-me,
-.profile-container .contact-info {
-  padding-bottom: 1%;
+.profile-container .about-me, .profile-container .contact-info {
+    padding-bottom: 1%;
 }
 
 
