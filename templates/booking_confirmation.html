@@ -11,15 +11,17 @@
 {% include "header.html" %}
 
 <main>
-    <div class="confirmation-container">
-        <h1>Booking Confirmed ✅</h1>
+    <div class="profile-container">
+        <div class="profile-card">
+            <h1>Booking Confirmed ✅</h1>
 
-        <p><b>Booking ID:</b> {{ booking_id }}</p>
-        <p><b>Cleaner:</b> {{ cleaner_name }}</p>
-        <p><b>Booking Date:</b> {{ booking_date }}</p>
-        <p><b>Location:</b> {{ location }}</p>
+            <p><b>Booking ID:</b> {{ booking_id }}</p>
+            <p><b>Cleaner:</b> {{ cleaner_name }}</p>
+            <p><b>Booking Date:</b> {{ booking_date }}</p>
+            <p><b>Location:</b> {{ location }}</p>
 
-        <a href="{{ url_for('show_cleaners') }}" class="btn">Browse More Cleaners</a>
+            <a href="{{ url_for('show_cleaners') }}" class="bookbtn">Browse More Cleaners</a>
+        </div>
     </div>
 </main>
 
