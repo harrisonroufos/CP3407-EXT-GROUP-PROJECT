@@ -216,6 +216,7 @@ main {
 
 /* Profile Pages */
 .profile-container {
+    display: flex;
   margin: 100px auto 0 auto; /* 100px top margin, centered horizontally */
   width: 80%;
   max-width: 800px;
@@ -228,13 +229,13 @@ main {
 
 .profile-card,
 .profile-form {
-  background: #cacaca;
+  background: white;
   padding: 20px;
   border-radius: 8px;
   /* Adds subtle shadow effect */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 500px;
+  width: 100%;
 }
 
 .profile-card h1 {
