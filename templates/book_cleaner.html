@@ -13,21 +13,14 @@
 {% include "header.html" %}
 
 <main>
-    <div class="booking-container">
-        <h1>Book Cleaner #{{ cleaner_id }}</h1>
-        <form method="POST" action="">
+    <h1>Book Cleaner #{{ cleaner_id }}</h1>
+    <div class="profile-container">
+        <form class="profile-form" method="POST" action="">
             <div>
                 <label>Booking Date/Time:
                     <input type="datetime-local" name="booking_date" required>
                 </label>
             </div>
-            <br>
-            <div>
-                <label>Custom Checklist (one item per line):
-                    <textarea name="checklist_items" rows="6" cols="50"></textarea>
-                </label>
-            </div>
-            <br>
             <button type="submit">Confirm Booking</button>
         </form>
     </div>
