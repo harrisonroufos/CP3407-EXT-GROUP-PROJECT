@@ -12,12 +12,11 @@
 {% include "header.html" %}
 
 <main>
-    <div class="payment-container">
-        <h1>Complete Your Payment</h1>
-        <p>Booking ID: <strong>{{ booking_id }}</strong></p>
-        <p>Total Amount: <strong>$50.00</strong></p>
-
-        <form method="POST" action="">
+    <h1>Complete Your Payment</h1>
+    <div class="profile-container">
+        <form class="profile-form" method="POST" action="">
+            <h2>Booking ID: <strong>{{ booking_id }}</strong></h2>
+            <h2>Total Amount: <strong>$50.00</strong></h2>
 
             <div class="form-group">
                 <label for="name_on_card">Name on Card:</label>
