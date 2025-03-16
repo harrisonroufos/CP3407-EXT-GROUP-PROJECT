@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <title>MyClean - Bookings</title>
+</head>
+
+<body class="cleaner-page">
+
+<!-- Header with navigation -->
+{% include "header.html" %}
+
+<!-- Main content section -->
+<main>
+    <h1>Your Upcoming Bookings</h1>
+    <div class="available-cleaners">
+        {% if bookings %}
+        {% for booking in bookings %}
+        <div class="cleaner-widget">
+            <h2><a href="/cleaner/{{ booking.cleaner_id }}">{{ booking.full_name }}</a></h2>
+            <p><strong>Date:</strong> {{ booking.booking_date }}</p>
+            <p><strong>Time:</strong> {{ booking.booking_time }}</p>
+            <p><strong>Current status:</strong> {{ booking.status }}</p>
+        </div>
+        {% endfor %}
+        {% else %}
+            <p>No bookings available.</p>
+        {% endif %}
+    </div>
+</main>
+
+<!-- Footer -->
+{% include "footer.html" %}
+</body>
+</html>
