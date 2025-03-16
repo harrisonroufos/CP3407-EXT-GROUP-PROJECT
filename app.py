@@ -307,6 +307,23 @@ def show_cleaners():
     return render_template('index.html', cleaners=cleaners)
 
 
+@app.route("/manage_bookings", methods=["GET"])
+def manage_bookings():
+    """Fetch bookings from the API."""
+    try:
+        response = requests.get("http://127.0.0.1:5000/bookings/" + str(session['customer_id']))
+        response.raise_for_status()
+        bookings = response.json()
+        for booking in bookings:
+            booking_datetime = datetime.strptime(booking["booking_date"], '%a, %d %b %Y %H:%M:%S %Z')
+            booking["booking_time"] = datetime.strftime(booking_datetime, '%H:%M')
+            booking["booking_date"] = datetime.strftime(booking_datetime, '%d-%m-%Y')
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching bookings: {e}")
+        bookings = []  # Return an empty list if there's an error
+    return render_template('manage_bookings.html', bookings=bookings)
+
+
 # @app.route("/book/<int:cleaner_id>", methods=["GET", "POST"])
 # def book_cleaner(cleaner_id):
 #     # Only customers can book a cleaner
@@ -462,12 +479,6 @@ def booking_confirmation(booking_id):
 
     finally:
         conn.close()
-
-
-###########################################################
-###########################################################
-###########################################################
-###########################################################
 
 
 @app.route("/cleaner/<int:cleaner_id>", methods=["GET"])
