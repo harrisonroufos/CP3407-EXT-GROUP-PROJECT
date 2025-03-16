@@ -143,6 +143,13 @@ def fetch_cleaners_from_postgre():
         conn.close()
 
 
+def process_booking_date(bookings):
+    for booking in bookings:
+        booking_datetime = datetime.strptime(booking["booking_date"], '%a, %d %b %Y %H:%M:%S %Z')
+        booking["booking_time"] = datetime.strftime(booking_datetime, '%H:%M')
+        booking["booking_date"] = datetime.strftime(booking_datetime, '%d-%m-%Y')
+
+
 def init_db():
     print("Initializing the database...")
     conn = None
@@ -310,17 +317,16 @@ def show_cleaners():
 @app.route("/manage_bookings", methods=["GET"])
 def manage_bookings():
     """Fetch bookings from the API."""
-    try:
-        response = requests.get("http://127.0.0.1:5000/bookings/" + str(session['customer_id']))
+    if session['cleaner_id'] or session['customer_id']:
+        if session['cleaner_id']:
+            response = requests.get("http://127.0.0.1:5000/bookings/cleaner/" + str(session['cleaner_id']))
+        if session['customer_id']:
+            response = requests.get("http://127.0.0.1:5000/bookings/customer/" + str(session['customer_id']))
         response.raise_for_status()
         bookings = response.json()
-        for booking in bookings:
-            booking_datetime = datetime.strptime(booking["booking_date"], '%a, %d %b %Y %H:%M:%S %Z')
-            booking["booking_time"] = datetime.strftime(booking_datetime, '%H:%M')
-            booking["booking_date"] = datetime.strftime(booking_datetime, '%d-%m-%Y')
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching bookings: {e}")
-        bookings = []  # Return an empty list if there's an error
+        process_booking_date(bookings)
+    else:
+        return redirect(url_for("show_cleaners"))
     return render_template('manage_bookings.html', bookings=bookings)
 
 
