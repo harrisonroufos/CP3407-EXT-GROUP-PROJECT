@@ -74,7 +74,7 @@ def get_bookings_by_id(customer_id):
         cursor = conn.cursor()
         placeholder = "?" if USE_LOCAL_DB else "%s"
         query = f"""
-        SELECT b.booking_id, b.cleaner_id, b.booking_date, b.status, c.full_name
+        SELECT b.booking_id, b.cleaner_id, b.booking_date, b.status, c.full_name, c.location
         FROM bookings b
         JOIN cleaners c ON b.cleaner_id = c.cleaner_id
         WHERE b.customer_id = {placeholder}
