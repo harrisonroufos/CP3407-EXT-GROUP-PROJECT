@@ -62,3 +62,29 @@ def get_cleaner_by_id(cleaner_id):
     except Exception as e:
         print(f"Database query error: {e}")
         return {"error": "Failed to retrieve cleaner profile"}, 500
+
+
+def get_bookings_by_id(customer_id):
+    """Fetch all of a customer's bookings."""
+    conn = get_db_connection()
+    if not conn:
+        return {"error": "Database connection failed"}, 500
+
+    try:
+        cursor = conn.cursor()
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+        query = f"""
+        SELECT b.booking_id, b.cleaner_id, b.booking_date, b.status, c.full_name
+        FROM bookings b
+        JOIN cleaners c ON b.cleaner_id = c.cleaner_id
+        WHERE b.customer_id = {placeholder}
+        """
+        cursor.execute(query, (customer_id,))
+        columns = [desc[0] for desc in cursor.description]
+        bookings = [dict(zip(columns, row)) for row in cursor.fetchall()]
+        conn.close()
+        return bookings, 200
+
+    except Exception as e:
+        print(f"Database query error: {e}")
+        return {"error": "Failed to retrieve bookings"}, 500
