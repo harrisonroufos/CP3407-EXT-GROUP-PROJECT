@@ -29,12 +29,12 @@
                 listed" }} years</p>
 
             {% if session['customer_id'] %}
-            <button class="bookbtn" onclick="window.location.href='/book/{{ cleaner.cleaner_id }}'">Book now!</button>
+                <button class="bookbtn" onclick="window.location.href='/book/{{ cleaner.cleaner_id }}'">Book now!</button>
             {% endif %}
         </div>
         {% endfor %}
         {% else %}
-        <p>No cleaners available.</p>
+            <p>No cleaners available.</p>
         {% endif %}
     </div>
 </main>
