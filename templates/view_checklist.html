@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyClean - Customer Checklist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body class="cleaner-page">
+
+<!-- Header with navigation -->
+{% include "header.html" %}
+
+<!-- Main content section -->
+<main>
+    <h1 style="text-align: center">Customer Checklist for <sp class="gradient-text">{{ customer_name }}</sp></h1>
+    {% if checklist_items %}
+    <ul class="numbered-checklist">
+        {% for item in checklist_items %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No checklist available for this customer.</p>
+    {% endif %}
+</main>
+
+<!-- Footer -->
+{% include "footer.html" %}
+</body>
+</html>

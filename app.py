@@ -708,6 +708,40 @@ def about_us():
     return render_template('about_us.html')
 
 
+@app.route('/view_checklist')
+def view_checklist():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    placeholder = "?" if USE_LOCAL_DB else "%s"
+
+    # Get customer_id from the booking
+    cursor.execute(f"SELECT customer_id FROM bookings WHERE booking_id = {placeholder}", (booking_id,))
+    booking = cursor.fetchone()
+    if not booking:
+        flash("Booking not found.", "error")
+        cursor.close()
+        conn.close()
+        return redirect(url_for("manage_bookings"))
+    customer_id = booking[0]
+
+    # Retrieve the customer's name
+    cursor.execute("SELECT full_name FROM customers WHERE customer_id = " + placeholder, (customer_id,))
+    customer = cursor.fetchone()
+    customer_name = customer[0] if customer else "Customer"
+
+    # Retrieve the checklist for the customer
+    cursor.execute("SELECT checklist_items FROM customer_checklists WHERE customer_id = " + placeholder, (customer_id,))
+    row = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    checklist_items = (
+        json.loads(row[0]) if row and isinstance(row[0], str) else row[0] if row else []
+    )
+
+    return render_template("view_checklist.html", checklist_items=checklist_items, customer_name=customer_name)
+
+
 @app.route('/', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
