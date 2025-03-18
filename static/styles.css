@@ -225,13 +225,16 @@ main {
     background: #f0f8ff;
     padding: 20px;
     border-radius: 8px;
+    border-width: 1px;
+    border-color: #afd1f6;
+    border-style: solid;
 }
 
 .profile-card, .profile-form {
     background: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 8px 12px rgba(0.1, 0.1, 0.1, 0.1);
     text-align: center;
     width: 100%;
 }
@@ -378,6 +381,26 @@ main {
   gap: 10px;
   justify-content: center;
   margin-top: 10px;
+}
+
+.checklist-button {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.checklist-button:hover {
+    background-color: #0056b3;
 }
 
 /* Style for add and save buttons */
@@ -655,6 +678,49 @@ section {
         align-items: center;
     }
 }
+
+.reviews-form {
+      width: 80%;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f0f8ff;
+      border: 1px solid #afd1f6;
+      border-radius: 8px;
+      box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.1);
+    }
+    .reviews-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .review-question {
+      margin: 20px 0;
+    }
+    .review-question label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .slider-value {
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #0096FF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .submit-btn:hover {
+      background-color: #007BFF;
+    }
 
 /* Footer Styling */
 footer {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submit Your Review</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<!-- Header with navigation -->
+{% include "header.html" %}
+
+  <main>
+    <div class="reviews-form">
+      <h2>Submit Your Review</h2>
+      <form action="/submit_review" method="POST">
+        <!-- Hidden field for booking_id; update this as needed -->
+        <input type="hidden" name="booking_id" value="{{ session.booking_id }}">
+
+        <div class="review-question">
+          <label for="question1">1. What would you rate the quality of the cleaning service?</label>
+          <input type="range" id="question1" name="question_1" min="1" max="5" value="3" oninput="document.getElementById('q1_val').innerText = this.value">
+          <span class="slider-value" id="q1_val">3</span>
+        </div>
+
+        <div class="review-question">
+          <label for="question2">2. Was the cleaner timely and professional?</label>
+          <input type="range" id="question2" name="question_2" min="1" max="5" value="3" oninput="document.getElementById('q2_val').innerText = this.value">
+          <span class="slider-value" id="q2_val">3</span>
+        </div>
+
+        <div class="review-question">
+          <label for="question3">3. Was the service good quality for money?</label>
+          <input type="range" id="question3" name="question_3" min="1" max="5" value="3" oninput="document.getElementById('q3_val').innerText = this.value">
+          <span class="slider-value" id="q3_val">3</span>
+        </div>
+
+        <div class="review-question">
+          <label for="question4">4. Did the cleaner closely follow your 'custom cleaning checklist'?</label>
+          <input type="range" id="question4" name="question_4" min="1" max="5" value="3" oninput="document.getElementById('q4_val').innerText = this.value">
+          <span class="slider-value" id="q4_val">3</span>
+        </div>
+
+        <div class="review-question">
+          <label for="rating">5. What would you rate this cleaner overall?</label>
+          <input type="range" id="rating" name="rating" min="1" max="5" value="3" oninput="document.getElementById('rating_val').innerText = this.value">
+          <span class="slider-value" id="rating_val">3</span>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Review</button>
+      </form>
+    </div>
+  </main>
+
+<!-- Footer -->
+{% include "footer.html" %}
+</body>
+</html>
