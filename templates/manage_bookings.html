@@ -38,6 +38,8 @@
 
             <p><strong>Current status:</strong> {{ booking.status }}</p>
 
+            <a href="{{ url_for('booking_review', booking_id=booking.booking_id) }}" class="checklist-button">Add Review</a>
+
         </div>
         {% endfor %}
         {% else %}
