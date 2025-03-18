@@ -22,7 +22,7 @@ Hence, there are 32 days worth of user story development per iteration.
 5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 6.5 days | 30 - DROPPED
 6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 3 days | 20 - MOVED TO ITERATION 2
 
-**Estimated Time - 34 days**
+**Estimated Time - 34.5 days**
 
 # Iteration 2 plan
 *We have changed the velocity based on iteration 1 outcome. We were able to complete 16.5 days of user stories which is about 0.2 velocity.
