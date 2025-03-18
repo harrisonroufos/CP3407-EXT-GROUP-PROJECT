@@ -17,7 +17,7 @@ Hence, there are 32 days worth of user story development per iteration.
 ### Iteration 1
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10 - COMPLETE
 2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10 - COMPLETE
-3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 4 days | 20 - 80% COMPLETE
+3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE
 4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - MOVED TO ITERATION 2
 5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30 - DROPPED
 6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 20 - MOVED TO ITERATION 2
@@ -80,9 +80,7 @@ Hence, there are 20 days worth of user story development per iteration.
 # In progress:
 * > Format: `user story link` | `developer name` | `Task name` | `date started` <br>
 > Use this area to track tasks that are in progress exclusilvey. Once they are complete, move them to the 'complete' section.
-* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon`| `Develop UI for custom checklist creation.` | 09/03/2025
-* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Damon` | `Implement back end to store this checklist with a customer.` | 09/03/2025
-* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | `Test and debug.` | 09/03/2025
+
 
 * [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | 14/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 14/03/2025
@@ -106,3 +104,7 @@ Hence, there are 20 days worth of user story development per iteration.
 * [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Daniel` | `Create UI for profile` | 07/03/2025
 * [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Damon` | `Display user infomation on user profile` | 02/03/2025
 * [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md)  | `Casey` | `Test and debug` | 01/03/2025
+
+* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon`| `Develop UI for custom checklist creation.` | 14/03/2025
+* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Damon` | `Implement back end to store this checklist with a customer.` | 14/03/2025
+* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | `Test and debug.` | 15/03/2025
