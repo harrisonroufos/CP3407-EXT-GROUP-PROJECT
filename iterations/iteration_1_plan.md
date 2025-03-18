@@ -5,22 +5,22 @@ Assume:
 > - 0.4 velocity (team efficiency)
 > - 4 developers 
 > - `Total Development Days` = `business days per iteration` x `velocity` x `number of developers`
-> - Total = 20 x 0.4 x 4
+> - Total = 20 x 0.45 x 4
 
-Hence, there are 32 days worth of user story development per iteration.
+Hence, there are 36 days worth of user story development per iteration.
 
 ## Breakdown:
-> Format: `link` | `ideal days to develop` |`estimated time` | `priority` (10 most important, 50 least)
+> Format: `link` |`estimated time` | `priority` (10 most important, 50 least)
 
 **Development Tracker** - [MyClean](https://github.com/users/Casey-Summers/projects/1)
 
 ### Iteration 1
-1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10 days | 10 - COMPLETE
-2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 6 days | 10 - COMPLETE
-3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 5 days | 5 days | 20 - COMPLETE
-4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 4 days | 20 - MOVED TO ITERATION 2
-5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 6.5 days | 30 - DROPPED
-6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 3 days | 20 - MOVED TO ITERATION 2
+1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 10 days | 10 - COMPLETE
+2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 6 days | 10 - COMPLETE
+3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE
+4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - MOVED TO ITERATION 2
+5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30 - DROPPED
+6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 3 days | 20 - MOVED TO ITERATION 2
 
 **Estimated Time - 34.5 days**
 
