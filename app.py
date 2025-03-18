@@ -710,6 +710,15 @@ def about_us():
 
 @app.route('/view_checklist')
 def view_checklist():
+    if not session.get("cleaner_id"):
+        flash("Access restricted to cleaners only.", "error")
+        return redirect(url_for("login"))
+
+    booking_id = request.args.get("booking_id", type=int)
+    if not booking_id:
+        flash("No booking selected for review.", "error")
+        return redirect(url_for("manage_bookings"))
+
     conn = get_db_connection()
     cursor = conn.cursor()
     placeholder = "?" if USE_LOCAL_DB else "%s"
