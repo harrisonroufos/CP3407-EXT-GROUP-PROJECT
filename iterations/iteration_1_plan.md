@@ -110,9 +110,15 @@ Hence, there are 16 days worth of user story development per iteration.
 * [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon`| `Develop UI for custom checklist creation.` | 14/03/2025
 * [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Damon` | `Implement back end to store this checklist with a customer.` | 14/03/2025
 * [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | `Test and debug.` | 15/03/2025
+* *place for Create Bookings*
 
+* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Create a survey form with various customer experience questions.` | 18/03/2025
+* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Design and integrate the survey form into the app.` | 18/03/2025
+* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Implement backend storage for customer reviews` | 18/03/2025
+ 
 # Completed Maintenance and Feature Tasks
 > Format: `developer name` | `Task name` | `date finished` <br>
 * `Casey` | `Overhauled navigation menu` | 12/03/2025
 * `Casey` | `Updated footer content and included About_Us` | 12/03/2025
 * `Casey` | `Created About_Us page to explain MyClean` | 18/03/2025
+* `Casey` | `Add view custom checklist to cleaner's booking page` | 18/03/2025
