@@ -75,20 +75,18 @@ Hence, there are 16 days worth of user story development per iteration.
 * [Create Schedule](/user_stories/user_story_create_schedule.md) - Due to iteration 2 re-structure from iteration 1 summary.
 * [Schedule Notifications](/user_stories/user_story_schedule_notifications.md) - Due to iteration 2 re-structure from iteration 1 summary.
 * [Referral Program for Customers](/user_stories/user_story_referral_program_for_customers.md) - Due to iteration 2 re-structure from iteration 1 summary.
-* [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) - Due to iteration 2 re-structure from iteration 1 
+* [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) - Due to iteration 2 re-structure from iteration 1
+
+ 
 
 # In progress:
-* > Format: `user story link` | `developer name` | `Task name` | `date started` <br>
-> Use this area to track tasks that are in progress exclusilvey. Once they are complete, move them to the 'complete' section.
-
+> Format: `user story link` | `developer name` | `Task name` | `date started` <br>
+> Use this area exclusively to track tasks that are in progress. Once they are complete, move them to the 'complete' section.
 
 * [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | 14/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 14/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | `Develop UI for dummy payment.` | 14/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Damon` | `Test and debug.` | --/--/----
-
-
-
 
 # Completed:
 > Format: `user story link` | `developer name` | `Task name` | `date Finished` <br>
@@ -108,3 +106,9 @@ Hence, there are 16 days worth of user story development per iteration.
 * [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon`| `Develop UI for custom checklist creation.` | 14/03/2025
 * [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Damon` | `Implement back end to store this checklist with a customer.` | 14/03/2025
 * [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | `Test and debug.` | 15/03/2025
+
+# Completed Maintenance and Feature Tasks
+> Format: `developer name` | `Task name` | `date finished` <br>
+* `Casey` | `Overhauled navigation menu` | 12/03/2025
+* `Casey` | `Updated footer content and included About_Us` | 12/03/2025
+* `Casey` | `Created About_Us page to explain MyClean` | 18/03/2025
