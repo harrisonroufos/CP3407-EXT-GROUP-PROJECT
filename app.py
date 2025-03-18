@@ -619,6 +619,11 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/aboutus')
+def about_us():
+    return render_template('about_us.html')
+
+
 @app.route('/', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
