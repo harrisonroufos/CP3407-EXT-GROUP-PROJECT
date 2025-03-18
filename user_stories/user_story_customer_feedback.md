@@ -32,11 +32,23 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 ---
 
 ## Tasks
-1. Create a survey form with questions and they can agree or disagree etc. 1/2 day.
+1. Create a survey form with various customer experience questions. 1/2 day.
 2. Design and integrate survey form into the app. 1 day.  
 3. Implement backend storage for customer reviews. 1 days.  
 4. Display average ratings and reviews on cleaner profiles. 1 day.
 5. Test and debug. 1/2 day.
+
+## Assigned task:
+1. Create a survey form with various customer experience questions. 1/2 day.
+    > Assigned to: `Casey` | Time elapsed: ` days` | Start day: 18/03/2025 | Finished day: 
+2. Design and integrate the survey form into the app.
+    > Assigned to: `Casey` | Time elapsed: ` days` | Start day: 18/03/2025| Finished day: 
+3. Implement backend storage for customer reviews.
+    > Assigned to: `__` | Time elapsed: ` days` | Start day: | Finished day:
+4. Display average ratings and reviews on cleaner profiles.
+    > Assigned to: `__` | Time elapsed: ` days` | Start day: | Finished day:
+5. Test and debug.
+    > Assigned to: `Casey` | Time elapsed: ` days` | Start day: | Finished day: 
 
 Total days estimation - 4 days
 ---
