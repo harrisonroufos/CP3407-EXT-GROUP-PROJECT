@@ -38,11 +38,11 @@ As a customer, I want to create a custom cleaning checklist for my appointments 
 
 ## Assigned task:
 1. Develop UI for custom checklist creation.
-    > Assigned to: `Casey` & `Damon` | Time elapsed: ` days` | Start day: 09/03/2025  | Finished day: 14/03/2025
+    > Assigned to: `Casey` & `Damon` | Time elapsed: ` 2 days` | Start day: 09/03/2025  | Finished day: 14/03/2025
 2. Implement back end to store this checklist with a customer.
-    > Assigned to: `Damon` | Time elapsed: ` days` | Start day: 09/03/2025 | Finished day: 14/03/2025
+    > Assigned to: `Damon` | Time elapsed: ` 3 days` | Start day: 09/03/2025 | Finished day: 14/03/2025
 3. Test and debug.
-    > Assigned to: `Casey` & `Damon` | Time elapsed: ` days` | Start day: 09/03/2025 | Finished day: 15/03/2025
+    > Assigned to: `Casey` & `Damon` | Time elapsed: ` 1 days` | Start day: 09/03/2025 | Finished day: 15/03/2025
 
    
 
