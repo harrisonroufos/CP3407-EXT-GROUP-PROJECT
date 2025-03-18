@@ -24,6 +24,10 @@ Hence, there are 36 days worth of user story development per iteration.
 
 **Estimated Time - 34.5 days**
 
+## Burn down chart
+![Burn down chart](/iterations/images/iteration_1_burn_down.jpg) 
+
+
 # Iteration 2 plan
 *We have changed the velocity based on iteration 1 outcome. We were able to complete 16.5 days of user stories which is about 0.2 velocity.
 
