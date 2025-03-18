@@ -38,17 +38,17 @@ Assume:
 > - 0.2 velocity (team efficiency)
 > - 4 developers 
 > - `Total Development Days` = `business days per iteration` x `velocity` x `number of developers`
-> - Total = 20 x 0.25 x 4
+> - Total = 20 x 0.2 x 4
 
-Hence, there are 20 days worth of user story development per iteration.
+Hence, there are 16 days worth of user story development per iteration.
 
 ### NEW Iteration 2 plan (based on iteration 1 summary)
 1. [Create Booking](/user_stories/create_booking.md) | 5 days | 10
 2. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
-3. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 30
+3. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 3 days | 30
 4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30
    
-**Estimated Time - 18.5 days**
+**Estimated Time - 16 days**
 
 
 ### OLD Iteration 2
