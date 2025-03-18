@@ -10,17 +10,17 @@ Assume:
 Hence, there are 32 days worth of user story development per iteration.
 
 ## Breakdown:
-> Format: `link` | `ideal days to develop` | `priority` (10 most important, 50 least)
+> Format: `link` | `ideal days to develop` |`estimated time` | `priority` (10 most important, 50 least)
 
 **Development Tracker** - [MyClean](https://github.com/users/Casey-Summers/projects/1)
 
 ### Iteration 1
-1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10 - COMPLETE
-2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 10 - COMPLETE
-3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE
-4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - MOVED TO ITERATION 2
-5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30 - DROPPED
-6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 20 - MOVED TO ITERATION 2
+1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 7.5 days | 10 days | 10 - COMPLETE
+2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 5 days | 6 days | 10 - COMPLETE
+3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 5 days | 10 days | 20 - COMPLETE
+4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 4 days | 20 - MOVED TO ITERATION 2
+5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 10 days | 30 - DROPPED
+6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 4 days | 3 days | 20 - MOVED TO ITERATION 2
 
 **Estimated Time - 31 days**
 
