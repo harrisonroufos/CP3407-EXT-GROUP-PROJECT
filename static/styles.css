@@ -365,6 +365,7 @@ main {
   border-radius: 5px;
   font-size: 16px;
   transition: border-color 0.3s;
+  margin-bottom: 5px;
 }
 
 #checklist-items input:focus {
@@ -396,6 +397,263 @@ main {
 .save-btn:hover {
   background-color: #0077cc;
   transform: scale(1.05);
+}
+
+.about-page {
+    overflow-x: hidden;
+}
+
+section {
+    padding: 60px 20px;
+    position: relative;
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #0099ff, #00e5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.responsive-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.hero-section {
+    position: relative;
+    width: 100vw;
+    height: 65vh;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #010205;
+}
+
+.wave-divider {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    margin-bottom: 100px;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 1;
+}
+
+.wave-divider svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: rotate(180deg);
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.about-content::before,
+.about-content::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 153, 255, 0.1);
+    z-index: -1;
+}
+
+.about-content::before {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+}
+
+.about-content::after {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    right: -100px;
+}
+
+.about-text,
+.about-photo {
+    flex: 1;
+    min-width: 300px;
+    margin: 20px;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.about-text p,
+.mission-section p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.mission-section {
+    margin: 0px 20px;
+}
+
+.mission-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.mission-section p {
+    line-height: 1.8;
+}
+
+.section-separator {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    line-height: 0;
+    overflow: hidden;
+}
+
+.section-separator svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.values-section {
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.values-section h2 {
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.values-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.value-box {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    flex: 0 0 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.value-box h3 {
+    color: #0099ff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.value-box p {
+    font-size: 1rem;
+}
+
+.team-section {
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-member {
+    margin: 20px;
+    flex: 0 0 250px;
+    text-align: center;
+}
+
+.team-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 4px solid #eaeaea;
+    margin-bottom: 15px;
+}
+
+.team-member h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #777;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .values-container,
+    .team-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* Footer Styling */

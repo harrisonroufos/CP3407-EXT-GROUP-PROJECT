@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us | MyClean</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css"/>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        });
+    </script>
+</head>
+<body class="about-page">
+
+<!-- Header with navigation -->
+{% include "header.html" %}
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero-section" data-aos="fade-up">
+        <video autoplay muted loop class="hero-video">
+            <source src="{{ url_for('static', filename='videos/Man_Cleaning_Supplies_Short.mp4') }}" type="video/mp4">
+        </video>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1 data-aos="fade-up" class="hero-title">
+                    About <span class="gradient-text">MyClean</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="100">
+                    Your trusted platform for connecting with professional cleaners.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smaller Wave Divider Below Hero -->
+    <div class="wave-divider" data-aos="fade-up">
+        <svg viewBox="0 0 1440 100">
+            <path fill="#0099ff" fill-opacity="1"
+                  d="M0,96L80,80C160,64,320,32,480,37.3C640,43,800,85,960,85.3C1120,85,1280,43,1360,21.3L1440,0V100H0Z">
+            </path>
+        </svg>
+    </div>
+
+    <!-- About Content Section (with bubble background) -->
+    <section class="about-content">
+        <div class="about-text" data-aos="fade-right">
+            <h2 class="gradient-text">Who We Are</h2>
+            <p>
+                MyClean is a modern cleaning service platform designed to
+                bridge the gap between customers and professional cleaners.
+                Our goal is to provide a seamless, hassle-free way for
+                individuals and businesses to find reliable cleaning services tailored to their needs.
+            </p>
+        </div>
+        <div class="about-photo" data-aos="fade-left">
+            <img src="{{ url_for('static', filename='images/MyClean_logo.png') }}" alt="About MyClean"
+                 class="responsive-photo">
+        </div>
+        <div class="mission-section" data-aos="fade-up">
+            <h2 class="gradient-text">Our Mission</h2>
+            <p>
+                We believe in creating a cleaner and healthier living and working environment. Our mission is to connect
+                customers with <strong>trusted</strong> and <strong>verified</strong> cleaners who deliver
+                <strong>top-notch cleaning services</strong>. We aspire to meet you precise cleaning needs by offering
+                custom cleaning checklists and by offering you a wide roster of cleaners to book with. This way, whether
+                it’s your home, office, or any space that needs a shine, MyClean will make the process effortless and efficient.
+            </p>
+        </div>
+    </section>
+
+    <!-- Wave Separator Between Mission and Values -->
+    <div class="section-separator" data-aos="fade-up">
+        <svg viewBox="0 0 1440 50" preserveAspectRatio="none">
+            <path fill="#0099ff" d="M0,0 C360,50 1080,50 1440,0 L1440,50 L0,50 Z"></path>
+        </svg>
+    </div>
+
+    <!-- Values Section -->
+    <section class="values-section" data-aos="zoom-in">
+        <h2 class="gradient-text">Our Values</h2>
+        <div class="values-container">
+            <div class="value-box" data-aos="flip-left">
+                <h3>Trust &amp; Reliability</h3>
+                <p>Every cleaner is vetted to ensure they meet our high standards.</p>
+            </div>
+            <div class="value-box" data-aos="flip-up">
+                <h3>Quality Service</h3>
+                <p>We guarantee top-tier cleaning services for every booking.</p>
+            </div>
+            <div class="value-box" data-aos="flip-right">
+                <h3>Customer Satisfaction</h3>
+                <p>Your satisfaction is our top priority. We aim to exceed expectations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section with photo placeholders -->
+    <section class="team-section">
+        <h2 data-aos="fade-up" class="gradient-text">Meet Our Team</h2>
+        <div class="team-container">
+            <div class="team-member" data-aos="fade-up">
+                <img src="{{ url_for('static', filename='images/Business_Women_Owner.png') }}" alt="Team Member"
+                     class="team-photo">
+                <h3>Jane Doe</h3>
+                <p>Operations Manager</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                <img src="{{ url_for('static', filename='images/Business_Man.png') }}" alt="Team Member"
+                     class="team-photo">
+                <h3>John Smith</h3>
+                <p>Founder &amp; CEO</p>
+            </div>
+            <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                <img src="{{ url_for('static', filename='images/Business_Women.png') }}" alt="Team Member"
+                     class="team-photo">
+                <h3>Emily Johnson</h3>
+                <p>Head of Customer Relations</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+{% include "footer.html" %}
+
+</body>
+</html>
