@@ -37,6 +37,12 @@
             {% endif %}
 
             <p><strong>Current status:</strong> {{ booking.status }}</p>
+            {% if session['cleaner_id'] %}
+                <a href="{{ url_for('view_checklist', booking_id=booking.booking_id) }}" class="checklist-button">Review Checklist</a>
+            {% endif %}
+            {% if session['customer_id'] %}
+                <a href="{{ url_for('booking_review', booking_id=booking.booking_id) }}" class="checklist-button">Add Review</a>
+            {% endif %}
 
         </div>
         {% endfor %}

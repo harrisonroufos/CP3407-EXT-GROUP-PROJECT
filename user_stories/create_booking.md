@@ -33,11 +33,11 @@ As a customer, be able to create a booking from a chosen cleaner.
 
 ## Assigned task:
 1. Develop UI for booking.
-    > Assigned to: `Daniel` | Time elapsed: ` days` | Start day: 14/03/2025 | Finished day: 
+    > Assigned to: `Daniel` | Time elapsed: ` days` | Start day: 14/03/2025 | Finished day: 16/03/2025
 2. Implement back end to store the booking.
-    > Assigned to: `Harrison` | Time elapsed: ` days` | Start day: 14/03/2025| Finished day: 
+    > Assigned to: `Harrison` | Time elapsed: ` days` | Start day: 14/03/2025| Finished day: 15/03/2025
 3. Develop UI for dummy payment.
-    > Assigned to: `Daniel` & `Harrison` | Time elapsed: ` days` | Start day: 14/03/2025 | Finished day:
+    > Assigned to: `Daniel` & `Harrison` | Time elapsed: ` days` | Start day: 14/03/2025 | Finished day: 16/03/2025
 4. Test and debug.
     > Assigned to: `Damon` | Time elapsed: ` days` | Start day: | Finished day: 
 

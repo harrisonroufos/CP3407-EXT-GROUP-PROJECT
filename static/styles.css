@@ -160,11 +160,11 @@ main {
 
 /* Buttons */
 .bookbtn {
-  position: relative; /* Keeps button inside cleaner-widget */
-  margin-top: 10px;
-  width: 70%;
-  max-width: 200px;
-  z-index: 1; /* Ensures it stays below the header */
+    position: relative; /* Keeps button inside cleaner-widget */
+    margin-top: 10px;
+    width: 70%;
+    max-width: 200px;
+    z-index: 1; /* Ensures it stays below the header */
 }
 
 .bookbtn, .editbtn, .profile-form button {
@@ -225,13 +225,16 @@ main {
     background: #f0f8ff;
     padding: 20px;
     border-radius: 8px;
+    border-width: 1px;
+    border-color: #afd1f6;
+    border-style: solid;
 }
 
 .profile-card, .profile-form {
     background: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 8px 12px rgba(0.1, 0.1, 0.1, 0.1);
     text-align: center;
     width: 100%;
 }
@@ -329,74 +332,94 @@ main {
 
 /* Main checklist container */
 .checklist-container {
-  max-width: 600px;
-  margin: 100px auto 0 auto; /* 100px below header */
-  padding: 20px;
-  background: #f0f8ff; /* Soft light blue */
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
+    max-width: 600px;
+    margin: 100px auto 0 auto; /* 100px below header */
+    padding: 20px;
+    background: #f0f8ff; /* Soft light blue */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 /* Checklist form */
 .checklist-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 /* Checklist items list */
 #checklist-items {
-  list-style: none;
-  padding: 0;
-  width: 100%;
+    list-style: none;
+    padding: 0;
+    width: 100%;
 }
 
 /* Checklist input fields */
 #checklist-items li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #checklist-items input {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: border-color 0.3s;
-  margin-bottom: 5px;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    margin-bottom: 5px;
 }
 
 #checklist-items input:focus {
-  border-color: #0096FF;
+    border-color: #0096FF;
 }
 
 /* Buttons */
 .checklist-buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.checklist-button {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.checklist-button:hover {
+    background-color: #0056b3;
 }
 
 /* Style for add and save buttons */
 .add-btn,
 .save-btn {
-  background-color: #0096FF;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
+    background-color: #0096FF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
 .add-btn:hover,
 .save-btn:hover {
-  background-color: #0077cc;
-  transform: scale(1.05);
+    background-color: #0077cc;
+    transform: scale(1.05);
 }
 
 .about-page {
@@ -654,6 +677,99 @@ section {
         flex-direction: column;
         align-items: center;
     }
+}
+
+.reviews-form {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f0f8ff;
+    border: 1px solid #afd1f6;
+    border-radius: 8px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.review-question {
+    margin: 20px 0;
+}
+
+.review-question label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.slider-value {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0096FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #007BFF;
+}
+
+/* Numbered Bubble Checklist */
+.numbered-checklist {
+    list-style: none; /* Remove default bullet styling */
+    counter-reset: checklist; /* Reset the custom counter */
+    margin: 30px auto; /* Center the list horizontally */
+    padding: 0;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numbered-checklist li {
+    counter-increment: checklist; /* Increment the counter for each li */
+    background-color: #e0f7fa; /* Light bubble background color */
+    border-radius: 25px; /* Rounded corners for the bubble effect */
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Create a numbered circle using a pseudo-element */
+.numbered-checklist li::before {
+    content: counter(checklist) "."; /* Display the counter with a dot */
+    position: absolute;
+    left: -50px; /* Adjust to position the bubble left of the text */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #0096FF; /* Bubble color for the number */
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* Footer Styling */

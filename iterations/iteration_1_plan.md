@@ -24,6 +24,10 @@ Hence, there are 36 days worth of user story development per iteration.
 
 **Estimated Time - 34.5 days**
 
+## Burn down chart
+![Burn down chart](/iterations/images/iteration_1_burn_down_1.jpg)
+
+
 # Iteration 2 plan
 *We have changed the velocity based on iteration 1 outcome. We were able to complete 16.5 days of user stories which is about 0.2 velocity.
 
@@ -43,8 +47,8 @@ Assume:
 Hence, there are 16 days worth of user story development per iteration.
 
 ### NEW Iteration 2 plan (based on iteration 1 summary)
-1. [Create Booking](/user_stories/create_booking.md) | 5 days | 10
-2. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20
+1. [Create Booking](/user_stories/create_booking.md) | 5 days | 10 
+2. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20 
 3. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 3 days | 30
 4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30
    
@@ -83,9 +87,7 @@ Hence, there are 16 days worth of user story development per iteration.
 > Format: `user story link` | `developer name` | `Task name` | `date started` <br>
 > Use this area exclusively to track tasks that are in progress. Once they are complete, move them to the 'complete' section.
 
-* [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | 14/03/2025
-* [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 14/03/2025
-* [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | `Develop UI for dummy payment.` | 14/03/2025
+
 * [Create Booking](/user_stories/create_booking.md) | `Damon` | `Test and debug.` | --/--/----
 
 # Completed:
@@ -107,8 +109,19 @@ Hence, there are 16 days worth of user story development per iteration.
 * [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Damon` | `Implement back end to store this checklist with a customer.` | 14/03/2025
 * [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | `Test and debug.` | 15/03/2025
 
+* [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | 16/03/2025
+* [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 15/03/2025
+* [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | `Develop UI for dummy payment.` | 16/03/2025
+
+* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Create a survey form with various customer experience questions.` | 18/03/2025
+* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Design and integrate the survey form into the app.` | 18/03/2025
+* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Implement backend storage for customer reviews` | 18/03/2025
+
+
+ 
 # Completed Maintenance and Feature Tasks
 > Format: `developer name` | `Task name` | `date finished` <br>
 * `Casey` | `Overhauled navigation menu` | 12/03/2025
 * `Casey` | `Updated footer content and included About_Us` | 12/03/2025
 * `Casey` | `Created About_Us page to explain MyClean` | 18/03/2025
+* `Casey` | `Add view custom checklist to cleaner's booking page` | 18/03/2025

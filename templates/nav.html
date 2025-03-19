@@ -11,12 +11,12 @@
                     <a href="/cleaner/{{ session['cleaner_id'] }}/edit">Edit Info</a>
                 {% endif %}
                 {% if session['customer_id'] %}
-                    <a href="/customer/edit">Edit Info</a>
                     <a href="/custom_checklist">Manage Custom Checklist</a>
+                    <a href="/customer/edit">Edit Info</a>
                 {% endif %}
-                <a href="/manage_bookings">Bookings</a>
-                <a href="/aboutus">About Us</a>
-                <a href="/logout">Log Out</a>
+                    <a href="/manage_bookings">Bookings</a>
+                    <a href="/aboutus">About Us</a>
+                    <a href="/logout">Log Out</a>
             {% else %}
                 <a href="/login">Login</a>
                 <a href="/">Sign Up</a>

@@ -202,11 +202,21 @@ def init_db():
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )''',
             "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
-            checklist_id SERIAL PRIMARY KEY,
-            customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
-            checklist_items JSON NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                checklist_id SERIAL PRIMARY KEY,
+                customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+                checklist_items JSON NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )''',
+            "reviews": '''CREATE TABLE IF NOT EXISTS reviews (
+                review_id SERIAL PRIMARY KEY,
+                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+                question_1 TEXT,
+                question_2 TEXT,
+                question_3 TEXT,
+                question_4 TEXT,
+                rating REAL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )'''
         }
     else:
@@ -256,14 +266,23 @@ def init_db():
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )''',
             "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
-            checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
-            checklist_items TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+                checklist_items TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "reviews": '''CREATE TABLE IF NOT EXISTS reviews (
+                review_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+                question_1 TEXT,
+                question_2 TEXT,
+                question_3 TEXT,
+                question_4 TEXT,
+                rating REAL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )'''
         }
-
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -563,6 +582,71 @@ def edit_customer_info():
     return render_template('edit_customer_info.html')
 
 
+@app.route('/booking_review/<int:booking_id>')
+def booking_review(booking_id):
+    session['booking_id'] = booking_id
+    return redirect(url_for('review'))
+
+
+@app.route('/review')
+def review():
+    if 'booking_id' not in session:
+        flash("No booking selected for review.", "error")
+        return redirect(url_for("show_cleaners"))
+    return render_template('review.html')
+
+
+@app.route("/submit_review", methods=["POST"])
+def submit_review():
+    # Retrieve form data from the reviews.html page
+    booking_id = request.form.get("booking_id")
+    question_1 = request.form.get("question_1")
+    question_2 = request.form.get("question_2")
+    question_3 = request.form.get("question_3")
+    question_4 = request.form.get("question_4")
+    rating = request.form.get("rating")
+
+    # Convert the received values to the correct types.
+    # Since the sliders provide values as strings, convert them to integers.
+    try:
+        booking_id = int(booking_id)
+        question_1 = int(question_1)
+        question_2 = int(question_2)
+        question_3 = int(question_3)
+        question_4 = int(question_4)
+        rating = float(rating)  # Using float in case you want decimal ratings later.
+    except Exception as e:
+        flash("Invalid review data provided.", "error")
+        return redirect(url_for("review"))
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    # Determine the correct placeholder syntax for the current DB.
+    placeholder = "?" if USE_LOCAL_DB else "%s"
+
+    # Insert the review data into the 'reviews' table.
+    query = (
+        f"INSERT INTO reviews (booking_id, question_1, question_2, question_3, question_4, rating) "
+        f"VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}, {placeholder}, {placeholder})"
+    )
+
+    try:
+        cursor.execute(query, (booking_id, question_1, question_2, question_3, question_4, rating))
+        conn.commit()
+        flash("Review submitted successfully!", "success")
+    except Exception as e:
+        print(f"Error inserting review: {e}")
+        conn.rollback()
+        flash("There was an error submitting your review. Please try again.", "error")
+    finally:
+        cursor.close()
+        conn.close()
+
+    # Redirect the user to the cleaners page (or another confirmation page as desired)
+    return redirect(url_for("show_cleaners"))
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -622,6 +706,49 @@ def login():
 @app.route('/aboutus')
 def about_us():
     return render_template('about_us.html')
+
+
+@app.route('/view_checklist')
+def view_checklist():
+    if not session.get("cleaner_id"):
+        flash("Access restricted to cleaners only.", "error")
+        return redirect(url_for("login"))
+
+    booking_id = request.args.get("booking_id", type=int)
+    if not booking_id:
+        flash("No booking selected for review.", "error")
+        return redirect(url_for("manage_bookings"))
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    placeholder = "?" if USE_LOCAL_DB else "%s"
+
+    # Get customer_id from the booking
+    cursor.execute(f"SELECT customer_id FROM bookings WHERE booking_id = {placeholder}", (booking_id,))
+    booking = cursor.fetchone()
+    if not booking:
+        flash("Booking not found.", "error")
+        cursor.close()
+        conn.close()
+        return redirect(url_for("manage_bookings"))
+    customer_id = booking[0]
+
+    # Retrieve the customer's name
+    cursor.execute("SELECT full_name FROM customers WHERE customer_id = " + placeholder, (customer_id,))
+    customer = cursor.fetchone()
+    customer_name = customer[0] if customer else "Customer"
+
+    # Retrieve the checklist for the customer
+    cursor.execute("SELECT checklist_items FROM customer_checklists WHERE customer_id = " + placeholder, (customer_id,))
+    row = cursor.fetchone()
+    cursor.close()
+    conn.close()
+
+    checklist_items = (
+        json.loads(row[0]) if row and isinstance(row[0], str) else row[0] if row else []
+    )
+
+    return render_template("view_checklist.html", checklist_items=checklist_items, customer_name=customer_name)
 
 
 @app.route('/', methods=['GET', 'POST'])
