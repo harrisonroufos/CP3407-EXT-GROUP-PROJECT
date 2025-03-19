@@ -24,6 +24,10 @@ def get_all_cleaners():
         # Fetch all rows and convert them into a list of dictionaries
         cleaners = [dict(zip(columns, row)) for row in cursor.fetchall()]
 
+        # Attach computed average rating from reviews to each cleaner
+        for cleaner in cleaners:
+            cleaner['avg_rating'] = get_cleaner_average_rating(cleaner['cleaner_id'])
+
         conn.close()
         return cleaners, 200  # Return JSON & status code
 
@@ -56,6 +60,9 @@ def get_cleaner_by_id(cleaner_id):
         columns = [desc[0] for desc in cursor.description]
         cleaner = dict(zip(columns, row))
 
+        # Add the computed average rating to the cleaner's profile
+        cleaner['avg_rating'] = get_cleaner_average_rating(cleaner_id)
+
         conn.close()
         return cleaner, 200
 
@@ -81,3 +88,27 @@ def get_bookings_by_id(table_id, query):
     except Exception as e:
         print(f"Database query error: {e}")
         return {"error": "Failed to retrieve bookings."}, 500
+
+
+def get_cleaner_average_rating(cleaner_id):
+    """Compute the average rating for a cleaner based on reviews."""
+    conn = get_db_connection()
+    if not conn:
+        return None
+
+    try:
+        cursor = conn.cursor()
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+        query = f"""
+            SELECT AVG(r.rating)
+            FROM reviews r
+            JOIN bookings b ON r.booking_id = b.booking_id
+            WHERE b.cleaner_id = {placeholder}
+        """
+        cursor.execute(query, (cleaner_id,))
+        avg_rating = cursor.fetchone()[0]
+        conn.close()
+        return round(avg_rating, 2) if avg_rating else None
+    except Exception as e:
+        print(f"Rating fetch error: {e}")
+        return None

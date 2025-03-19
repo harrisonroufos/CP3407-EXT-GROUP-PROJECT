@@ -29,7 +29,14 @@
         <div class="profile-card">
             <div class="overview">
                 <h1>{{ cleaner.full_name }}</h1>
-                <h3>{{ cleaner.location }} | ⭐ {{ cleaner.rating }}</h3>
+                <h3>
+                    {{ cleaner.location }} |
+                    {% if cleaner.avg_rating %}
+                    ⭐ {{ cleaner.avg_rating }}
+                    {% else %}
+                    No reviews yet
+                    {% endif %}
+                </h3>
                 {% if session.get('customer_id') %}
                 <!-- Updated Book now! button -->
                 <button class="bookbtn" onclick="window.location.href='/book/{{ cleaner.cleaner_id }}'">
