@@ -87,9 +87,7 @@ Hence, there are 16 days worth of user story development per iteration.
 > Format: `user story link` | `developer name` | `Task name` | `date started` <br>
 > Use this area exclusively to track tasks that are in progress. Once they are complete, move them to the 'complete' section.
 
-* [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | 14/03/2025
-* [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 14/03/2025
-* [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | `Develop UI for dummy payment.` | 14/03/2025
+
 * [Create Booking](/user_stories/create_booking.md) | `Damon` | `Test and debug.` | --/--/----
 
 # Completed:
@@ -115,6 +113,10 @@ Hence, there are 16 days worth of user story development per iteration.
 * [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Create a survey form with various customer experience questions.` | 18/03/2025
 * [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Design and integrate the survey form into the app.` | 18/03/2025
 * [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Implement backend storage for customer reviews` | 18/03/2025
+
+* [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | 16/03/2025
+* [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 15/03/2025
+* [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | `Develop UI for dummy payment.` | 16/03/2025
  
 # Completed Maintenance and Feature Tasks
 > Format: `developer name` | `Task name` | `date finished` <br>
