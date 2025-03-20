@@ -94,8 +94,6 @@ Hence, there are 16 days worth of user story development per iteration.
 
 * [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon` &  `Casey`| `Test and debug.` | 20/03/2025
 
-* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Harrison` &  `Casey`| `Research and develop database for cleaner jobs.` | 20/03/2025
-
 * [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel`| `Develop system to track how long between cancellation and set job time.` | 20/03/2025
 
 * [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel`| `Develop UI.` | 20/03/2025
@@ -133,6 +131,8 @@ Hence, there are 16 days worth of user story development per iteration.
 
 * [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon` | `Develop backend system for calculating reliability.` | 19/03/2025
 * [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon` | `Display reliability scores on the front end.` | 20/03/2025
+
+* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Harrison` &  `Casey`| `Research and develop database for cleaner jobs.` | 20/03/2025
 
  
 # Completed Maintenance and Feature Tasks
