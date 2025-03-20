@@ -113,9 +113,9 @@ Hence, there are 16 days worth of user story development per iteration.
 * [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 15/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | `Develop UI for dummy payment.` | 16/03/2025
 
-* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Create a survey form with various customer experience questions.` | 18/03/2025
-* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Design and integrate the survey form into the app.` | 18/03/2025
-* [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | `Casey` | `Implement backend storage for customer reviews` | 18/03/2025
+* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | `Create a survey form with various customer experience questions.` | 18/03/2025
+* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | `Design and integrate the survey form into the app.` | 18/03/2025
+* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | `Implement backend storage for customer reviews` | 18/03/2025
 
 
  
