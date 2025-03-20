@@ -39,9 +39,9 @@ Total days estimation - 3 days
 
 ## Assigned task:
 1. Develop backend system for calculating reliability.
-    > Assigned to: `Damon` | Time elapsed: `1 days` | Start day: 19/03/2025  | Finished day: 19/03/2025
+    > Assigned to: `Damon` | Time elapsed: `1 day` | Start day: 19/03/2025  | Finished day: 19/03/2025
 2. Display reliability scores on the front end.
-    > Assigned to: `Damon` | Time elapsed: `1` | Start day: 19/03/2025 | Finished day: 20/03/2025
+    > Assigned to: `Damon` | Time elapsed: `1 day` | Start day: 19/03/2025 | Finished day: 20/03/2025
 3. Test and debug.
     > Assigned to: `Damon` & `Casey` | Time elapsed: ` ` | Start day: 20/03/2025 | Finished day: 
 
