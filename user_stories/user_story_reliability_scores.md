@@ -30,10 +30,9 @@ As a customer, I want to view reliability scores for cleaners, so I can ensure I
 ---
 
 ## Tasks
-1. Brain storm how to calculate relability score. 1 day.
-2. Develop backend system for calculating reliability. 1 day. 
-3. Display reliability scores on the front end. 1/2 day.
-4. Test and debug 1/2 day.
+1. Develop backend system for calculating reliability. 1 day. 
+2. Display reliability scores on the front end. 1 day.
+3. Test and debug 1 day.
 
 Total days estimation - 3 days
 ---
