@@ -88,8 +88,21 @@ Hence, there are 16 days worth of user story development per iteration.
 > Use this area exclusively to track tasks that are in progress. Once they are complete, move them to the 'complete' section.
 
 
-* [Create Booking](/user_stories/create_booking.md) | `Damon` | `Test and debug.` | --/--/----
+* [Create Booking](/user_stories/create_booking.md) | `Damon` | `Test and debug.` | 20/03/2025
 
+* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Damon` &  `Casey` | `Test and debug.` | 20/03/2025
+
+* [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon` &  `Casey`| `Test and debug.` | 20/03/2025
+
+* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Harrison` &  `Casey`| `Research and develop database for cleaner jobs.` | 20/03/2025
+
+* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel`| `Develop system to track how long between cancellation and set job time.` | 20/03/2025
+
+* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel`| `Develop UI.` | 20/03/2025
+
+* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel`| `Test and Debug.` | 20/03/2025
+
+    
 # Completed:
 > Format: `user story link` | `developer name` | `Task name` | `date Finished` <br>
 * [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` | `Research setting up the database and website.` | 18/02/2025
@@ -116,7 +129,10 @@ Hence, there are 16 days worth of user story development per iteration.
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | `Create a survey form with various customer experience questions.` | 18/03/2025
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | `Design and integrate the survey form into the app.` | 18/03/2025
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | `Implement backend storage for customer reviews` | 18/03/2025
+* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Damon` | `Display average ratings and reviews on cleaner profiles.` | 21/03/2025
 
+* [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon` | `Develop backend system for calculating reliability.` | 19/03/2025
+* [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon` | `Display reliability scores on the front end.` | 20/03/2025
 
  
 # Completed Maintenance and Feature Tasks
