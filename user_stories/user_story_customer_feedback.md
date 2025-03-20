@@ -1,4 +1,4 @@
-# Customer Feedback and Reviews
+# Customer Feedback
 
 ## Description
 **Description-v1:**  
