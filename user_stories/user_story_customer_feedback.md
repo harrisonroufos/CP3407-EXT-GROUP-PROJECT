@@ -46,9 +46,9 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 3. Implement backend storage for customer reviews.
     > Assigned to: `Casey` | Time elapsed: `1 day` | Start day: 17/03/2025 | Finished day: 18/03/2025
 4. Display average ratings and reviews on cleaner profiles.
-    > Assigned to: 'Damon` | Time elapsed: ` days` | Start day: | Finished day:
+    > Assigned to: `Damon` | Time elapsed: ` 2 days` | Start day: 18/03/2025 | Finished day: 21/03/2025
 5. Test and debug.
-    > Assigned to: `__` | Time elapsed: ` days` | Start day: | Finished day: 
+    > Assigned to: `Casey` & `Damon` | Time elapsed: ` days` | Start day: 20/03/2025| Finished day: 
 
 Total days estimation - 4 days
 ---
