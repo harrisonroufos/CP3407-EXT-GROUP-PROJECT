@@ -6,6 +6,7 @@ This is the main Python/Flask file for the MyClean App
 
 import os, sqlite3, psycopg2, requests
 from backend.routes.cleaner_routes import cleaner_bp
+from backend.services.cleaner_service import get_cleaner_average_rating
 from flask import Flask, render_template, request, redirect, url_for, session, flash, get_flashed_messages
 from werkzeug.security import generate_password_hash, check_password_hash
 from backend.config import USE_LOCAL_DB
@@ -113,29 +114,40 @@ def clear_tables(cursor):
     cursor.connection.commit()
 
 
+from backend.services.cleaner_service import get_cleaner_average_rating
+
+
 def fetch_cleaners_from_postgre():
-    """Fetch cleaners directly from the PostgreSQL database."""
+    """Fetch cleaners with avg_rating using a single DB connection."""
     conn = get_db_connection()
     cursor = conn.cursor()
 
     try:
         print("Retrieving cleaner data from PostgreSQL database.")
         cursor.execute("""
-            SELECT cleaner_id, full_name, email, phone_number, location, rating, experience_years 
-            FROM cleaners
+            SELECT c.cleaner_id, c.full_name, c.email, c.phone_number, c.location,
+                   c.rating, c.experience_years, AVG(r.rating)
+            FROM cleaners c
+            LEFT JOIN bookings b ON c.cleaner_id = b.cleaner_id
+            LEFT JOIN reviews r ON b.booking_id = r.booking_id
+            GROUP BY c.cleaner_id
         """)
-        return [
-            {
+        cleaners = []
+        for row in cursor.fetchall():
+            cleaner = {
                 "cleaner_id": row[0],
                 "full_name": row[1],
                 "email": row[2] or "Not Available",
                 "phone_number": row[3] or "Not Available",
                 "location": row[4] or "Unknown Location",
                 "rating": row[5] if row[5] is not None else "N/A",
-                "experience_years": row[6] if row[6] is not None else "No experience listed"
+                "experience_years": row[6] if row[6] is not None else "No experience listed",
+                "avg_rating": round(row[7], 2) if row[7] is not None else None
             }
-            for row in cursor.fetchall()
-        ]
+            cleaners.append(cleaner)
+
+        return cleaners
+
     except Exception as e:
         print(f"Database error: {e}")
         return []
@@ -650,56 +662,42 @@ def submit_review():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        print("Login POST triggered.")
         username = request.form['username']
         password = request.form['password']
+        print(f"Username entered: {username}")
 
         conn = get_db_connection()
         cursor = conn.cursor()
 
-        # Use conditional placeholder
         placeholder = "?" if USE_LOCAL_DB else "%s"
         query = f"SELECT user_id, username, password FROM users WHERE username = {placeholder}"
         cursor.execute(query, (username,))
         user = cursor.fetchone()
 
         if user:
-            stored_hashed_password = user[2]  # Stored password hash
+            print("User found in DB.")
+            stored_hashed_password = user[2]
+            print(f"Stored password hash: {stored_hashed_password}")
+
             if check_password_hash(stored_hashed_password, password):
-                # Successful login; set session data
+                print("✅ Password matches.")
+                # Session data set
                 session['user_id'] = user[0]
                 session['username'] = user[1]
-
-                # Determine whether the user is a cleaner or a customer
-                cursor.execute(f"SELECT cleaner_id FROM cleaners WHERE user_id = {placeholder}", (user[0],))
-                cleaner_result = cursor.fetchone()
-
-                if cleaner_result is not None:
-                    # User is a cleaner
-                    session['cleaner_id'] = cleaner_result[0]
-                    session['customer_id'] = False
-                else:
-                    # If not a cleaner, check if user is a customer
-                    cursor.execute(f"SELECT customer_id FROM customers WHERE user_id = {placeholder}", (user[0],))
-                    customer_result = cursor.fetchone()
-                    if customer_result is not None:
-                        session['customer_id'] = customer_result[0]
-                        session['cleaner_id'] = False
-                    else:
-                        # If neither table matches, set both to False
-                        session['customer_id'] = False
-                        session['cleaner_id'] = False
-
-                conn.close()
-                # Redirect to main page (show_cleaners)
+                ...
+                print("Redirecting to show_cleaners.")
                 return redirect(url_for('show_cleaners'))
             else:
+                print("❌ Password mismatch.")
                 conn.close()
                 return render_template("login.html", error="Invalid credentials!")
-        # No matching username found or other error
-        conn.close()
-        return render_template("login.html", error="Invalid credentials!")
+        else:
+            print("❌ Username not found.")
+            conn.close()
+            return render_template("login.html", error="Invalid credentials!")
 
-    # If GET request, just show login form
+    print("Login GET triggered.")
     return render_template('login.html')
 
 
@@ -874,9 +872,8 @@ def custom_checklist():
 
 @app.route("/logout")
 def logout():
-    """Logout the user by clearing the session."""
     print("Logging out the user.")  # Debugging print statement
-    session.pop("user", None)
+    session.clear()
     return redirect(url_for("login"))
 
 
