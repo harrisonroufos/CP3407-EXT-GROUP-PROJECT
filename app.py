@@ -6,13 +6,13 @@ This is the main Python/Flask file for the MyClean App
 
 import os, sqlite3, psycopg2, requests
 from backend.routes.cleaner_routes import cleaner_bp
-from backend.services.cleaner_service import get_cleaner_average_rating
-from flask import Flask, render_template, request, redirect, url_for, session, flash, get_flashed_messages
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from backend.config import USE_LOCAL_DB
 from backend.database import get_db_connection
-import json
 from datetime import datetime
+from contextlib import contextmanager
+import json
 
 # Initialise the Flask app
 app = Flask(__name__)
@@ -22,10 +22,211 @@ app.secret_key = "CP3407"  # Set Flask's secure key for session management
 from backend.config import DATABASE_URL
 
 
-def create_table(cursor, query):
-    """Create a table using the provided query."""
-    print(f"Executing query: {query}")  # Debugging print statement
-    cursor.execute(query)
+@contextmanager
+def db_cursor(commit=False):
+    """
+    Context manager that yields a (connection, cursor) tuple.
+    Commits the transaction if commit=True; otherwise, rolls back on error.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        yield conn, cursor
+        if commit:
+            conn.commit()
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        cursor.close()
+        conn.close()
+
+
+def get_table_definitions():
+    """
+    Returns a dictionary of table creation queries based on the current environment.
+    Uses PostgreSQL-compatible queries if DATABASE_URL is set, otherwise SQLite-compatible queries.
+    """
+    if DATABASE_URL:
+        return {
+            "users": '''CREATE TABLE IF NOT EXISTS users (
+                user_id SERIAL PRIMARY KEY, 
+                username TEXT UNIQUE NOT NULL, 
+                password TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "customers": '''CREATE TABLE IF NOT EXISTS customers (
+                customer_id SERIAL PRIMARY KEY,
+                user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE, 
+                full_name TEXT NOT NULL, 
+                email TEXT UNIQUE NOT NULL, 
+                phone_number TEXT UNIQUE NOT NULL,
+                location TEXT, 
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "cleaners": '''CREATE TABLE IF NOT EXISTS cleaners (
+                cleaner_id SERIAL PRIMARY KEY,
+                user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE, 
+                full_name TEXT NOT NULL, 
+                email TEXT UNIQUE NOT NULL, 
+                phone_number TEXT UNIQUE NOT NULL,
+                bio TEXT,
+                location TEXT, 
+                rating REAL DEFAULT 0 CHECK (rating BETWEEN 0 AND 5),
+                experience_years REAL CHECK (experience_years >= 0),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "bookings": '''CREATE TABLE IF NOT EXISTS bookings (
+                booking_id SERIAL PRIMARY KEY,
+                cleaner_id INTEGER NOT NULL REFERENCES cleaners(cleaner_id) ON DELETE CASCADE,
+                customer_id INTEGER NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+                booking_date TIMESTAMP NOT NULL,
+                status TEXT CHECK (status IN ('pending', 'confirmed', 'completed', 'cancelled')),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "checklists": '''CREATE TABLE IF NOT EXISTS checklists (
+                checklist_id SERIAL PRIMARY KEY,
+                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+                checklist_items JSON NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
+                checklist_id SERIAL PRIMARY KEY,
+                customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+                checklist_items JSON NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "reviews": '''CREATE TABLE IF NOT EXISTS reviews (
+                review_id SERIAL PRIMARY KEY,
+                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+                question_1 TEXT,
+                question_2 TEXT,
+                question_3 TEXT,
+                question_4 TEXT,
+                rating REAL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )'''
+        }
+    else:
+        return {
+            "users": '''CREATE TABLE IF NOT EXISTS users (
+                user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                username TEXT UNIQUE NOT NULL, 
+                password TEXT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "customers": '''CREATE TABLE IF NOT EXISTS customers (
+                customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE, 
+                full_name TEXT NOT NULL, 
+                email TEXT UNIQUE NOT NULL, 
+                phone_number TEXT UNIQUE NOT NULL,
+                location TEXT, 
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "cleaners": '''CREATE TABLE IF NOT EXISTS cleaners (
+                cleaner_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE, 
+                full_name TEXT NOT NULL, 
+                email TEXT UNIQUE NOT NULL, 
+                phone_number TEXT UNIQUE NOT NULL,
+                bio TEXT,
+                location TEXT, 
+                rating REAL DEFAULT 0 CHECK (rating BETWEEN 0 AND 5),
+                experience_years REAL CHECK (experience_years >= 0),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "bookings": '''CREATE TABLE IF NOT EXISTS bookings (
+                booking_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                cleaner_id INTEGER NOT NULL REFERENCES cleaners(cleaner_id) ON DELETE CASCADE,
+                customer_id INTEGER NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+                booking_date TIMESTAMP NOT NULL,
+                status TEXT CHECK (status IN ('pending', 'confirmed', 'completed', 'cancelled')),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "checklists": '''CREATE TABLE IF NOT EXISTS checklists (
+                checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+                checklist_items TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
+                checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+                checklist_items TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )''',
+            "reviews": '''CREATE TABLE IF NOT EXISTS reviews (
+                review_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+                question_1 TEXT,
+                question_2 TEXT,
+                question_3 TEXT,
+                question_4 TEXT,
+                rating REAL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )'''
+        }
+
+
+def create_tables(tables):
+    """
+    Checks for the existence of each table and creates it if missing.
+    Uses different queries for SQLite (local) versus PostgreSQL.
+    """
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        print("Checking if tables already exist...")
+        for table, query in tables.items():
+            if USE_LOCAL_DB:
+                check_query = f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}';"
+            else:
+                check_query = f"SELECT to_regclass('{table}');"
+            cursor.execute(check_query)
+            if cursor.fetchone() is None:
+                print(f"Table {table} does not exist. Creating it...")
+                cursor.execute(query)
+            else:
+                print(f"Table {table} already exists.")
+        conn.commit()
+    except Exception as e:
+        print(f"❌ Error initializing the database: {e}")
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+
+def clear_local_db(cursor):
+    """Clear the relevant tables to reset the database."""
+    print("Clearing tables...")  # Debugging print statement
+    # Delete from child tables first to avoid foreign key constraint errors.
+    cursor.execute("DELETE FROM reviews")
+    cursor.execute("DELETE FROM checklists")
+    cursor.execute("DELETE FROM customer_checklists")
+    cursor.execute("DELETE FROM bookings")
+    cursor.execute("DELETE FROM cleaners")
+    cursor.execute("DELETE FROM customers")
+    cursor.execute("DELETE FROM users")
+
+    # If using SQLite, clear the auto-increment sequences as well.
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='reviews'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='checklists'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='customer_checklists'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='bookings'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='cleaners'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='customers'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='users'")
+
+    cursor.connection.commit()
 
 
 def insert_admin_data(cursor, db_type="sqlite"):
@@ -100,21 +301,30 @@ def insert_admin_data(cursor, db_type="sqlite"):
         cursor.connection.commit()
 
 
-def clear_tables(cursor):
-    """Clear the relevant tables to reset the database."""
-    print("Clearing tables...")  # Debugging print statement
-    cursor.execute("DELETE FROM bookings")
-    cursor.execute("DELETE FROM cleaners")
-    cursor.execute("DELETE FROM customers")
-    cursor.execute("DELETE FROM users")
-    cursor.execute("DELETE FROM sqlite_sequence WHERE name='users'")
-    cursor.execute("DELETE FROM sqlite_sequence WHERE name='cleaners'")
-    cursor.execute("DELETE FROM sqlite_sequence WHERE name='customers'")
-    cursor.execute("DELETE FROM sqlite_sequence WHERE name='bookings'")
-    cursor.connection.commit()
+def init_db():
+    """
+    Orchestrates the database initialization:
+      1. Retrieves table definitions.
+      2. Checks and creates tables as needed.
+      3. (Optional) Clears tables (commented out) and inserts admin/initial data.
+    """
+    print("Initializing the database...")
 
+    # Step 1: Get table definitions based on environment.
+    tables = get_table_definitions()
 
-from backend.services.cleaner_service import get_cleaner_average_rating
+    # Step 2: Create tables if they don't exist.
+    create_tables(tables)
+
+    # Step 3: (Optional) Clear local DB tables for a fresh start.
+    # with db_cursor(commit=True) as (conn, cursor):
+    #     clear_tables(cursor)
+
+    # Step 4: Insert admin and initial data.
+    with db_cursor(commit=True) as (conn, cursor):
+        insert_admin_data(cursor, db_type="sqlite" if USE_LOCAL_DB else "postgres")
+
+    print("✅ Database initialized successfully.")
 
 
 def fetch_cleaners_from_postgre():
@@ -177,167 +387,167 @@ def process_booking_date(bookings):
         booking["booking_date"] = booking_datetime.strftime('%d-%m-%Y')
 
 
-def init_db():
-    print("Initializing the database...")
-    conn = None
-    cursor = None
-
-    if DATABASE_URL:
-        # PostgreSQL-compatible table creation queries
-        tables = {
-            "users": '''CREATE TABLE IF NOT EXISTS users (
-                user_id SERIAL PRIMARY KEY, 
-                username TEXT UNIQUE NOT NULL, 
-                password TEXT NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "customers": '''CREATE TABLE IF NOT EXISTS customers (
-                customer_id SERIAL PRIMARY KEY,
-                user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE, 
-                full_name TEXT NOT NULL, 
-                email TEXT UNIQUE NOT NULL, 
-                phone_number TEXT UNIQUE NOT NULL,
-                location TEXT, 
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "cleaners": '''CREATE TABLE IF NOT EXISTS cleaners (
-                cleaner_id SERIAL PRIMARY KEY,
-                user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE, 
-                full_name TEXT NOT NULL, 
-                email TEXT UNIQUE NOT NULL, 
-                phone_number TEXT UNIQUE NOT NULL,
-                bio TEXT,
-                location TEXT, 
-                rating REAL DEFAULT 0 CHECK (rating BETWEEN 0 AND 5),
-                experience_years REAL CHECK (experience_years >= 0),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "bookings": '''CREATE TABLE IF NOT EXISTS bookings (
-                booking_id SERIAL PRIMARY KEY,
-                cleaner_id INTEGER NOT NULL REFERENCES cleaners(cleaner_id) ON DELETE CASCADE,
-                customer_id INTEGER NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
-                booking_date TIMESTAMP NOT NULL,
-                status TEXT CHECK (status IN ('pending', 'confirmed', 'completed', 'cancelled')),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "checklists": '''CREATE TABLE IF NOT EXISTS checklists (
-                checklist_id SERIAL PRIMARY KEY,
-                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
-                checklist_items JSON NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
-                checklist_id SERIAL PRIMARY KEY,
-                customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
-                checklist_items JSON NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )''',
-            "reviews": '''CREATE TABLE IF NOT EXISTS reviews (
-                review_id SERIAL PRIMARY KEY,
-                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
-                question_1 TEXT,
-                question_2 TEXT,
-                question_3 TEXT,
-                question_4 TEXT,
-                rating REAL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )'''
-        }
-    else:
-        # SQLite-compatible table creation queries
-        tables = {
-            "users": '''CREATE TABLE IF NOT EXISTS users (
-                user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                username TEXT UNIQUE NOT NULL, 
-                password TEXT NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "customers": '''CREATE TABLE IF NOT EXISTS customers (
-                customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE, 
-                full_name TEXT NOT NULL, 
-                email TEXT UNIQUE NOT NULL, 
-                phone_number TEXT UNIQUE NOT NULL,
-                location TEXT, 
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "cleaners": '''CREATE TABLE IF NOT EXISTS cleaners (
-                cleaner_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE, 
-                full_name TEXT NOT NULL, 
-                email TEXT UNIQUE NOT NULL, 
-                phone_number TEXT UNIQUE NOT NULL,
-                bio TEXT,
-                location TEXT, 
-                rating REAL DEFAULT 0 CHECK (rating BETWEEN 0 AND 5),
-                experience_years REAL CHECK (experience_years >= 0),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "bookings": '''CREATE TABLE IF NOT EXISTS bookings (
-                booking_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                cleaner_id INTEGER NOT NULL REFERENCES cleaners(cleaner_id) ON DELETE CASCADE,
-                customer_id INTEGER NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
-                booking_date TIMESTAMP NOT NULL,
-                status TEXT CHECK (status IN ('pending', 'confirmed', 'completed', 'cancelled')),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "checklists": '''CREATE TABLE IF NOT EXISTS checklists (
-                checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
-                checklist_items TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
-                checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
-                checklist_items TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )''',
-            "reviews": '''CREATE TABLE IF NOT EXISTS reviews (
-                review_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
-                question_1 TEXT,
-                question_2 TEXT,
-                question_3 TEXT,
-                question_4 TEXT,
-                rating REAL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )'''
-        }
-    try:
-        conn = get_db_connection()
-        cursor = conn.cursor()
-
-        print("Checking if tables already exist...")
-        for table, query in tables.items():
-            if USE_LOCAL_DB:
-                check_query = f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}';"
-            else:
-                check_query = f"SELECT to_regclass('{table}');"
-
-            cursor.execute(check_query)
-            if cursor.fetchone() is None:
-                print(f"Table {table} does not exist. Creating it...")
-                cursor.execute(query)
-            else:
-                print(f"Table {table} already exists.")
-
-        # (Leave the rest of your init_db code here, e.g., inserting admin data, etc.)
-        conn.commit()
-        print("✅ Database initialized successfully.")
-    except Exception as e:
-        print(f"❌ Error initializing the database: {e}")
-    finally:
-        if cursor:
-            cursor.close()
-        if conn:
-            conn.close()
+# def init_db():
+#     print("Initialising the database...")
+#     conn = None
+#     cursor = None
+#
+#     if DATABASE_URL:
+#         # PostgreSQL-compatible table creation queries
+#         tables = {
+#             "users": '''CREATE TABLE IF NOT EXISTS users (
+#                 user_id SERIAL PRIMARY KEY,
+#                 username TEXT UNIQUE NOT NULL,
+#                 password TEXT NOT NULL,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+#                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "customers": '''CREATE TABLE IF NOT EXISTS customers (
+#                 customer_id SERIAL PRIMARY KEY,
+#                 user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+#                 full_name TEXT NOT NULL,
+#                 email TEXT UNIQUE NOT NULL,
+#                 phone_number TEXT UNIQUE NOT NULL,
+#                 location TEXT,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "cleaners": '''CREATE TABLE IF NOT EXISTS cleaners (
+#                 cleaner_id SERIAL PRIMARY KEY,
+#                 user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+#                 full_name TEXT NOT NULL,
+#                 email TEXT UNIQUE NOT NULL,
+#                 phone_number TEXT UNIQUE NOT NULL,
+#                 bio TEXT,
+#                 location TEXT,
+#                 rating REAL DEFAULT 0 CHECK (rating BETWEEN 0 AND 5),
+#                 experience_years REAL CHECK (experience_years >= 0),
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "bookings": '''CREATE TABLE IF NOT EXISTS bookings (
+#                 booking_id SERIAL PRIMARY KEY,
+#                 cleaner_id INTEGER NOT NULL REFERENCES cleaners(cleaner_id) ON DELETE CASCADE,
+#                 customer_id INTEGER NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+#                 booking_date TIMESTAMP NOT NULL,
+#                 status TEXT CHECK (status IN ('pending', 'confirmed', 'completed', 'cancelled')),
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "checklists": '''CREATE TABLE IF NOT EXISTS checklists (
+#                 checklist_id SERIAL PRIMARY KEY,
+#                 booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+#                 checklist_items JSON NOT NULL,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+#                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
+#                 checklist_id SERIAL PRIMARY KEY,
+#                 customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+#                 checklist_items JSON NOT NULL,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+#                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#                 )''',
+#             "reviews": '''CREATE TABLE IF NOT EXISTS reviews (
+#                 review_id SERIAL PRIMARY KEY,
+#                 booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+#                 question_1 TEXT,
+#                 question_2 TEXT,
+#                 question_3 TEXT,
+#                 question_4 TEXT,
+#                 rating REAL,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )'''
+#         }
+#     else:
+#         # SQLite-compatible table creation queries
+#         tables = {
+#             "users": '''CREATE TABLE IF NOT EXISTS users (
+#                 user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 username TEXT UNIQUE NOT NULL,
+#                 password TEXT NOT NULL,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+#                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "customers": '''CREATE TABLE IF NOT EXISTS customers (
+#                 customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+#                 full_name TEXT NOT NULL,
+#                 email TEXT UNIQUE NOT NULL,
+#                 phone_number TEXT UNIQUE NOT NULL,
+#                 location TEXT,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "cleaners": '''CREATE TABLE IF NOT EXISTS cleaners (
+#                 cleaner_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 user_id INTEGER UNIQUE NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+#                 full_name TEXT NOT NULL,
+#                 email TEXT UNIQUE NOT NULL,
+#                 phone_number TEXT UNIQUE NOT NULL,
+#                 bio TEXT,
+#                 location TEXT,
+#                 rating REAL DEFAULT 0 CHECK (rating BETWEEN 0 AND 5),
+#                 experience_years REAL CHECK (experience_years >= 0),
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "bookings": '''CREATE TABLE IF NOT EXISTS bookings (
+#                 booking_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 cleaner_id INTEGER NOT NULL REFERENCES cleaners(cleaner_id) ON DELETE CASCADE,
+#                 customer_id INTEGER NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+#                 booking_date TIMESTAMP NOT NULL,
+#                 status TEXT CHECK (status IN ('pending', 'confirmed', 'completed', 'cancelled')),
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "checklists": '''CREATE TABLE IF NOT EXISTS checklists (
+#                 checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+#                 checklist_items TEXT,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+#                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "customer_checklists": '''CREATE TABLE IF NOT EXISTS customer_checklists (
+#                 checklist_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 customer_id INTEGER UNIQUE NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
+#                 checklist_items TEXT,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+#                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )''',
+#             "reviews": '''CREATE TABLE IF NOT EXISTS reviews (
+#                 review_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#                 booking_id INTEGER NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+#                 question_1 TEXT,
+#                 question_2 TEXT,
+#                 question_3 TEXT,
+#                 question_4 TEXT,
+#                 rating REAL,
+#                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+#             )'''
+#         }
+#     try:
+#         conn = get_db_connection()
+#         cursor = conn.cursor()
+#
+#         print("Checking if tables already exist...")
+#         for table, query in tables.items():
+#             if USE_LOCAL_DB:
+#                 check_query = f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table}';"
+#             else:
+#                 check_query = f"SELECT to_regclass('{table}');"
+#
+#             cursor.execute(check_query)
+#             if cursor.fetchone() is None:
+#                 print(f"Table {table} does not exist. Creating it...")
+#                 cursor.execute(query)
+#             else:
+#                 print(f"Table {table} already exists.")
+#
+#         # (Leave the rest of your init_db code here, e.g., inserting admin data, etc.)
+#         conn.commit()
+#         print("✅ Database initialized successfully.")
+#     except Exception as e:
+#         print(f"❌ Error initializing the database: {e}")
+#     finally:
+#         if cursor:
+#             cursor.close()
+#         if conn:
+#             conn.close()
 
 
 @app.route("/show_cleaners", methods=["GET"])
@@ -397,46 +607,6 @@ def manage_bookings():
 
     return render_template('manage_bookings.html', bookings=bookings)
 
-
-# @app.route("/book/<int:cleaner_id>", methods=["GET", "POST"])
-# def book_cleaner(cleaner_id):
-#     # Only customers can book a cleaner
-#     if "customer_id" not in session:
-#         return redirect(url_for("login"))
-#
-#     conn = get_db_connection()
-#     cursor = conn.cursor()
-#     placeholder = "?" if USE_LOCAL_DB else "%s"
-#
-#     if request.method == "POST":
-#         booking_date = request.form.get("booking_date")
-#         checklist_items = request.form.get("checklist_items", "")
-#
-#         # Insert booking row
-#         if USE_LOCAL_DB:
-#             # SQLite
-#             query = f"INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder})"
-#             cursor.execute(query, (cleaner_id, session["customer_id"], booking_date, "pending"))
-#             booking_id = cursor.lastrowid
-#         else:
-#             # PostgreSQL
-#             query = f"INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}) RETURNING booking_id"
-#             cursor.execute(query, (cleaner_id, session["customer_id"], booking_date, "pending"))
-#             booking_id = cursor.fetchone()[0]
-#
-#         # Insert into checklists table referencing the new booking_id
-#         query = f"INSERT INTO checklists (booking_id, checklist_items) VALUES ({placeholder}, {placeholder})"
-#         cursor.execute(query, (booking_id, checklist_items))
-#
-#         conn.commit()
-#         conn.close()
-#
-#         # Redirect to show cleaners or a booking confirmation page
-#         return redirect(url_for("show_cleaners"))
-#
-#     # GET request: show booking form
-#     conn.close()
-#     return render_template("book_cleaner.html", cleaner_id=cleaner_id)
 
 @app.route("/book/<int:cleaner_id>", methods=["GET", "POST"])
 def book_cleaner(cleaner_id):
@@ -967,7 +1137,7 @@ app.register_blueprint(cleaner_bp)  # This is required!
 # Run the Flask app in debug mode
 if __name__ == "__main__":
     if os.environ.get("FLASK_RUN_MAIN") != "true":  # Prevents duplicate execution
-        print(f"🔄 Initializing {'local SQLite' if USE_LOCAL_DB else 'PostgreSQL'} database...")
+        print(f"🔄 Initialising {'local SQLite' if USE_LOCAL_DB else 'PostgreSQL'} database...")
         init_db()
 
     print("\n=== Registered Routes ===")
