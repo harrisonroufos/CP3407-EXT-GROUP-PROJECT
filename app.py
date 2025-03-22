@@ -670,35 +670,61 @@ def login():
         conn = get_db_connection()
         cursor = conn.cursor()
 
+        # Use conditional placeholder
         placeholder = "?" if USE_LOCAL_DB else "%s"
         query = f"SELECT user_id, username, password FROM users WHERE username = {placeholder}"
         cursor.execute(query, (username,))
         user = cursor.fetchone()
 
         if user:
-            print("User found in DB.")
-            stored_hashed_password = user[2]
-            print(f"Stored password hash: {stored_hashed_password}")
+            print("🔍 User found in DB.")
+            stored_hashed_password = user[2]  # Stored password hash
 
             if check_password_hash(stored_hashed_password, password):
                 print("✅ Password matches.")
-                # Session data set
+                # Successful login; set session data
                 session['user_id'] = user[0]
                 session['username'] = user[1]
-                ...
-                print("Redirecting to show_cleaners.")
+
+                # Determine whether the user is a cleaner or a customer
+                cursor.execute(f"SELECT cleaner_id FROM cleaners WHERE user_id = {placeholder}", (user[0],))
+                cleaner_result = cursor.fetchone()
+
+                if cleaner_result is not None:
+                    # User is a cleaner
+                    session['cleaner_id'] = cleaner_result[0]
+                    session['customer_id'] = False
+                    print(f"🔍 Cleaner record found: cleaner_id = {cleaner_result[0]}")
+                else:
+                    print("ℹ️ No cleaner record found for this user.")
+                    # If not a cleaner, check if user is a customer
+                    cursor.execute(f"SELECT customer_id FROM customers WHERE user_id = {placeholder}", (user[0],))
+                    customer_result = cursor.fetchone()
+                    if customer_result is not None:
+                        session['customer_id'] = customer_result[0]
+                        session['cleaner_id'] = False
+                        print(f"🔍 Customer record found: customer_id = {customer_result[0]}")
+                    else:
+                        # If neither table matches, set both to False
+                        session['customer_id'] = False
+                        session['cleaner_id'] = False
+                        print("⚠️ No cleaner or customer record found for this user.")
+
+                conn.close()
+                print("🚀 Redirecting to show_cleaners.")
                 return redirect(url_for('show_cleaners'))
             else:
                 print("❌ Password mismatch.")
                 conn.close()
-                return render_template("login.html", error="Invalid credentials!")
+                return render_template("login.html", error="❌ Invalid credentials!")
         else:
             print("❌ Username not found.")
             conn.close()
-            return render_template("login.html", error="Invalid credentials!")
+            return render_template("login.html", error="❌ Invalid credentials!")
 
     print("Login GET triggered.")
     return render_template('login.html')
+
 
 
 @app.route('/aboutus')
