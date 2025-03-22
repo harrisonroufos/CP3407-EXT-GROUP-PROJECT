@@ -231,74 +231,77 @@ def clear_local_db(cursor):
 
 def insert_admin_data(cursor, db_type="sqlite"):
     print("Checking if admin data exists...")
-    cursor.execute(
-        "SELECT COUNT(*) FROM users WHERE username IN ('admin', 'cleaner', 'customer')"
-    )
+    cursor.execute("SELECT COUNT(*) FROM users WHERE username IN ('admin', 'cleaner', 'customer')")
     count = cursor.fetchone()[0]
 
-    if count == 0:
-        print("Inserting admin and initial data...")
+    if count != 0:
+        return
 
-        # Insert admin user into the 'users' table
+    print("Inserting admin and initial data...")
+
+    # Insert admin user into the 'users' table.
+    if db_type == "postgres":
+        cursor.execute(
+            "INSERT INTO users (username, password) VALUES (%s, %s)",
+            ('admin', '123')
+        )
+    else:
+        cursor.execute(
+            "INSERT INTO users (username, password) VALUES (?, ?)",
+            ('admin', '123')
+        )
+
+    # Retrieve the generated user_id.
+    user_id = cursor.lastrowid
+    if db_type == "postgres":
+        cursor.execute("SELECT CURRVAL(pg_get_serial_sequence('users', 'user_id'))")
+        user_id = cursor.fetchone()[0]
+
+    # Helper to execute an INSERT query and return the generated id.
+    def insert_record(query_sqlite, query_postgres, params):
         if db_type == "postgres":
-            cursor.execute(
-                "INSERT INTO users (username, password) VALUES (%s, %s)",
-                ('admin', '123')
-            )
+            cursor.execute(query_postgres, params)
+            # Check for RETURNING clause to fetch the generated id.
+            return cursor.fetchone()[0] if "RETURNING" in query_postgres else None
         else:
-            cursor.execute(
-                "INSERT INTO users (username, password) VALUES (?, ?)",
-                ('admin', '123')
-            )
+            cursor.execute(query_sqlite, params)
+            return cursor.lastrowid
 
-        # Get the user_id for the admin
-        user_id = cursor.lastrowid
-        if db_type == "postgres":
-            cursor.execute("SELECT CURRVAL(pg_get_serial_sequence('users', 'user_id'))")
-            user_id = cursor.fetchone()[0]
+    # Insert customer data.
+    customer_id = insert_record(
+        "INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (?, ?, ?, ?)",
+        "INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (%s, %s, %s, %s) RETURNING customer_id",
+        (user_id, 'Customer Name', 'customer123@example.com', '1234567891')
+    )
 
-        # Insert customer data into the 'customers' table and retrieve customer_id
-        if db_type == "postgres":
-            cursor.execute(
-                "INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (%s, %s, %s, %s) RETURNING customer_id",
-                (user_id, 'Customer Name', 'customer123@example.com', '1234567891')
-            )
-            customer_id = cursor.fetchone()[0]
-        else:
-            cursor.execute(
-                "INSERT INTO customers (user_id, full_name, email, phone_number) VALUES (?, ?, ?, ?)",
-                (user_id, 'Customer Name', 'customer123@example.com', '1234567891')
-            )
-            customer_id = cursor.lastrowid
+    # Insert cleaner data.
+    cleaner_id = insert_record(
+        "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (?, ?, ?, ?, ?, ?)",
+        "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (%s, %s, %s, %s, %s, %s) RETURNING cleaner_id",
+        (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3)
+    )
 
-        # Insert cleaner data into the 'cleaners' table and retrieve cleaner_id
-        if db_type == "postgres":
-            cursor.execute(
-                "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (%s, %s, %s, %s, %s, %s) RETURNING cleaner_id",
-                (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3)
-            )
-            cleaner_id = cursor.fetchone()[0]
-        else:
-            cursor.execute(
-                "INSERT INTO cleaners (user_id, full_name, email, phone_number, rating, experience_years) VALUES (?, ?, ?, ?, ?, ?)",
-                (user_id, 'Cleaner Name', 'cleaner123@example.com', '0987654322', 5.0, 3)
-            )
-            cleaner_id = cursor.lastrowid
+    # Insert dummy booking data.
+    booking_id = insert_record(
+        "INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (?, ?, ?, ?)",
+        "INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (%s, %s, %s, %s) RETURNING booking_id",
+        (cleaner_id, customer_id, '2025-02-21 09:00:00', 'pending')
+    )
 
-        # Insert dummy booking data using the retrieved cleaner_id and customer_id
-        if db_type == "postgres":
-            cursor.execute(
-                "INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (%s, %s, %s, %s)",
-                (cleaner_id, customer_id, '2025-02-21 09:00:00', 'pending')
-            )
-        else:
-            cursor.execute(
-                "INSERT INTO bookings (cleaner_id, customer_id, booking_date, status) VALUES (?, ?, ?, ?)",
-                (cleaner_id, customer_id, '2025-02-21 09:00:00', 'pending')
-            )
+    # Insert a sample checklist for the new booking.
+    if db_type == "postgres":
+        cursor.execute(
+            "INSERT INTO checklists (booking_id, checklist_items) VALUES (%s, %s)",
+            (booking_id, '["Sample Checklist Item"]')
+        )
+    else:
+        cursor.execute(
+            "INSERT INTO checklists (booking_id, checklist_items) VALUES (?, ?)",
+            (booking_id, '["Sample Checklist Item"]')
+        )
 
-        # Commit changes
-        cursor.connection.commit()
+    # Commit all changes.
+    cursor.connection.commit()
 
 
 def init_db():
@@ -306,7 +309,8 @@ def init_db():
     Orchestrates the database initialization:
       1. Retrieves table definitions.
       2. Checks and creates tables as needed.
-      3. (Optional) Clears tables (commented out) and inserts admin/initial data.
+      3. (Optional) Clears tables (commented out).
+      4. Inserts admin data into local and external databases.
     """
     print("Initializing the database...")
 
