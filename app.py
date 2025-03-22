@@ -157,9 +157,24 @@ def fetch_cleaners_from_postgre():
 
 def process_booking_date(bookings):
     for booking in bookings:
-        booking_datetime = datetime.strptime(booking["booking_date"], '%a, %d %b %Y %H:%M:%S %Z')
-        booking["booking_time"] = datetime.strftime(booking_datetime, '%H:%M')
-        booking["booking_date"] = datetime.strftime(booking_datetime, '%d-%m-%Y')
+        # Get the booking date value
+        booking_date = booking["booking_date"]
+
+        # If it's a string, parse it; if it's already a datetime, use it directly.
+        if isinstance(booking_date, str):
+            try:
+                booking_datetime = datetime.strptime(booking_date, '%a, %d %b %Y %H:%M:%S %Z')
+            except ValueError:
+                # Fallback: try ISO format if the above format doesn't match
+                booking_datetime = datetime.fromisoformat(booking_date)
+        elif isinstance(booking_date, datetime):
+            booking_datetime = booking_date
+        else:
+            # Optionally, handle unexpected types
+            booking_datetime = datetime.fromisoformat(str(booking_date))
+
+        booking["booking_time"] = booking_datetime.strftime('%H:%M')
+        booking["booking_date"] = booking_datetime.strftime('%d-%m-%Y')
 
 
 def init_db():
@@ -347,17 +362,39 @@ def show_cleaners():
 
 @app.route("/manage_bookings", methods=["GET"])
 def manage_bookings():
-    """Fetch bookings from the API."""
-    if session['cleaner_id'] or session['customer_id']:
-        if session['cleaner_id']:
-            response = requests.get("http://127.0.0.1:5000/bookings/cleaner/" + str(session['cleaner_id']))
-        if session['customer_id']:
-            response = requests.get("http://127.0.0.1:5000/bookings/customer/" + str(session['customer_id']))
-        response.raise_for_status()
-        bookings = response.json()
+    """Fetch bookings directly from the database and include the full name."""
+    if session.get('cleaner_id') or session.get('customer_id'):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+
+        if session.get('cleaner_id'):
+            # If a cleaner is logged in, fetch bookings with the customer's name.
+            query = f"""
+                SELECT b.*, cu.full_name, cu.location
+                FROM bookings b
+                JOIN customers cu ON b.customer_id = cu.customer_id
+                WHERE b.cleaner_id = {placeholder}
+            """
+            cursor.execute(query, (session['cleaner_id'],))
+        elif session.get('customer_id'):
+            # If a customer is logged in, fetch bookings with the cleaner's name.
+            query = f"""
+                SELECT b.*, c.full_name, c.location
+                FROM bookings b
+                JOIN cleaners c ON b.cleaner_id = c.cleaner_id
+                WHERE b.customer_id = {placeholder}
+            """
+            cursor.execute(query, (session['customer_id'],))
+
+        rows = cursor.fetchall()
+        columns = [desc[0] for desc in cursor.description]
+        bookings = [dict(zip(columns, row)) for row in rows]
         process_booking_date(bookings)
+        conn.close()
     else:
         return redirect(url_for("show_cleaners"))
+
     return render_template('manage_bookings.html', bookings=bookings)
 
 
@@ -520,9 +557,31 @@ def booking_confirmation(booking_id):
 
 @app.route("/cleaner/<int:cleaner_id>", methods=["GET"])
 def show_cleaner_profile(cleaner_id):
-    """Fetch a cleaner's information from the API."""
-    response = requests.get("http://127.0.0.1:5000/cleaners/" + str(cleaner_id))
-    cleaner = response.json()
+    """Fetch a cleaner's information, using direct DB query for production and API call for local."""
+    if DATABASE_URL:
+        # Production environment: query the database directly.
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+        query = f"""
+            SELECT cleaner_id, user_id, full_name, email, phone_number, location, bio, rating, experience_years
+            FROM cleaners
+            WHERE cleaner_id = {placeholder}
+        """
+        cursor.execute(query, (cleaner_id,))
+        row = cursor.fetchone()
+        if row:
+            columns = [desc[0] for desc in cursor.description]
+            cleaner = dict(zip(columns, row))
+        else:
+            cleaner = {}
+        conn.close()
+    else:
+        # Local environment: call the local API endpoint.
+        response = requests.get("http://127.0.0.1:5000/cleaners/" + str(cleaner_id))
+        response.raise_for_status()
+        cleaner = response.json()
+
     return render_template('profile.html', cleaner=cleaner)
 
 
@@ -724,7 +783,6 @@ def login():
 
     print("Login GET triggered.")
     return render_template('login.html')
-
 
 
 @app.route('/aboutus')
