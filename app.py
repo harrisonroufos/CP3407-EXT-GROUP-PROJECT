@@ -612,6 +612,20 @@ def manage_bookings():
     return render_template('manage_bookings.html', bookings=bookings)
 
 
+@app.route("/delete_booking/<int:booking_id>", methods=["GET"])
+def delete_booking(booking_id):
+    if session.get('cleaner_id') or session.get('customer_id'):
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        placeholder = "?" if USE_LOCAL_DB else "%s"
+        cursor.execute(f"""DELETE FROM bookings WHERE booking_id = {placeholder}""", (booking_id,))
+        conn.commit()
+        conn.close()
+        return redirect(url_for("manage_bookings"))
+    else:
+        return redirect(url_for("show_cleaners"))
+
+
 @app.route("/book/<int:cleaner_id>", methods=["GET", "POST"])
 def book_cleaner(cleaner_id):
     if "customer_id" not in session:
