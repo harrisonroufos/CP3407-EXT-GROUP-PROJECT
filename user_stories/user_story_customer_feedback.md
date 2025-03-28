@@ -56,7 +56,11 @@ Total days estimation - 4 days
 ## UI Design
 *Insert a mockup screenshot of the feedback form and cleaner review section.*
 
+![review wireframe](/iterations/images/submit-review-wireframe.png)
+
 ---
 
 ## Completed
 *Insert screenshots of the completed feature's implementation.*
+
+![review page](/iterations/images/submit-review.png)
