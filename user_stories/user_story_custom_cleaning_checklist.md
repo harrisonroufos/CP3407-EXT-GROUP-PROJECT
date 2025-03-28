@@ -52,7 +52,11 @@ Total days estimation - 5 days
 ## UI Design
 *Insert a mockup screenshot of the custom checklist interface.*
 
+![Burn down chart](/iterations/images/checklist-wireframe.png)
+
 ---
 
 ## Completed
 *Insert screenshots of the completed feature's implementation.*
+
+![Burn down chart](/iterations/images/checklist.png)
