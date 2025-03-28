@@ -39,7 +39,7 @@ As a customer, be able to create a booking from a chosen cleaner.
 3. Develop UI for dummy payment.
     > Assigned to: `Daniel` & `Harrison` | Time elapsed: ` days` | Start day: 14/03/2025 | Finished day: 16/03/2025
 4. Test and debug.
-    > Assigned to: `Damon` | Time elapsed: ` days` | Start day: | Finished day: 
+    > Assigned to: `Damon` & `Harrison` & 'Casey' | Time elapsed: ` days` | Start day: 20/03/2025 | Finished day: 23/03/2025
 
 
 Total days estimation - 5 days
