@@ -48,7 +48,12 @@ Total days estimation - 5 days
 ## UI Design
 *Insert a mockup screenshot of the notification settings page and sample confirmation message.*
 
+![booking page wireframe](/iterations/images/booking-wireframe.png)
+
 ---
 
 ## Completed
 *Insert screenshots of the completed feature's implementation.*
+
+![booking page](/iterations/images/booking.png)
+
