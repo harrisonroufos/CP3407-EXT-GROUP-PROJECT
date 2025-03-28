@@ -30,21 +30,18 @@ As a service provider, I want to allow customers to reschedule or cancel appoint
 ---
 
 ## Tasks
-1. Research and develop database for cleaner jobs — 1 day  
-2. Develop system to track how long between cancellation and set job time — 1 day
-3. Develop UI - 1 day
-4. Test and Debug - 1 day
+1. Research and develop database for cleaner jobs — 2 day  
+2. Develop UI - 1 day
+3. Test and Debug - 1 day
 
 
 ## Assigned task:
 1. Research and develop database for cleaner jobs.
     > Assigned to: `Harrison` & `Casey`| Time elapsed: ` 1 days` | Start day: 17/03/2025 | Finished day: 20/03/2025
-2. Develop system to track how long between cancellation and set job time.
-    > Assigned to: `Daniel` | Time elapsed: ` ` | Start day: 21/03/2025 | Finished day: 
-3. Develop UI.
-    > Assigned to: `Daniel` | Time elapsed: ` ` | Start day: 21/03/2025 | Finished day: 
-4. Test and Debug.
-    > Assigned to: `Daniel` | Time elapsed: ` ` | Start day: 21/03/2025 | Finished day: 
+2. Develop UI.
+    > Assigned to: `Daniel` | Time elapsed: `1 day` | Start day: 21/03/2025 | Finished day: 22/03/2025
+3. Test and Debug.
+    > Assigned to: `Daniel` | Time elapsed: `1 day ` | Start day: 21/03/2025 | Finished day: 23/03/2025
 
 ---
 
