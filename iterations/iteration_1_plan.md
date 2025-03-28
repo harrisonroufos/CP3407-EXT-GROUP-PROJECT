@@ -54,6 +54,9 @@ Hence, there are 16 days worth of user story development per iteration.
    
 **Estimated Time - 16 days**
 
+## Burn down chart
+![Burn down chart](/iterations/images/iteration_2_burndown.jpg)
+
 
 ### OLD Iteration 2
 1. [Booking Reminders](/user_stories/user_story_booking_reminders.md) | 6.5 days | 20
@@ -65,6 +68,7 @@ Hence, there are 16 days worth of user story development per iteration.
 7. [Referral Program for Customers](/user_stories/user_story_referral_program_for_customers.md) | 4 days | 50
 
 **Estimated Time - 30.5 days**
+
 
 
 
