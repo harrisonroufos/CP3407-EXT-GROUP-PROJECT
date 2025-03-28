@@ -58,10 +58,12 @@ Total days estimation - 10 days
 
 ## UI Design
 *Insert a mockup screenshot of the route mapping interface.*
+![Browse cleaners wireframe](/iterations/images/browse-cleaner-wireframe.png)
 
 ---
 
 ## Completed
 *Insert screenshots of the completed feature's implementation.*
+![Browse cleaners gui](/iterations/images/browse-cleaners.png)
 
 ---
