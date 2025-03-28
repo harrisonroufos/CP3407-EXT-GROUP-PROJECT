@@ -37,7 +37,7 @@ As a service provider, I want to allow customers to reschedule or cancel appoint
 
 ## Assigned task:
 1. Research and develop database for cleaner jobs.
-    > Assigned to: `Harrison` & `Casey`| Time elapsed: ` 1 days` | Start day: 17/03/2025 | Finished day: 20/03/2025
+    > Assigned to: `Harrison` & `Casey`| Time elapsed: ` 1 days` | Start day: 19/03/2025 | Finished day: 20/03/2025
 2. Develop UI.
     > Assigned to: `Daniel` | Time elapsed: `1 day` | Start day: 21/03/2025 | Finished day: 22/03/2025
 3. Test and Debug.
