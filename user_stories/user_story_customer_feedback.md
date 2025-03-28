@@ -48,7 +48,7 @@ As a customer, I want to leave feedback and reviews for cleaners after a job, so
 4. Display average ratings and reviews on cleaner profiles.
     > Assigned to: `Damon` | Time elapsed: ` 2 days` | Start day: 18/03/2025 | Finished day: 21/03/2025
 5. Test and debug.
-    > Assigned to: `Casey` & `Damon` | Time elapsed: ` days` | Start day: 20/03/2025| Finished day: 
+    > Assigned to: `Casey` & `Damon` | Time elapsed: `1 days` | Start day: 20/03/2025| Finished day: 21/03/2025
 
 Total days estimation - 4 days
 ---
