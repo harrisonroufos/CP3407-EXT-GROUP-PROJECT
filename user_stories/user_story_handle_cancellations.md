@@ -51,9 +51,13 @@ As a service provider, I want to allow customers to reschedule or cancel appoint
 ## UI Design
 *Insert a mockup screenshot of the route mapping interface.*
 
+![cancel booking wireframe](/iterations/images/cancel_booking_wireframe.png)
+
 ---
 
 ## Completed
 *Insert screenshots of the completed feature's implementation.*
+
+![cancel booking](/iterations/images/cancel_booking.png)
 
 ---
