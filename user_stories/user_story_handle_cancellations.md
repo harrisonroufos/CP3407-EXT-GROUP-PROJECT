@@ -41,7 +41,7 @@ As a service provider, I want to allow customers to reschedule or cancel appoint
 2. Develop UI.
     > Assigned to: `Daniel` | Time elapsed: `1 day` | Start day: 21/03/2025 | Finished day: 22/03/2025
 3. Test and Debug.
-    > Assigned to: `Daniel` | Time elapsed: `1 day ` | Start day: 21/03/2025 | Finished day: 23/03/2025
+    > Assigned to: `Daniel` | Time elapsed: `1 day ` | Start day: 22/03/2025 | Finished day: 24/03/2025
 
 ---
 
