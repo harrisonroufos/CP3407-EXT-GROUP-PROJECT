@@ -54,10 +54,10 @@ Total days estimation - 6 days
 ## UI Design
 *Insert a mockup screenshot of the route mapping interface.*
 ### Edit profile wireframe
-![Burn down chart](/iterations/images/cleaner-update-profile-wireframe.png)
+![Edit profile wireframe](/iterations/images/cleaner-update-profile-wireframe.png)
 
 ### Profile wireframe
-![Burn down chart](/iterations/images/cleaner-profile-wireframe.png)
+![Profile wireframe](/iterations/images/cleaner-profile-wireframe.png)
 
 ---
 
@@ -65,9 +65,9 @@ Total days estimation - 6 days
 *Insert screenshots of the completed feature's implementation.*
 
 ### Edit profile
-![Burn down chart](/iterations/images/cleaner-update-profile.png)
+![Edit profile](/iterations/images/cleaner-update-profile.png)
 
 ### Profile 
-![Burn down chart](/iterations/images/cleaner-profile.png)
+![Profile](/iterations/images/cleaner-profile.png)
 
 ---
