@@ -49,7 +49,11 @@ Total days estimation - 3 days
 ## UI Design
 *Insert a mockup screenshot of the reliability score interface.*
 
+![Review rating wireframe](/iterations/images/review-rating-wireframe.png)
+
 ---
 
 ## Completed
 *Insert screenshots of the completed feature's implementation.*
+
+![Review rating](/iterations/images/review-rating.png)
