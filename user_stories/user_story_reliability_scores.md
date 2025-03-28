@@ -43,7 +43,7 @@ Total days estimation - 3 days
 2. Display reliability scores on the front end.
     > Assigned to: `Damon` | Time elapsed: `1 day` | Start day: 19/03/2025 | Finished day: 20/03/2025
 3. Test and debug.
-    > Assigned to: `Damon` & `Casey` | Time elapsed: ` ` | Start day: 20/03/2025 | Finished day: 
+    > Assigned to: `Damon` & `Casey` | Time elapsed: ` 2 days` | Start day: 20/03/2025 | Finished day: 23/03/2025
 
 
 ## UI Design
