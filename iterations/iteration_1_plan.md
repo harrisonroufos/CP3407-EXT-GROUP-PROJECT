@@ -109,7 +109,7 @@ Hence, there are 16 days worth of user story development per iteration.
 * [Create Booking](/user_stories/create_booking.md) | `Daniel` | `Develop UI for booking.` | 16/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Harrison` | `Implement back end to store the booking.` | 15/03/2025
 * [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | `Develop UI for dummy payment.` | 16/03/2025
-* [Create Booking](/user_stories/create_booking.md) | `Damon` & `Harrison` & 'Casey' | `Test and debug.` | 23/03/2025
+* [Create Booking](/user_stories/create_booking.md) | `Damon` & `Harrison` & 'Casey' | `Test and debug.` | 18/03/2025
 
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | `Create a survey form with various customer experience questions.` | 18/03/2025
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | `Design and integrate the survey form into the app.` | 18/03/2025
@@ -125,7 +125,7 @@ Hence, there are 16 days worth of user story development per iteration.
 
 * [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel`| `Develop UI.` | 22/03/2025
 
-* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel`| `Test and Debug.` | 23/03/2025
+* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel`| `Test and Debug.` | 24/03/2025
 
  
 # Completed Maintenance and Feature Tasks
