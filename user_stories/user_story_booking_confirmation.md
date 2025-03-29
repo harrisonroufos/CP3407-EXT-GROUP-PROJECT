@@ -9,6 +9,7 @@ As a customer, I want to receive an on-screen booking confirmation immediately a
 ## Priority
 **Range:** 10 (Critical)  
 **Iteration:** 1  
+**Status:** ✅ Completed
 
 **Notes:**  
 - Ensures customers receive instant confirmation.  
@@ -22,11 +23,11 @@ As a customer, I want to receive an on-screen booking confirmation immediately a
 - Booking confirmation should be visible immediately after submission.
 
 **Planning Poker:**  
-- Harrison: 5 days (Iteration 2)  
-- Damon: 6 days (Iteration 2)  
-- Casey: 10 days (Iteration 2)  
-- Daniel: 5 days (Iteration 1)  
-- **Average:** 6.5 days (Iteration 2)
+- Harrison: 5 days  
+- Damon: 6 days  
+- Casey: 10 days  
+- Daniel: 5 days  
+- **Average:** 6.5 days
 
 ---
 
@@ -37,14 +38,16 @@ As a customer, I want to receive an on-screen booking confirmation immediately a
 4. Display booking summary dynamically — 1 day  
 5. Test and debug on-screen confirmation flow — 1.5 days  
 
-**Total estimation: 6.5 days**
+**Total estimated time: 6.5 days**
 
 ---
 
-## UI Design
+## UI Design  
 ![Booking Confirmation Mockup](/iterations/images/booking_confirmation_mockup.png)
 
 ---
 
-## Completed
+## Completed  
 ![Booking Confirmation Screenshot](/iterations/images/booking_confirmation.png)
+
+---
