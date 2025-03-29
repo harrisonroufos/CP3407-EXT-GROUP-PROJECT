@@ -16,9 +16,9 @@ Assume:
 
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 10 days | 10 - COMPLETE  
 2. [Display Cleaner Profile](/user_stories/user_story_display_cleaner_profile.md) | 6 days | 10 - COMPLETE  
-3. [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE  
-4. [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | 4 days | 20 - MOVED TO ITERATION 2  
-5. [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | 6.5 days | 30 - DROPPED  
+3. [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE
+4. [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | 6.5 days | 30 - UPDATED & COMPLETE
+5. [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | 4 days | 20 - MOVED TO ITERATION 2  
 6. [Show Cleaner Reliability Scores](/user_stories/user_story_show_cleaner_reliability_scores.md) | 3 days | 20 - MOVED TO ITERATION 2  
 
 **Estimated Time - 34.5 days**
@@ -52,7 +52,12 @@ Assume:
 
 * [Create Custom Cleaning Checklist](user_stories/user_story_create_custom_cleaning_checklist.md) | `Casey` & `Damon` | Develop UI for custom checklist creation. | 14/03/2025  
 * [Create Custom Cleaning Checklist](user_stories/user_story_create_custom_cleaning_checklist.md) | `Damon` | Implement backend to store this checklist with a customer. | 14/03/2025  
-* [Create Custom Cleaning Checklist](user_stories/user_story_create_custom_cleaning_checklist.md) | `Casey` & `Damon` | Test and debug. | 15/03/2025  
+* [Create Custom Cleaning Checklist](user_stories/user_story_create_custom_cleaning_checklist.md) | `Casey` & `Damon` | Test and debug. | 15/03/2025
+
+* [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | `Damon` | Link booking confirmation page to cleaner profile | 14/03/2025 
+* [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | `Daniel` | Create the confirmation UI component | 16/03/2025 
+* [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | `Daniel` | Display booking summary dynamically | 16/03/2025
+* [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | `Casey` | Test and debug on-screen confirmation flow | 16/03/2025
 
 ---
 
