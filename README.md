@@ -66,6 +66,10 @@ includes:
 ![database diagram](/database_files/myclean_database_diagram.png)
 
 ---
+# UML Diagram
+![uml diagram](/database_files/myclean_uml_diagram.png)
+
+---
 
 ## 🖼️ UI Mockups
 
