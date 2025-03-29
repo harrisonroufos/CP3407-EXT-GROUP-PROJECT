@@ -63,6 +63,18 @@ priority-v2: 30
 
 ---
 
+## Assigned Tasks
+1. Link booking confirmation page to cleaner profile
+   > Assigned to: `Damon` | Time elapsed: 0.25 days | Start: 14/02/2025 | Finished: 14/02/2025  
+2. Create the confirmation UI component 
+   > Assigned to: `Daniel` | Time elapsed: 0.10 days | Start: 16/02/2025 | Finished: 16/02/2025  
+3. Create code to display booking summary dynamically  
+   > Assigned to: `Daniel` | Time elapsed: 0.5 day | Start: 16/02/2025 | Finished: 16/02/2025  
+4. Test and debug on-screen confirmation flow
+   > Assigned to: `Casey` | Time elapsed: 0.15 day | Start: 16/02/2025 | Finished: 16/02/2025
+
+---
+
 ## UI Design  
 ![Booking Confirmation Mockup](/iterations/images/booking_confirmation_mockup.png)
 
