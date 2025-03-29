@@ -5,6 +5,8 @@ This section of the 'major components' design details the progress updates on a 
 > **GitHub Projects Page** - [MyClean](https://github.com/users/Casey-Summers/projects/1) **Development Tracker**
 
 ## Iteration 1 - Half Way
+![image](https://github.com/user-attachments/assets/bcbb53f1-964f-4b13-902d-8c1357ffdc13)
+
 
 ## Iteration 1 - Complete
 
