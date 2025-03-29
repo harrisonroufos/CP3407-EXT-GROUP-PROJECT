@@ -8,21 +8,33 @@ We also restructured the Iteration 2 plan based on these findings. A new user st
 > - 4 weeks per iteration  
 > - 20 business days per iteration  
 > - 0.2 velocity (team efficiency)  
-> - 4 developers  
-> - `Total Development Days` = 20 x 0.2 x 4 = 16 days
+> - 4 developers
+> - `Total Development Days` = `business days per iteration` x `velocity` x `number of developers`  
+> - Total = 20 x 0.2 x 4 = 16 days
 
----
+## Breakdown:
+> Format: `link` | `estimated time` | `priority` (10 most important, 50 least)
 
-## Iteration 2 Plan
-1. [Create Booking](/user_stories/user_story_create_booking) | 5 days | 10  
-2. [Customer Feedback](/user_stories/user_story_customer_feedback.md) | 4 days | 20  
-3. [Review Rating](/user_stories/user_story_reliability_scores.md) | 3 days | 30  
-4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30  
+> [!Note]
+> **GitHub Project Page** - [Development Tracker](https://github.com/users/Casey-Summers/projects/1) <br>
+> **GitHub Project Version History** - [Project Iterations](/major_component_designs/github_pages_timeline.md)
+
+1. [Create Booking](/user_stories/user_story_create_booking.md.md) | 5 days | 10 - COMPLETED
+2. [Customer Feedback](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - COMPLETED
+3. [Review Rating](/user_stories/user_story_reliability_scores.md) | 3 days | 30 - COMPLETED
+4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30 - COMPLETED
 
 **Estimated Time - 16 days**
 
 ## Burn down chart
 ![Burn down chart](/iterations/images/iteration_2_burndown.jpg)
+
+---
+
+# In Progress:
+> Format: `user story link` | `developer name` | `Task name` | `date started`
+
+(Empty at the end of Iteration 2)
 
 ---
 
@@ -41,20 +53,13 @@ We also restructured the Iteration 2 plan based on these findings. A new user st
 
 ---
 
-## In Progress
-> Format: `user story link` | `developer name` | `Task name` | `date started`
-
-(none currently marked in progress)
-
----
-
 ## Completed
 > Format: `user story link` | `developer name` | `Task name` | `date finished`
 
-* [Create Booking](/user_stories/user_story_create_booking) | `Daniel` | Develop UI for booking. | 16/03/2025  
-* [Create Booking](/user_stories/user_story_create_booking) | `Harrison` | Implement backend to store the booking. | 15/03/2025  
-* [Create Booking](/user_stories/user_story_create_booking) | `Daniel` & `Harrison` | Develop UI for dummy payment. | 16/03/2025  
-* [Create Booking](/user_stories/user_story_create_booking) | `Damon`, `Harrison`, `Casey` | Test and debug. | 18/03/2025  
+* [Create Booking](/user_stories/user_story_create_booking.md) | `Daniel` | Develop UI for booking. | 16/03/2025  
+* [Create Booking](/user_stories/user_story_create_booking.md) | `Harrison` | Implement backend to store the booking. | 15/03/2025  
+* [Create Booking](/user_stories/user_story_create_booking.md) | `Daniel` & `Harrison` | Develop UI for dummy payment. | 16/03/2025  
+* [Create Booking](/user_stories/user_story_create_booking.md) | `Damon`, `Harrison`, `Casey` | Test and debug. | 18/03/2025  
 
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | Create a survey form | 18/03/2025  
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | Integrate survey form into app | 18/03/2025  
