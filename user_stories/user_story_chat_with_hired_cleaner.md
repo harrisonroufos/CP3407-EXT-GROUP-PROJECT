@@ -1,49 +1,53 @@
 # Chat with Hired Cleaner
 
----
-
 ## Description
-
-As a customer, I want to be able to chat with my hired cleaner through the application itself, rather than providing my phone number.
+**Description-v2:**  
+As a customer, I want to chat with my hired cleaner through the app, so I can communicate without giving out my personal phone number.
 
 ---
 
-## Priority 
+## Priority
+**Range:** 50 (Low)  
+**Iteration:** Originally planned for Iteration 2  
+**Status:** ❌ Dropped (due to project scope and user preference for external apps)
 
-**Range**: 50 (Low)   
-**Iteration**: 3
-
-**Notes:**
-- Moves all communication with the client into one place
-- Completely optional feature if the customer would prefer to speak with the cleaner in person
+**Notes:**  
+- Centralizes communication within the platform.  
+- Optional feature — many users may prefer face-to-face or existing messaging apps.  
+- Dropped to focus on higher-impact features with limited development time.
 
 ---
 
 ## Estimation
+**Assumptions:**  
+- Would require real-time backend messaging service (e.g., Firebase, WebSockets).  
+- Needed both frontend and backend implementation.
 
-**Assumptions:**
-- Needs a reliable backend for availability
-
-**Planning Poker:**
-- Casey: 6 days (Iteration 2)  
-- Damon: 4 days (Iteration 2)  
-- Daniel: 4 days (Iteration 2)
-- Harrison: 5 days (Iteration 2)  
-**Average:** 5 days 
-
---------------------------
-
-## Tasks
-1. Set up chatroom workspace - 1 day
-2. Develop chatroom infrastructure - 2 days
-3. Connect chatroom to the service - 1 day
+**Planning Poker:**  
+- Casey: 6 days  
+- Damon: 4 days  
+- Daniel: 4 days  
+- Harrison: 5 days  
+- **Average:** 5 days
 
 ---
 
-## UI Design
-*Insert a mockup screenshot of the reliability score interface.*
+## Tasks (Not Implemented)
+1. Set up chatroom workspace — 1 day  
+2. Develop chatroom infrastructure — 2 days  
+3. Connect chatroom to service flow — 1 day  
+
+**Total estimated time: 4 days**
 
 ---
 
-## Completed
-*Insert screenshots of the completed feature's implementation.*
+## UI Design  
+![Chat With Hired Cleaner Mockup](/iterations/images/chat_with_hired_cleaner_mockup.png)
+
+---
+
+## Completed  
+❌ This feature was not implemented.  
+It was deprioritized in Iteration 2 planning to better allocate time to core functionality.
+
+---
