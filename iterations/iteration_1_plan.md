@@ -1,6 +1,6 @@
 # Iteration 1 Plan
 
-Assume:
+## Assumptions:
 > - 4 weeks per iteration  
 > - 20 business days per iteration  
 > - 0.4 velocity (team efficiency)  
@@ -15,10 +15,10 @@ Assume:
 > **GitHub Project Page** - [Development Tracker](https://github.com/users/Casey-Summers/projects/1) <br>
 > **GitHub Project Version History** - [Project Iterations](/major_component_designs/github_pages_timeline.md)
 
-1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 10 days | 10 - COMPLETE  
-2. [Display Cleaner Profile](//user_stories/user_story_display_cleaner_profile.md) | 6 days | 10 - COMPLETE  
-3. [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE
-4. [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | 6.5 days | 30 - UPDATED & COMPLETE
+1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 10 days | 10 - COMPLETED
+2. [Display Cleaner Profile](//user_stories/user_story_display_cleaner_profile.md) | 6 days | 10 - COMPLETED
+3. [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETED
+4. [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | 6.5 days | 30 - UPDATED & COMPLETED
 5. [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | 4 days | 20 - MOVED TO ITERATION 2  
 6. [Show Cleaner Reliability Scores](/user_stories/user_story_show_cleaner_reliability_scores.md) | 3 days | 20 - MOVED TO ITERATION 2  
 
@@ -29,14 +29,14 @@ Assume:
 
 ---
 
-# In Progress:
+## In Progress:
 > Format: `user story link` | `developer name` | `Task name` | `date started`
 
 (Empty at the end of Iteration 1)
 
 ---
 
-# Completed:
+## Completed:
 > Format: `user story link` | `developer name` | `Task name` | `date finished`
 
 * [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` | Research setting up the database and website. | 18/02/2025  
@@ -62,7 +62,7 @@ Assume:
 
 ---
 
-# Completed Maintenance and Feature Tasks (Iteration 1)
+## Completed Maintenance and Feature Tasks (Iteration 1)
 > Format: `developer name` | `Task name` | `date finished`
 
 * `Casey` & `Harrison` | Restructured databases to handle new entries | 20/02/2025
