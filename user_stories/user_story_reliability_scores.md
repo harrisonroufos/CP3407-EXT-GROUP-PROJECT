@@ -1,59 +1,64 @@
-# Review Rating
+# Review Rating (Reliability Scores)
 
 ## Description
-**Description-v1:**  
-As a customer, I want to view reliability scores for cleaners, so I can ensure I am booking someone dependable.
+**Description-v2:**  
+As a customer, I want to view reliability scores for cleaners so I can feel confident I'm booking someone dependable and consistent.
 
 ---
 
 ## Priority
 **Range:** 20 (Medium)  
 **Iteration:** 2  
+**Status:** ✅ Completed
 
 **Notes:**  
-- Enhances customer confidence by providing clear metrics on cleaner reliability.  
-- Builds trust and loyalty to the platform by addressing reliability concerns.
+- Enhances customer confidence with data-backed performance.  
+- Helps build trust in the platform by promoting dependable cleaners.  
+- Offers cleaners a way to maintain reputation through performance.
 
 ---
 
 ## Estimation
 **Assumptions:**  
-- Requires a backend system to calculate reliability scores based on past performance.  
+- Requires backend logic to calculate reliability based on attendance, cancellations, and punctuality.  
+- Needs UI elements to show scores clearly on cleaner profiles.
 
 **Planning Poker:**  
-- Harrison: 5 days (Iteration 1)  
-- Damon: 5 days (Iteration 1)  
-- Casey: 3 days (Iteration 1)  
-- Daniel: 3 days (Iteration 1)  
-- **Average:** 4 days (Iteration 1)  
+- Harrison: 5 days  
+- Damon: 5 days  
+- Casey: 3 days  
+- Daniel: 3 days  
+- **Average:** 4 days
 
 ---
 
 ## Tasks
-1. Develop backend system for calculating reliability. 1 day. 
-2. Display reliability scores on the front end. 1 day.
-3. Test and debug 1 day.
+1. Develop backend system for calculating reliability — 1 day  
+2. Display reliability scores on the front end — 1 day  
+3. Test and debug — 1 day  
 
-Total days estimation - 3 days
+**Total estimated time: 3 days**
+
 ---
 
-## Assigned task:
-1. Develop backend system for calculating reliability.
-    > Assigned to: `Damon` | Time elapsed: `1 day` | Start day: 19/03/2025  | Finished day: 19/03/2025
-2. Display reliability scores on the front end.
-    > Assigned to: `Damon` | Time elapsed: `1 day` | Start day: 19/03/2025 | Finished day: 20/03/2025
-3. Test and debug.
-    > Assigned to: `Damon` & `Casey` | Time elapsed: ` 2 days` | Start day: 20/03/2025 | Finished day: 23/03/2025
+## Assigned Tasks
+1. **Develop backend system for calculating reliability**  
+   > Assigned to: `Damon` | Time elapsed: 1 day | Start: 19/03/2025 | Finished: 19/03/2025  
+2. **Display reliability scores on the front end**  
+   > Assigned to: `Damon` | Time elapsed: 1 day | Start: 19/03/2025 | Finished: 20/03/2025  
+3. **Test and debug**  
+   > Assigned to: `Damon` & `Casey` | Time elapsed: 2 days | Start: 20/03/2025 | Finished: 23/03/2025
 
+---
 
 ## UI Design
-*Insert a mockup screenshot of the reliability score interface.*
 
-![Review rating wireframe](/iterations/images/review-rating-wireframe.png)
+### Reliability Score Wireframe  
+![Review Rating Wireframe](/iterations/images/review-rating-wireframe.png)
 
 ---
 
 ## Completed
-*Insert screenshots of the completed feature's implementation.*
 
-![Review rating](/iterations/images/review-rating.png)
+### Reliability Score (Implemented)  
+![Review Rating Screenshot](/iterations/images/review-rating.png)
