@@ -1,4 +1,4 @@
-# Booking Confirmation
+# Receive Booking Confirmation
 
 ## Description
 **Description-v2:**  
