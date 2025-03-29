@@ -2,11 +2,13 @@
 
 This document outlines the high-level architectural design of the *MyClean* platform.
 
-The system follows a **modular, layered architecture** with a focus on scalability, maintainability, and clear separation of concerns.
+The system follows a **modular, layered architecture** with a focus on scalability, maintainability, and clear
+separation of concerns.
 
 ---
 
 ## 📐 Tool Used
+
 We used [draw.io](https://app.diagrams.net/) to sketch architectural concepts and system structure.
 
 ---
@@ -16,20 +18,30 @@ We used [draw.io](https://app.diagrams.net/) to sketch architectural concepts an
 The MyClean application consists of:
 
 - **Frontend (Client Web App)**  
-  Built with HTML/CSS and JavaScript (templating via Flask). Provides interfaces for customers and cleaners to interact with the system.
+  The frontend is designed with **React, HTML, and CSS** for responsive design, enabling a seamless user experience
+  across devices. It communicates with the Flask API via **AJAX** calls for asynchronous data fetching.
 
-- **Backend (API Server)**  
-  A Python Flask-based REST API that handles business logic, booking workflows, user sessions, and data communication with the database.
 
-- **Databases**  
-  - **Local: SQLite (Testing)**  
-  - **Production: PostgreSQL**  
-  Stores persistent data such as user profiles, cleaner availability, bookings, custom checklists, and feedback.
+- **Backend (Flask API)**  
+  The backend is built using **Flask**, a lightweight Python framework. It serves as the core API server, handling
+  requests from the frontend, processing logic (such as bookings and cleaner availability), and interacting with the *
+  *SQLite/PostgreSQL** databases. We’ll be using **Flask-Login** for session management and **Flask-SQLAlchemy** for
+  object-relational mapping (ORM).
 
-- **Optional Services (Future / Integrations)**  
-  - Email/SMS notification services  
-  - Google Maps API (for routing/locations)  
-  - Stripe or PayPal (for payment integration)
+
+- **Databases**
+    - **Local: SQLite (Testing)**  
+      The local database is used for testing and development purposes, supporting **rapid iteration** during early
+      stages.
+    - **Production: PostgreSQL**  
+      PostgreSQL is used for production due to its scalability and reliability. We implement a **normalized database
+      design** that includes relationships between **Users**, **Cleaners**, **Jobs**, and **Feedback**.
+
+
+- **Optional Services (Future / Integrations)**
+    - Email/SMS notification services
+    - Google Maps API (for routing/locations)
+    - Stripe or PayPal (for payment integration)
 
 ---
 
@@ -43,17 +55,31 @@ The MyClean application consists of:
 ## 🧩 Iteration-Based Refinements
 
 ### 🌀 Iteration 1
-- Established initial backend + database structure
-- Enabled booking creation and user profile logic
-- Focused on functional core features
+
+- **Initial API Routes**: Routes for **User Authentication**, **Cleaner Profiles**, **Job Listings**, etc.
+- **Database Setup**: Created the **Users**, **Cleaners**, **Jobs** tables with the necessary relationships.
+- **Initial Frontend**: Designed mockups for booking interfaces and basic user profiles.
+- **Testing**: Local SQLite database used to simulate the real data model.
 
 ### 🌀 Iteration 2
-- Added feedback, reliability scores, and checklist integration
-- Designed cleaner-specific views and customer management tools
-- Deprioritized extended features (availability map, recurring jobs)
+
+- **Extended Features**: Added **customer feedback** and **cleaner review systems**.
+- **Database Refinement**: Added a **Feedback table** and linked it to **Users** and **Jobs**.
+- **User Interface Improvements**: Developed cleaner-specific profiles and booking history.
+- **Third-Party Integration**: Started integrating with **Google Maps API** to display cleaner locations.
 
 ---
 
+## 🔮 Future-Proofing
+
+To ensure scalability, **MyClean**'s architecture has been designed to accommodate:
+
+- **Microservices**: Splitting features into services as the platform scales
+- **Cloud Integration**: Potential for migrating the database to cloud platforms (AWS RDS, etc.) for higher availability
+- **API Extensions**: Future plans to integrate **payment systems** (Stripe, PayPal), real-time notifications, and chat
+  systems
+
 ## ✅ Summary
 
-This modular and scalable architecture allows *MyClean* to evolve with future features such as real-time tracking, push notifications, or microservices without requiring a full rewrite.
+This modular and scalable architecture allows *MyClean* to evolve with future features such as real-time tracking, push
+notifications, or microservices without requiring a full rewrite.
