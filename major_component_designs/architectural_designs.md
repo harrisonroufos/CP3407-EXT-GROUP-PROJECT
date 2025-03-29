@@ -1,4 +1,4 @@
-# 🏗️ Architectural Designs for CP3407's "MyClean" Solution
+# Architectural Designs for CP3407's "MyClean" Solution
 
 This document outlines the high-level architectural design of the *MyClean* platform.
 
@@ -7,13 +7,13 @@ separation of concerns.
 
 ---
 
-## 📐 Tool Used
+## Tool Used
 
 We used [draw.io](https://app.diagrams.net/) to sketch architectural concepts and system structure.
 
 ---
 
-## 🧱 System Architecture Overview
+## System Architecture Overview
 
 The MyClean application consists of:
 
@@ -45,23 +45,23 @@ The MyClean application consists of:
 
 ---
 
-## 🧭 Architectural Diagram
+## Architectural Diagram
 
 > ![MyClean Architectural Diagram](/iterations/images/architectural_diagram_v2.drawio.png)  
 *Note: This diagram was created using draw.io and embedded for clarity.*
 
 ---
 
-## 🧩 Iteration-Based Refinements
+## Iteration-Based Refinements
 
-### 🌀 Iteration 1
+### Iteration 1
 
 - **Initial API Routes**: Routes for **User Authentication**, **Cleaner Profiles**, **Job Listings**, etc.
 - **Database Setup**: Created the **Users**, **Cleaners**, **Jobs** tables with the necessary relationships.
 - **Initial Frontend**: Designed mockups for booking interfaces and basic user profiles.
 - **Testing**: Local SQLite database used to simulate the real data model.
 
-### 🌀 Iteration 2
+### Iteration 2
 
 - **Extended Features**: Added **customer feedback** and **cleaner review systems**.
 - **Database Refinement**: Added a **Feedback table** and linked it to **Users** and **Jobs**.
@@ -70,7 +70,7 @@ The MyClean application consists of:
 
 ---
 
-## 🔮 Future-Proofing
+## Future-Proofing
 
 To ensure scalability, **MyClean**'s architecture has been designed to accommodate:
 
@@ -79,7 +79,7 @@ To ensure scalability, **MyClean**'s architecture has been designed to accommoda
 - **API Extensions**: Future plans to integrate **payment systems** (Stripe, PayPal), real-time notifications, and chat
   systems
 
-## ✅ Summary
+## Summary
 
 This modular and scalable architecture allows *MyClean* to evolve with future features such as real-time tracking, push
 notifications, or microservices without requiring a full rewrite.
