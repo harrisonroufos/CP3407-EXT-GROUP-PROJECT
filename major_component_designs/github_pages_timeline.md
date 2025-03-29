@@ -9,7 +9,7 @@ This section of the 'major components' design details the progress updates on a 
 
 
 ## Iteration 1 - Complete
-![image](https://github.com/user-attachments/assets/da39f98c-38d8-41dc-9a6b-b52394cfd9a4)
+![image](https://github.com/user-attachments/assets/8b0d5cb9-2221-4751-878a-3f88dcf7f2f2)
 
 
 ## Iteration 2 - Half Way
