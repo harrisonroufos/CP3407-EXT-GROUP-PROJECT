@@ -58,7 +58,7 @@ includes:
 | Referral Program           | 2         | 20       | ❌ Dropped | [View](./user_stories/user_story_referral_program_for_customers.md) |
 | Create Schedule            | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_create_schedule.md)                |
 | Schedule Notifications     | 2         | 40       | ❌ Dropped | [View](./user_stories/user_story_schedule_notifications.md)         |
-| See Current Area Jobs      | 3         | 50       | ❌ Dropped | [View](./user_stories/user_story_see_current_area_cleaning_jobs.md) |
+| See Current Area Jobs      | 2         | 50       | ❌ Dropped | [View](./user_stories/user_story_see_current_area_cleaning_jobs.md) |
 | Booking Reminders          | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_booking_reminders.md)              |
 
 ---
