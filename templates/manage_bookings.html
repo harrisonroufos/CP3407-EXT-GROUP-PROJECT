@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>MyClean - Bookings</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-    <title>MyClean - Bookings</title>
 </head>
 
 <body class="cleaner-page">
@@ -38,10 +39,14 @@
 
             <p><strong>Current status:</strong> {{ booking.status }}</p>
             {% if session['cleaner_id'] %}
-                <a href="{{ url_for('view_checklist', booking_id=booking.booking_id) }}" class="checklist-button">Review Checklist</a>
+                <a href="{{ url_for('view_checklist', booking_id=booking.booking_id) }}" class="checklist-button">View Checklist</a>
+                <a href="{{ url_for('delete_booking', booking_id=booking.booking_id) }}" class="checklist-button"
+                   onclick="return confirm('Are you sure you want to cancel this job?');">Cancel Job</a>
             {% endif %}
             {% if session['customer_id'] %}
                 <a href="{{ url_for('booking_review', booking_id=booking.booking_id) }}" class="checklist-button">Add Review</a>
+                <a href="{{ url_for('delete_booking', booking_id=booking.booking_id) }}" class="checklist-button"
+                   onclick="return confirm('Are you sure you want to cancel this booking?');">Cancel Booking</a>
             {% endif %}
 
         </div>

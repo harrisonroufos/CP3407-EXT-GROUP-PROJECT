@@ -1,52 +1,53 @@
 # See Current Area Cleaning Jobs
 
----
-
 ## Description
-
-As a cleaner, I want to be notified of all other cleaners using the app who are currently working in my area.
+**Description-v2:**  
+As a cleaner, I want to see a map of other cleaners currently working nearby (with their consent), so I can avoid double bookings and get a sense of activity in my area.
 
 ---
 
-## Priority 
+## Priority
+**Range:** 50 (Very Low)  
+**Iteration:** 2  
+**Status:** ❌ Dropped (due to scope and privacy concerns)
 
-**Range**: 50 (Very Low)    
-**Iteration**: 3
-
-**Notes:**
-- Could be a neat social element to see where other cleaners are working
-- Makes accidental or double-bookings less likely
-- Cleaners need to explicitly tell the app to use their location for this feature
-- Similar to snapchat snap map?
+**Notes:**  
+- Adds a light social element similar to Snap Map.  
+- Helps prevent accidental double bookings.  
+- Location sharing is opt-in only.  
+- Dropped due to privacy complexity and low user impact.
 
 ---
 
 ## Estimation
+**Assumptions:**  
+- Users must opt-in to share location.  
+- Data will be used responsibly and won't allow tracking.  
+- Feature may have novelty but limited adoption.
 
-**Assumptions:**
-- Location is kept secure
-- Won't be used to track people
-- This will be a feature people are looking for
-
-**Planning Poker:**
-- Casey: 6 days (Iteration 2)  
-- Damon: 6 days (Iteration 2)  
-- Daniel: 8 days (Iteration 2)
-- Harrison: 6 days (Iteration 2)  
-**Average:** 6.5 days (Iteration 2)  
-
---------------------------
-
-## Tasks
-1. Enable location tracking while cleaning - 1 day
-2. Display on virtual map - 1 day
+**Planning Poker:**  
+- Casey: 6 days  
+- Damon: 6 days  
+- Daniel: 8 days  
+- Harrison: 6 days  
+- **Average:** 6.5 days
 
 ---
 
-## UI Design
-*Insert a mockup screenshot of the reliability score interface.*
+## Tasks (Not Implemented)
+1. Enable location tracking while cleaner is on a job — 1 day  
+2. Display nearby cleaner activity on a virtual map — 1 day  
+
+**Total estimated time: 2 days**
 
 ---
 
-## Completed
-*Insert screenshots of the completed feature's implementation.*
+## UI Design  
+![Current Area Cleaners Wireframe](/iterations/images/see_current_area_cleaning_jobs_mockup.png)  
+*Note: Feature was not implemented, mockup provided for conceptual use.*
+
+---
+
+## Completed  
+❌ This feature was not implemented.  
+It was deprioritized in Iteration 2 due to privacy concerns and limited core value.
