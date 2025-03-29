@@ -2,7 +2,7 @@
 
 ## Description
 **Description-v2:**  
-As a cleaner, I want to track my cleaning supplies so I can make sure I have what I need for each job and easily request restocks when running low.
+As a cleaner, I want to track my cleaning supplies, so I can make sure I have what I need for each job and easily request restocks when running low.
 
 ---
 

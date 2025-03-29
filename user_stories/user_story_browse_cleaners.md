@@ -2,7 +2,7 @@
 
 ## Description
 **Description-v2:**  
-As a customer, I want to browse available cleaners and their ratings so I can choose the most suitable and professional cleaner for my needs.
+As a customer, I want to browse available cleaners and their ratings, so I can choose the most suitable and professional cleaner for my needs.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Description
 **Description-v2:**  
-As a customer, I want to see the real-time availability of cleaners so I can make quick and informed booking decisions without wasting time on unavailable options.
+As a customer, I want to see the real-time availability of cleaners, so I can make quick and informed booking decisions without wasting time on unavailable options.
 
 ---
 

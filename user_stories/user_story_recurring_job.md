@@ -2,7 +2,7 @@
 
 ## Description
 **Description-v2:**  
-As a customer, I want to set up a recurring cleaning schedule so I don’t have to book each service manually, making it easier to maintain a consistent cleaning routine.
+As a customer, I want to set up a recurring cleaning schedule, so I don’t have to book each service manually, making it easier to maintain a consistent cleaning routine.
 
 ---
 

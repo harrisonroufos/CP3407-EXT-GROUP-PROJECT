@@ -1,47 +1,52 @@
 # Referral Program for Customers
 
 ## Description
-**Description-v1:**  
-As a customer, I want to refer friends and earn rewards, so I can save money on future bookings while helping others discover the service.
+**Description-v2:**  
+As a customer, I want to refer friends and earn rewards so I can save money on future bookings while helping others discover the platform.
 
 ---
 
 ## Priority
 **Range:** 20 (High)  
 **Iteration:** 2  
+**Status:** ❌ Dropped (due to feature deprioritization and limited scope)
 
 **Notes:**  
-- Encourages user growth through word-of-mouth referrals.  
-- Helps retain existing customers by rewarding them.  
-- Increases brand awareness and customer engagement.
+- Encourages organic user growth via referrals.  
+- Supports customer retention through incentives.  
+- Dropped to focus on more critical service and booking features.
 
 ---
 
 ## Estimation
 **Assumptions:**  
-- Requires a unique referral code system.  
-- Rewards should be automatically applied when referrals complete a booking.  
+- Needs a referral code generation and tracking system.  
+- Rewards must trigger only after referred users complete a booking.  
 
 **Planning Poker:**  
-- Harrison: 5 days (Iteration 2)  
-- Damon: 5 days (Iteration 2)  
-- Casey: 3 days (Iteration 2)  
-- Daniel: 3 days (Iteration 2)  
-- **Average:** 4 days (Iteration 2) 
+- Harrison: 5 days  
+- Damon: 5 days  
+- Casey: 3 days  
+- Daniel: 3 days  
+- **Average:** 4 days
 
 ---
 
-## Tasks
-1. Implement referral code generation and tracking — 1 days  
-2. Apply discounts/rewards for successful referrals — 1.5 day  
+## Tasks (Not Implemented)
+1. Implement referral code generation and tracking — 1 day  
+2. Apply discounts/rewards for successful referrals — 1.5 days  
 3. Display referral program details in the app — 0.5 day  
 
----
-
-## UI Design
-*Insert a mockup screenshot of the referral program page.*
+**Total estimated time: 3 days**
 
 ---
 
-## Completed
-*Insert screenshots of the completed feature's implementation.*
+## UI Design  
+![Referral Program Wireframe](/iterations/images/referral_program_for_customers_mockup.png)  
+*Note: This mockup was proposed but never implemented.*
+
+---
+
+## Completed  
+❌ This feature was not implemented.  
+The referral program was deprioritized in Iteration 2 due to scope limitations and emphasis on core functionalities.
