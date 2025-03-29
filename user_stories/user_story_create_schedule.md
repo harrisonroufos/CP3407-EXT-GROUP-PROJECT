@@ -1,45 +1,51 @@
 # Create Schedule
 
 ## Description
-
-As a cleaner, I want to create a schedule to mark when I'm available.
+**Description-v2:**  
+As a cleaner, I want to create a personal schedule to set my availability, so I can manage my work around holidays, sick leave, or other commitments.
 
 ---
 
-## Priority 
+## Priority
+**Range:** 30 (Medium)  
+**Iteration:** 2  
+**Status:** ❌ Dropped (due to limited development time and scope constraints)
 
-**Range**: 30 (Medium)   
-**Iteration**: 2
-
-**Notes:**
-- Lets the cleaner take holidays or sick leave if necessary
-- They need set the time themselves
+**Notes:**  
+- Gives cleaners control over their availability.  
+- Reduces accidental bookings during unavailable times.  
+- Dropped during Iteration 2 planning in favour of core booking and rating features.
 
 ---
 
 ## Estimation
+**Assumptions:**  
+- Cleaners are expected to manage their own time responsibly.  
+- Requires calendar-based input and integration with booking logic.
 
-**Assumptions:**
-- Cleaners won't try to abuse this since they set the dates themselves
-
-**Planning Poker:**
-- Casey: 3 days (Iteration 2)  
-- Damon: 5 days (Iteration 2)  
-- Daniel: 2 days (Iteration 2)
-- Harrison: 6 days (Iteration 1)  
-**Average:** 5 days (Iteration 2)  
-
---------------------------
-
-## Tasks
-1. Create "create schedule" screen (using the calendar) and prevent that cleaner from being scheduled outside that time - 1 day
+**Planning Poker:**  
+- Casey: 3 days  
+- Damon: 5 days  
+- Daniel: 2 days  
+- Harrison: 6 days  
+- **Average:** 4 days
 
 ---
 
-## UI Design
-*Insert a mockup screenshot of the reliability score interface.*
+## Tasks (Not Implemented)
+1. Create "Create Schedule" screen with calendar input — 1 day  
+2. Prevent cleaner from being scheduled outside set hours — 1 day  
+
+**Total estimated time: 2 days**
 
 ---
 
-## Completed
-*Insert screenshots of the completed feature's implementation.*
+## UI Design  
+![Create Schedule Mockup](/iterations/images/create_schedule_mockup.png)  
+*Note: Mockup proposed but not implemented.*
+
+---
+
+## Completed  
+❌ This feature was not implemented.  
+It was dropped during Iteration 2 prioritisation to keep the project focused on essential features.
