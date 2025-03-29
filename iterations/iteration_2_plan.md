@@ -80,3 +80,4 @@ We also restructured the Iteration 2 plan based on these findings. A new user st
 
 * `Casey` | Created About_Us page to explain MyClean | 18/03/2025  
 * `Casey` | Add view custom checklist to cleaner's booking page | 18/03/2025
+* `Casey` | Refactored the 'initialise database' function into logical sections (SRP) | 23/03/2025
