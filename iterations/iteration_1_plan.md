@@ -12,10 +12,11 @@ Assume:
 > Format: `link` | `estimated time` | `priority` (10 most important, 50 least)
 
 > [!Note]
-> **GitHub Projects Page** - [MyClean](https://github.com/users/Casey-Summers/projects/1) **Development Tracker**
+> **GitHub Project Page** - [Development Tracker](https://github.com/users/Casey-Summers/projects/1) <br>
+> **GitHub Project Version History** - [Project Iterations](/major_component_designs/github_pages_timeline.md)
 
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 10 days | 10 - COMPLETE  
-2. [Display Cleaner Profile](/user_stories/user_story_display_cleaner_profile.md) | 6 days | 10 - COMPLETE  
+2. [Display Cleaner Profile](//user_stories/user_story_display_cleaner_profile.md) | 6 days | 10 - COMPLETE  
 3. [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE
 4. [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | 6.5 days | 30 - UPDATED & COMPLETE
 5. [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | 4 days | 20 - MOVED TO ITERATION 2  
@@ -38,21 +39,21 @@ Assume:
 # Completed:
 > Format: `user story link` | `developer name` | `Task name` | `date finished`
 
-* [Browse Cleaners](https://github.com/harrisonroufos/CP3407-EXT-GROUP-PROJECT/blob/main/user_stories/user_story_browse_cleaners.md) | `Casey` | Research setting up the database and website. | 18/02/2025  
-* [Browse Cleaners](https://github.com/harrisonroufos/CP3407-EXT-GROUP-PROJECT/blob/main/user_stories/user_story_browse_cleaners.md) | `Casey` & `Harrison` | Develop the database for cleaners/users. | 18/02/2025  
-* [Browse Cleaners](https://github.com/harrisonroufos/CP3407-EXT-GROUP-PROJECT/blob/main/user_stories/user_story_browse_cleaners.md) | `Daniel` | Develop a UI to browse cleaners | 22/02/2025  
-* [Browse Cleaners](https://github.com/harrisonroufos/CP3407-EXT-GROUP-PROJECT/blob/main/user_stories/user_story_browse_cleaners.md) | `Damon` | Develop backend to get cleaners from database. | 22/02/2025  
-* [Browse Cleaners](https://github.com/harrisonroufos/CP3407-EXT-GROUP-PROJECT/blob/main/user_stories/user_story_browse_cleaners.md) | `Casey` | Test and debug. | 22/02/2025  
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` | Research setting up the database and website. | 18/02/2025  
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` & `Harrison` | Develop the database for cleaners/users. | 18/02/2025  
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Daniel` | Develop a UI to browse cleaners | 22/02/2025  
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Damon` | Develop backend to get cleaners from database. | 22/02/2025  
+* [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` | Test and debug. | 22/02/2025  
 
-* [Display Cleaner Profile](user_stories/user_story_display_cleaner_profile.md) | `Harrison` | Create a sign up page | 28/02/2025  
-* [Display Cleaner Profile](user_stories/user_story_display_cleaner_profile.md) | `Casey` & `Harrison` | Implement backend to add new user to the database | 28/02/2025  
-* [Display Cleaner Profile](user_stories/user_story_display_cleaner_profile.md) | `Daniel` | Create UI for profile | 07/03/2025  
-* [Display Cleaner Profile](user_stories/user_story_display_cleaner_profile.md) | `Damon` | Display user information on user profile | 02/03/2025  
-* [Display Cleaner Profile](user_stories/user_story_display_cleaner_profile.md) | `Casey` | Test and debug | 01/03/2025  
+* [Display Cleaner Profile](/user_stories/user_story_display_cleaner_profile.md) | `Harrison` | Create a sign up page | 28/02/2025  
+* [Display Cleaner Profile](/user_stories/user_story_display_cleaner_profile.md) | `Casey` & `Harrison` | Implement backend to add new user to the database | 28/02/2025  
+* [Display Cleaner Profile](/user_stories/user_story_display_cleaner_profile.md) | `Daniel` | Create UI for profile | 07/03/2025  
+* [Display Cleaner Profile](/user_stories/user_story_display_cleaner_profile.md) | `Damon` | Display user information on user profile | 02/03/2025  
+* [Display Cleaner Profile](/user_stories/user_story_display_cleaner_profile.md) | `Casey` | Test and debug | 01/03/2025  
 
-* [Create Custom Cleaning Checklist](user_stories/user_story_create_custom_cleaning_checklist.md) | `Casey` & `Damon` | Develop UI for custom checklist creation. | 14/03/2025  
-* [Create Custom Cleaning Checklist](user_stories/user_story_create_custom_cleaning_checklist.md) | `Damon` | Implement backend to store this checklist with a customer. | 14/03/2025  
-* [Create Custom Cleaning Checklist](user_stories/user_story_create_custom_cleaning_checklist.md) | `Casey` & `Damon` | Test and debug. | 15/03/2025
+* [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | `Casey` & `Damon` | Develop UI for custom checklist creation. | 14/03/2025  
+* [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | `Damon` | Implement backend to store this checklist with a customer. | 14/03/2025  
+* [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | `Casey` & `Damon` | Test and debug. | 15/03/2025
 
 * [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | `Damon` | Link booking confirmation page to cleaner profile | 14/03/2025 
 * [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | `Daniel` | Create the confirmation UI component | 16/03/2025 
