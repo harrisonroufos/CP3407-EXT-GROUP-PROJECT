@@ -62,6 +62,10 @@ includes:
 | Booking Reminders          | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_booking_reminders.md)              |
 
 ---
+# Database Diagram
+![database diagram](/database_files/myclean_database_diagram.png)
+
+---
 
 ## 🖼️ UI Mockups
 
