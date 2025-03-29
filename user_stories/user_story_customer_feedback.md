@@ -1,66 +1,70 @@
 # Customer Feedback
 
 ## Description
-**Description-v1:**  
-As a customer, I want to leave feedback and reviews for cleaners after a job, so I can help other customers make informed decisions.
+**Description-v2:**  
+As a customer, I want to leave feedback and reviews for cleaners after a job, so I can help other customers make informed decisions and support high-quality service.
 
 ---
 
 ## Priority
-**Range:** 25 (MEDIUM)  
-**Iteration:** 2 
+**Range:** 25 (Medium)  
+**Iteration:** 2  
+**Status:** ✅ Completed
 
 **Notes:**  
-- Encourages transparency and accountability among cleaners.  
-- Enhances trust in the platform by showcasing authentic customer reviews.  
-- Helps cleaners improve based on constructive feedback.
+- Builds trust in the platform by showing real customer experiences.  
+- Helps cleaners improve through constructive input.  
+- Enhances transparency and quality control.
 
 ---
 
 ## Estimation
 **Assumptions:**  
-- Requires a feedback form integrated into the post-job workflow.  
-- Backend system needs to store and retrieve customer reviews.  
+- Requires a post-job feedback form for customers.  
+- Needs a backend system to store and display cleaner ratings and reviews.
 
 **Planning Poker:**  
-- Harrison: 5 days (Iteration 2)  
-- Damon: 5 days (Iteration 1)  
-- Casey: 3 days (Iteration 2)  
-- Daniel: 4 days (Iteration 1)  
-- **Average:** 4 days (Iteration 1)   
+- Harrison: 5 days  
+- Damon: 5 days  
+- Casey: 3 days  
+- Daniel: 4 days  
+- **Average:** 4 days
 
 ---
 
 ## Tasks
-1. Create a survey form with various customer experience questions. 1/2 day.
-2. Design and integrate survey form into the app. 1 day.  
-3. Implement backend storage for customer reviews. 1 days.  
-4. Display average ratings and reviews on cleaner profiles. 1 day.
-5. Test and debug. 1/2 day.
+1. Create a survey form with various customer experience questions — 0.5 day  
+2. Design and integrate survey form into the app — 1 day  
+3. Implement backend storage for customer reviews — 1 day  
+4. Display average ratings and reviews on cleaner profiles — 1 day  
+5. Test and debug — 0.5 day  
 
-## Assigned task:
-1. Create a survey form with various customer experience questions. 1/2 day.
-    > Assigned to: `Casey` | Time elapsed: ` 0.5 days` | Start day: 17/03/2025 | Finished day: 18/03/2025
-2. Design and integrate the survey form into the app.
-    > Assigned to: `Casey` | Time elapsed: `1 day` | Start day: 17/03/2025 | Finished day: 18/03/2025
-3. Implement backend storage for customer reviews.
-    > Assigned to: `Casey` | Time elapsed: `1 day` | Start day: 17/03/2025 | Finished day: 18/03/2025
-4. Display average ratings and reviews on cleaner profiles.
-    > Assigned to: `Damon` | Time elapsed: ` 2 days` | Start day: 18/03/2025 | Finished day: 21/03/2025
-5. Test and debug.
-    > Assigned to: `Casey` & `Damon` | Time elapsed: `1 days` | Start day: 20/03/2025| Finished day: 21/03/2025
+**Total estimated time: 4 days**
 
-Total days estimation - 4 days
+---
+
+## Assigned Tasks
+1. **Create survey form**  
+   > Assigned to: `Casey` | Time elapsed: 0.5 days | Start: 17/03/2025 | Finished: 18/03/2025  
+2. **Design and integrate form into app**  
+   > Assigned to: `Casey` | Time elapsed: 1 day | Start: 17/03/2025 | Finished: 18/03/2025  
+3. **Implement backend storage for reviews**  
+   > Assigned to: `Casey` | Time elapsed: 1 day | Start: 17/03/2025 | Finished: 18/03/2025  
+4. **Display average ratings and reviews**  
+   > Assigned to: `Damon` | Time elapsed: 2 days | Start: 18/03/2025 | Finished: 21/03/2025  
+5. **Test and debug**  
+   > Assigned to: `Casey` & `Damon` | Time elapsed: 1 day | Start: 20/03/2025 | Finished: 21/03/2025
+
 ---
 
 ## UI Design
-*Insert a mockup screenshot of the feedback form and cleaner review section.*
 
-![review wireframe](/iterations/images/submit-review-wireframe.png)
+### Feedback Form Wireframe  
+![Submit Review Wireframe](/iterations/images/submit-review-wireframe.png)
 
 ---
 
 ## Completed
-*Insert screenshots of the completed feature's implementation.*
 
-![review page](/iterations/images/submit-review.png)
+### Feedback Page (Implemented)  
+![Submit Review Screenshot](/iterations/images/submit-review.png)
