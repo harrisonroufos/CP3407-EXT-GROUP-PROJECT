@@ -58,5 +58,8 @@ Assume:
 # Completed Maintenance and Feature Tasks (Iteration 1)
 > Format: `developer name` | `Task name` | `date finished`
 
+* `Casey` & `Harrison` | Restructured databases to handle new entries | 20/02/2025
+* `Daniel` | Added session info tracking to interface 09/03/2025
 * `Casey` | Overhauled navigation menu | 12/03/2025  
-* `Casey` | Updated footer content and included About_Us | 12/03/2025
+* `Casey` | Updated footer content and footer/header referencing | 12/03/2025
+* `Damon` | Created toggle between local and production environment | 12/03/2025
