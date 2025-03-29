@@ -19,10 +19,10 @@ We also restructured the Iteration 2 plan based on these findings. A new user st
 > **GitHub Project Page** - [Development Tracker](https://github.com/users/Casey-Summers/projects/1) <br>
 > **GitHub Project Version History** - [Project Iterations](/major_component_designs/github_pages_timeline.md)
 
-1. [Create Booking](/user_stories/user_story_create_booking.md.md) | 5 days | 10 - COMPLETED
-2. [Customer Feedback](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - COMPLETED
-3. [Review Rating](/user_stories/user_story_reliability_scores.md) | 3 days | 30 - COMPLETED
-4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30 - COMPLETED
+1. [Create Booking](/user_stories/user_story_create_booking.md) | 5 days | 10 - COMPLETED
+2. [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | 4 days | 20 - COMPLETED
+3. [Show Cleaner Reliability Scores](/user_stories/user_story_show_cleaner_reliability_scores.md) | 3 days | 30 - COMPLETED
+4. [Cancel Booking](/user_stories/user_story_handle_cancel_booking.md) | 4 days | 30 - COMPLETED
 
 **Estimated Time - 16 days**
 
@@ -44,12 +44,12 @@ We also restructured the Iteration 2 plan based on these findings. A new user st
 * [Chat With Cleaner](/user_stories/user_story_chat_with_hired_cleaner.md)  
 * [See Current Area Jobs](/user_stories/user_story_see_current_area_cleaning_jobs.md)  
 * [Booking Reminders](/user_stories/user_story_booking_reminders.md)  
-* [Cleaner Availability](/user_stories/user_story_cleaner_availability)  
+* [Cleaner Availability](/user_stories/user_story_cleaner_availability.md)  
 * [Recurring Job](/user_stories/user_story_recurring_job.md)  
 * [Create Schedule](/user_stories/user_story_create_schedule.md)  
 * [Schedule Notifications](/user_stories/user_story_schedule_notifications.md)  
 * [Referral Program for Customers](/user_stories/user_story_referral_program_for_customers.md)  
-* [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) – revised and implemented as on-screen confirmation only
+* [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) – revised and implemented as on-screen confirmation only
 
 ---
 
@@ -61,19 +61,19 @@ We also restructured the Iteration 2 plan based on these findings. A new user st
 * [Create Booking](/user_stories/user_story_create_booking.md) | `Daniel` & `Harrison` | Develop UI for dummy payment. | 16/03/2025  
 * [Create Booking](/user_stories/user_story_create_booking.md) | `Damon`, `Harrison`, `Casey` | Test and debug. | 18/03/2025  
 
-* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | Create a survey form | 18/03/2025  
-* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | Integrate survey form into app | 18/03/2025  
-* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | Implement backend storage | 18/03/2025  
-* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Damon` | Display ratings on profile | 21/03/2025  
-* [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Damon`, `Casey` | Test and debug | 21/03/2025  
+* [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | `Casey` | Create a survey form | 18/03/2025  
+* [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | `Casey` | Integrate survey form into app | 18/03/2025  
+* [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | `Casey` | Implement backend storage | 18/03/2025  
+* [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | `Damon` | Display ratings on profile | 21/03/2025  
+* [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | `Damon`, `Casey` | Test and debug | 21/03/2025  
 
-* [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon` | Backend system for reliability | 19/03/2025  
-* [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon` | Display reliability scores | 20/03/2025  
-* [Review Rating](/user_stories/user_story_reliability_scores.md) | `Damon`, `Casey` | Test and debug | 23/03/2025  
+* [Show Cleaner Reliability Scores](/user_stories/user_story_show_cleaner_reliability_scores.md) | `Damon` | Backend system for reliability | 19/03/2025  
+* [Show Cleaner Reliability Scores](/user_stories/user_story_show_cleaner_reliability_scores.md) | `Damon` | Display reliability scores | 20/03/2025  
+* [Show Cleaner Reliability Scores](/user_stories/user_story_show_cleaner_reliability_scores.md) | `Damon`, `Casey` | Test and debug | 23/03/2025  
 
-* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Harrison`, `Casey` | Develop job database | 20/03/2025  
-* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel` | Develop UI | 22/03/2025  
-* [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | `Daniel` | Test and Debug | 24/03/2025  
+* [Cancel Booking](/user_stories/user_story_handle_cancel_booking.md) | `Harrison`, `Casey` | Develop job database | 20/03/2025  
+* [Cancel Booking](/user_stories/user_story_handle_cancel_booking.md) | `Daniel` | Develop UI | 22/03/2025  
+* [Cancel Booking](/user_stories/user_story_handle_cancel_booking.md) | `Daniel` | Test and Debug | 24/03/2025  
 
 # Completed Maintenance and Feature Tasks (Iteration 2)
 > Format: `developer name` | `Task name` | `date finished`
