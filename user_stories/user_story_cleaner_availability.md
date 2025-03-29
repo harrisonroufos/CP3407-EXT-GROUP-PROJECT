@@ -1,44 +1,51 @@
 # Cleaner Availability
 
 ## Description
-**Description-v1:**  
-As a customer, I want to view see availability of cleaners so I can make quick and informed booking decisions.
+**Description-v2:**  
+As a customer, I want to see the real-time availability of cleaners so I can make quick and informed booking decisions without wasting time on unavailable options.
 
 ---
 
 ## Priority
 **Range:** 20 (High)  
 **Iteration:** 2  
+**Status:** ❌ Dropped (due to project scope and velocity constraints)
 
 **Notes:**  
-- Improves booking efficiency by ensuring customers know when cleaners are available.  
-- Reduces customer frustration caused by unavailable cleaners.  
+- Improves booking efficiency by showing when cleaners are available.  
+- Helps reduce frustration and failed bookings.  
+- Dropped during Iteration 2 planning in favour of higher-priority functionality like booking creation and reliability scores.
 
 ---
 
 ## Estimation
 **Assumptions:**  
-- Requires a backend system to track cleaner availability.   
+- Requires backend logic to track availability and sync with the UI in real-time.  
+- May need cleaner-side controls to update availability.  
 
 **Planning Poker:**  
-- Harrison: 4 days (Iteration 1)  
-- Damon: 3 days (Iteration 1)  
-- Casey: 2 days (Iteration 1)  
-- Daniel: 3 days (Iteration 2)  
-- **Average:** 3 days (Iteration 1)  
+- Harrison: 4 days  
+- Damon: 3 days  
+- Casey: 2 days  
+- Daniel: 3 days  
+- **Average:** 3 days
 
 ---
 
-## Tasks
+## Tasks (Not Implemented)
 1. Create a real-time availability tracking system — 2 days  
-2. Integrate real-time availability data with front-end UI — 1 day  
+2. Integrate availability data into front-end UI — 1 day  
+
+**Total estimated time: 3 days**
 
 ---
 
-## UI Design
-*Insert a mockup screenshot of the real-time availability interface.*
+## UI Design  
+![Cleaner Availability Mockup](/iterations/images/cleaner_availability_mockup.png)  
+*Note: This mockup was proposed but never implemented.*
 
 ---
 
-## Completed
-*Insert screenshots of the completed feature's implementation.*
+## Completed  
+❌ This feature was not implemented.  
+It was deprioritized in Iteration 2 due to limited capacity and the need to deliver core features.
