@@ -8,7 +8,7 @@ As a customer, I want to chat with my hired cleaner through the app, so I can co
 
 ## Priority
 **Range:** 50 (Low)  
-**Iteration:** Originally planned for Iteration 2  
+**Iteration:** Originally considered for future scope 
 **Status:** ❌ Dropped (due to project scope and user preference for external apps)
 
 **Notes:**  
