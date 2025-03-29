@@ -14,7 +14,7 @@ We also restructured the Iteration 2 plan based on these findings. A new user st
 ---
 
 ## Iteration 2 Plan
-1. [Create Booking](/user_stories/create_booking.md) | 5 days | 10  
+1. [Create Booking](/user_stories/user_story_create_booking) | 5 days | 10  
 2. [Customer Feedback](/user_stories/user_story_customer_feedback.md) | 4 days | 20  
 3. [Review Rating](/user_stories/user_story_reliability_scores.md) | 3 days | 30  
 4. [Job Cancellation](/user_stories/user_story_handle_cancellations.md) | 4 days | 30  
@@ -51,10 +51,10 @@ We also restructured the Iteration 2 plan based on these findings. A new user st
 ## Completed
 > Format: `user story link` | `developer name` | `Task name` | `date finished`
 
-* [Create Booking](/user_stories/create_booking.md) | `Daniel` | Develop UI for booking. | 16/03/2025  
-* [Create Booking](/user_stories/create_booking.md) | `Harrison` | Implement backend to store the booking. | 15/03/2025  
-* [Create Booking](/user_stories/create_booking.md) | `Daniel` & `Harrison` | Develop UI for dummy payment. | 16/03/2025  
-* [Create Booking](/user_stories/create_booking.md) | `Damon`, `Harrison`, `Casey` | Test and debug. | 18/03/2025  
+* [Create Booking](/user_stories/user_story_create_booking) | `Daniel` | Develop UI for booking. | 16/03/2025  
+* [Create Booking](/user_stories/user_story_create_booking) | `Harrison` | Implement backend to store the booking. | 15/03/2025  
+* [Create Booking](/user_stories/user_story_create_booking) | `Daniel` & `Harrison` | Develop UI for dummy payment. | 16/03/2025  
+* [Create Booking](/user_stories/user_story_create_booking) | `Damon`, `Harrison`, `Casey` | Test and debug. | 18/03/2025  
 
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | Create a survey form | 18/03/2025  
 * [Customer Feedback](/user_stories/user_story_customer_feedback.md) | `Casey` | Integrate survey form into app | 18/03/2025  
