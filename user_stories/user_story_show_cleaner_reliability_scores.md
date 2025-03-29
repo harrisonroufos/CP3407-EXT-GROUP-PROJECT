@@ -1,4 +1,4 @@
-# Review Rating (Reliability Scores)
+# Show Cleaner Reliability Scores
 
 ## Description
 **Description-v2:**  
