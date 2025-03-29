@@ -1,6 +1,6 @@
 # CP3407 External Group 1
 
-## 👥 Team Members
+## Team Members
 
 - Harrison Roufos
 - Damon Lindsay
@@ -9,7 +9,7 @@
 
 ---
 
-## 🧠 Project Requirements & User Stories (Criteria 1)
+## Project Requirements & User Stories (Criteria 1)
 
 This project involved planning and documenting a large number of user stories across multiple iterations. Each story
 includes:
