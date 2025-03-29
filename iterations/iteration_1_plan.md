@@ -11,7 +11,8 @@ Assume:
 ## Breakdown:
 > Format: `link` | `estimated time` | `priority` (10 most important, 50 least)
 
-**Development Tracker** - [MyClean](https://github.com/users/Casey-Summers/projects/1)
+> [!Note]
+> **GitHub Projects Page** - [MyClean](https://github.com/users/Casey-Summers/projects/1) **Development Tracker**
 
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 10 days | 10 - COMPLETE  
 2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 6 days | 10 - COMPLETE  
