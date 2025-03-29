@@ -1,8 +1,8 @@
 # Booking Confirmation
 
 ## Description
-**Description-v1:**  
-As a customer, I want to receive a booking confirmation via email, SMS, or in-app notification immediately after booking a cleaner, so I know my appointment is secured.
+**Description-v2:**  
+As a customer, I want to receive an on-screen booking confirmation immediately after booking a cleaner, so I know my appointment is secured.
 
 ---
 
@@ -11,15 +11,15 @@ As a customer, I want to receive a booking confirmation via email, SMS, or in-ap
 **Iteration:** 1  
 
 **Notes:**  
-- Ensures customers receive instant confirmation. 
+- Ensures customers receive instant confirmation.  
 - Reduces confusion about whether a booking was successful.
 
 ---
 
 ## Estimation
 **Assumptions:**  
-- Requires integration with email/SMS notification services.  
-- Customers should be able to receive confirmation instantly after booking.
+- Confirmation will be shown on the screen only (no email or SMS).  
+- Booking confirmation should be visible immediately after submission.
 
 **Planning Poker:**  
 - Harrison: 5 days (Iteration 2)  
@@ -31,21 +31,20 @@ As a customer, I want to receive a booking confirmation via email, SMS, or in-ap
 ---
 
 ## Tasks
-1. Link booking from cleaner profile — 1 day
-2. Create a booking UI — 1 day
-3. Develop backend to log the booking — 2 days
-4. Send email notification to confirm booking — 0.5 days
-5. Send SMS notification to confirm booking — 0.5 day
-6. Send in-app notification for booking confirmation — 0.5 day
-7. Test and debug confirmation system — 1 day
+1. Link booking confirmation page to cleaner profile — 1 day  
+2. Create the confirmation UI component — 1 day  
+3. Develop backend logic to pass booking data to confirmation screen — 2 days  
+4. Display booking summary dynamically — 1 day  
+5. Test and debug on-screen confirmation flow — 1.5 days  
 
-Total days estimation - 6.5 days
+**Total estimation: 6.5 days**
+
 ---
 
 ## UI Design
-*Insert a mockup screenshot of the notification settings page and sample confirmation message.*
+![Booking Confirmation Mockup](/iterations/images/booking_confirmation_mockup.png)
 
 ---
 
 ## Completed
-*Insert screenshots of the completed feature's implementation.*
+![Booking Confirmation Screenshot](/iterations/images/booking_confirmation.png)
