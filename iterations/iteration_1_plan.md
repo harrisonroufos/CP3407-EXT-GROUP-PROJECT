@@ -15,11 +15,11 @@ Assume:
 > **GitHub Projects Page** - [MyClean](https://github.com/users/Casey-Summers/projects/1) **Development Tracker**
 
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 10 days | 10 - COMPLETE  
-2. [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 6 days | 10 - COMPLETE  
-3. [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE  
-4. [Customer Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - MOVED TO ITERATION 2  
-5. [Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30 - DROPPED  
-6. [Reliability Scores](/user_stories/user_story_reliability_scores.md) | 3 days | 20 - MOVED TO ITERATION 2  
+2. [Display Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | 6 days | 10 - COMPLETE  
+3. [Create Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETE  
+4. [Send Feedback and Reviews](/user_stories/user_story_customer_feedback.md) | 4 days | 20 - MOVED TO ITERATION 2  
+5. [Deliver Booking Confirmation](/user_stories/user_story_booking_confirmation.md) | 6.5 days | 30 - DROPPED  
+6. [Show Cleaner Reliability Scores](/user_stories/user_story_reliability_scores.md) | 3 days | 20 - MOVED TO ITERATION 2  
 
 **Estimated Time - 34.5 days**
 
@@ -44,15 +44,15 @@ Assume:
 * [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Damon` | Develop backend to get cleaners from database. | 22/02/2025  
 * [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | `Casey` | Test and debug. | 22/02/2025  
 
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Harrison` | Create a sign up page | 28/02/2025  
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Casey` & `Harrison` | Implement backend to add new user to the database | 28/02/2025  
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Daniel` | Create UI for profile | 07/03/2025  
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Damon` | Display user information on user profile | 02/03/2025  
-* [Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Casey` | Test and debug | 01/03/2025  
+* [Display Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Harrison` | Create a sign up page | 28/02/2025  
+* [Display Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Casey` & `Harrison` | Implement backend to add new user to the database | 28/02/2025  
+* [Display Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Daniel` | Create UI for profile | 07/03/2025  
+* [Display Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Damon` | Display user information on user profile | 02/03/2025  
+* [Display Cleaner Profile](/user_stories/user_story_create_cleaner_profile.md) | `Casey` | Test and debug | 01/03/2025  
 
-* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | Develop UI for custom checklist creation. | 14/03/2025  
-* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Damon` | Implement backend to store this checklist with a customer. | 14/03/2025  
-* [Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | Test and debug. | 15/03/2025  
+* [Create Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | Develop UI for custom checklist creation. | 14/03/2025  
+* [Create Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Damon` | Implement backend to store this checklist with a customer. | 14/03/2025  
+* [Create Custom Cleaning Checklist](/user_stories/user_story_custom_cleaning_checklist.md) | `Casey` & `Damon` | Test and debug. | 15/03/2025  
 
 ---
 
