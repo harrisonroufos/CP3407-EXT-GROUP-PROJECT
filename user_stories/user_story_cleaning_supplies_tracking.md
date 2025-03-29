@@ -1,47 +1,54 @@
 # Cleaning Supplies Tracking
 
 ## Description
-**Description-v1:**  
-As a cleaner, I want to track my cleaning supplies so that I can ensure I have the necessary materials for each job and request restocks when needed.
+**Description-v2:**  
+As a cleaner, I want to track my cleaning supplies so I can make sure I have what I need for each job and easily request restocks when running low.
 
 ---
 
 ## Priority
 **Range:** 30 (Medium)  
 **Iteration:** 2  
+**Status:** ❌ Dropped (due to project scope and velocity limitations)
 
 **Notes:**  
-- Helps cleaners manage their inventory efficiently.  
-- Prevents job delays due to missing supplies.  
-- Can be extended to integrate with supply vendors for automatic restocking.
+- Helps cleaners manage inventory efficiently and avoid delays.  
+- Potential to expand with vendor integrations for automatic restocking.  
+- Dropped during Iteration 2 to prioritise booking and reliability features.
 
 ---
 
 ## Estimation
 **Assumptions:**  
-- Requires a tracking system where cleaners can log their supply usage.  
-- Optionally integrates with inventory alerts when supplies run low.  
+- Requires a logging system for supply usage.  
+- Alerts would notify cleaners of low inventory.  
+- Restock requests could optionally notify admin or vendors.
 
 **Planning Poker:**  
-- Harrison: 7 days (Iteration 2)  
-- Damon: 6 days (Iteration 2)  
-- Casey: 8 days (Iteration 2)  
-- Daniel: 6 days (Iteration 2)  
-- **Average:** 7 days  
+- Harrison: 7 days  
+- Damon: 6 days  
+- Casey: 8 days  
+- Daniel: 6 days  
+- **Average:** 7 days
 
 ---
 
-## Tasks
+## Tasks (Not Implemented)
 1. Implement supply tracking system for cleaners — 1.5 days  
 2. Add low-supply alerts and notifications — 1 day  
 3. Enable supply restock requests via the app — 0.5 day  
 
----
-
-## UI Design
-*Insert a mockup screenshot of the supply tracking interface.*
+**Total estimated time: 3 days**
 
 ---
 
-## Completed
-*Insert screenshots of the completed feature's implementation.*
+## UI Design  
+![Cleaning Supplies Tracking Mockup](/iterations/images/cleaning_supplies_tracking_mockup.png)  
+*Note: Mockup proposed but not implemented.*
+
+---
+
+## Completed  
+❌ This feature was not implemented.  
+It was deprioritized in Iteration 2 due to time constraints and team capacity.
+
