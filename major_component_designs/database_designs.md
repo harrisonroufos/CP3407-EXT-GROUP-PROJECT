@@ -6,7 +6,7 @@ You should find your solution may look similar to the following 'GenMyModel' dat
 
 ---
 ### Concept 1 - Database Design
-...
+![database diagram](/database_files/myclean_database_diagram.png)
 
 ---
 ### Concept 2 - Database Design
