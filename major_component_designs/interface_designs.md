@@ -6,7 +6,14 @@ You should find your solution may look similar to the following 'NinjaMock' inte
 
 ---
 ### Concept 1 - Interface Design
-...
+###  Customer sign up page design             
+![customer-sign-up](/iterations/images/cutsomer-sign-up.png)
+
+###  Cleaner sign up page design             
+![cleaner-sign-up](/iterations/images/cleaner-sign-up.png)
+
+###  User Sign in page design             
+![sign-in](/iterations/images/login-page.png)
 
 ---
 ### Concept 2 - Interface Design
