@@ -200,3 +200,24 @@ def test_delete_booking(client, temporary_booking, temporary_user):
     # The delete_booking route is a GET request.
     response = client.get(f"/delete_booking/{temporary_booking['booking_id']}")
     assert response.status_code == 302  # Should redirect after deletion
+
+
+def test_book_cleaner_get(client, temporary_booking, temporary_user):
+    """Test that the booking form loads correctly via GET."""
+    with client.session_transaction() as sess:
+        sess['customer_id'] = temporary_user['customer_id']
+        sess['user_id'] = temporary_user['user_id']
+    response = client.get(f"/book/{temporary_booking['cleaner_id']}")
+    assert response.status_code == 200
+    assert b"booking" in response.data.lower()
+
+
+def test_booking_requires_login(client):
+    response = client.get("/book/1")
+    assert response.status_code == 302
+    assert "/login" in response.headers["Location"]
+
+
+def test_nonexistent_cleaner_profile(client):
+    response = client.get("/cleaner/99999")
+    assert response.status_code in (404, 200)
