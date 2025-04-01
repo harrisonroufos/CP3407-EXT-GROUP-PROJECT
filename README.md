@@ -62,11 +62,15 @@ includes:
 | Booking Reminders          | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_booking_reminders.md)              |
 
 ---
+
 # Database Diagram
+
 ![database diagram](/database_files/myclean_database_diagram.png)
 
 ---
+
 # UML Diagram
+
 ![uml diagram](/database_files/myclean_uml_diagram.png)
 
 ---
@@ -85,6 +89,43 @@ Each mockup is linked within its respective user story, but you can also browse 
 - Snap Map-style Nearby Cleaners view
 - Referral Program screen
 - Cleaning Supplies tracker
-- Schedule Notifications alert view  
+- Schedule Notifications alert view
+
+---
+
+## 🧪 Testing
+
+We implemented comprehensive testing using `pytest` across all major components of the system. Our tests cover:
+
+### ✅ Structure
+
+- **Shared Fixtures**: All common test setup (e.g. test users, cleaners, bookings, and client) is located in
+  `conftest.py` to reduce duplication and ensure consistent teardown between test runs.
+
+- **Modular Test Files**:
+    - `test_app.py`: General application behavior, login, and booking management.
+    - `test_booking.py`: Booking creation, route access (GET/POST), and deletion.
+    - `test_cleaner.py`: Cleaner profile view and profile editing.
+    - `test_database.py`: Validates DB connection, table setup, and seed data (e.g. admin user).
+    - `test_services.py`: Tests service functions like booking date formatting.
+
+### ✅ Coverage
+
+- **Route testing**:
+    - Login with valid credentials
+    - Booking creation and deletion
+    - Profile editing and retrieval
+    - Auth protection for protected routes
+
+- **Error conditions**:
+    - Access denied if not logged in
+    - Invalid cleaner or booking ID
+
+- **Backend services**:
+    - Date formatting for booking display
+
+- **Database logic**:
+    - Verifies tables exist after init
+    - Confirms admin account is seeded properly
 
 
