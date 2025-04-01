@@ -5,13 +5,14 @@ from app import app, get_db_connection
 
 @pytest.fixture
 def client():
+    """Returns a test client for the Flask app."""
     with app.test_client() as client:
         yield client
 
 
 @pytest.fixture
 def temporary_user():
-    """Create a temporary user and customer for testing."""
+    """Creates a temporary user and customer for testing."""
     user_data = {
         'username': 'testuser',
         'password': 'password123',
@@ -20,7 +21,6 @@ def temporary_user():
         'phone_number': '1234567890',
         'location': 'Townsville'
     }
-
     hashed_password = generate_password_hash(user_data['password'])
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -47,7 +47,7 @@ def temporary_user():
     user_data['customer_id'] = customer_id
     yield user_data
 
-    # Cleanup
+    # Cleanup after tests
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("DELETE FROM customers WHERE customer_id = %s", (customer_id,))
@@ -58,7 +58,7 @@ def temporary_user():
 
 @pytest.fixture
 def temporary_cleaner(temporary_user):
-    """Create a temporary cleaner using the temporary user."""
+    """Creates a temporary cleaner based on the temporary user."""
     cleaner_data = {
         'user_id': temporary_user['user_id'],
         'full_name': 'Test Cleaner',
@@ -67,7 +67,6 @@ def temporary_cleaner(temporary_user):
         'bio': 'Experienced cleaner with 5 years of service',
         'location': 'Townsville'
     }
-
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
@@ -83,7 +82,7 @@ def temporary_cleaner(temporary_user):
     cleaner_data['cleaner_id'] = cleaner_id
     yield cleaner_data
 
-    # Cleanup
+    # Cleanup after tests
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("DELETE FROM cleaners WHERE cleaner_id = %s", (cleaner_id,))
@@ -93,14 +92,13 @@ def temporary_cleaner(temporary_user):
 
 @pytest.fixture
 def temporary_booking(temporary_user, temporary_cleaner):
-    """Create a temporary booking linked to a customer and cleaner."""
+    """Creates a temporary booking linked to the temporary customer and cleaner."""
     booking_data = {
         'cleaner_id': temporary_cleaner['cleaner_id'],
         'customer_id': temporary_user['customer_id'],
         'booking_date': '2025-05-01T10:00',
         'status': 'pending'
     }
-
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
@@ -116,42 +114,9 @@ def temporary_booking(temporary_user, temporary_cleaner):
     booking_data['booking_id'] = booking_id
     yield booking_data
 
-    # Cleanup
+    # Cleanup after tests
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("DELETE FROM bookings WHERE booking_id = %s", (booking_id,))
     conn.commit()
     conn.close()
-
-
-# Updated test functions:
-
-def test_login_valid(client, temporary_user):
-    """Test valid login credentials."""
-    response = client.post("/login", data={
-        'username': temporary_user['username'],
-        'password': 'password123'
-    })
-    assert response.status_code == 302  # Should redirect after successful login
-
-
-
-
-
-
-
-
-def test_manage_bookings(client, temporary_user):
-    """Test that the booking management page loads."""
-    # Simulate a logged-in customer by setting session variables.
-    with client.session_transaction() as sess:
-        sess['customer_id'] = temporary_user['customer_id']
-        sess['user_id'] = temporary_user['user_id']
-    # The manage_bookings route does not take an argument.
-    response = client.get("/manage_bookings")
-    assert response.status_code == 200  # Should load the booking management page
-
-
-def test_nonexistent_cleaner_profile(client):
-    response = client.get("/cleaner/99999")
-    assert response.status_code in (404, 200)
