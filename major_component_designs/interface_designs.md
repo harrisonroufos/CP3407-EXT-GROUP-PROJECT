@@ -36,10 +36,6 @@ You should find your solution may look similar to the following 'NinjaMock' inte
 ###  Customer view of another user profile          
 ![Customer view of another user profile](/iterations/images/cleaner_profile_customer.png)
 
-###  Cleaner view of another user profile         
-![Cleaner view of another user profile](/iterations/images/cleaner_profile_cleaner.png)
-
-
 ###  Customer upcoming bookings          
 ![Customer upcoming bookings](/iterations/images/bookings_customer.png)
 
