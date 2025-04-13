@@ -6,7 +6,14 @@
 - Damon Lindsay
 - Casey Summers
 - Daniel Brooks
+---
+## To use the application
+- Visit the website https://cp3407-myclean.onrender.com/
+    - NOTE. This method can be slow when loading the application.
 
+### OR
+
+- Run app.py and visit the local ip shown in terminal.
 ---
 
 ## Project Requirements & User Stories (Criteria 1)
