@@ -6,14 +6,25 @@
 - Damon Lindsay
 - Casey Summers
 - Daniel Brooks
+
 ---
-## To use the application
-- Visit the website https://cp3407-myclean.onrender.com/
-    - NOTE. This method can be slow when loading the application.
 
-### OR
+## Live Website
+You can use the cloud-hosted website by visiting: [https://cp3407-myclean.onrender.com/](https://cp3407-myclean.onrender.com/)
 
-- Run app.py and visit the local ip shown in terminal.
+> [!Note]  
+> The website is hosted on [Render](https://render.com), a cloud-based deployment platform that connects 'MyClean' application with an external Postgre 16.0, Oregon (US West) database.
+> Because Render puts inactive sites to sleep to save resources, the site may take **10–30 seconds** to start when accessed for the first time.
+
+> Alternatively: <br>
+> Open the code in a local environment, run `app.py`, and visit the local IP shown in the terminal.
+>  
+> The application is built using Flask (Python) and is deployed as a full-stack web service. It connects directly to a managed PostgreSQL database, also hosted on Render.
+> This enables full functionality, including user login, profile management, and data storage, without requiring any local setup.
+
+> [!Important]
+> The local environment offers a toggle between a local testing database and the production cloud-hosted one. You can toggle between using them by changing the value of `USE_LOCAL_DB` by following the path `Backend/services/.env`. This feature was used frequently for testing purposes throughout development.
+
 ---
 
 ## Project Requirements & User Stories (Criteria 1)
@@ -40,33 +51,34 @@ includes:
 
 ## 📋 Completed User Stories
 
-| Feature                   | Iteration | Priority | Status     | Link                                                           |
-|---------------------------|-----------|----------|------------|----------------------------------------------------------------|
-| Create Booking            | 1         | 10       | ✅ Complete | [View](./user_stories/user_story_create_booking.md)            |
-| Booking Confirmation      | 1         | 20       | ✅ Complete | [View](./user_stories/user_story_booking_confirmation.md)      |
-| Customer Feedback         | 2         | 25       | ✅ Complete | [View](./user_stories/user_story_customer_feedback.md)         |
-| Reliability Scores        | 2         | 20       | ✅ Complete | [View](./user_stories/user_story_reliability_scores.md)        |
-| Custom Cleaning Checklist | 1         | 40       | ✅ Complete | [View](./user_stories/user_story_custom_cleaning_checklist.md) |
-| Chat With Hired Cleaner   | 2         | 25       | ✅ Complete | [View](./user_stories/user_story_chat_with_hired_cleaner.md)   |
-| Browse Cleaners           | 1         | 30       | ✅ Complete | [View](./user_stories/user_story_browse_cleaners.md)           |
-| Handle Cancellations      | 2         | 30       | ✅ Complete | [View](./user_stories/user_story_handle_cancellations.md)      |
-| Create Cleaner Profile    | 1         | 40       | ✅ Complete | [View](./user_stories/user_story_create_cleaner_profile.md)    |
+| User Story                         | Iteration | Priority | Status     | Link                                                                     |
+|-----------------------------------|-----------|----------|------------|--------------------------------------------------------------------------|
+| Create Booking                    | 1         | 10       | ✅ Complete | [View](./user_stories/user_story_create_booking.md)                      |
+| Receive Booking Confirmation      | 1         | 20       | ✅ Complete | [View](./user_stories/user_story_receive_booking_confirmation.md)        |
+| Browse Cleaners                   | 1         | 30       | ✅ Complete | [View](./user_stories/user_story_browse_cleaners.md)                     |
+| Create Custom Cleaning Checklist  | 1         | 40       | ✅ Complete | [View](./user_stories/user_story_create_custom_cleaning_checklist.md)    |
+| Display Cleaner Profile           | 1         | 40       | ✅ Complete | [View](./user_stories/user_story_display_cleaner_profile.md)             |
+| Show Cleaner Reliability Scores   | 2         | 20       | ✅ Complete | [View](./user_stories/user_story_show_cleaner_reliability_scores.md)     |
+| Send Feedback and Reviews         | 2         | 25       | ✅ Complete | [View](./user_stories/user_story_send_feedback_and_reviews.md)           |
+| Cancel Booking                    | 2         | 30       | ✅ Complete | [View](./user_stories/user_story_handle_cancel_booking.md)               |
+
 
 ---
 
 ## ❌ Dropped / Deprioritized User Stories
 
-| Feature                    | Iteration | Priority | Status    | Link                                                                |
-|----------------------------|-----------|----------|-----------|---------------------------------------------------------------------|
-| Cleaner Availability       | 2         | 20       | ❌ Dropped | [View](./user_stories/user_story_cleaner_availability.md)           |
-| Recurring Job              | 2         | 50       | ❌ Dropped | [View](./user_stories/user_story_recurring_job.md)                  |
-| Efficient Route Mapping    | 2         | 40       | ❌ Dropped | [View](./user_stories/user_story_efficient_route_mapping.md)        |
-| Cleaning Supplies Tracking | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_cleaning_supplies_tracking.md)     |
-| Referral Program           | 2         | 20       | ❌ Dropped | [View](./user_stories/user_story_referral_program_for_customers.md) |
-| Create Schedule            | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_create_schedule.md)                |
-| Schedule Notifications     | 2         | 40       | ❌ Dropped | [View](./user_stories/user_story_schedule_notifications.md)         |
-| See Current Area Jobs      | 2         | 50       | ❌ Dropped | [View](./user_stories/user_story_see_current_area_cleaning_jobs.md) |
-| Booking Reminders          | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_booking_reminders.md)              |
+| User Story                    | Iteration | Priority | Status     | Link                                                                |
+|------------------------------|-----------|----------|------------|---------------------------------------------------------------------|
+| Cleaner Availability         | 2         | 20       | ❌ Dropped | [View](./user_stories/user_story_cleaner_availability.md)           |
+| Referral Program             | 2         | 20       | ❌ Dropped | [View](./user_stories/user_story_referral_program_for_customers.md) |
+| Chat With Hired Cleaner      | 2         | 25       | ❌ Dropped | [View](./user_stories/user_story_chat_with_hired_cleaner.md)        |
+| Cleaning Supplies Tracking   | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_cleaning_supplies_tracking.md)     |
+| Create Schedule              | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_create_schedule.md)                |
+| Booking Reminders            | 2         | 30       | ❌ Dropped | [View](./user_stories/user_story_booking_reminders.md)              |
+| Efficient Route Mapping      | 2         | 40       | ❌ Dropped | [View](./user_stories/user_story_efficient_route_mapping.md)        |
+| Schedule Notifications       | 2         | 40       | ❌ Dropped | [View](./user_stories/user_story_schedule_notifications.md)         |
+| Recurring Job                | 2         | 50       | ❌ Dropped | [View](./user_stories/user_story_recurring_job.md)                  |
+| See Current Area Jobs        | 2         | 50       | ❌ Dropped | [View](./user_stories/user_story_see_current_area_cleaning_jobs.md) |
 
 ---
 
@@ -102,7 +114,7 @@ Each mockup is linked within its respective user story, but you can also browse 
 
 ## 🧪 Testing
 
-We implemented comprehensive testing using `pytest` across all major components of the system. Our tests cover:
+We implemented comprehensive testing using `pytest` across all major components of the system. They can be found in the [Tests](/tests) directory. Our tests cover:
 
 ### ✅ Structure
 
