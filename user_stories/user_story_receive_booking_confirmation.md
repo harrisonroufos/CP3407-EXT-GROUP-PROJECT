@@ -40,7 +40,7 @@ priority-v2: 30
 - Damon: 1 days  
 - Casey: 0.5 days  
 - Daniel: 1 days  
-- **Average:** 6.5 days
+- **Average:** 1 day
 
 ---
 
