@@ -96,7 +96,7 @@ includes:
 
 ## 🖼️ UI Mockups
 
-All mockups (including those for dropped features) are stored in the `/docs/ui-wireframes/` directory.  
+All mockups (including those for dropped features) are stored in the [iterations images](iterations/images) directory.  
 Each mockup is linked within its respective user story, but you can also browse them all in one place.
 
 **Examples include:**
