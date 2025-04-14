@@ -1,6 +1,5 @@
 # Interface Designs for CP3407's 'MyClean' Solution
-
-The sections below compare the planned wireframe layout with the final implemented interface design for each respective website component.
+All wireframes are showcased alongside each completed and dropped [user story](user_stories). The sections below compare the planned wireframe layout with the final implemented interface design for each respective website component.
 
 ---
 
