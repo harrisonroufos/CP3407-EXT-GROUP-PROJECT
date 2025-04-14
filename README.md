@@ -68,19 +68,18 @@ includes:
 
 | User Story                         | Iteration | Priority | Status     | Link                                                                     |
 |-----------------------------------|-----------|----------|------------|--------------------------------------------------------------------------|
-| Create Booking                    | 1         | 10       | ✅ Complete | [View](./user_stories/user_story_create_booking.md)                      |
-| Receive Booking Confirmation      | 1         | 20       | ✅ Complete | [View](./user_stories/user_story_receive_booking_confirmation.md)        |
-| Browse Cleaners                   | 1         | 30       | ✅ Complete | [View](./user_stories/user_story_browse_cleaners.md)                     |
-| Create Custom Cleaning Checklist  | 1         | 40       | ✅ Complete | [View](./user_stories/user_story_create_custom_cleaning_checklist.md)    |
-| Display Cleaner Profile           | 1         | 40       | ✅ Complete | [View](./user_stories/user_story_display_cleaner_profile.md)             |
-| Show Cleaner Reliability Scores   | 2         | 20       | ✅ Complete | [View](./user_stories/user_story_show_cleaner_reliability_scores.md)     |
-| Send Feedback and Reviews         | 2         | 25       | ✅ Complete | [View](./user_stories/user_story_send_feedback_and_reviews.md)           |
+| Browse Cleaners                   | 1         | 10       | ✅ Complete | [View](./user_stories/user_story_browse_cleaners.md)                     |
+| Display Cleaner Profile           | 1         | 10       | ✅ Complete | [View](./user_stories/user_story_display_cleaner_profile.md)             |
+| Create Custom Cleaning Checklist  | 1         | 20       | ✅ Complete | [View](./user_stories/user_story_create_custom_cleaning_checklist.md)    |
+| Create Booking                    | 2         | 10       | ✅ Complete | [View](./user_stories/user_story_create_booking.md)                      |
+| Receive Booking Confirmation      | 1         | 30       | ✅ Complete | [View](./user_stories/user_story_receive_booking_confirmation.md)        |
+| Send Feedback and Reviews         | 2         | 20       | ✅ Complete | [View](./user_stories/user_story_send_feedback_and_reviews.md)           |
+| Show Cleaner Reliability Scores   | 2         | 30       | ✅ Complete | [View](./user_stories/user_story_show_cleaner_reliability_scores.md)     |
 | Cancel Booking                    | 2         | 30       | ✅ Complete | [View](./user_stories/user_story_handle_cancel_booking.md)               |
-
 
 ---
 
-## ❌ Dropped / Deprioritized User Stories
+## ❌ Dropped / Deprioritised User Stories
 
 | User Story                    | Iteration | Priority | Status     | Link                                                                |
 |------------------------------|-----------|----------|------------|---------------------------------------------------------------------|
