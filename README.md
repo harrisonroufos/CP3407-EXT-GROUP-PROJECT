@@ -9,6 +9,30 @@
 
 ---
 
+## Iteration Plans
+
+| Iteration                                       | Duration  | Details                                                  |
+|-------------------------------------------------|-----------|----------------------------------------------------------|
+| [Iteration 1](./iterations/iteration_1_plan.md) | 3-4 weeks | Focus on core booking, profiles, and feedback            |
+| [Iteration 2](./iterations/iteration_2_plan.md) | 3-4 weeks | Focus on reliability, checklists, cancellations, mockups |
+
+## Major Components
+
+| Component           | Description                                                       | Link                                             |
+|---------------------|-------------------------------------------------------------------|--------------------------------------------------|
+| Architectural Designs | Describes system structure, components, and deployment layers   | [View](major_component_designs/architectural_designs.md)               |
+| Database Designs    | Explains the relational database schema and justification         | [View](major_component_designs/database_designs.md)                    |
+| GitHub Pages Timeline | Tracks key development milestones and iteration progress        | [View](major_component_designs/github_pages_timeline.md)               |
+| Interface Designs   | Compares wireframes and final interface designs                   | [View](major_component_designs/interface_designs.md)                   |
+
+## User Stories
+
+| Area                | Description                                                       | Link                                             |
+|---------------------|-------------------------------------------------------------------|--------------------------------------------------|
+| Userstories Directory | Lists all completed and dropped user stories                    | [View](user_stories)               |
+
+---
+
 ## Live Website
 You can use the cloud-hosted website by visiting: [https://cp3407-myclean.onrender.com/](https://cp3407-myclean.onrender.com/)
 
@@ -37,15 +61,6 @@ includes:
 - Planning poker estimations
 - Assigned iteration (1, 2, or dropped)
 - UI mockups (even for dropped stories)
-
----
-
-## ✅ Iteration Plans
-
-| Iteration                                       | Duration  | Details                                                  |
-|-------------------------------------------------|-----------|----------------------------------------------------------|
-| [Iteration 1](./iterations/iteration_1_plan.md) | 3-4 weeks | Focus on core booking, profiles, and feedback            |
-| [Iteration 2](./iterations/iteration_2_plan.md) | 3-4 weeks | Focus on reliability, checklists, cancellations, mockups |
 
 ---
 
@@ -94,10 +109,10 @@ includes:
 
 ---
 
-## 🖼️ UI Mockups
+## 🖼️ Interface Design & UI Mockups
 
-All mockups (including those for dropped features) are stored in the [iterations images](iterations/images) directory.  
-Each mockup is linked within its respective user story, but you can also browse them all in one place.
+All designs (including those for dropped features) can be seen and compared within the [Interface Designs](major_component_designs/interface_designs.md) directory.  
+Each mockup is linked within its respective user story, but this allows you to browse them all in one place.
 
 **Examples include:**
 
