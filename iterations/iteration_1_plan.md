@@ -18,7 +18,7 @@
 1. [Browse Cleaners](/user_stories/user_story_browse_cleaners.md) | 10 days | 10 - COMPLETED
 2. [Display Cleaner Profile](//user_stories/user_story_display_cleaner_profile.md) | 6 days | 10 - COMPLETED
 3. [Create Custom Cleaning Checklist](/user_stories/user_story_create_custom_cleaning_checklist.md) | 5 days | 20 - COMPLETED
-4. [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | 6.5 days | 30 - UPDATED & COMPLETED
+4. [Receive Booking Confirmation](/user_stories/user_story_receive_booking_confirmation.md) | 6.5 days | 30 - UPDATED & COMPLETED (Using client feedback)
 5. [Send Feedback and Reviews](/user_stories/user_story_send_feedback_and_reviews.md) | 4 days | 20 - MOVED TO ITERATION 2  
 6. [Show Cleaner Reliability Scores](/user_stories/user_story_show_cleaner_reliability_scores.md) | 3 days | 20 - MOVED TO ITERATION 2  
 
