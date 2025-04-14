@@ -24,8 +24,8 @@ The MyClean application consists of:
 
 - **Backend (Flask API)**  
   The backend is built using **Flask**, a lightweight Python framework. It serves as the core API server, handling
-  requests from the frontend, processing logic (such as bookings and cleaner availability), and interacting with the *
-  *SQLite/PostgreSQL** databases. We’ll be using **Flask-Login** for session management and **Flask-SQLAlchemy** for
+  requests from the frontend, processing logic (such as bookings and cleaner availability), and interacting with the
+  **SQLite/PostgreSQL** databases. We’ll be using **Flask-Login** for session management and **Flask-SQLAlchemy** for
   object-relational mapping (ORM).
 
 
